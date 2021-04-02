@@ -1,24 +1,73 @@
-# README
+# Answer.ly(アンサリー)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![xlarge_answer ly](https://user-images.githubusercontent.com/77328172/113273147-52589500-9317-11eb-8924-75007c6ef21f.png)
 
-Things you may want to cover:
+※　TOP画像は現在作成中
 
-* Ruby version
+## サイト概要 
+留学したい人や気になっている人など、
+留学に関連する方が気軽に質問・回答が得られるQ&Aです。
 
-* System dependencies
+### サイトテーマ
 
-* Configuration
+留学に関する不安を質問したら、<br>
+求めている回答が、気軽に得られるサイト。<br>
+英語にしてつなぎ合わせたのが、Answer.ly(answer × freely)
 
-* Database creation
+### テーマを選んだ理由
 
-* Database initialization
+私は、大学3年次にアメリカへ1年間の交換留学をしました。<br>
+その留学を振り返った際に下記の不安があったことから、<br>
+**同じ不安をもった人たちを支援したいと思い今回のテーマを選定しました。**
 
-* How to run the test suite
+* 初めての海外生活であったため、知らないことばかりでとても不安だった。
+* 留学に関する不安を質問したくでも、大学の学生課と過去に留学した先輩学生のみ。(繋がりがあれば)
+* 留学中の英語の勉強方法(スピーキングなど)など、本当にこれでいいのか？と不安があった。
+* もっと情報収集が出来れば、充実した留学ライフを過ごせるのではと思った。
 
-* Services (job queues, cache servers, search engines, etc.)
+### ターゲットユーザー
 
-* Deployment instructions
+* これから留学したい方(大学から20代社会人まで)
+* 留学することが不安、留学しようか迷っている方
+* 留学経験のある方
 
-* ...
+### 主な利用シーン
+
+留学に関して疑問・不安がある時に利用します。
+
+具体例として、
+* 留学の為に勉強方法がわからない時。
+* 留学するまでの準備期間で気になることがある時。
+* 留学経験者と繋がりたい時に。
+
+そんな時に利用するサイトです。
+
+## 設計書
+
+### ER図(未完成)
+
+![スクリーンショット 2021-04-02 14 13 49](https://user-images.githubusercontent.com/77328172/113382981-cd748680-93bd-11eb-9777-f4e1c853d96a.png)
+
+### ワイヤーフレーム(未完成)
+
+
+
+### UI Flows(ほぼ完成)
+
+![スクリーンショット 2021-04-02 13 58 04](https://user-images.githubusercontent.com/77328172/113382082-94d3ad80-93bb-11eb-9b69-abe73835adf7.png)
+
+
+### テーブル定義書　
+作成中
+### チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1GKJ7aZMcrRR2YwcuRfL-F2DGFRE_w-ZEhYM93c7TlAY/edit#gid=0
+
+## 開発環境
+
+* OS：Linux(CentOS)
+* 言語：HTML,CSS,JavaScript,Ruby,SQL
+* フレームワーク：Ruby on Rails
+* JSライブラリ：jQuery
+* IDE：Cloud9
+
+
