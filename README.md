@@ -46,8 +46,7 @@
 
 ### ER図
 
-[ER図_20210403.pdf](https://github.com/RyoKitatani/answer.ly/files/6252110/ER._20210403.pdf)
-
+![ER図_20210403](https://user-images.githubusercontent.com/77328172/113471611-768faf80-9498-11eb-85c7-fc56f4da0308.jpg)
 
 ### ワイヤーフレーム(未完成)
 
