@@ -48,10 +48,9 @@
 ![ER図_20210403](https://user-images.githubusercontent.com/77328172/113471611-768faf80-9498-11eb-85c7-fc56f4da0308.jpg)
 ### ワイヤーフレーム(未完成)
 
+### UI Flows
+https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
 
-
-### UI Flows(ほぼ完成)
-![UIFlows_20210403](https://user-images.githubusercontent.com/77328172/113471728-4b599000-9499-11eb-9f12-df93a4ae9207.jpg)
 ### テーブル定義書　
 作成中
 ### チャレンジ要素一覧
