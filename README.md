@@ -52,7 +52,7 @@
 https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
 
 ### テーブル定義書　
-作成中
+https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0bH0A/edit?usp=sharing
 ### チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1GKJ7aZMcrRR2YwcuRfL-F2DGFRE_w-ZEhYM93c7TlAY/edit#gid=0
 
