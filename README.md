@@ -44,9 +44,10 @@
 
 ## 設計書
 
-### ER図(未完成)
+### ER図
 
-![スクリーンショット 2021-04-02 14 13 49](https://user-images.githubusercontent.com/77328172/113382981-cd748680-93bd-11eb-9777-f4e1c853d96a.png)
+[ER図_20210403.pdf](https://github.com/RyoKitatani/answer.ly/files/6252110/ER._20210403.pdf)
+
 
 ### ワイヤーフレーム(未完成)
 
