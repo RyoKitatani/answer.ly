@@ -47,7 +47,7 @@
 ### ER図
 ![ER図_20210403](https://user-images.githubusercontent.com/77328172/113471611-768faf80-9498-11eb-85c7-fc56f4da0308.jpg)
 ### ワイヤーフレーム & UI Flows
-https://drive.google.com/file/d/1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE/view?usp=sharing
+https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
 
 ### テーブル定義書　
 https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0bH0A/edit?usp=sharing
