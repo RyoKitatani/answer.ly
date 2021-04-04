@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'questions/index'
-    get 'questions/show'
-    get 'questions/edit'
-  end
-  root to: "homes#top"
-
   devise_for :admin, controllers: {
     sessions:      'admin/sessions',
     passwords:     'admin/passwords',
@@ -21,11 +14,33 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/" => "homes#top"
-    resources :members, only:[:index, :show, :edit]
-    get "/follow"  => "members#follow"
-    resources 
-    
+    resources :members, only:[:index, :show, :edit, :update]
+    get "/connections" => "members#connection"
+    resources :questions, only:[:index, :show, :edit, :update]
+    resources :tags, only:[:index, :show, :edit, :update]
+  end
 
+  scope module: :public do
+    root "homes#top"
+    get "/about" => "homes#about"
+    patch "/members/withdraw" => "members#withdraw"
+    get "/questions/tag" => "members#tag"
+    resources :members, only:[:index, :show, :edit, :update] do
+      get :follower, on: :member
+      get :followed, on: :member
+    end
+    resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do
+      resources :answers, only:[:show, :new, :create, :edit, :update, :destroy]
+      resource :likes, only: [:create, :destroy]
+    end
+    resources :answers do
+      resources :responses, only:[:show, :new, :create, :edit, :update, :destroy]
+      resource :likes, only: [:create, :destroy]
+    end
+    resources :tags, only:[:index]
+    resources :contacts, only:[:new, :create]
+    post 'follow/:id' => 'relationships#create', as: 'follow'
+    post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
   end
 
 end
