@@ -1,0 +1,2 @@
+module Public::QuestionLikesHelper
+end
