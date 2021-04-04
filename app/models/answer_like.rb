@@ -1,0 +1,2 @@
+class AnswerLike < ApplicationRecord
+end
