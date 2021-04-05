@@ -33,9 +33,9 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string  :name, null: false, default: ""
-      t.text    :introduction
-      t.string  :living_country
-      t.string  :experienced_country
+      t.text    :introduction, default: ""
+      t.string  :living_country, default: ""
+      t.string  :experienced_country, default: ""
       t.boolean :is_deleted, null: false, default: "false"
       t.timestamps null: false
     end
