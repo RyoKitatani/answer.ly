@@ -1,0 +1,49 @@
+<% unless member_signed_in? %>
+<div class="top-box">
+  <div class="container">
+    <div class="row pt-5 pb-5 ">
+      <div class="col-md-6 mt-auto">
+        <div class="top-title">
+          <p>留学したい人を応援するQ&Aサイト</p>
+          <h1 class="display-3 font-weight-bold">Answer.ly</h1>
+          <h2 class="font-weight-bold mt-5 pt-3">留学の不安を取り除こう</h2>
+        </div>
+        <div class="mt-5 mb-5">
+          <p>Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
+          <p>留学に対する不安を無くし、留学経験者・海外在住と繋がろう</p>
+          <p class="mt-5"><%= link_to "もっと詳しく >>", about_path %></p>
+        </div>
+        <div class="bottom-line"></div>
+      </div>
+      <div class="col-md-5 offset-md-1 mt-5">
+        <div class="registration-box btn btn-primary w-75 pt-3 d-flex mx-auto text-align-center" style="height:40px">
+          <%= link_to "メールアドレスで登録する", new_member_registration_path %>
+        </div>
+        <div class="bottom-line mt-5 mb-5"></div>
+        <div class="sns-login">
+          <p class="font-weight-boldte text-center">SNSアカウントで登録する</p>
+        </div>
+        <div class="sns-title d-flex">
+          <div class="facebook-btn btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
+            <%= link_to "Facebook", "#" %>
+          </div>
+          <div class="btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
+            <%= link_to "Twiitter", "#" %>
+          </div>
+        </div>
+        <div class="sns-title d-flex">
+          <div class="facebook-btn btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
+            <%= link_to "Instagram", "#" %>
+          </div>
+          <div class="btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
+            <%= link_to "Google", "#" %>
+          </div>
+        </div>
+        <div class="login-link text-center mt-5">
+          <span>アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

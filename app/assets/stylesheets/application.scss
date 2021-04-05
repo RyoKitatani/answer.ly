@@ -23,6 +23,11 @@
   box-sizing: border-box;
 }
 
+
+header nav {
+  height: 40px;
+}
+
 header, footer{
   color: #fff;
   background-color: #464c56;
@@ -33,6 +38,7 @@ a {
  color: #fff;
  &:hover{
    color: white;
+   text-decoration: none;
  }
 }
 
@@ -44,11 +50,3 @@ header li, .question-box {
   background-color: #333;
 }
 
-.top-box {
-  background-color: #000022;
-  color: #fff;
-}
-
-.top-title p {
-  margin-bottom: 0;
-}
