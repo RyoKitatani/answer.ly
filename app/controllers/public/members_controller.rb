@@ -8,9 +8,8 @@ class Public::MembersController < ApplicationController
   def edit
   end
 
-  def followed
+  def connections
   end
 
-  def follower
-  end
+
 end

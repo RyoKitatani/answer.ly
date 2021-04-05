@@ -26,15 +26,14 @@ Rails.application.routes.draw do
     patch "/members/withdraw" => "members#withdraw"
     get "/questions/tag" => "members#tag"
     resources :members, only:[:index, :show, :edit, :update] do
-      get :follower, on: :member
-      get :followed, on: :member
+      get :connections, on: :member
     end
     resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do
-      resources :answers, only:[:show, :new, :create, :edit, :update, :destroy]
+      resources :answers, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]
     end
     resources :answers do
-      resources :responses, only:[:show, :new, :create, :edit, :update, :destroy]
+      resources :responses, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]
     end
     resources :tags, only:[:index]
