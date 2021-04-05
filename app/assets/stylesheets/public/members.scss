@@ -1,3 +1,13 @@
 // Place all the styles related to the public::members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.root-link a, .login-link a  {
+  color: #212529;
+}
+
+.root-link a:hover, .login-link a:hover {
+  color: #212529;
+  text-decoration: underline;
+}
