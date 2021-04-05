@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render "layouts/header" %>
+    </header>
+    <main>
+      <% unless member_signed_in? %>
+        <%= render "layouts/top" %>
+      <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
   </body>
 </html>

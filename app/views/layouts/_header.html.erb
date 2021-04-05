@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="/"><%= image_tag "answer.ly_logo.png", :size => "120x40", alt:"Answer.lyロゴ" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mr-auto" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <div class="question-box btn btn-success">
+          <%= link_to "#" do %>
+            <i class="fas fa-edit"> 質問する</i>
+          <% end %>
+        </div>
+        <% if member_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "#" do %>
+            ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "#" do %>
+              ゲストログイン
+            <% end %>
+          </li>
+          <div class="header-item btn btn-lg">
+            <li class="nav-item">
+              <%= link_to "#" do %>
+                <i class="fas fa-sign-in-alt">ログイン</i>
+              <% end %>
+            </li>
+          </div>
+          <li class="nav-item">
+            <%= link_to "#" do %>
+            新規会員登録
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
