@@ -23,6 +23,12 @@
   box-sizing: border-box;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  z-index:2;
+}
+
 
 header nav {
   height: 40px;
