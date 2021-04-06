@@ -1,6 +1,8 @@
 <% tags.each do |tag| %>
     <div class="w-50 mt-3 mb-3 btn btn-light">
-      <%= tag.name %>
+      <%= link_to tag_path(tag) do %>
+        <%= tag.name %>
+      <% end %>
     </div>
     <div class="under_line"></div>
 <% end %>

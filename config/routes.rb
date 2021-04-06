@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       resources :responses, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-    resources :tags, only:[:index]
+    resources :tags, only:[:index, :show]
     resources :contacts, only:[:new, :create]
     post 'follow/:id' => 'relationships#create', as: 'follow'
     post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'

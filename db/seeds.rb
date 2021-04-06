@@ -52,6 +52,16 @@ Member.create!(
   is_deleted: "false"
 )
 
+Member.create!(
+  name: "Taichirou Inada",
+  email: "test5@gmail.com",
+  password: 123456,
+  introduction: "",
+  living_country: "",
+  experienced_country: "",
+  is_deleted: "false"
+)
+
 Tag.create!(name: "留学")
 Tag.create!(name: "語学")
 Tag.create!(name: "英語")
@@ -62,7 +72,7 @@ Tag.create!(name: "アメリカ")
 Tag.create!(name: "大学生")
 Tag.create!(name: "高校生")
 
-4.times do |n|
+5.times do |n|
   Question.create!(
     member_id: 1 + n,
     title: "留学に関して#{n+1}",
@@ -70,6 +80,16 @@ Tag.create!(name: "高校生")
     question_status: "false"
   )
 end
+
+5.times do |n|
+  Question.create!(
+    member_id: 1 + n,
+    title: "英語の勉強法について#{n+1}",
+    content: "単語帳、NETFLIX#{n+1}",
+    question_status: "false"
+  )
+end
+
 
 Answer.create!(
   question_id: 1,
