@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :members, only:[:show, :edit, :update] do
       get :connections, on: :member
     end
+    post "/guest_sign_in", to: "members#guest_sign_in"
     resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do
       resources :answers, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]

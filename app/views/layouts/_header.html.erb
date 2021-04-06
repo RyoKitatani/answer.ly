@@ -29,7 +29,7 @@
         <% else %>
         <div class="header-item btn btn-lg">
           <li class="nav-item">
-            <%= link_to "#" do %>
+            <%= link_to guest_sign_in_path, method: :post do %>
               <i class="fas fa-user-circle"> ゲストログイン</i>
             <% end %>
           </li>
