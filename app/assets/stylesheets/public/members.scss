@@ -16,3 +16,16 @@ a {
   color: #212529;
   text-decoration: underline;
 }
+
+.bottom-line {
+  border-bottom: solid 2px #000022;
+}
+
+.shared-links a {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
+}
