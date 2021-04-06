@@ -67,6 +67,6 @@ gem 'font-awesome-sass', '~> 5.13'
 gem "pry-rails"
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
-
-# # gem 'impressionist'
-# gem 'omniauth'
+gem 'omniauth','~> 1.9.0'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
