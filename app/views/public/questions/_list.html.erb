@@ -1,0 +1,22 @@
+<% questions.each do |question| %>
+  <div class="question-box mt-5 mb-5 w-100">
+    <% if question.question_status == false %>
+      <p class="btn-success font-weight-bold h-25">受付中</p>
+    <% else %>
+      <p class="btn-danger font-weight-bold">解決済み</p>
+    <% end %>
+    <h4>回答<br /><%= question.answers.count %></h4>
+    <%= link_to question_path(question), class:"link-text" do %>
+      <h2><%= question.title %></h2>
+    <% end %>
+    <%= question.content %>
+    <p>評価: <%= question.question_likes.count %></p>
+    <%= link_to member_path(question.member_id), class:"link-text" do %>
+    <span><%= question.member.image %> | <%= question.member.name %>
+    <% end %>
+    | <%= question.created_at %>
+    </span>
+
+  </div>
+  <div class="under_line"></div>
+<% end %>

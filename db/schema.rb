@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_04_075323) do
     t.datetime "remember_created_at"
     t.string "name", default: "", null: false
     t.text "introduction", default: ""
+    t.string "image_id"
     t.string "living_country", default: ""
     t.string "experienced_country", default: ""
     t.boolean "is_deleted", default: false, null: false

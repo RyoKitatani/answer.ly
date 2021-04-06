@@ -2,8 +2,20 @@
   <%= render "public/homes/top" %>
 <% end %>
 
-
 <div class="container">
-  <h1>Public::Homes#top</h1>
-  <p>Find me in app/views/public/homes/top.html.erb</p>
+ <div class="row">
+   <div class="col-md-9">
+     <div class="questions-index">
+      <%= render "public/questions/list", questions: @questions %>
+     </div>
+   </div>
+   <div class="col-md-3">
+     <div class="tag-index mb-5">
+      <%= render "public/tags/list", tags: @tags %>
+     </div>
+     <div class="ranking-index mb-5">
+       <%= render "public/members/list", members: @members %>
+     </div>
+   </div>
+ </div>
 </div>

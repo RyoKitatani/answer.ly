@@ -18,6 +18,10 @@
   border-bottom: solid 2px #fff;
 }
 
+.under_line {
+  border-bottom: solid 2px gray;
+}
+
 .login-link a:hover {
   text-decoration: underline;
 }
@@ -41,4 +45,13 @@
   border: solid 1px gray;
   width: 100%;
   height: 500px;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
 }

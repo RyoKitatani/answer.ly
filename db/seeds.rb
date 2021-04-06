@@ -71,7 +71,6 @@ Tag.create!(name: "高校生")
   )
 end
 
-
 Answer.create!(
   question_id: 1,
   member_id: 2,
