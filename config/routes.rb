@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     patch "/members/withdraw" => "members#withdraw"
     get "/questions/tag" => "members#tag"
-    resources :members, param: :name, only:[:index, :show, :edit, :update] do
+    resources :members, only:[:show, :edit, :update] do
       get :connections, on: :member
     end
     resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do

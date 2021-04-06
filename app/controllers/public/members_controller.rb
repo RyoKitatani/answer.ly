@@ -1,8 +1,8 @@
 class Public::MembersController < ApplicationController
-  def index
-  end
+   before_action :authenticate_member!
 
   def show
+    @member = Member.find(params[:id])
   end
 
   def edit

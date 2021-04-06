@@ -14,8 +14,8 @@
         <% if member_signed_in? %>
         <div class="header-item btn btn-lg">
           <li class="nav-item">
-            <%= link_to member_path do %>
-              <i class="fas fa-user-graduate"> <%= @member.name %></i>
+            <%= link_to member_path(current_member) do %>
+              <i class="fas fa-user-graduate"> <%= current_member.name %></i>
             <% end %>
           </li>
         </div>
