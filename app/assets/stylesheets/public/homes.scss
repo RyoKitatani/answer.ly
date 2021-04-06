@@ -29,3 +29,16 @@
 .site-title-back {
   color: #0066CC;
 }
+
+.sidebar-fixed {
+  position: sticky;
+  top: 40px;
+  border: solid 1px gray;
+  width: 100%;
+  height: 500px;
+}
+.box {
+  border: solid 1px gray;
+  width: 100%;
+  height: 500px;
+}
