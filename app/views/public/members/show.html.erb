@@ -1,2 +1,53 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="row">
+  <div class="col-md-10 mt-5 mb-5 offset-md-1">
+    <div>
+      <p><%= @member.image %></p>
+      <p><%= @member.name %></p>
+      <p>住居: <%= @member.living_country %></p>
+      <p>経験留学先: <%= @member.experienced_country %></p>
+      <div class="btn btn-success">
+        <%= link_to "プロフィール編集", edit_member_path(@member)%>
+      </div>
+      <div class="btn btn-primary">
+        <%= link_to "フォローする", "# "%>
+      </div>
+      <p>投稿数: <%= @member.questions.count %></p>
+      <p>回答数: <%= @member.answers.count %></p>
+      <p>ランキング:</p>
+      <p>フォロー:</p>
+      <p>フォロワー:</p>
+      <p><%= @member.introduction %></p>
+    </div>
+  </div>
+</div>
+
+<!--投稿・回答-->
+<div class="row mb-5">
+  <div class="col-md-5 border offset-md-1">
+    <h4 class="text-center">投稿履歴</h4>
+    <% @member.questions.each do |question| %>
+      <div class="d-flex border mx-auto mt-2">
+      　<p>回答:<%= question.answers.count %></p>
+        <p><%= link_to question_path(question) , class:"link-text" do%>
+          <%= question.title %>
+          <% end %>
+        </p>
+        <p>タグ</p>
+        <p>評価:<%= question.question_likes.count %></p>
+        <p>PV:</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-5 border offset-md-1">
+    <h4 class="text-center">回答履歴</h4>
+    <% @member.answers.each do |answer| %>
+      <div class="d-flex border mx-auto mt-2">
+      　<p>回答:<%= answer.responses.count %></p>
+        <p><%= answer.question.title %></p>
+        <p>タグ</p>
+        <p>評価:<%= answer.answer_likes.count %></p>
+        <p>PV:</p>
+      </div>
+    <% end %>
+  </div>
+</div>

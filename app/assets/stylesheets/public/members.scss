@@ -29,3 +29,11 @@ a {
     color: #212529;
   }
 }
+.link-text {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
+}
