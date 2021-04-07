@@ -7,6 +7,8 @@ class Public::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @tags = Tag.all.order(created_at: :desc)
     @answer = Answer.new
+    @answer_comment = Answer.find(params[:id])
+    @response = Response.new
   end
 
 
