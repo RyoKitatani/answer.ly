@@ -14,7 +14,7 @@ class Public::QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.find(question_params)
+    @question = Question.new(question_params)
     @question.member_id = current_member.id
     if @question.save
       flash.now[:success] = "質問を投稿しました。"
