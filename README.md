@@ -2,8 +2,7 @@
 
 ![xlarge_answer ly](https://user-images.githubusercontent.com/77328172/113273147-52589500-9317-11eb-8924-75007c6ef21f.png)
 
-![スクリーンショット 2021-04-07 20 51 17](https://user-images.githubusercontent.com/77328172/113862260-23dd2d00-97e3-11eb-8740-cd5dca2c009d.png)
-
+![スクリーンショット 2021-04-07 20 52 50](https://user-images.githubusercontent.com/77328172/113862350-3ce5de00-97e3-11eb-9ea3-5348ecd8c7f9.png)
 
 ## サイト概要 
 留学したい人や気になっている人など、
