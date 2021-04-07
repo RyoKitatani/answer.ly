@@ -40,10 +40,13 @@
        </div>
      </div>
      <div class="mt-2 bottom-line border border-blck"></div>
+
+    <!--回答一覧表示-->
      <div class="mt-5">
         <h3>回答: <%= @question.answers.count %>件</h3>
         <div class="bottom-line border border-blck"></div>
         <div class="answers-box">
+        <% if @question.answers.exists? %>
           <% @question.answers.each do |answer| %>
             <p>高評価数:<%= answer.answer_likes.count %></p>
             <h4><%= answer.content %></h4>
@@ -61,15 +64,40 @@
             </div>
             <div class="mt-2 bottom-line border border-blck"></div>
           <% end %>
+        <% else %>
+        <div class="mt-5 mb-5 rounded">
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10 w-100">
+              <div class="no-answers-box">
+                <p class="font-weight-bold">まだ回答がありません。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
         </div>
      </div>
-     <div class="mt-2 bottom-line border border-blck"></div>
-     <div class="answer-box">
-       <%= form_with model: [@question, @answer], local: true do |f| %>
-        <%= f.text_area :content, class:"w-100" %>
-        <%= f.submit "回答する", class:"btn btn-primary ml-auto" %>
-       <% end %>
+     <!--ここまで-->
+
+
+     <!--回答フォーム-->
+     <div class="row mt-5">
+       <div class="col-md-2">
+         <%= @member.image %>
+         <%= @member.name %>
+       </div>
+       <div class="col-md-10">
+         <div class="answer-box">
+           <%= form_with model: [@question, @answer], local: true do |f| %>
+            <%= f.text_area :content, placeholder:"あなたの回答で質問者の悩みを解決しましょう。", class:"w-100", rows:5 %>
+            <%= f.submit "回答する", class:"btn btn-primary text-items-center" %>
+           <% end %>
+         </div>
+       </div>
      </div>
+     <!--ここまで-->
 
    </div>
    <div class="col-md-3">

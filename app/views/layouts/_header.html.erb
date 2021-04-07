@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="/"><%= image_tag "answer.ly_logo.png", :size => "120x30", alt:"Answer.lyロゴ" %></a>
+    <div class="header-item text-light btn btn-lg">
+      現在の投稿数：<%= @questions.count %>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
