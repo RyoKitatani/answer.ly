@@ -63,6 +63,9 @@
               <% end %>
             </div>
             <div class="mt-2 bottom-line border border-blck"></div>
+              <% answer.responses.each do |response| %>
+                <%= response.content %>
+              <% end %>
           <% end %>
         <% else %>
         <div class="mt-5 mb-5 rounded">
@@ -80,7 +83,6 @@
         </div>
      </div>
      <!--ここまで-->
-
 
      <!--回答フォーム-->
      <div class="row mt-5">
@@ -105,5 +107,4 @@
       <%= render "public/tags/list", tags: @tags %>
      </div>
    </div>
-</div>
 </div>
