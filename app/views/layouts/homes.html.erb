@@ -14,6 +14,11 @@
       <%= render "layouts/header" %>
     </header>
     <main>
+        <% flash.each do |key, value| %>
+          <p class="alert alert-<%= key %>">
+            <%= sanitize value, tags: %w(br) %>
+          </p>
+        <% end %>
       <%= yield %>
     </main>
     <footer>

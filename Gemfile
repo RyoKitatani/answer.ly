@@ -70,5 +70,5 @@ gem "pry-rails"
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
 
-# # gem 'impressionist'
-# gem 'omniauth'
+# gem 'impressionist'
+#gem 'omniauth'
