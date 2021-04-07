@@ -24,9 +24,10 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     patch "/members/withdraw" => "members#withdraw"
     get "/questions/tag" => "members#tag"
-    resources :members, param: :name, only:[:index, :show, :edit, :update] do
+    resources :members, only:[:show, :edit, :update] do
       get :connections, on: :member
     end
+    post "/guest_sign_in", to: "members#guest_sign_in"
     resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do
       resources :answers, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
       resources :responses, only:[:show, :create, :edit, :update, :destroy]
       resource :likes, only: [:create, :destroy]
     end
-    resources :tags, only:[:index]
+    resources :tags, only:[:index, :show]
     resources :contacts, only:[:new, :create]
     post 'follow/:id' => 'relationships#create', as: 'follow'
     post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'

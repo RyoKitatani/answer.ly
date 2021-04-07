@@ -13,3 +13,59 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+body {
+  height: 100vh;
+  margin-top: 49.5px;
+　padding-top: 100px;
+　z-index: 0;
+}
+
+header nav main {
+  height: 40px;
+}
+
+header, footer{
+  color: #fff;
+  background-color: #464c56;
+  font-size: 1.2rem;
+}
+
+a {
+ color: #fff;
+ &:hover{
+   color: white;
+   text-decoration: none;
+ }
+}
+
+header li, .question-box {
+  margin-right: 10px;
+}
+
+.header-item:hover {
+  background-color: #333;
+}
+
+
+.bottom-line {
+  border-bottom: solid 2px #fff;
+}
+

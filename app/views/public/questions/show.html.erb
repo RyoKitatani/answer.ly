@@ -1,2 +1,128 @@
-<h1>Public::Questions#show</h1>
-<p>Find me in app/views/public/questions/show.html.erb</p>
+<div class="row mx-auto">
+  <div class="question-title w-100 pt-3 pb-3 border border-black-3">
+  <span class="root-link "><%= link_to "Answer.lyトップ", tag_path(tag) %></span>
+</div>
+</div>
+<div class="question-title">
+  <div class="container">
+    <div class= "row">
+      <div class="col-md-9 pt-5">
+        <h1 class="font-weight-bold"><%= @question.title %></h1>
+        <p class="mt-5 mb-5"><%= @question.created_at %> | <%= @question.updated_at %></p>
+      </div>
+      <div class="col-md-3 pt-5">
+        <div class="text-center">
+          <p class="btn btn-light">コメント数：<%= @question.answers.count %></p>
+          <p class="btn btn-light">評価：0</p>
+          <p class="btn btn-light">VIEW：0</p>
+        </div>
+        <div class="mt-5 mb-5">
+          <p class="font-weight-bold"><%= @question.member.image %><%= @question.member.name %> | score: <%= @question.question_likes.count %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+ <div class="row">
+   <div class="col-md-9 mt-5 mb-5">
+     <div class="border border-black-3">
+       <div class="questions-content">
+         <h3><%= @question.content %></h3>
+       </div>
+       <div class="mt-5 d-flex">
+         <div class="btn btn-primary mr-2"><i class="fas fa-thumbs-up">高評価 <%= @question.question_likes.count %></i></div>
+         <% if current_member == @question.member %>
+           <%= link_to "編集する", edit_question_path, class:"btn btn-success ml-auto mr-2"%>
+           <%= link_to "削除する", question_path(@question), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+         <% end %>
+       </div>
+     </div>
+     <div class="mt-2 bottom-line border border-blck"></div>
+
+    <!--回答一覧表示-->
+     <div class="mt-5">
+        <h3>回答: <%= @question.answers.count %>件</h3>
+        <div class="answers-box">
+          <% if @question.answers.exists? %>
+            <% @question.answers.each do |answer| %>
+              <div class="bottom-line border border-blck mt-2"></div>
+              <p>高評価数:<%= answer.answer_likes.count %></p>
+              <h4><%= answer.content %></h4>
+              <div class="mt-5">
+                <p><%= answer.created_at %></p>
+                <p><%= answer.member.image %></p>
+                <p><%= answer.member.name %></p>
+              </div>
+              <div class="mt-5 d-flex">
+                <div class="btn btn-primary mr-2"><i class="fas fa-thumbs-up">高評価 <%= answer.answer_likes.count %></i></div>
+                <% if current_member == answer.member %>
+                  <%= link_to "編集する", edit_answer_path, class:"btn btn-success ml-auto mr-2"%>
+                  <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+                <% end %>
+              </div>
+                <div class="mt-2 bottom-line border border-blck mb-5"></div>
+                <%= form_with model: [@answer_comment, @response], local: true do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100" %>
+                  </div>
+                  <div class="form-action">
+                    <%= f.submit "コメントする", class:"btn btn-primary text-items-center" %>
+                  </div>
+                  <div class="mt-2 bottom-line border border-blck mb-5"></div>
+                <% end %>
+                <% answer.responses.each do |response| %>
+                  <div class="col-md-2">
+                    <%= response.member.image %>
+                  </div>
+                  <div class="col-md-10 offset-md-2">
+                    <%= response.member.name %>
+                    <%= response.created_at.strftime('%Y/%m/%d') %>
+                    <%= response.content %>
+                    <%= link_to "削除する", answer_response_path(response.answer, response), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+                     <div class="mt-2 bottom-line border border-blck"></div>
+                  </div>
+                <% end %>
+            <% end %>
+          <% else %>
+          <div class="mt-5 mb-5 rounded">
+            <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-10 w-100">
+                <div class="no-answers-box">
+                  <p class="font-weight-bold">まだ回答がありません。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+     </div>
+     <!--ここまで-->
+
+     <!--回答フォーム-->
+     <div class="row mt-5">
+       <div class="col-md-2">
+         <%= @member.image %>
+         <%= @member.name %>
+       </div>
+       <div class="col-md-10">
+         <div class="answer-box">
+           <%= form_with model: [@question, @answer], local: true do |f| %>
+            <%= f.text_area :content, placeholder:"あなたの回答で質問者の悩みを解決しましょう。", class:"w-100", rows:5 %>
+            <%= f.submit "回答する", class:"btn btn-primary text-items-center" %>
+           <% end %>
+         </div>
+       </div>
+     </div>
+     <!--ここまで-->
+
+   </div>
+   <div class="col-md-3">
+     <div class="tag-index mb-5">
+      <%= render "public/tags/list", tags: @tags %>
+     </div>
+   </div>
+</div>

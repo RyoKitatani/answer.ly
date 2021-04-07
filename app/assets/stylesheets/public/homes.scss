@@ -1,3 +1,58 @@
 // Place all the styles related to the public::homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-box {
+  background-color: #000022;
+  height: 100vh;
+  color: #fff;
+  letter-spacing: 3px;
+  padding-top: 60px;
+}
+
+.top-title p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.bottom-line {
+  border-bottom: solid 2px #fff;
+}
+
+.under_line {
+  border-bottom: solid 2px gray;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.site-title-front {
+  color: #66CCFF;
+}
+
+.site-title-back {
+  color: #0066CC;
+}
+
+.sidebar-fixed {
+  position: sticky;
+  top: 40px;
+  border: solid 1px gray;
+  width: 100%;
+  height: 500px;
+}
+.box {
+  border: solid 1px gray;
+  width: 100%;
+  height: 500px;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
+}
