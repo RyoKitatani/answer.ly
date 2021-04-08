@@ -70,6 +70,8 @@ gem "pry-rails"
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
 gem 'carmen-rails', git: 'git@github.com:Studiosity/carmen-rails.git'
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.9'
 
 # gem 'impressionist'
 #gem 'omniauth'
