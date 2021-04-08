@@ -69,6 +69,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem "pry-rails"
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
+gem 'carmen-rails', git: 'git@github.com:Studiosity/carmen-rails.git'
 
 # gem 'impressionist'
 #gem 'omniauth'

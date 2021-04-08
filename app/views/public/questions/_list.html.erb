@@ -12,7 +12,7 @@
     <%= question.content %>
     <p>評価: <%= question.question_likes.count %></p>
     <%= link_to member_path(question.member_id), class:"link-text" do %>
-    <span><%= question.member.image %> | <%= question.member.name %>
+    <span><%= attachment_image_tag question.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%> | <%= question.member.name %>
     <% end %>
     | <%= question.created_at %>
     </span>

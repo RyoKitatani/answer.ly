@@ -1,21 +1,30 @@
 <div class="row">
   <div class="col-md-10 mt-5 mb-5 offset-md-1">
     <div>
-      <p><%= @member.image %></p>
+      <p><%= attachment_image_tag @member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
       <p><%= @member.name %></p>
-      <p>住居: <%= @member.living_country %></p>
+      <p>住居: <%= @member.country_code %></p>
       <p>経験留学先: <%= @member.experienced_country %></p>
+      <% if current_member.id == @member.id %>
       <div class="btn btn-success">
         <%= link_to "プロフィール編集", edit_member_path(@member)%>
       </div>
-      <div class="btn btn-primary">
-        <%= link_to "フォローする", "# "%>
-      </div>
+      <% else %>
+        <% if current_member.following?(@member) %>
+          <div class="btn btn-danger">
+            <%= link_to 'フォロー外す', unfollow_path(@member), method: :POST %>
+          </div>
+          <% else %>
+          <div class="btn btn-primary">
+            <%= link_to "フォローする", follow_path(@member), method: :post %>
+          </div>
+        <% end %>
+      <% end %>
       <p>投稿数: <%= @member.questions.count %></p>
       <p>回答数: <%= @member.answers.count %></p>
       <p>ランキング:</p>
-      <p>フォロー:</p>
-      <p>フォロワー:</p>
+      <p>フォロー: <%= @member.follower.count %></p>
+      <p>フォロワー: <%= @member.followed.count %></p>
       <p><%= @member.introduction %></p>
     </div>
   </div>

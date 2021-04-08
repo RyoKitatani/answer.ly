@@ -1,0 +1,18 @@
+<div class="container">
+  <div class= "row">
+    <div class="col-md-9 pt-5">
+      <h1 class="font-weight-bold"><%= question.title %></h1>
+      <p class="mt-5 mb-5"><%= question.created_at %> | <%= question.updated_at %></p>
+    </div>
+    <div class="col-md-3 pt-5">
+      <div class="text-center">
+        <p class="btn btn-light">コメント数：<%= question.answers.count %></p>
+        <p class="btn btn-light">評価：0</p>
+        <p class="btn btn-light">VIEW：0</p>
+      </div>
+      <div class="mt-5 mb-5">
+        <p class="font-weight-bold"><%= question.member.image %><%= question.member.name %> | score: <%= question.question_likes.count %></p>
+      </div>
+    </div>
+  </div>
+</div>

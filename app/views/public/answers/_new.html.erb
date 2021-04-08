@@ -1,6 +1,5 @@
-<div class="col-md-2">
- <%= member.image %>
- <%= member.name %>
+<div class="col-md-1 offset-md-1">
+ <%= attachment_image_tag member, :image, size:"50x50", fallback:"no_image_icon.jpg"%><br>
 </div>
 <div class="col-md-10">
  <div class="answer-box">

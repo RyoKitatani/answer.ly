@@ -1,2 +1,35 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class="row mx-auto mb-5">
+  <div class="col-md-10 offset-md-1">
+    <h3 class="mt-5">プロフィール設定</h3>
+    <%= form_with model: @member, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :ユーザー名 %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :メールアドレス %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :アイコン %>
+        <%= attachment_image_tag @member, :image, size:"30x30", fallback:"no_image_icon.jpg"%>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="form-group">
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :introduction, placeholder:"自己紹介を記入してださい。", class:"w-100", rows:"5" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :居住地 %>
+        <%= f.country_select :country_code %>
+      </div>
+      <div class="form-group">
+        <%= f.label :経験留学先 %>
+        <%= f.text_field :experienced_country %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "保存する", class:"btn btn-primary w-25"%>
+      </div>
+    <% end %>
+  </div>
+</div>

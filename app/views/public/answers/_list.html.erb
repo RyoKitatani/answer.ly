@@ -7,7 +7,7 @@
       <h4><%= answer.content %></h4>
       <div class="mt-5">
         <p><%= answer.created_at %></p>
-        <p><%= answer.member.image %></p>
+        <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
         <p><%= answer.member.name %></p>
       </div>
       <div class="mt-5 d-flex">
@@ -29,9 +29,9 @@
         <% end %>
         <% answer.responses.each do |response| %>
           <div class="col-md-2">
-            <%= response.member.image %>
           </div>
           <div class="col-md-10 offset-md-2">
+            <%= attachment_image_tag response.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%>
             <%= response.member.name %>
             <%= response.created_at.strftime('%Y/%m/%d') %>
             <%= response.content %>
