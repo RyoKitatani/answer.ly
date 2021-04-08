@@ -44,61 +44,7 @@
     <!--回答一覧表示-->
      <div class="mt-5">
         <h3>回答: <%= @question.answers.count %>件</h3>
-        <div class="answers-box">
-          <% if @question.answers.exists? %>
-            <% @question.answers.each do |answer| %>
-              <div class="bottom-line border border-blck mt-2"></div>
-              <p>高評価数:<%= answer.answer_likes.count %></p>
-              <h4><%= answer.content %></h4>
-              <div class="mt-5">
-                <p><%= answer.created_at %></p>
-                <p><%= answer.member.image %></p>
-                <p><%= answer.member.name %></p>
-              </div>
-              <div class="mt-5 d-flex">
-                <div class="btn btn-primary mr-2"><i class="fas fa-thumbs-up">高評価 <%= answer.answer_likes.count %></i></div>
-                <% if current_member == answer.member %>
-                  <%= link_to "編集する", edit_answer_path, class:"btn btn-success ml-auto mr-2"%>
-                  <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
-                <% end %>
-              </div>
-                <div class="mt-2 bottom-line border border-blck mb-5"></div>
-                <%= form_with model: [@answer_comment, @response], local: true do |f| %>
-                  <div class="form-group">
-                    <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100" %>
-                  </div>
-                  <div class="form-action">
-                    <%= f.submit "コメントする", class:"btn btn-primary text-items-center" %>
-                  </div>
-                  <div class="mt-2 bottom-line border border-blck mb-5"></div>
-                <% end %>
-                <% answer.responses.each do |response| %>
-                  <div class="col-md-2">
-                    <%= response.member.image %>
-                  </div>
-                  <div class="col-md-10 offset-md-2">
-                    <%= response.member.name %>
-                    <%= response.created_at.strftime('%Y/%m/%d') %>
-                    <%= response.content %>
-                    <%= link_to "削除する", answer_response_path(response.answer, response), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
-                     <div class="mt-2 bottom-line border border-blck"></div>
-                  </div>
-                <% end %>
-            <% end %>
-          <% else %>
-          <div class="mt-5 mb-5 rounded">
-            <div class="row">
-              <div class="col-md-2">
-              </div>
-              <div class="col-md-10 w-100">
-                <div class="no-answers-box">
-                  <p class="font-weight-bold">まだ回答がありません。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
+        <%= render "public/answers/list", question: @question, answer_comment: @answer_comment , response: @response %>
      </div>
      <!--ここまで-->
 
