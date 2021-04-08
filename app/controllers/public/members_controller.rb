@@ -22,6 +22,15 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  def withdraw
+    @member = current_member
+    @member.is_deleted = true
+    if @member.save
+      reset_session
+      redirect_to root_path
+    end
+  end
+
   def guest_sign_in
     member = Member.find_or_create_by!(email:"guest@gmail.com") do |member|
       member.password = SecureRandom.urlsafe_base64

@@ -34,6 +34,9 @@
       <% end %>
       </p>
       <p><%= @member.introduction %></p>
+      <div>
+      <%= link_to "退会する", members_withdraw_path, class:"btn btn-danger", method: :patch, data: { confirm: "本当に退会しますか？" } %>
+    </div>
     </div>
   </div>
 </div>
