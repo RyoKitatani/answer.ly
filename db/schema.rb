@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 2021_04_08_054526) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.string "name", default: "", null: false
     t.text "introduction", default: ""
     t.string "image_id"

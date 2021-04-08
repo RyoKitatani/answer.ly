@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   devise_for :members, controllers: {
      sessions:      'public/sessions',
      passwords:     'public/passwords',
-     registrations: 'public/registrations'
+     registrations: 'public/registrations',
+     confirmations: 'public/confirmations'
   }
 
   namespace :admin do
