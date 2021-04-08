@@ -19,6 +19,7 @@ class Public::MembersController < ApplicationController
   end
 
   def connections
+    @member = Member.find(params[:id])
   end
 
   def guest_sign_in

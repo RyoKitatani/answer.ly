@@ -23,8 +23,16 @@
       <p>投稿数: <%= @member.questions.count %></p>
       <p>回答数: <%= @member.answers.count %></p>
       <p>ランキング:</p>
-      <p>フォロー: <%= @member.follower.count %></p>
-      <p>フォロワー: <%= @member.followed.count %></p>
+      <p>フォロー:
+      <%= link_to connections_member_path, class:"link-text" do %>
+      <%= @member.follower.count %>
+      <% end %>
+      </p>
+      <p>フォロワー:
+      <%= link_to connections_member_path, class:"link-text" do %>
+      <%= @member.followed.count %>
+      <% end %>
+      </p>
       <p><%= @member.introduction %></p>
     </div>
   </div>

@@ -1,0 +1,61 @@
+<div class="row mx-auto mb-5">
+  <div class="col-md-12">
+    <h3 class="mt-5"><%= @member.name%> の フォロー・フォロワー一覧</h3>
+  </div>
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item w-50 bg-light">
+    <a class="nav-link active link-text" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">フォロー</a>
+  </li>
+  <li class="nav-item w-50 bg-light">
+    <a class="nav-link link-text" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">フォロワー</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <% @member.following_member.each do |member| %>
+      <%= link_to member_path(member), class:"link-text" do %>
+        <div class="d-flex border mx-auto">
+          <div class="col-md-3">
+            <p><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></p>
+            <p><%= member.name%></p>
+          </div>
+          <div class="col-md-2">
+            <p><%= member.followed.count %></p>
+            <p><%= member.follower.count %></p>
+          </div>
+          <div class="col-md-2">
+            <p><%= total_likes(member.question_likes, member.answer_likes) %></p>
+          </div>
+          <div class="col-md-3">
+            <p><%= member.questions.count %></p>
+            <p><%= member.answers.count %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @member.follower_member.each do |member| %>
+      <%= link_to member_path(member), class:"link-text" do %>
+        <div class="d-flex border mx-auto">
+          <div class="col-md-3">
+            <p><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></p>
+            <p><%= member.name%></p>
+          </div>
+          <div class="col-md-2">
+            <p><%= member.followed.count %></p>
+            <p><%= member.follower.count %></p>
+          </div>
+          <div class="col-md-2">
+            <p><%= total_likes(member.question_likes, member.answer_likes) %></p>
+          </div>
+          <div class="col-md-3">
+            <p><%= member.questions.count %></p>
+            <p><%= member.answers.count %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

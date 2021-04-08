@@ -127,3 +127,9 @@ Answer.create!(
   )
 end
 
+4.times do |n|
+  QuestionTag.create!(
+    question_id:1 + n,
+    tag_id:1 + n
+  )
+end

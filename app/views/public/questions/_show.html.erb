@@ -1,5 +1,8 @@
 <div class="questions-content">
   <h3><%= question.content %></h3>
+  <% question.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
 </div>
 <div class="mt-5 d-flex">
   <div class="btn btn-primary mr-2"><i class="fas fa-thumbs-up">高評価 <%= question.question_likes.count %></i></div>
