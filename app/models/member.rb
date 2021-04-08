@@ -31,5 +31,9 @@ class Member < ApplicationRecord
     following_member.include?(member)
   end
 
+  def country
+    Carmen::Country.coded(country_code)
+  end
+
 end
 

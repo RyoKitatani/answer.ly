@@ -18,7 +18,7 @@
         <% end %>
       </div>
         <div class="mt-2 bottom-line border border-blck mb-5"></div>
-        <%= form_with model: [answer_comment, response], local: true do |f| %>
+        <%= form_with model: [answer, response], local: true do |f| %>
           <div class="form-group">
             <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100" %>
           </div>

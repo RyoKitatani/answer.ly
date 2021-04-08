@@ -3,7 +3,7 @@
     <div>
       <p><%= attachment_image_tag @member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
       <p><%= @member.name %></p>
-      <p>住居: <%= @member.country_code %></p>
+      <p>住居: <%= @member.country.name %></p>
       <p>経験留学先: <%= @member.experienced_country %></p>
       <% if current_member.id == @member.id %>
       <div class="btn btn-success">
@@ -49,7 +49,7 @@
           <%= question.title %>
           <% end %>
         </p>
-        <p>タグ</p>
+        <p>タグ: <%= question.tags.count %></p>
         <p>評価:<%= question.question_likes.count %></p>
         <p>PV:</p>
       </div>
@@ -61,7 +61,7 @@
       <div class="d-flex border mx-auto mt-2">
       　<p>回答:<%= answer.responses.count %></p>
         <p><%= answer.question.title %></p>
-        <p>タグ</p>
+        <p>タグ: <%= answer.question.tags.count %></p>
         <p>評価:<%= answer.answer_likes.count %></p>
         <p>PV:</p>
       </div>
