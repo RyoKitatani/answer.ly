@@ -31,11 +31,11 @@ Rails.application.routes.draw do
     post "/guest_sign_in", to: "members#guest_sign_in"
     resources :questions, only:[:show, :new, :create, :edit, :update, :destroy] do
       resources :answers, only:[:show, :create, :edit, :update, :destroy]
-      resource :likes, only: [:create, :destroy]
+      resource :question_likes, only: [:create, :destroy]
     end
     resources :answers do
       resources :responses, only:[:show, :create, :edit, :update, :destroy]
-      resource :likes, only: [:create, :destroy]
+      resource :answer_likes, only: [:create, :destroy]
     end
     resources :tags, only:[:index, :show]
     resources :contacts, only:[:new, :create]

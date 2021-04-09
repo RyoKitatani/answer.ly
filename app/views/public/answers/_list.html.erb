@@ -4,7 +4,7 @@
     <% question.answers.each do |answer| %>
       <div class="bottom-line border border-blck mt-2"></div>
       <p>高評価数:<%= answer.answer_likes.count %></p>
-      <h4><%= answer.content %></h4>
+      <h4><%== answer.content %></h4>
       <div class="mt-5">
         <p><%= answer.created_at %></p>
         <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>

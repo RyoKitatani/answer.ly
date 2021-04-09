@@ -1,6 +1,6 @@
 <div class="row mx-auto mb-5">
   <div class="col-md-12">
-    <h3 class="mt-5"><%= @member.name%> の フォロー・フォロワー一覧</h3>
+    <h4 class="mt-5 font-weight-bold"><%= @member.name%> の フォロー・フォロワー一覧</h4>
   </div>
 </div>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -12,43 +12,63 @@
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="mb-5 tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="ml-1 mt-5 mb-2">全フォロー数: <%= @member.follower.count %>人</div>
     <% @member.following_member.each do |member| %>
-      <%= link_to member_path(member), class:"link-text" do %>
-        <div class="d-flex border mx-auto">
-          <div class="col-md-3">
-            <p><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></p>
-            <p><%= member.name%></p>
+        <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
+          <div>
           </div>
-          <div class="col-md-2">
-            <p><%= member.followed.count %></p>
-            <p><%= member.follower.count %></p>
+          <div class="col-md-3 border-right ">
+          <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
+            <div class="mt-3 mb-3"><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></div>
+            <div class="ml-3"><%= member.name%></div>
+           <% end %>
           </div>
-          <div class="col-md-2">
-            <p><%= total_likes(member.question_likes, member.answer_likes) %></p>
+          <div class="col-md-3 border-right d-flex text-center">
+            <div class="col-md-6 mt-3 mb-3 border-right">
+              <p class="small border border-primary rounded">フォロー</p></p>
+              <h5><%= member.follower.count %></h5>
+            </div>
+            <div class="col-md-6 ml-2 mt-3 mb-3">
+              <p class="small border border-primary rounded">フォロワー</p>
+              <h5><%= member.followed.count %></h5>
+            </div>
           </div>
-          <div class="col-md-3">
-            <p><%= member.questions.count %></p>
-            <p><%= member.answers.count %></p>
+          <div class="col-md-3 border-right d-flex text-center">
+            <div class="col-md-6 mt-3 mb-3 border-right">
+              <p><%= image_tag 'q_icon.png', size: "25x30" %></p>
+              <h5><%= member.questions.count %></h5>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+              <p><%= image_tag 'a_icon.png', size: "25x30" %></p>
+              <h5><%= member.answers.count %></h5>
+            </div>
+          </div>
+          <div class="col-md-2 border-right d-flex">
+            <% member.questions.each do |question| %>
+              <%= question.question_likes.count %>
+            <% end %>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="ml-1 mt-5 mb-2">全フォロワー数: <%= @member.followed.count %>人</div>
     <% @member.follower_member.each do |member| %>
       <%= link_to member_path(member), class:"link-text" do %>
-        <div class="d-flex border mx-auto">
+        <div class="d-flex border rounded mx-auto">
           <div class="col-md-3">
             <p><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></p>
             <p><%= member.name%></p>
           </div>
           <div class="col-md-2">
-            <p><%= member.followed.count %></p>
             <p><%= member.follower.count %></p>
+            <p><%= member.followed.count %></p>
           </div>
           <div class="col-md-2">
-            <p><%= total_likes(member.question_likes, member.answer_likes) %></p>
+            <% member.questions.each do |question| %>
+              <%= question.question_likes.count %>
+            <% end %>
           </div>
           <div class="col-md-3">
             <p><%= member.questions.count %></p>

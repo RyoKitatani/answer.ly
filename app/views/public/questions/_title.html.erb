@@ -7,8 +7,9 @@
     <div class="col-md-3 pt-5">
       <div class="text-center">
         <p class="btn btn-light">コメント数：<%= question.answers.count %></p>
-        <p class="btn btn-light">評価：0</p>
+        <p class="btn btn-light">評価：<%= question.question_likes.count %></p>
         <p class="btn btn-light">VIEW：0</p>
+        <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank。', class:"btn btn-primary" %>
       </div>
       <div class="mt-5 mb-5">
         <p class="font-weight-bold"><%= question.member.image %><%= question.member.name %> | score: <%= question.question_likes.count %></p>

@@ -9,7 +9,6 @@
     <%= link_to question_path(question), class:"link-text" do %>
       <h2><%= question.title %></h2>
     <% end %>
-    <%= question.content %>
     <p>評価: <%= question.question_likes.count %></p>
     <%= link_to member_path(question.member_id), class:"link-text" do %>
     <span><%= attachment_image_tag question.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%> | <%= question.member.name %>
