@@ -7,7 +7,7 @@
 <div class="mt-5 d-flex">
   <% if current_member != question.member %>
     <%= render "public/questions/like", question: @question %>
-  <% else%>
+  <% else %>
     <%= link_to "編集する", edit_question_path, class:"btn btn-success ml-auto mr-2"%>
     <%= link_to "削除する", question_path(question), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
   <% end %>

@@ -1,4 +1,4 @@
-<% if question.liked_by?(current_member) %>
+<% if question.question_liked_by?(current_member) %>
   <%= link_to question_question_likes_path(question_id: question.id), class:"link-text", method: :delete, local: true do %>
     <div class="btn btn-primary mr-2"><i class="fas fa-thumbs-up">高評価 <%= question.question_likes.count %></i></div>
   <% end %>
