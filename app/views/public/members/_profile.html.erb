@@ -1,0 +1,44 @@
+<div>
+      <p class="text-center"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
+    </div>
+    <div>
+      <p class="text-center"><%= member.name %></p>
+      <div class="mb-3">
+        <% if current_member.id == member.id %>
+            <%= link_to "プロフィール編集", edit_member_path(member), class:"btn btn-primary w-100" %>
+        <% else %>
+          <% if current_member.following?(member) %>
+            <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger w-100" %>
+          <% else %>
+            <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-danger w-100" %>
+          <% end %>
+        <% end %>
+      </div>
+      <p>住居: <%= member.country.name %></p>
+      <p>経験留学先: <%= member.experienced_country %></p>
+      <div class="d-flex mt-3">
+        <div class="text-center w-100">
+          <p class="small border border-primary rounded">高評価数</p>
+          <h5>0</h5>
+        </div>
+        <div class="text-center w-100 ml-2">
+          <p class="small border border-primary rounded">ランキング</p>
+          <h5>0</h5>
+        </div>
+      </div>
+      <div class="d-flex mt-3">
+        <div class="text-center w-100">
+          <p class="small border border-primary rounded">フォロー</p></p>
+          <h5><%= member.follower.count %></h5>
+        </div>
+        <div class="text-center w-100 ml-2">
+          <p class="small border border-primary rounded">フォロワー</p>
+          <h5><%= member.followed.count %></h5>
+        </div>
+      </div>
+      <u><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"link-text small" %></u>
+      <p><%= member.introduction %></p>
+      <div>
+      <%= link_to "退会する", members_withdraw_path, class:"btn btn-outline-danger w-100", method: :patch, data: { confirm: "本当に退会しますか？" } %>
+      </div>
+    </div>

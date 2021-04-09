@@ -10,7 +10,6 @@ class Public::QuestionsController < ApplicationController
     @response = Response.new
   end
 
-
   def new
     @question = Question.new
   end
