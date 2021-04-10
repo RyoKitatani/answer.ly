@@ -12,7 +12,8 @@
         <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank。', class:"btn btn-primary" %>
       </div>
       <div class="mt-5 mb-5">
-        <p class="font-weight-bold"><%= question.member.image %><%= question.member.name %> | score: <%= question.question_likes.count %></p>
+        <p class="font-weight-bold">
+          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.question_likes.count %></p>
       </div>
     </div>
   </div>

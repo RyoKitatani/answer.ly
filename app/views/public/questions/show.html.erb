@@ -20,16 +20,11 @@
       <!--ここまで-->
 
 　　　<!--回答一覧/フォーム表示 + コメント一覧/フォーム-->
-      <div class="mt-2">
-        <%= render "public/answers/list", question: @question, answer_comment: @answer_comment , response: @response %>
+      <div class="mt-2", id="answer">
+        <%= render "public/answers/list", question: @question, answer_comment: @answer_comment , response: @response, member: @member, answer: @answer %>
       </div>
       <!--ここまで-->
 
-      <!--回答フォーム-->
-      <div class="row mt-5">
-        <%= render "public/answers/new", question: @question, member: @member , answer: @answer %>
-      </div>
-      <!--ここまで-->
 　　</div>
 
   　　<!--タグ一覧表示-->
@@ -39,7 +34,6 @@
       </div>
     </div>
    　　<!--ここまで-->
-
 
   </div>
 </div>

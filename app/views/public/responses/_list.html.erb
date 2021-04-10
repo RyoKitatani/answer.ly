@@ -1,0 +1,21 @@
+<%= form_with model: [answer, response], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100" %>
+  </div>
+  <div class="form-action">
+    <%= f.submit "コメントする", class:"btn btn-primary text-items-center" %>
+  </div>
+  <div class="mt-2 bottom-line border border-blck mb-5"></div>
+<% end %>
+<% answer.responses.each do |response| %>
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-10 offset-md-2">
+    <%= attachment_image_tag response.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%>
+    <%= response.member.name %>
+    <%= response.created_at.strftime('%Y/%m/%d') %>
+    <%= response.content %>
+    <%= link_to "削除する", answer_response_path(response.answer, response), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？", remote: true %>
+     <div class="mt-2 bottom-line border border-blck"></div>
+  </div>
+<% end %>
