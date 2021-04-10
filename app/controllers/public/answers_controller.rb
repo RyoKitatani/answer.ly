@@ -15,7 +15,7 @@ class Public::AnswersController < ApplicationController
     @answer.member_id = current_member.id
     if @answer.save
       flash[:notice] = "You have commented successfully"
-      # redirect_to request.referer
+      render :create
     else
       @question = Question.find(params[:id])
       @tags = Tag.all.order(created_at: :desc)
@@ -27,7 +27,7 @@ class Public::AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.find_by(id: params[:id], question_id: params[:question_id])
     @answer.destroy
-    redirect_to request.referer
+    render :destroy
   end
 
   private
