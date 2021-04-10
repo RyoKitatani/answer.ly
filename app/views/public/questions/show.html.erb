@@ -21,19 +21,45 @@
 
 　　　<!--回答一覧/フォーム表示 + コメント一覧/フォーム-->
       <div class="mt-2", id="answer">
-        <%= render "public/answers/list", question: @question, answer_comment: @answer_comment , response: @response, member: @member, answer: @answer %>
-      </div>
+        <h3>回答: <%= @question.answers.count %>件</h3>
+        <div class="answers-box">
+        <% if @question.answers.exists? %>
+          <% @question.answers.each do |answer| %>
+            <%= render "public/answers/list", response: @response, answer: answer %>
+          <% end %>
+        <% else %>
+          <div class="mt-5 mb-5 rounded">
+            <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-10 w-100">
+                <div class="no-answers-box">
+                  <p class="font-weight-bold">まだ回答がありません。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+        <div class="row mt-5">
+          <%= render "public/answers/new", question: @question, member: @member , answer: @answer %>
+        </div>
+　　  </div>
       <!--ここまで-->
 
-　　</div>
+    </div>
 
-  　　<!--タグ一覧表示-->
-    <div class="col-md-2">
+    <!--タグ一覧表示-->
+    <div class="col-md-3">
       <div class="tag-index mb-5">
         <%= render "public/tags/list", tags: @tags %>
       </div>
+
+      <div class="ranking-index mb-5">
+       <%= render "public/members/list", members: @members %>
+     </div>
     </div>
-   　　<!--ここまで-->
+    　<!--ここまで-->
 
   </div>
 </div>

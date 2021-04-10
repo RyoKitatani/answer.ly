@@ -1,49 +1,34 @@
-<h3>回答: <%= question.answers.count %>件</h3>
-<div class="answers-box">
-  <% if question.answers.exists? %>
-    <% question.answers.each do |answer| %>
-      <div class="bottom-line border border-blck mt-2"></div>
-      <p>高評価数:<%= answer.answer_likes.count %></p>
-      <h4><%== answer.content %></h4>
-      <div class="mt-5">
-        <p><%= answer.created_at %></p>
-        <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
-        <p><%= answer.member.name %></p>
-      </div>
-      <div class="mt-5 d-flex">
-        <% if current_member != answer.member %>
-          <div id="answer_likes">
-            <%= render "public/answers/like", answer: answer %>
-          </div>
-        <% else %>
-          <%= link_to "編集する", "#", class:"btn btn-success ml-auto mr-2"%>
-          <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
-        <% end %>
-      </div>
-        <div class="mt-2 bottom-line border border-blck mb-5"></div>
-
-        <!--返信一覧＋フォーム-->
-        <div id="response">
-          <%= render "public/responses/list", answer: answer, response: response %>
-        </div>
-        <!--ここまで-->
-
-    <% end %>
-  <% else %>
-  <div class="mt-5 mb-5 rounded">
-    <div class="row">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-10 w-100">
-        <div class="no-answers-box">
-          <p class="font-weight-bold">まだ回答がありません。</p>
-        </div>
-      </div>
+<div class="bottom-line border border-blck mt-2"></div>
+<p>高評価数:<%= answer.answer_likes.count %></p>
+<h4><%== answer.content %></h4>
+<div class="mt-5">
+  <p><%= answer.created_at %></p>
+  <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
+  <p><%= answer.member.name %></p>
+</div>
+<div class="mt-5 d-flex">
+  <% if current_member != answer.member %>
+    <div id="answer_likes">
+      <%= render "public/answers/like", answer: answer %>
     </div>
-  </div>
+  <% else %>
+    <%= link_to "編集する", "#", class:"btn btn-success ml-auto mr-2"%>
+    <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
   <% end %>
 </div>
+<div class="mt-2 bottom-line border border-blck mb-5"></div>
 
-<div class="row mt-5">
-  <%= render "public/answers/new", question: question, member: member , answer: answer %>
+<!--返信一覧＋フォーム-->
+<%= form_with model: [answer, response], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100", id:"response_content_#{answer.id}" %>
+  </div>
+  <div class="form-action">
+    <%= f.submit "コメントする", class:"btn btn-primary text-items-center" %>
+  </div>
+  <div class="mt-2 bottom-line border border-blck mb-5"></div>
+<% end %>
+<div id="response-<%= answer.id %>">
+  <%= render "public/responses/list", answer: answer %>
 </div>
+<!--ここまで-->

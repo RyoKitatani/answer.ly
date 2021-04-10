@@ -3,6 +3,7 @@ class Public::QuestionsController < ApplicationController
   before_action :authenticate_member!, except:[:show]
 
   def show
+    @members = Member.all
     @member = current_member
     @question = Question.find(params[:id])
     @tags = Tag.all.order(created_at: :desc)

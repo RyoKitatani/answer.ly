@@ -10,7 +10,7 @@
           <% if current_member.following?(member) %>
             <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger w-100" %>
           <% else %>
-            <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-danger w-100" %>
+            <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary w-100" %>
           <% end %>
         <% end %>
       </div>
