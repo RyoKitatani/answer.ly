@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     patch "/members/withdraw" => "members#withdraw"
     get "/questions/tag" => "members#tag"
-    resources :members, only:[:show, :edit, :update] do
+    resources :members, only:[:index, :show, :edit, :update] do
       get :connections, on: :member
     end
     post "/guest_sign_in", to: "members#guest_sign_in"
