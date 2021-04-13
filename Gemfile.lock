@@ -1,4 +1,4 @@
-
+GIT
   remote: git@github.com:Studiosity/carmen-rails.git
   revision: 911dd4c702f5aff73e8fc0cd5c6cf077e2f8216f
   specs:
@@ -6,6 +6,7 @@
       carmen (~> 1.0)
       rails
 
+GIT
   remote: https://github.com/manfe/refile.git
   revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
   specs:
