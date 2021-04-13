@@ -74,11 +74,12 @@ header li, .question-box {
 }
 
 
-.pagination {
-  justify-content: center;
+.link-text {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
 }
 
-.tag-list a{
-  text-decoration: none;
-  color: black;
-}
