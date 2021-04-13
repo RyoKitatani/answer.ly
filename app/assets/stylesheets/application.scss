@@ -88,6 +88,13 @@ header li, .question-box {
   }
 }
 
+.question-new {
+  background-color: #12c74b;
+  &:hover {
+  background-color: #0fab41;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;

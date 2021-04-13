@@ -117,3 +117,37 @@ a.btn-flat:hover:before {
 }
 
 
+
+a.btn-flats {
+  overflow: hidden;
+  border: solid 1px;
+  color: #000;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+a.btn-flats span {
+  position: relative;
+}
+
+a.btn-flats:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 150%;
+  height: 400%;
+
+  content: "";
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+
+  background: #00b7ee;
+}
+
+a.btn-flats:hover:before {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
