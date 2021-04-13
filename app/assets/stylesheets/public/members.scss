@@ -56,14 +56,8 @@ th {
   box-sizing: inherit;
 }
 
-html {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
-.btn,
-a.btn,
-button.btn {
+.sns-btn {
   position: relative;
   display: inline-block;
   padding: 1rem 4rem;
@@ -100,7 +94,7 @@ a.btn-flat:before {
   left: 0;
 
   width: 150%;
-  height: 700%;
+  height: 1100%;
 
   content: "";
   -webkit-transition: all 0.5s ease-in-out;
@@ -136,7 +130,7 @@ a.btn-flats:before {
   left: 0;
 
   width: 150%;
-  height: 400%;
+  height: 900%;
 
   content: "";
   -webkit-transition: all 0.5s ease-in-out;

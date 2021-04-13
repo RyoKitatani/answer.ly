@@ -1,11 +1,11 @@
 <% unless member_signed_in? %>
 <div class="top-box">
   <div class="container">
-    <div class="row pt-5 pb-5 ">
-      <div class="col-md-6 mt-auto">
+    <div class="row pt-5 pb-5">
+      <div class="col-md-7 pt-5 mt-5">
         <div class="top-title">
           <p>留学したい人を応援するQ&Aサイト</p>
-          <h1 class="display-3 font-weight-bold">
+          <h1 class="display-1 font-weight-bold">
             <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span></h1>
           <h2 class="font-weight-bold mt-5 pt-3">留学の不安を取り除こう</h2>
         </div>
@@ -16,32 +16,45 @@
         </div>
         <div class="bottom-line border border-blck"></div>
       </div>
-      <div class="col-md-5 offset-md-1 mt-5">
-        <div class="registration-box btn btn-primary w-75 pt-3 d-flex mx-auto text-align-center" style="height:40px">
-          <%= link_to "メールアドレスで登録する", new_member_registration_path, class:"text-white" %>
+      <div class="col-md-4 mt-5 pt-5">
+        <div class="registration-box  w-75 pt-4 mt-5 d-flex mx-auto text-align-center sns-btns" style="height:50px">
+          <%= link_to new_member_registration_path, class:"sns-btn btn btn-flat" do %>
+            <span>メールアドレスで登録する</span>
+          <% end %>
         </div>
-        <div class="bottom-line mt-5 mb-5"></div>
+        <div class="bottom-line mt-3 mb-3"></div>
         <div class="sns-login">
           <p class="font-weight-boldte text-center text-white">SNSアカウントで登録する</p>
         </div>
-        <div class="sns-title d-flex">
-          <div class="facebook-btn btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
-            <i class="fab fa-facebook"> <%= link_to "Facebook", "#", class:"text-white" %></i>
-          </div>
-          <div class="btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
-            <i class="fab fa-twitter"> <%= link_to "Twitter", "#", class:"text-white" %></i>
-          </div>
-        </div>
-        <div class="sns-title d-flex">
-          <div class="facebook-btn btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
-            <i class="fab fa-instagram"> <%= link_to "Instagram", "#", class:"text-white" %></i>
-          </div>
-          <div class="btn btn-primary w-50 mt-4 ml-3 mr-3 pt-3" style="height:40px">
-            <i class="fab fa-google"> <%= link_to "Google", "#", class:"text-white" %></i>
-          </div>
-        </div>
-        <div class="login-link text-center mt-5">
-          <span>アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"text-white" %>
+        <div class="sns-title">
+      <div class="sns-btns pt-3">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-line font-weight-bold"> LINE</i></span>
+        <% end %>
+      </div>
+      <div class="sns-btns mt-2 pt-2">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-facebook font-weight-bold"> Facebook</i></span>
+        <% end %>
+      </div>
+      <div class="sns-btns mt-2 pt-2">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-twitter font-weight-bold"> Twitter</i></span>
+        <% end %>
+      </div>
+      <div class="sns-btns mt-2 pt-2">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-instagram font-weight-bold"> Instagram</i></span>
+        <% end %>
+      </div>
+      <div class="sns-btns mt-2 pt-2">
+         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
+           <span><i class="fab fa-google font-weight-bold text-black"> Google</i></span>
+         <% end %>
+      </div>
+    </div>
+        <div class="login-link text-center mt-2">
+          <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"text-white small" %>
         </div>
       </div>
     </div>
