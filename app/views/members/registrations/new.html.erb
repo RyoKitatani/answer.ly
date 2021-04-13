@@ -1,73 +1,83 @@
-<div class="mt-4">
-  <span class="root-link"><%= link_to "Answer.lyトップ", root_path %> > 新規登録登録</span>
+<div class="col-md-10 offset-md-1 pt-5">
+  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > 新規会員登録</span>
 </div>
-<div class="mt-3 mb-5">
-  <h4><i class="fas fa-user-plus"> 新規会員登録</i></h4>
+<div class="col-md-10 offset-md-1 mt-5 mb-5">
+  <h2><i class="fas fa-user-plus"> 新規会員登録</i></h2>
 </div>
 
 <div class="d-flex">
-  <div class="col-md-5 mb-5">
+  <div class="col-md-4 offset-md-1 mb-5 border-right">
     <div class="sns-login">
       <p class="font-weight-bold text-center">SNSアカウントで登録する</p>
     </div>
     <div class="sns-title">
-      <div class="btn btn-primary w-75 mt-4 pt-3" style="height:40px">
-        <i class="fab fa-line font-weight-bold"> <%= link_to "LINEアカウントで登録", "#" %></i>
+      <div class="sns-btns mt-3 pt-3">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-line font-weight-bold">LINEアカウントで登録</i></span>
+        <% end %>
       </div>
-      <div class="btn btn-primary w-75 mt-3 pt-3" style="height:40px">
-        <i class="fab fa-facebook font-weight-bold"> <%= link_to "Facebookアカウントで登録", "#" %></i>
+      <div class="sns-btns mt-3 pt-3">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-facebook font-weight-bold">Facebookアカウントで登録</i></span>
+        <% end %>
       </div>
-      <div class="btn btn-primary w-75 mt-3 pt-3" style="height:40px">
-        <i class="fab fa-twitter font-weight-bold"> <%= link_to "Twitterアカウントで登録", "#" %></i>
+      <div class="sns-btns mt-3 pt-3">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-twitter font-weight-bold">Twitterアカウントで登録</i></span>
+        <% end %>
       </div>
-      <div class="btn btn-primary w-75 mt-3 pt-3" style="height:40px">
-        <i class="fab fa-instagram font-weight-bold"> <%= link_to "Instagramアカウントで登録", "#" %></i>
+      <div class="sns-btns mt-3 pt-3">
+        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <span><i class="fab fa-instagram font-weight-bold">Instagramアカウントで登録</i></span>
+        <% end %>
       </div>
-      <div class="btn btn-primary w-75 mt-3 pt-3" style="height:40px">
-        <i class="fab fa-google font-weight-bold"> <%= link_to "Googleアカウントで登録", "#" %></i>
+      <div class="sns-btns mt-3 pt-3" style="width:100%;">
+         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
+           <span><i class="fab fa-google font-weight-bold text-black">Googleアカウントで登録</i></span>
+         <% end %>
       </div>
     </div>
   </div>
-  <div class="col-md-6 offset-md-1">
+  <div class="col-md-6 ml-3">
     <p class="font-weight-bold text-center">メールアドレスで登録する</p>
     <%= form_with model:@member, url: registration_path(resource_name), local: true do |f| %>
     <%= render "members/shared/error_messages", resource: resource %>
     <table>
       <tobody>
         <tr>
-          <div class="field">
-            <td><%= f.label :ユーザー名 %><br />半角英数及び-_.を使い3～15文字以内</td>
-            <td><%= f.text_field :name, autofocus: true, autocomplete: "email" %></td>
+          <div class="form-group">
+            <th><%= f.label :ユーザー名 %><br /><span class="small">半角英数及び-_.を使い3～15文字以内</span></th>
+            <th><%= f.text_field :name, size:"50%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
-          <div class="field">
-            <td><%= f.label :メールアドレス %><br /></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <div class="form-group">
+            <th><%= f.label :メールアドレス %><br /></th>
+            <th><%= f.email_field :email, size:"50%", autofocus: true,placeholder:"example@gmail.com", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
-          <div class="field">
-            <td><%= f.label :パスワード %><br />
+          <div class="form-group">
+            <th><%= f.label :パスワード %><br />
             <% if @minimum_password_length %>
-            <em>半角英数記号<%= @minimum_password_length %>文字以上</em>
-            <% end %><br /></td>
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <span class="small">半角英数記号<%= @minimum_password_length %>文字以上</span>
+            <% end %><br /></th>
+            <th><%= f.password_field :password, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
-          <div class="field align-items-center">
-            <td><%= f.label :パスワード確認 %><br /></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <div class="form-action align-items-center">
+            <th><%= f.label :パスワード確認 %><br /></th>
+            <th><%= f.password_field :password_confirmation, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
           </div>
         </tr>
       </tobody>
     </table>
-    <div class="actions text-center">
-      <%= f.submit "登録する" %>
+    <div class="actions text-center mt-5 mb-5">
+      <%= f.submit "登録する", class:" btn btn-success btn-lg" %>
     </div>
     <% end %>
-    <div class="login-link text-center mt-5">
+    <div class="login-link text-center mt-auto">
         <span>アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path %>
       </div>
   </div>
