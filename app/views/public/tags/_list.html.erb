@@ -1,14 +1,14 @@
 <% tags.each do |tag| %>
   <div class="d-flex">
-    <div class="w-50 mt-3 mb-3 btn btn-light">
-      <%= link_to tag_path(tag) do %>
+    <div class="tag-list mt-3 mb-3 btn btn-outline-info">
+      <%= link_to tag_path(tag) do%>
         <%= tag.name %>
       <% end %>
     </div>
-    <div class="w-50 mt-3 mb-3 d-flex align-items-center">
+    <div class="mt-3 mb-3 d-flex align-items-center ml-auto">
       <h6>投稿数:<%= tag.questions.count %></h6>
     </div>
   </div>
-  <div class="under_line"></div>
+  <div class="border-bottom"></div>
 <% end %>
 <p><%= link_to "タグ一覧へ", tags_path %></p>
