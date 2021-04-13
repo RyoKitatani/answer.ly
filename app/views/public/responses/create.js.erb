@@ -1,0 +1,2 @@
+$('#response-<%= @answer.id %>').html("<%= j(render 'public/responses/list', answer: @answer, response: @response ) %>");
+$('#response_content_<%= @answer.id %>').val("");

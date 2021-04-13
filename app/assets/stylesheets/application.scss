@@ -16,12 +16,15 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import "summernote-bs4";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+
 
 header {
   position: fixed;
@@ -48,13 +51,14 @@ header, footer{
   font-size: 1.2rem;
 }
 
-a {
+.header-item a {
  color: #fff;
  &:hover{
    color: white;
    text-decoration: none;
  }
 }
+
 
 header li, .question-box {
   margin-right: 10px;

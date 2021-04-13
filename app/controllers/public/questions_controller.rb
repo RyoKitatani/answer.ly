@@ -3,6 +3,7 @@ class Public::QuestionsController < ApplicationController
   before_action :authenticate_member!, except:[:show]
 
   def show
+    @members = Member.all
     @member = current_member
     @question = Question.find(params[:id])
     @tags = Tag.all.order(created_at: :desc)
@@ -10,15 +11,16 @@ class Public::QuestionsController < ApplicationController
     @response = Response.new
   end
 
-
   def new
     @question = Question.new
   end
 
   def create
     @question = Question.new(question_params)
+    tag_list = params[:question][:name].split(",")
     @question.member_id = current_member.id
     if @question.save
+      @question.save_tag(tag_list)
       flash.now[:success] = "質問を投稿しました。"
       redirect_to question_path(@question)
     else
@@ -29,6 +31,7 @@ class Public::QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    @tag_list = @question.tags.pluck(:name).join(",")
     if @question.member != current_member
       redirect_to request.referer
     end
@@ -36,7 +39,9 @@ class Public::QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
+    tag_list = params[:question][:name].split(nil)
     if @question.update(question_params)
+       @question.save_tag(tag_list)
       flash.now[:success] = "内容を変更しました。"
       redirect_to root_path
     else

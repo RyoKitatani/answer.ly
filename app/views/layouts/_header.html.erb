@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
+      <div class="col-md-10 offset-md-1 d-flex">
     <a class="navbar-brand" href="/"><%= image_tag "answer.ly_logo.png", :size => "120x30", alt:"Answer.lyロゴ" %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,10 +9,10 @@
       <ul class="navbar-nav ml-auto align-items-center">
         <div class="header-item btn btn-lg text-light mr-2">
           <li class="nav-item">
-            <span>現在の投稿数: <%= @questions.count %></span>
+            <span>現在の投稿数: <%= @question_all.count %></span>
           </li>
         </div>
-        <div class="question-box btn btn-success">
+        <div class="header-item question-box btn btn-success">
           <%= link_to new_question_path do %>
             <i class="fas fa-edit"> 質問する</i>
           <% end %>
@@ -55,6 +56,7 @@
         </div>
         <% end %>
       </ul>
+    </div>
     </div>
   </div>
 </nav>

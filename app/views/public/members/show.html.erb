@@ -1,73 +1,83 @@
-<div class="row">
-  <div class="col-md-10 mt-5 mb-5 offset-md-1">
-    <div>
-      <p><%= attachment_image_tag @member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
-      <p><%= @member.name %></p>
-      <p>住居: <%= @member.country.name %></p>
-      <p>経験留学先: <%= @member.experienced_country %></p>
-      <% if current_member.id == @member.id %>
-      <div class="btn btn-success">
-        <%= link_to "プロフィール編集", edit_member_path(@member)%>
+<div class="d-flex">
+
+  <!--プロフィール詳細画面-->
+  <div class="col-md-2 mt-5 mb-5 pt-3 pb-3 offset-md-1 border rounded">
+    <%= render "public/members/profile", member: @member %>
+  </div>
+  <!--ここまで-->
+
+　<!--メンバー投稿・回答一覧-->
+  <div class="col-md-8 mt-5 mb-5 pt-1 ml-3">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active link-text w-50 text-center" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+          <span>質問</span><br>
+          <span class="large"><%= @member.questions.count %></span>
+        </a>
+        <a class="nav-item nav-link link-text w-50 text-center" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+          <span>回答</span><br>
+          <span><%= @member.answers.count %></span>
+        </a>
       </div>
-      <% else %>
-        <% if current_member.following?(@member) %>
-          <div class="btn btn-danger">
-            <%= link_to 'フォロー外す', unfollow_path(@member), method: :POST %>
-          </div>
-          <% else %>
-          <div class="btn btn-primary">
-            <%= link_to "フォローする", follow_path(@member), method: :post %>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active bg-light " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="ml-1 pt-3 pb-2">質問: <%= @member.questions.count %>件</div>
+        <% @member.questions.each do |question| %>
+          <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
+            <div class="col-md-2 mt-2 text-center">
+              <% if question.question_status == false %>
+                <p class="btn-info font-weight-bold mb-0">受付中</p>
+              <% else %>
+                <p class="btn-danger font-weight-bold mb-0">解決済み</p>
+              <% end %>
+          　　<p class="mb-0">回答<br><%= question.answers.count %></p>
+        　　　</div>
+        　　<div class="col-md-9 mt-1 text-left">
+              <p>
+                <%= link_to question_path(question) , class:"link-text" do %>
+                <%= question.title %>
+                <% end %>
+              </p>
+              <p>タグ: <%= question.tags.count %></p>
+              <div class="d-flex">
+                <p><%= question.question_likes.count %> 評価 | PV</p>
+                <p class="ml-auto mb-0"><%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %></p>
+              </div>
+            </div>
           </div>
         <% end %>
-      <% end %>
-      <p>投稿数: <%= @member.questions.count %></p>
-      <p>回答数: <%= @member.answers.count %></p>
-      <p>ランキング:</p>
-      <p>フォロー:
-      <%= link_to connections_member_path, class:"link-text" do %>
-      <%= @member.follower.count %>
-      <% end %>
-      </p>
-      <p>フォロワー:
-      <%= link_to connections_member_path, class:"link-text" do %>
-      <%= @member.followed.count %>
-      <% end %>
-      </p>
-      <p><%= @member.introduction %></p>
-      <div>
-      <%= link_to "退会する", members_withdraw_path, class:"btn btn-danger", method: :patch, data: { confirm: "本当に退会しますか？" } %>
-    </div>
+      </div>
+      <div class="tab-pane fade bg-light" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="ml-1 pt-3 pb-2">全投稿数: <%= @member.answers.count %>件</div>
+        <% @member.answers.each do |answer| %>
+          <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
+              <div class="col-md-2 mt-2 text-center">
+                <% if answer.question.question_status == false %>
+                  <p class="btn-info font-weight-bold mb-0">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold mb-0">解決済み</p>
+                <% end %>
+                <p class="mb-0">回答<br><%= answer.question.answers.count %></p>
+              </div>
+              <div class="col-md-9 mt-1 text-left">
+                <p>
+                  <%= link_to question_path(answer.question) , class:"link-text" do %>
+                  <%= answer.question.title %>
+                  <% end %>
+                </p>
+                <p>タグ: <%= answer.question.tags.count %></p>
+                <div class="d-flex">
+                  <p>評価:<%= answer.answer_likes.count %> | PV:</p>
+                  <p class="ml-auto mb-0"><%= attachment_image_tag answer.question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= answer.question.member.name %></p>
+                </div>
+              </div>
+           </div>
+        <% end %>
+      </div>
     </div>
   </div>
+  <!--ここまで-->
+
 </div>
 
-<!--投稿・回答-->
-<div class="row mb-5">
-  <div class="col-md-5 border offset-md-1">
-    <h4 class="text-center">投稿履歴</h4>
-    <% @member.questions.each do |question| %>
-      <div class="d-flex border mx-auto mt-2">
-      　<p>回答:<%= question.answers.count %></p>
-        <p><%= link_to question_path(question) , class:"link-text" do%>
-          <%= question.title %>
-          <% end %>
-        </p>
-        <p>タグ: <%= question.tags.count %></p>
-        <p>評価:<%= question.question_likes.count %></p>
-        <p>PV:</p>
-      </div>
-    <% end %>
-  </div>
-  <div class="col-md-5 border offset-md-1">
-    <h4 class="text-center">回答履歴</h4>
-    <% @member.answers.each do |answer| %>
-      <div class="d-flex border mx-auto mt-2">
-      　<p>回答:<%= answer.responses.count %></p>
-        <p><%= answer.question.title %></p>
-        <p>タグ: <%= answer.question.tags.count %></p>
-        <p>評価:<%= answer.answer_likes.count %></p>
-        <p>PV:</p>
-      </div>
-    <% end %>
-  </div>
-</div>
