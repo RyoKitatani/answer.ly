@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   }
 
   devise_for :members, controllers: {
-    sessions:      'public/sessions',
-    passwords:     'public/passwords',
-    registrations: 'public/registrations',
-    confirmations: 'public/confirmations'
+    sessions:          'public/sessions',
+    passwords:         'public/passwords',
+    registrations:     'public/registrations',
+    confirmations:     'public/confirmations',
   }
 
   namespace :admin do
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     patch "/members/withdraw" => "members#withdraw"
     get "/questions/tag" => "members#tag"
     get '/members', to: redirect("/members/sign_up")
-    resources :members, only:[:index, :show, :edit, :update] do
+    resources :members, only:[:show, :edit, :update] do
       get :connections, on: :member
     end
     post "/guest_sign_in", to: "members#guest_sign_in"

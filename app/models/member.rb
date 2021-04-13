@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
   has_many :questions, dependent: :destroy
   has_many :question_likes, dependent: :destroy
+  has_many :liked_questions, through: :question_likes, source: :question
   has_many :answers, dependent: :destroy
   has_many :answer_likes, dependent: :destroy
   has_many :responses, dependent: :destroy

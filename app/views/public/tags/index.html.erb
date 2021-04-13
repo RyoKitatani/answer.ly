@@ -1,2 +1,20 @@
-<h1>Public::Tags#index</h1>
-<p>Find me in app/views/public/tags/index.html.erb</p>
+<div calss="row">
+  <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
+    <div class="pt-2 mb-3">
+      <span><%= link_to root_path do %>トップ<% end %></span>
+      >
+      <span><%= link_to "#" do %>タグ一覧<% end %></span>
+    </div>
+    <h2>タグ一覧</h2>
+    <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
+    <div class="tag-list d-flex flex-wrap">
+    <% @tags.each do |tag| %>
+    <div class="tag-item col-md-2 text-left border border-primary rounded ml-3 mb-2 mt-3">
+      <%= link_to "" do %>
+        <%= tag.name %>
+      <% end %>
+      <p><%= tag.questions.count %>投稿</p>
+      </div>
+    <% end %>
+  </div>
+</div>

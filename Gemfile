@@ -72,6 +72,6 @@ gem 'dotenv-rails'
 gem 'carmen-rails', git: 'git@github.com:Studiosity/carmen-rails.git'
 gem 'simple_form'
 gem 'summernote-rails', '~> 0.8.9'
-
-# gem 'impressionist'
-#gem 'omniauth'
+gem 'omniauth', '1.9.1'
+gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"

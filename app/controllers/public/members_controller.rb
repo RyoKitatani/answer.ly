@@ -1,5 +1,4 @@
 class Public::MembersController < ApplicationController
-  before_action :guest_sign_in
 
   def show
     @member = Member.find(params[:id])
