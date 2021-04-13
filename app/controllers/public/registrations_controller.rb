@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+frozen_string_literal true
 
 class Public::RegistrationsController < Devise::RegistrationsController
   layout "members"
@@ -63,6 +63,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_out_path_for(resource)
     root_path
+  end
+
+  @password = Devise.friendly_token.first(7)
+  
+  if session[:provider].present? && session[:uid].present?
+    @member = Member.create(name:session[:name], email: session[:email], password: "password", password_confirmation: "password", f_name_kana: session[:f_name_kana],l_name_kana: session[:l_name_kana], f_name_kanji: session[:f_name_kanji], l_name_kanji: session[:l_name_kanji], birthday: session[:birthday], tel: params[:member][:tel])
+    @sns = SnsCredential.create(member_id: @member.id,uid: session[:uid], provider: session[:provider])
+  else
+    @member = Member.create(name:session[:name], email: session[:email], password: session[:password], password_confirmation: session[:password_confirmation], f_name_kana: session[:f_name_kana],l_name_kana: session[:l_name_kana], f_name_kanji: session[:f_name_kanji], l_name_kanji: session[:l_name_kanji], birthday: session[:birthday], tel: params[:member][:tel])
   end
 
   # The path used after sign up for inactive accounts.

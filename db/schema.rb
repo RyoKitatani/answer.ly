@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_153316) do
+ActiveRecord::Schema.define(version: 2021_04_13_125842) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -153,6 +153,15 @@ ActiveRecord::Schema.define(version: 2021_04_08_153316) do
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
     t.index ["member_id"], name: "index_responses_on_member_id"
+  end
+
+  create_table "sns_credentials", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.integer "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_sns_credentials_on_member_id"
   end
 
   create_table "tags", force: :cascade do |t|
