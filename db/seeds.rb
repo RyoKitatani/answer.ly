@@ -67,10 +67,18 @@ Tag.create!(name: "語学")
 Tag.create!(name: "英語")
 Tag.create!(name: "短期留学")
 Tag.create!(name: "交換留学")
+Tag.create!(name: "専門留学")
 Tag.create!(name: "イギリス")
 Tag.create!(name: "アメリカ")
+Tag.create!(name: "カナダ")
+Tag.create!(name: "社会人")
 Tag.create!(name: "大学生")
 Tag.create!(name: "高校生")
+Tag.create!(name: "中高生")
+Tag.create!(name: "費用")
+Tag.create!(name: "奨学金")
+Tag.create!(name: "ビザ")
+Tag.create!(name: "新型コロナウイルス")
 
 5.times do |n|
   Question.create!(
@@ -136,7 +144,7 @@ end
 
 4.times do |n|
   QuestionTag.create!(
-    question_id:1 + n,
+    question_id:5 + n,
     tag_id:5 + n
   )
 end
