@@ -59,9 +59,14 @@ header, footer{
  }
 }
 
+header {
+  padding: 5px 0;
+}
 
 header li, .question-box {
-  margin-right: 10px;
+  margin-right: 5px;
+  font-size: 16px;
+
 }
 
 .header-item:hover {
@@ -83,3 +88,12 @@ header li, .question-box {
   }
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}

@@ -1,8 +1,11 @@
 class Member < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  has_many :sns_credentials, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :questions, dependent: :destroy
   has_many :question_likes, dependent: :destroy
@@ -36,8 +39,47 @@ class Member < ApplicationRecord
     Carmen::Country.coded(country_code)
   end
 
-  def active_for_authentication?
-    super && (self.is_deleted == false)
+  def self.without_sns_data(auth)
+    member = Member.where(email: auth.info.email).first
+      if member.present?
+        sns = SnsCredential.create(
+          uid: auth.uid,
+          provider: auth.provider,
+          member_id: member.id
+        )
+      else
+        member = Member.new(
+          name: auth.info.name,
+          email: auth.info.email,
+        )
+        sns = SnsCredential.new(
+          uid: auth.uid,
+          provider: auth.provider
+        )
+      end
+    return { member: member ,sns: sns}
+  end
+
+  def self.with_sns_data(auth, snscredential)
+    member = Member.where(id: snscredential.member_id).first
+    unless member.present?
+        member = Member.new(name: auth.info.name,email: auth.info.email)
+    end
+    return {member: member}
+  end
+
+  def self.find_oauth(auth)
+    uid = auth.uid
+    provider = auth.provider
+    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    if snscredential.present?
+      member = with_sns_data(auth, snscredential)[:member]
+      sns = snscredential
+    else
+      member = without_sns_data(auth)[:member]
+      sns = without_sns_data(auth)[:sns]
+    end
+    return { member: member ,sns: sns}
   end
 
 end
