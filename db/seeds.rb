@@ -133,3 +133,10 @@ end
     tag_id:1 + n
   )
 end
+
+4.times do |n|
+  QuestionTag.create!(
+    question_id:1 + n,
+    tag_id:5 + n
+  )
+end

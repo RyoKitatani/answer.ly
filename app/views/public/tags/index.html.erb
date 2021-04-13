@@ -9,9 +9,9 @@
     <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
     <div class="tag-list d-flex flex-wrap">
     <% @tags.each do |tag| %>
-    <div class="tag-item col-md-2 text-left border border-primary rounded ml-3 mb-2 mt-3">
+    <div class="tag-item col-md-2 text-left border rounded ml-3 mb-2 mt-3 pt-3">
       <%= link_to "" do %>
-        <%= tag.name %>
+        <h2><%= tag.name %></h2>
       <% end %>
       <p><%= tag.questions.count %>投稿</p>
       </div>
