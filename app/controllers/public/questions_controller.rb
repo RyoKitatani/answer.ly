@@ -1,6 +1,6 @@
 class Public::QuestionsController < ApplicationController
   layout "homes"
-  before_action :authenticate_member!, except:[:show]
+  before_action :authenticate_member!
 
   def show
     @members = Member.all

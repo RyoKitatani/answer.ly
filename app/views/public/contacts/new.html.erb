@@ -1,2 +1,33 @@
-<h1>Public::Contacts#new</h1>
-<p>Find me in app/views/public/contacts/new.html.erb</p>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<div class="col-md-10 offset-md-1 pt-5">
+  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > 運営へのお問い合わせ</span>
+</div>
+<div class="col-md-10 offset-md-1 mt-5 mb-5">
+  <h2><i class="fas fa-user-plus"> 運営へのお問い合わせ</i></h2>
+</div>
+
+<div class="col-md-10 offset-md-1">
+  <%= form_with model: @contact do |f| %>
+    <div class="form-group">
+      <%= f.label :"お名前(ニックネームOK)" %>
+      <%= f.text_field :name, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :お問い合わせ詳細 %>
+      <p id=countUp>0</p>
+      <%= f.text_area :message, rows:8, class:"form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録する", class:" btn btn-primary btn-lg w-100" %>
+    </div>
+  <% end %>
+</div>
