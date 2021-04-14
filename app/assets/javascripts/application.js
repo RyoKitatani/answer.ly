@@ -20,7 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(window).on('load',function(){
+$(window).on("turbolinks:load",function(){
 // ここから文字を<span></span>で囲む記述
 $('.typ').children().andSelf().contents().each(function() {
 if (this.nodeType == 3) {
