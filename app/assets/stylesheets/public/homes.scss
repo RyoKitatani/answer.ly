@@ -56,3 +56,11 @@
   }
 }
 
+// top画面の文字を1文字ずつ表示させる
+.typ {
+  opacity: 0;
+}
+
+.typ span {
+  opacity: 0;
+}

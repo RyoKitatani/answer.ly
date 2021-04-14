@@ -1,3 +1,5 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 <% unless member_signed_in? %>
 <div class="top-box">
   <div class="container">
@@ -7,16 +9,16 @@
           <p>留学したい人を応援するQ&Aサイト</p>
           <h1 class="display-1 font-weight-bold">
             <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span></h1>
-          <h2 class="font-weight-bold mt-5 pt-3">留学の不安を取り除こう</h2>
+          <h2 class="font-weight-bold mt-5 pt-3 typ">留学の不安を取り除こう</h2>
         </div>
         <div class="mt-5 mb-5">
-          <p>Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
-          <p>留学に対する不安を無くし、留学経験者・海外在住と繋がろう</p>
+          <p class="typ">Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
+          <p class="typ">留学に対する不安を無くし、留学経験者・海外在住と繋がろう</p>
           <p class="mt-5"><%= link_to "もっと詳しく >>", about_path, class:"text-white" %></p>
         </div>
         <div class="bottom-line border border-blck"></div>
       </div>
-      <div class="col-md-4 mt-5 pt-5">
+      <div class="col-md-4 offset-md-1 mt-5 pt-5">
         <div class="registration-box  w-75 pt-4 mt-5 d-flex mx-auto text-align-center sns-btns" style="height:50px">
           <%= link_to new_member_registration_path, class:"sns-btn btn btn-flat" do %>
             <span>メールアドレスで登録する</span>
