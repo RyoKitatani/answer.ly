@@ -3,9 +3,8 @@ class Public::HomesController < ApplicationController
 
   def top
     @questions = Question.all.page(params[:page]).reverse_order
-    @members = Member.all.order(created_at: :asc)
     @tags = Tag.all.page(params[:page]).order(answers: :asc).per(8)
-
+    @members = Member.all.order(created_at: :asc)
   end
 
   def about
