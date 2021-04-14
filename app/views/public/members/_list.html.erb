@@ -24,7 +24,7 @@
         <%= link_to member_path(member), class:"link-text small", style:"font-size:3px;" do %>
           <%= member.name %>
         <% end %>
-        <p>score <%= member.answer_likes.count %></p>
+        <p>score<%= member.total_likes(member) %></p>
       </div>
       <div class="col-md-5 pl-0 ml-0">
         <% if member_signed_in? %>

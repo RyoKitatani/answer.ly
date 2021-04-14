@@ -13,7 +13,8 @@
         </div>
         <div class="form-group">
           <%= f.label :タグ %>
-          <%= f.collection_select :name, Tag.all, :name, :name, class:"form-control w-100" %>
+                <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, class:"form-control", prompt:"この中からタグを1つ選んでください。", mutiple: true %>
+
         </div>
         <div class="form-group">
           <%= f.label :質問内容 %>

@@ -19,6 +19,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require social-share-button
 
 $(window).on("turbolinks:load",function(){
 // ここから文字を<span></span>で囲む記述

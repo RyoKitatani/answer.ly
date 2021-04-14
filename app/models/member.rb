@@ -82,5 +82,18 @@ class Member < ApplicationRecord
     return { member: member ,sns: sns}
   end
 
+  def total_likes(member)
+      question_likes_count = 0
+      member.questions.each do |question|
+        question_likes_count += question.question_likes.count
+      end
+
+      answer_likes_count = 0
+      member.answers.each do |answer|
+        answer_likes_count += answer.answer_likes.count
+      end
+      question_likes_count + answer_likes_count
+  end
+
 end
 

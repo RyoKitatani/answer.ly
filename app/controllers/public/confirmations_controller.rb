@@ -12,6 +12,7 @@ class Public::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
+
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     root "homes#top"
     get "/about" => "homes#about"
     patch "/members/withdraw" => "members#withdraw"
+    patch "/questions/:id/best_answer" => "questions#best_answer"
     get "/questions/tag" => "members#tag"
     get '/members', to: redirect("/members/sign_up")
     resources :members, only:[:show, :edit, :update] do

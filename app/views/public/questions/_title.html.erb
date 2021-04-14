@@ -1,3 +1,7 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0&appId=293894848767923&autoLogAppEvents=1" nonce="528PwJN9"></script>
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
 <div class="container">
   <div class= "row">
     <div class="col-md-7 pt-5 offset-md-1">
@@ -9,7 +13,7 @@
         <p class="btn btn-light">コメント数：<%= question.answers.count %></p>
         <p class="btn btn-light">評価：<%= question.question_likes.count %></p>
         <p class="btn btn-light">VIEW：0</p>
-        <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank。', class:"btn btn-primary" %>
+        <%= social_share_button_tag(question.title) %>
       </div>
       <div class="mt-5 mb-5">
         <p class="font-weight-bold">
