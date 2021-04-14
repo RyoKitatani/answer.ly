@@ -37,7 +37,6 @@ class Public::QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-       @question.save_tag(tag_list)
       flash.now[:success] = "内容を変更しました。"
       redirect_to root_path
     else
@@ -57,6 +56,25 @@ class Public::QuestionsController < ApplicationController
       @question = Question.find(params[:id])
       @tags = Tag.all.order(created_at: :desc)
       render :show
+    end
+  end
+
+  def best_answer
+    @question = Question.find(params[:id])
+    @answer = @question.answer.best_answer = true
+    if @answer.save
+       @question.question_status = true
+       @question.save
+       flash[:success] = "ベストアンサーを決定しました。"
+    else
+       flash[:danger] = "ベストアンサーの選択に失敗しました。"
+       @members = Member.all
+       @member = current_member
+       @question = Question.find(params[:id])
+       @tags = Tag.all.order(created_at: :desc)
+       @answer = Answer.new
+       @response = Response.new
+       render　show
     end
   end
 
