@@ -2,6 +2,21 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+
+    @member_questions = @member.questions
+    @question_likes_count = 0
+    @member_questions.each do |question|
+      @question_likes_count += question.question_likes.count
+    end
+
+    @member_answers = @member.answers
+    @answer_likes_count = 0
+    @member_answers.each do |answer|
+      @answer_likes_count += answer.answer_likes.count
+    end
+
+    @total_likes = @question_likes_count + @answer_likes_count
+
   end
 
   def edit

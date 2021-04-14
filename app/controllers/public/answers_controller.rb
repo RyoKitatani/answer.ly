@@ -5,16 +5,13 @@ class Public::AnswersController < ApplicationController
     # @answer = Answer.find(params[:id])
   end
 
-  def update
-  end
-
   def create
     @question = Question.find(params[:question_id])
     @answer = current_member.answers.new(answer_params)
     @answer.question_id = @question.id
     @answer.member_id = current_member.id
     if @answer.save
-      flash[:notice] = "You have commented successfully"
+      flash[:success] = "回答しました。"
       render :create
     else
       @question = Question.find(params[:id])
