@@ -1,0 +1,4 @@
+<% if @model == 'tag' %>
+  <h3>タグ検索：<%= @content %></h3>
+  <%= render 'public/tags/index', tags: @records %>
+<% end %>
