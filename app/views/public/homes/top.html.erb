@@ -3,23 +3,256 @@
 <% end %>
 
 <div class="container">
- <div class="row">
-  <div class="col-md-7 mt-5 offset-md-1">
-     <div class="questions-index">
-      <%= render "public/questions/list", questions: @questions %>
-      <%= paginate @questions %>
+  <div class="row">
+   <div class="col-md-7 mt-5 offset-md-1">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">フォロー</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">新着</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#noanswer" role="tab" aria-controls="noanswer" aria-selected="false">未回答</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="unanswered-tab" data-toggle="tab" href="#unanswered" role="tab" aria-controls="unanswered" aria-selected="false">未解決</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="unanswered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-selected="false">解決済み</a>
+      </li>
+    </ul>
+   <div class="tab-content" id="myTabContent">
+     <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+       <% if member_signed_in? %>
+        <div class="questions-index">
+        <% if current_member.following_member.any? %>
+          <% current_member.following_member.each do |member| %>
+           <% member.questions.each do |question| %>
+            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+              <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+                <% if question.question_status == false %>
+                  <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
+                <% end %>
+                <div class="border rounded pt-2">
+                  <h4>回答<br /><%= question.answers.count %></h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text" do %>
+                    <h2 class="font-weight-bold"><%= question.title %></h2>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <% if question.tags.any? %>
+                    <% question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
+                    <% end %>
+                    <% else %>
+                    <div class="no-tag-box"></div>
+                  <% end %>
+                </div>
+                <div class="row d-flex pt-3 small">
+                  <div>
+                  <p class="mt-3">評価: <%=question.question_likes.count %></p>
+                  </div>
+                  <div class="ml-auto pr-1">
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                    <span class="mt-3"><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%></span>
+                    <span class="mt-5 small"><%= question.member.name %></span>
+                  <% end %>
+                  <p class="ml-1 mr-1 small text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          <% end %>
+         <%= paginate @questions %>
+       </div>
+       <% end %>
      </div>
-  </div>
-  <div class="col-md-3">
-     <div class="about-box">
+     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+       <div class="questions-index">
+         <%= render "public/questions/list", questions: @questions %>
+         <%= paginate @questions %>
+       </div>
+     </div>
+     <div class="tab-pane fade" id="noanswer" role="tabpanel" aria-labelledby="noanswer-tab">
+       <div class="questions-index">
+         <% @questions.each do |question| %>
+           <% unless question.answers.any? || question.question_status == true %>
+            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+              <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+                <% if question.question_status == false %>
+                  <p class="btn-info font-weight-bold w-75 mx-auto samll">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
+                <% end %>
+                <div class="border rounded pt-2">
+                  <h4>回答<br /><%= question.answers.count %></h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text" do %>
+                    <h2 class="font-weight-bold"><%= question.title %></h2>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <% if question.tags.any? %>
+                    <% question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
+                    <% end %>
+                    <% else %>
+                    <div class="no-tag-box"></div>
+                  <% end %>
+                </div>
+                <div class="row d-flex pt-3 small">
+                  <div>
+                  <p class="mt-3">評価: <%=question.question_likes.count %></p>
+                  </div>
+                  <div class="ml-auto pr-1">
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                    <span class="mt-3"><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%></span>
+                    <span class="mt-5 small"><%= question.member.name %></span>
+                  <% end %>
+                  <p class="ml-1 mr-1 small text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+         <%= paginate @questions %>
+       </div>
+     </div>
+     <div class="tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="unanswered-tab">
+       <div class="questions-index">
+       <% @questions.each do |question| %>
+          <% if question.question_status == false && question.answers.any? %>
+            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+              <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+                <% if question.question_status == false %>
+                  <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
+                <% end %>
+                <div class="border rounded pt-2">
+                  <h4>回答<br /><%= question.answers.count %></h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text" do %>
+                    <h2 class="font-weight-bold"><%= question.title %></h2>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <% if question.tags.any? %>
+                    <% question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
+                    <% end %>
+                    <% else %>
+                    <div class="no-tag-box"></div>
+                  <% end %>
+                </div>
+                <div class="row d-flex pt-3 small">
+                  <div>
+                  <p class="mt-3">評価: <%=question.question_likes.count %></p>
+                  </div>
+                  <div class="ml-auto pr-1">
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                    <span class="mt-3"><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%></span>
+                    <span class="mt-5 small"><%= question.member.name %></span>
+                  <% end %>
+                  <p class="ml-1 mr-1 small text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+       </div>
+     </div>
+     <div class="tab-pane fade" id="answered" role="tabpanel" aria-labelledby="answered-tab">
+       <div class="questions-index">
+       <% @questions.each do |question| %>
+           <% if question.question_status == true %>
+            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+              <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+                <% if question.question_status == false %>
+                  <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
+                <% end %>
+                <div class="border rounded pt-2">
+                  <h4>回答<br /><%= question.answers.count %></h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text" do %>
+                    <h2 class="font-weight-bold"><%= question.title %></h2>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <% if question.tags.any? %>
+                    <% question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
+                    <% end %>
+                    <% else %>
+                    <div class="no-tag-box"></div>
+                  <% end %>
+                </div>
+                <div class="row d-flex pt-3 small">
+                  <div>
+                  <p class="mt-3">評価: <%=question.question_likes.count %></p>
+                  </div>
+                  <div class="ml-auto pr-1">
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                    <span class="mt-3"><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%></span>
+                    <span class="mt-5 small"><%= question.member.name %></span>
+                  <% end %>
+                  <p class="ml-1 mr-1 small text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+       </div>
+     </div>
+   </div>
 
+
+  </div>
+   <div class="col-md-3 mt-5">
+     <div class="about-box mb-3 mt-5 border border-primary rounded">
+       <%= link_to about_path do %>
+       <p>Answer.lyについて詳しく知りたい方はこちらへ。</p>
+       <% end %>
      </div>
      <div class="tag-index mb-5 mt-5">
+      <h3 class="text-muted text-center">タグ一覧リスト</h3>
       <%= render "public/tags/list", tags: @tags %>
      </div>
      <div class="ranking-index mb-5">
+      <h3 class="text-muted text-center">ユーザーランキング</h3>
        <%= render "public/members/list", members: @members %>
      </div>
+    </div>
   </div>
- </div>
 </div>

@@ -2,9 +2,9 @@
   <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
     <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
       <% if question.question_status == false %>
-        <p class="btn-info font-weight-bold w-75 mx-auto">受付中</p>
+        <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
       <% else %>
-        <p class="btn-danger font-weight-bold w-75 mx-auto">解決済み</p>
+        <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
       <% end %>
       <div class="border rounded pt-2">
         <h4>回答<br /><%= question.answers.count %></h4>
