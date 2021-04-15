@@ -1,8 +1,10 @@
 <div>
-      <p class="text-center pt-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
+  <%= link_to member_path(member),class:"link-text" do %>
+    <p class="text-center pt-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
     </div>
     <div>
       <p class="text-center"><%= member.name %></p>
+      <% end %>
       <div class="mb-3">
         <% if current_member.id == member.id %>
             <%= link_to "プロフィール編集", edit_member_path(member), class:"btn btn-primary w-100" %>
