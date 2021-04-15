@@ -30,6 +30,7 @@
       <div class="form-group">
         <%= f.submit "保存する", class:"btn btn-primary w-25"%>
       </div>
+        <%= link_to "退会する", members_withdraw_path, class:"btn btn-outline-danger", method: :patch, data: { confirm: "本当に退会しますか？" } %>
     <% end %>
   </div>
 </div>

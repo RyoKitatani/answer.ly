@@ -5,19 +5,32 @@
 <div class="container">
   <div class= "row">
     <div class="col-md-7 pt-5 offset-md-1">
-      <h1 class="font-weight-bold"><%= question.title %></h1>
-      <p class="mt-5 mb-5"><%= question.created_at %> | <%= question.updated_at %></p>
+      <div class="d-flex">
+        <% if question.question_status == false %>
+          <p class="btn-info font-weight-bold mt-3 mr-3", style="font-size:20px">受付中</p>
+        <% else %>
+          <p class="btn-danger font-weight-bold mt-3 mr-3">解決済み</p>
+        <% end %>
+        <h1 class="font-weight-bold pt-2"><%= question.title %></h1>
+      </div>
+      <div class="mb-3 mt-5">
+        <span>投稿日:<%= question.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+        <span>更新日:<%= question.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
+      </div>
+      <% question.tags.each do |tag| %>
+        <p class="btn btn-outline-primary ml-1", style="font-size:2px;"><%= tag.name %></p>
+      <% end %>
     </div>
     <div class="col-md-3 pt-5">
       <div class="text-center">
-        <p class="btn btn-light">コメント数：<%= question.answers.count %></p>
+        <p class="btn btn-light">回答：<%= question.answers.count %></p>
         <p class="btn btn-light">評価：<%= question.question_likes.count %></p>
         <p class="btn btn-light">VIEW：0</p>
         <%= social_share_button_tag(question.title) %>
       </div>
-      <div class="mt-5 mb-5">
+      <div class="mt-5 mb-5 pl-5">
         <p class="font-weight-bold">
-          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.question_likes.count %></p>
+          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %></p>
       </div>
     </div>
   </div>

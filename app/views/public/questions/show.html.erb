@@ -1,11 +1,13 @@
-<div class="row mx-auto">
-  <div class="question-title w-100 pt-3 pb-3 border border-black-3">
-    <span class="root-link "><%= link_to "Answer.lyトップ", tag_path(tag) %></span>
+<div class="row mx-auto question-title border-bottom">
+  <div class="col-md-10 offset-md-2 w-100 pt-4 pb-3">
+    <span class="root-link"><%= link_to "Answer.lyトップ", root_path %> > <%= @question.title %></span>
   </div>
 </div>
+
 <div class="question-title">
   <%= render "public/questions/title", question: @question %>
 </div>
+
 
 
 <div class="container">
@@ -20,7 +22,7 @@
       <!--ここまで-->
 
 　　　<!--回答一覧/フォーム表示 + コメント一覧/フォーム-->
-      <div class="mt-2", id="answer">
+      <div class="mt-2">   <!--id="answer"-->
         <h3>回答: <%= @question.answers.count %>件</h3>
         <div class="answers-box">
         <% if @question.answers.exists? %>
@@ -30,9 +32,7 @@
         <% else %>
           <div class="mt-5 mb-5 rounded">
             <div class="row">
-              <div class="col-md-2">
-              </div>
-              <div class="col-md-7">
+              <div class="col-md-12">
                 <div class="no-answers-box">
                   <p class="font-weight-bold">まだ回答がありません。</p>
                 </div>
@@ -51,8 +51,8 @@
 
     <!--タグ一覧表示-->
     <div class="col-md-3">
-      <div class="tag-index mb-5">
-        <%= render "public/tags/list", tags: @tags %>
+      <div class="tag-index mb-5 mt-5 bg-light">
+        <%= render "public/members/profile", member: @question.member, total_likes: @total_likes %>
       </div>
 
       <div class="ranking-index mb-5">

@@ -12,7 +12,8 @@ class Public::AnswersController < ApplicationController
     @answer.member_id = current_member.id
     if @answer.save
       flash[:success] = "回答しました。"
-      render :create
+      redirect_to request.referer
+      # render :create
     else
       @question = Question.find(params[:id])
       @tags = Tag.all.order(created_at: :desc)
@@ -24,7 +25,9 @@ class Public::AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.find_by(id: params[:id], question_id: params[:question_id])
     @answer.destroy
-    render :destroy
+    flash[:success] = "回答を削除しました。"
+    redirect_to request.referer
+    # render :destroy
   end
 
   private

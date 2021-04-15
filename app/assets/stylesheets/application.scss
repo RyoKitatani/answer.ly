@@ -26,8 +26,6 @@
   box-sizing: border-box;
 }
 
-
-
 header {
   position: fixed;
   top: 0;
@@ -109,4 +107,8 @@ footer {
 .search-box {
   font-size: 8px;
   padding: 0;
+}
+
+.navbar-toggler {
+  background-color: #f9f9f9;
 }

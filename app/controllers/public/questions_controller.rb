@@ -6,7 +6,7 @@ class Public::QuestionsController < ApplicationController
     @members = Member.all
     @member = current_member
     @question = Question.find(params[:id])
-    @tags = Tag.all.order(created_at: :desc)
+    @tags = Tag.all.page(params[:page]).order(answers: :asc).per(5)
     @answer = Answer.new
     @response = Response.new
   end
@@ -38,7 +38,7 @@ class Public::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.update(question_params)
       flash.now[:success] = "内容を変更しました。"
-      redirect_to root_path
+      redirect_to question_path(@question)
     else
       flash.now[:danger] = "更新に失敗しました。"
       render :edit

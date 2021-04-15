@@ -1,5 +1,5 @@
 <div>
-      <p class="text-center"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
+      <p class="text-center pt-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
     </div>
     <div>
       <p class="text-center"><%= member.name %></p>
@@ -38,7 +38,4 @@
       </div>
       <u><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"link-text small" %></u>
       <p><%= member.introduction %></p>
-      <div>
-      <%= link_to "退会する", members_withdraw_path, class:"btn btn-outline-danger w-100", method: :patch, data: { confirm: "本当に退会しますか？" } %>
-      </div>
     </div>

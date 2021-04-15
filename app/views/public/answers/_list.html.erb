@@ -1,23 +1,32 @@
-<div class="bottom-line border border-blck mt-2"></div>
-<p>高評価数:<%= answer.answer_likes.count %></p>
-<h4><%== answer.content %></h4>
-<div class="mt-5">
-  <p><%= answer.created_at %></p>
-  <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
-  <p><%= answer.member.name %></p>
-</div>
-<div class="mt-5 d-flex">
-  <% if current_member != answer.member %>
-    <div id="answer_likes">
-      <%= render "public/answers/like", answer: answer %>
+<div class="bottom-line border border-blck mb-5"></div>
+ <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex">
+    <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+      <div class="border rounded pt-2">
+        <p><%= answer.answer_likes.count %></p>
+      </div>
     </div>
-  <% else %>
-    <%= link_to "編集する", "#", class:"btn btn-success ml-auto mr-2"%>
-    <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
-  <% end %>
+    <div class="col-md-10">
+      <div class="row pt-2">
+        <h4><%== answer.content %></h4>
+        <div class="mt-5 d-flex">
+          <p><%= answer.created_at %></p>
+          <p><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
+          <p><%= answer.member.name %></p>
+        </div>
+      </div>
+    </div>
 </div>
-<div class="mt-2 bottom-line border border-blck mb-5"></div>
-
+  <div class="mt-5 d-flex">
+    <% if current_member != answer.member %>
+      <div id="answer_likes">
+        <%= render "public/answers/like", answer: answer %>
+      </div>
+    <% else %>
+      <!--<= link_to "編集する", "#", class:"btn btn-success ml-auto mr-2"%>-->
+      <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"ml-auto btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+    <% end %>
+  </div>
+  <div class="mt-2 bottom-line border border-blck mb-5"></div>
 <!--返信一覧＋フォーム-->
 <%= form_with model: [answer, response], remote: true do |f| %>
   <div class="form-group">

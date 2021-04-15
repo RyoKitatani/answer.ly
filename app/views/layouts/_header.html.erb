@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="col-md-10 offset-md-1 d-flex">
-    <a class="navbar-brand" href="/"><%= image_tag "answer.ly_logo.png", class:"mt-1",:size => "120x30", alt:"Answer.lyロゴ" %></a>
+  <div class="col-md-10 offset-md-1 d-flex mx-auto">
+    <a class="navbar-brand" href="/"><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse mr-auto" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto align-items-center">
-        <div class="header-item btn text-light mr-2">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto mr-4 align-items-center">
+        <div class="btn text-light mr-2">
           <li class="nav-item">
             <%= render 'public/searches/form', tag: @tag, question: @question %>
           </li>
@@ -20,7 +20,7 @@
         <div class="header-item btn btn-lg mr-2">
           <li class="nav-item">
             <%= link_to member_path(current_member) do %>
-              <i class="fas fa-user-graduate"> <%= current_member.name %></i>
+              <%= attachment_image_tag current_member, :image, size:"25x25", fallback:"no_image_icon.jpg", class:"mr-1" %><%= current_member.name %></i>
             <% end %>
           </li>
         </div>
@@ -56,6 +56,5 @@
         <% end %>
       </ul>
     </div>
-    </div>
-
+  </div>
 </nav>

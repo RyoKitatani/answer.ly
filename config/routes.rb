@@ -27,9 +27,8 @@ Rails.application.routes.draw do
     patch "/members/withdraw" => "members#withdraw"
     patch "/questions/:id/best_answer" => "questions#best_answer"
     get "/questions/tag" => "members#tag"
-    get '/members', to: redirect("/members/sign_up")
     get "/search" => "searches#search"
-    resources :members, only:[:show, :edit, :update] do
+    resources :members, only:[:index, :show, :edit, :update] do
       get :connections, on: :member
     end
     post "/guest_sign_in", to: "members#guest_sign_in"

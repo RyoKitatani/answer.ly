@@ -1,8 +1,5 @@
 <div class="questions-content">
   <h3><%== question.content %></h3>
-  <% question.tags.each do |tag| %>
-    <%= tag.name %>
-  <% end %>
 </div>
 <div class="mt-5 d-flex">
   <% if current_member != question.member %>

@@ -1,13 +1,13 @@
 <div calss="row">
   <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
-    <div class="pt-2 mb-3">
+    <div class="pt-4 mb-3">
       <span><%= link_to root_path do %>トップ<% end %></span>
       >
       <span><%= link_to "#" do %>タグ一覧<% end %></span>
     </div>
     <h2><%= @tag.name %> の関する投稿</h2>
     <p>投稿タイトルをクリックすると、投稿詳細に移動します。</p>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs text-center" id="myTab" role="tablist">
       <li class="nav-item w-25 bg-light">
         <a class="nav-link active link-text" id="home-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">一覧(新着順)</a>
       </li>
@@ -41,7 +41,7 @@
               </div>
               <div class="row">
               <% question.tags.each do |tag| %>
-                <p class="btn btn-outline-primary", style="font-size:5px;"><%= tag.name %></p>
+                <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
                <% end %>
               </div>
               <div class="row d-flex">
