@@ -19,6 +19,16 @@ class Public::SearchesController < ApplicationController
       else
         Tag.where('name LIKE ?', '%'+content+'%')
       end
+    elsif model == "question"
+      if method == "perfect"
+        Question.where(title: content)
+      elsif method == "forward"
+        @question = Question.where("title LIKE?", content+'%')
+      elsif method == "backward"
+        @question = Question.where("title LIKE?", '%'+content)
+      else
+        Question.where('title LIKE ?', '%'+content+'%')
+      end
     end
   end
 end

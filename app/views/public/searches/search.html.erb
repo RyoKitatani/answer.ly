@@ -2,3 +2,7 @@
   <h3>タグ検索：<%= @content %></h3>
   <%= render 'public/tags/index', tags: @records %>
 <% end %>
+<% if @model == 'question' %>
+  <h3>タグ検索：<%= @content %></h3>
+  <%= render 'public/questions/list', questions: @records %>
+<% end %>
