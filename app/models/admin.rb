@@ -4,4 +4,6 @@ class Admin < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
+  attachment :image
+
 end

@@ -1,2 +1,16 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-md-10 offset-md-1 mt-5 pt-5 d-flex">
+    <div class="col-md-6 pl-0 pr-0 mr-1 border border-primary rounded">
+      <h2 class="border border-primary w-100">質問投稿数</h2>
+      <%= link_to admin_questions_path do %>
+        <p class="text-center"><%= @questions.count%></p>
+      <% end %>
+    </div>
+    <div class="col-md-6 mr-1 border border-primary rounded">
+      <h2 class="btn btn-outline-primary rounded">ユーザー数</h2>
+      <%= link_to admin_members_path do %>
+        <p class="text-center"><%= @members.count %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

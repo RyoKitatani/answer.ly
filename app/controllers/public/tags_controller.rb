@@ -1,7 +1,7 @@
 class Public::TagsController < ApplicationController
 
   def index
-    @tags = Tag.all.order(created_at: :asc)
+    @tags = Tag.all.order_by_questions
   end
 
   def show
