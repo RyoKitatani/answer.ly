@@ -8,6 +8,19 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:google)
   end
 
+  def line
+    callback_for(:line)
+  end
+
+  def twitter
+    callback_for(:twitter)
+  end
+
+  def failure
+    redirect_to root_path and return
+  end
+
+
   private
 
   def callback_for(provider)
@@ -20,12 +33,10 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
       @sns = info[:sns]
+      session[:provider] = @sns[:provider]
+      session[:uid] = @sns[:uid]
       render template: "members/registrations/new"
     end
-  end
-
-  def failure
-    redirect_to root_path and return
   end
 
 end

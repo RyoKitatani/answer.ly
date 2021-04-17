@@ -45,7 +45,7 @@ class Member < ApplicationRecord
         sns = SnsCredential.create(
           uid: auth.uid,
           provider: auth.provider,
-          member_id: member.id
+          member_id: member.id,
         )
       else
         member = Member.new(
@@ -54,7 +54,7 @@ class Member < ApplicationRecord
         )
         sns = SnsCredential.new(
           uid: auth.uid,
-          provider: auth.provider
+          provider: auth.provider,
         )
       end
     return { member: member ,sns: sns}
