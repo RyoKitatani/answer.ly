@@ -1,6 +1,7 @@
 class Admin::HomesController < ApplicationController
+  before_action :admin_header_actions
+
   def top
-    @questions = Question.all
-    @members = Member.all
+    @questions_all = Question.all.page(params[:page])
   end
 end

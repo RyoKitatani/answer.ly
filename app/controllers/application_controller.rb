@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :question_total
   before_action :authenticate_admin!, if: :admin_url
+  before_action :member_header_actions
 
   def admin_url
     request.fullpath.include?("/admin")
@@ -25,6 +26,18 @@ class ApplicationController < ActionController::Base
 
   def question_total
     @question_all = Question.all
+  end
+
+  def admin_header_actions
+    @questions = Question.all
+    @members = Member.all
+    @tags = Tag.all
+  end
+
+  def member_header_actions
+    @questions = Question.all
+    @members = Member.all
+    @tags = Tag.all
   end
 
 end

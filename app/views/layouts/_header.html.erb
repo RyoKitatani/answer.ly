@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="col-md-10 offset-md-1 d-flex mx-auto">
+    <% if admin_signed_in? %>
+    <a class="navbar-brand" href="/admin", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
+    <% else %>
     <a class="navbar-brand" href="/", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,8 +38,33 @@
           </li>
         </div>
         <% elsif admin_signed_in? %>
+        <div class="row">
           <div class="header-item btn btn-lg">
             <li class="nav-item">
+              <%= link_to admin_members_path do %>
+                <span>ユーザー数</span>
+                <span class="text-center"><%= @members.count %></span>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn btn-lg">
+            <li class="nav-item">
+              <%= link_to admin_path do %>
+                <span>質問投稿数</span>
+                <span class="text-center"><%= @questions.count%></span>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn btn-lg">
+            <li class="nav-item">
+              <%= link_to admin_tags_path do %>
+                <span>タグ数</span>
+                <span class="text-center"><%= @tags.count %></span>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn btn-lg">
+            <li class="nav-item mr-5">
               <%= link_to destroy_admin_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt"> ログアウト</i>
               <% end %>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-10 offset-md-1 mt-5 pt-5">
+  <div class="col-md-10 offset-md-1 pt-5">
     <h2 class="mt-3">質問詳細ページ</h2>
     <table class="table mt-5">
       <thead>
@@ -7,7 +7,7 @@
           <th>回答状況</th>
           <th>質問タイトル</th>
           <th>回答数</th>
-          <th>画像</th>
+          <th>アイコン</th>
           <th>ユーザー</th>
         </tr>
       </thead>
@@ -29,15 +29,26 @@
             <% end %>
           </td>
         </tr>
-        <tr>
-          <td colspan="5"><%= @question.content %></td>
-        </tr>
-        <tr>
-          <% @question.answers.each do |answer| %>
-          <td><%= answer.content %></td>
-          <% end %>
-        </tr>
       </tbody>
+    </table>
+    <h4 class="mt-5"><%= @question.title %>の回答一覧</h4>
+    <table class="table mt-5">
+      <thead>
+        <tr class="text-center">
+          <th>回答内容</th>
+          <th>アイコン</th>
+          <th>ユーザー</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @question.answers.each do |answer| %>
+      <tr>
+        <td><%= answer.content %></td>
+        <td class="text-center"><%= attachment_image_tag answer.member, :image, size:"25x25", fallback:"no_image_icon.jpg", class:"mr-1" %></td>
+        <td class="text-center"><%= answer.member.name %></td>
+      </tr>
+      <% end %>
+     </tbody>
     </table>
   </div>
 </div>
