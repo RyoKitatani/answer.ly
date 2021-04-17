@@ -1,10 +1,8 @@
 class Admin::QuestionsController < ApplicationController
-  def index
-  end
+  before_action :admin_header_actions
 
   def show
+    @question = Question.find(params[:id])
   end
 
-  def edit
-  end
 end
