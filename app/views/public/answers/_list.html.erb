@@ -26,7 +26,7 @@
           <% else %>
             <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答を解除しますか？"}) do |form| %>
               <%= form.hidden_field :best_answer_id, value: nil %>
-              <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-warning"%>
+              <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-danger"%>
             <% end %>
           <% end %>
          </div>
