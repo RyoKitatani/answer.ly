@@ -25,7 +25,7 @@
       <div class="text-center">
         <p class="btn btn-light">回答：<%= question.answers.count %></p>
         <p class="btn btn-light">評価：<%= question.question_likes.count %></p>
-        <p class="btn btn-light">VIEW：0</p>
+        <p class="btn btn-light">VIEW：<%= question.impressionist_count(:filter=>:session_hash) %></p>
         <%= social_share_button_tag(question.title) %>
       </div>
       <div class="mt-5 mb-5 pl-5">

@@ -41,7 +41,7 @@
               </p>
               <p>タグ: <%= question.tags.count %></p>
               <div class="d-flex">
-                <p><%= question.question_likes.count %> 評価 | PV</p>
+                <p><%= question.question_likes.count %> 評価 | <%= question.impressionist_count(:filter=>:session_hash) %> PV</p>
                 <p class="ml-auto mb-0"><%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %></p>
               </div>
             </div>
@@ -68,7 +68,7 @@
                 </p>
                 <p>タグ: <%= answer.question.tags.count %></p>
                 <div class="d-flex">
-                  <p>評価:<%= answer.answer_likes.count %> | PV:</p>
+                  <p>評価:<%= answer.answer_likes.count %> | <%= answer.question.impressionist_count(:filter=>:session_hash) %> PV</p>
                   <p class="ml-auto mb-0"><%= attachment_image_tag answer.question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= answer.question.member.name %></p>
                 </div>
               </div>

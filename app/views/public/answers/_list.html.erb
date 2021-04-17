@@ -21,9 +21,9 @@
           <% if @question.best_answer_id.nil? %>
             <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form| %>
               <%= form.hidden_field :best_answer_id, value: answer.id %>
-              <%= form.submit 'ベストアンサーにする', class:"btn btn-warning"%>
+              <%= form.submit 'ベストアンサーにする', class:"btn btn-warning", disabled: @question.best_answer_id.present?%>
             <% end %>
-          <% else %>
+          <% elsif @question.best_answer_id.present? && @question.best_answer_id == answer.id %>
             <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答を解除しますか？"}) do |form| %>
               <%= form.hidden_field :best_answer_id, value: nil %>
               <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-danger"%>

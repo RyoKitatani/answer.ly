@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
+  is_impressionable
 
   belongs_to :member
   has_many   :question_tags, dependent: :destroy
