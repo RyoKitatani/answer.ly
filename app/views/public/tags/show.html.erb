@@ -26,7 +26,7 @@
         <% @tag.questions.each do |question| %>
           <div class="question-box pt-2 w-100 d-flex border rounded">
             <div class="col-2 col-md-2 col-sm-2 text-center ">
-              <% if question.question_status == false %>
+              <% if question.best_answer_id.nil? %>
                 <p class="btn-info font-weight-bold w-75 mx-auto">受付中</p>
               <% else %>
                 <p class="btn-danger font-weight-bold w-75 mx-auto">解決済み</p>
@@ -58,10 +58,10 @@
     　</div>
       <div class="mb-5 pt-3 tab-pane fade" id="new" role="tabpanel" aria-labelledby="home-tab">
         <% @tag.questions.each do |question| %>
-          <% unless question.answers.any? || question.question_status == true %>
+          <% unless question.answers.any? && question.best_answer_id.nil? %>
             <div class="question-box pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center ">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto">解決済み</p>
@@ -97,7 +97,7 @@
           <% if question.answers.any? %>
             <div class="question-box pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center ">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto">解決済み</p>
@@ -130,10 +130,10 @@
       </div>
       <div class="mb-5 tab-pane fade" id="answered" role="tabpanel" aria-labelledby="about-tab">
         <% @tag.questions.each do |question| %>
-          <% if question.question_status == true %>
+          <% if question.best_answer_id.present? %>
             <div class="question-box pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center ">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto">解決済み</p>

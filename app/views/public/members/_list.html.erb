@@ -13,31 +13,31 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-ranking-tab">
     <% members.each do |member| %>
-    <div class="all-ranking d-flex border-bottom mt-2">
+    <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
       <div class="col-md-1">
         <p>1</p>
       </div>
-      <div class="col-md-2 pl-0 pr-0">
-        <p class="mr-1"><%= attachment_image_tag member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
+      <div class="col-md-1 pl-0 pr-0 mr-0">
+        <p><%= attachment_image_tag member, :image, size:"20x20", fallback:"no_image_icon.jpg"%></p>
       </div>
-      <div class="col-md-4 pl-0">
+      <div class="col-md-5 pl-0">
         <%= link_to member_path(member), class:"link-text small", style:"font-size:3px;" do %>
           <%= member.name %>
         <% end %>
         <p>score<%= member.total_likes(member) %></p>
       </div>
-      <div class="col-md-5 pl-0 ml-0">
+      <div class="col-md-4 pl-0 pr-0 ml-0">
         <% if member_signed_in? %>
-          <% if current_member.id == member.id %>
-            <%= link_to "プロフィールへ", member_path(member), method: :post, class:"btn btn-outline-secondary", style:"font-size:5px; width:100%" %>
-          <% else %>
-            <% if current_member.following?(member) %>
-              <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger", style:"font-size:5px; width:100%" %>
+            <% if current_member.id == member.id %>
+              <%= link_to "マイページへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
             <% else %>
-              <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary", style:"font-size:5px; width:100%" %>
+              <% if current_member.following?(member) %>
+                <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+              <% else %>
+                <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
     <% end %>
