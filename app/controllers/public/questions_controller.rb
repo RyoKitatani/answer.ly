@@ -59,29 +59,10 @@ class Public::QuestionsController < ApplicationController
     end
   end
 
-  def best_answer
-    @question = Question.find(params[:id])
-    @answer = @question.answer.best_answer = true
-    if @answer.save
-       @question.question_status = true
-       @question.save
-       flash[:success] = "ベストアンサーを決定しました。"
-    else
-       flash[:danger] = "ベストアンサーの選択に失敗しました。"
-       @members = Member.all
-       @member = current_member
-       @question = Question.find(params[:id])
-       @tags = Tag.all.order(created_at: :desc)
-       @answer = Answer.new
-       @response = Response.new
-       render　show
-    end
-  end
-
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, tag_ids: [])
+    params.require(:question).permit(:title, :content, :best_answer_id, tag_ids: [])
   end
 
 end

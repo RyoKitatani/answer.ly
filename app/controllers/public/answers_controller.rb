@@ -30,6 +30,15 @@ class Public::AnswersController < ApplicationController
     # render :destroy
   end
 
+  def bestanswer
+    @answer = Answer.find(params[:id])
+    @answer.best_answer = true
+    if @answer.save
+      flash[:success] = "ベストアンサーを決定しました。"
+      redirect_to request.referer
+    end
+  end
+
   private
 
   def answer_params

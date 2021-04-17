@@ -31,7 +31,7 @@
            <% member.questions.each do |question| %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
@@ -87,10 +87,10 @@
      <div class="tab-pane fade" id="noanswer" role="tabpanel" aria-labelledby="noanswer-tab">
        <div class="questions-index">
          <% @questions.each do |question| %>
-           <% unless question.answers.any? || question.question_status == true %>
+           <% unless question.answers.any? && question.best_answer_id.nil? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto samll">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
@@ -138,10 +138,10 @@
      <div class="tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="unanswered-tab">
        <div class="questions-index">
        <% @questions.each do |question| %>
-          <% if question.question_status == false && question.answers.any? %>
+          <% if question.best_answer_id.nil? && question.answers.any? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
@@ -188,10 +188,10 @@
      <div class="tab-pane fade" id="answered" role="tabpanel" aria-labelledby="answered-tab">
        <div class="questions-index">
        <% @questions.each do |question| %>
-           <% if question.question_status == true %>
+           <% unless question.best_answer_id.nil? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
-                <% if question.question_status == false %>
+                <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>

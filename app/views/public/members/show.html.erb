@@ -26,7 +26,7 @@
         <% @member.questions.each do |question| %>
           <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
             <div class="col-md-2 mt-2 text-center">
-              <% if question.question_status == false %>
+              <% if question.best_answer_id.nil? %>
                 <p class="btn-info font-weight-bold mb-0">受付中</p>
               <% else %>
                 <p class="btn-danger font-weight-bold mb-0">解決済み</p>
@@ -53,7 +53,7 @@
         <% @member.answers.each do |answer| %>
           <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
               <div class="col-md-2 mt-2 text-center">
-                <% if answer.question.question_status == false %>
+                <% if answer.question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold mb-0">受付中</p>
                 <% else %>
                   <p class="btn-danger font-weight-bold mb-0">解決済み</p>

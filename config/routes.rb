@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     root "homes#top"
     get "/about" => "homes#about"
     patch "/members/withdraw" => "members#withdraw"
-    patch "/questions/:id/best_answer" => "questions#best_answer"
+    patch "/questions/best_answer" => "answers#bestanswer"
     get "/questions/tag" => "members#tag"
     get "/search" => "searches#search"
     resources :members, only:[:index, :show, :edit, :update] do

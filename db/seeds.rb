@@ -85,7 +85,6 @@ Tag.create!(name: "新型コロナウイルス")
     member_id: 1 + n,
     title: "留学に関して#{n+1}",
     content: "質問内容の記述テストです#{n+1}",
-    question_status: "false"
   )
 end
 
@@ -94,7 +93,6 @@ end
     member_id: 1 + n,
     title: "英語の勉強法について#{n+1}",
     content: "単語帳、NETFLIX#{n+1}",
-    question_status: "false"
   )
 end
 
@@ -103,28 +101,24 @@ Answer.create!(
   question_id: 1,
   member_id: 2,
   content: "解決策を記入する。",
-  best_answer: "false"
 )
 
 Answer.create!(
   question_id: 2,
   member_id: 3,
   content: "解決策を記入する。",
-  best_answer: "false"
 )
 
 Answer.create!(
   question_id: 3,
   member_id: 4,
   content: "解決策を記入する。",
-  best_answer: "false"
 )
 
 Answer.create!(
   question_id: 4,
   member_id: 1,
   content: "解決策を記入する。",
-  best_answer: "false"
 )
 
 4.times do |n|

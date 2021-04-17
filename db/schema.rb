@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2021_04_13_125842) do
     t.integer "question_id", null: false
     t.integer "member_id", null: false
     t.text "content", default: "", null: false
-    t.boolean "best_answer", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_answers_on_member_id"
@@ -129,7 +128,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_125842) do
     t.integer "member_id", null: false
     t.string "title", default: "", null: false
     t.text "content", default: "", null: false
-    t.boolean "question_status", default: false, null: false
+    t.integer "best_answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_questions_on_member_id"
