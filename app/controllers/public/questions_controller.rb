@@ -1,4 +1,5 @@
 class Public::QuestionsController < ApplicationController
+  impressionist :actions=>[:show]
   layout "homes"
   before_action :authenticate_member!
 
@@ -9,6 +10,7 @@ class Public::QuestionsController < ApplicationController
     @tags = Tag.all.page(params[:page]).order(answers: :asc).per(5)
     @answer = Answer.new
     @response = Response.new
+    impressionist(@question, nil, unique: [:session_hash.to_s])
   end
 
   def new
