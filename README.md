@@ -2,7 +2,8 @@
 
 ![xlarge_answer ly](https://user-images.githubusercontent.com/77328172/113273147-52589500-9317-11eb-8924-75007c6ef21f.png)
 
-![スクリーンショット 2021-04-07 20 52 50](https://user-images.githubusercontent.com/77328172/113862350-3ce5de00-97e3-11eb-9ea3-5348ecd8c7f9.png)
+<img width="1425" alt="スクリーンショット 2021-04-18 13 40 15" src="https://user-images.githubusercontent.com/77328172/115134507-af5c8680-a04b-11eb-9055-772514268783.png">
+
 
 ## サイト概要 
 留学したい人や気になっている人など、
