@@ -13,14 +13,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     WelcomeMailer.with(member: @member).welcome_email.deliver_later
-
-    if session[:provider].present? && session[:uid].present?
-      # パスワードは自動生成する
-      password = Devise.friendly_token.first(7)
-      @member.password = password
-      session[:password] = password
-    end
-
     super
   end
 
