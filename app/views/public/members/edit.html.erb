@@ -2,7 +2,7 @@
   <div class="col-md-10 offset-md-1">
     <h3 class="mt-5">プロフィール設定</h3>
     <table class="table mt-5 table-borderless">
-      <%= form_with model: @member, local: true do |f| %>
+      <%= form_with model: @member, url:member_path, method: :put, local: true do |f| %>
       <tr>
         <div class="form-group">
           <th><%= f.label :ユーザー名 %></th>

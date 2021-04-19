@@ -99,5 +99,18 @@ class Member < ApplicationRecord
     self.joins(:question_likes, :answer_likes, :member).group("members_id").select("count(question_likes.question_id) as q_likes, + count(answer_likes.answer_id) as a_likes） as t_likes, members.*").order("t_likes desc")
   end
 
+  def self.order_by_answers
+    Member.select('members.*', 'count(member_id) AS answers')
+       .left_joins(:answers)
+       .group('members.id')
+       .order('answers DESC')
+  end
+
+  def self.order_by_question
+    Member.select('members.*', 'count(member_id) AS questions')
+       .left_joins(:questions)
+       .group('members.id')
+       .order('questions DESC')
+  end
 
 end

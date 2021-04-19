@@ -53,7 +53,7 @@
       <div class="tag-index mb-5 mt-5 border border-secondary rounded pt-1 pr-1 pb-1 pl-1">
         <div>
         　<%= link_to member_path(@question.member),class:"link-text" do %>
-          <p class="text-center pt-3"><%= attachment_image_tag @member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
+          <p class="text-center pt-3"><%= attachment_image_tag @question.member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
         　</div>
         <div>
         　<p class="text-center"><%= @question.member.name %></p>

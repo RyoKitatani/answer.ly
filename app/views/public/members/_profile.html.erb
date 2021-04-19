@@ -1,8 +1,9 @@
-<div>
-  <%= link_to member_path(member),class:"link-text" do %>
-    <p class="text-center pt-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
-    </div>
-    <div>
+<div class="pl-1 pr-1 border rounded">
+  <div>
+    <%= link_to member_path(member),class:"link-text" do %>
+    <p class="text-center pt-3 pb-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
+  </div>
+  <div>
       <p class="text-center"><%= member.name %></p>
       <% end %>
       <div class="mb-3">
@@ -41,3 +42,4 @@
       <u><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"link-text small" %></u>
       <p><%= member.introduction %></p>
     </div>
+</div>
