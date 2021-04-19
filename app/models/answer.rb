@@ -12,7 +12,7 @@ class Answer < ApplicationRecord
   end
 
   def self.a_ranking
-    self.joins(:answer_likes, :member).group("members.id").select("count(answer_likes.answer_id) as cnt, members.*").order("cnt desc")
+    self.joins(:answer_likes, :member).group("members.id").select("count(answer_likes.answer_id) as cnt, members.*").order("cnt desc").limit(10)
   end
-
+  
 end

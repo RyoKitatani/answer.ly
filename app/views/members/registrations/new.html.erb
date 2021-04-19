@@ -1,40 +1,37 @@
-<div class="col-md-10 offset-md-1 pt-5">
-  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > 新規会員登録</span>
+<div class="border-bottom">
+  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small", data: {"turbolinks" => false} %> > 新規会員登録</span>
 </div>
-<div class="col-md-10 offset-md-1 mt-5 mb-5">
+<div class="mt-5 mb-5">
   <h2><i class="fas fa-user-plus"> 新規会員登録</i></h2>
 </div>
 
 <div class="d-flex">
-  <div class="col-md-4 offset-md-1 mb-5 border-right">
+  <div class="col-md-5 mb-5 border-right">
     <div class="sns-login">
       <p class="font-weight-bold text-center">SNSアカウントで登録する</p>
+      <div class="bottom-line border border-blck"></div>
     </div>
     <div class="sns-title">
       <div class="sns-btns mt-3 pt-3">
-        <%= link_to "", class:"sns-btn btn btn-flat" do %>
+        <%= link_to "", class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
         <span><i class="fab fa-facebook font-weight-bold">Facebookアカウントで登録</i></span>
         <% end %>
       </div>
-      <div class="sns-btns mt-3 pt-3">
-        <%= link_to member_twitter_omniauth_callback_path , class:"sns-btn btn btn-flat" do %>
+      <div class="sns-btns mt-4 pt-3">
+        <%= link_to member_twitter_omniauth_callback_path , class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
         <span><i class="fab fa-twitter font-weight-bold">Twitterアカウントで登録</i></span>
         <% end %>
       </div>
-      <div class="sns-btns mt-3 pt-3">
-        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
-        <span><i class="fab fa-instagram font-weight-bold">Instagramアカウントで登録</i></span>
-        <% end %>
-      </div>
-      <div class="sns-btns mt-3 pt-3" style="width:100%;">
-         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
+      <div class="sns-btns mt-4 pt-3" style="width:100%;">
+         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
            <span><i class="fab fa-google font-weight-bold text-black">Googleアカウントで登録</i></span>
          <% end %>
       </div>
     </div>
   </div>
-  <div class="col-md-6 ml-3">
+  <div class="col-md-7 ml-3">
     <p class="font-weight-bold text-center">メールアドレスで登録する</p>
+    <div class="bottom-line border border-blck"></div>
     <%= form_with model:@member, url: registration_path(resource_name), local: true do |f| %>
     <%= render "members/shared/error_messages", resource: resource %>
     <table>
@@ -69,11 +66,11 @@
       </tobody>
     </table>
     <div class="actions text-center mt-2 mb-2">
-      <%= f.submit "登録する", class:" btn btn-success btn-lg" %>
+      <%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %>
     </div>
     <% end %>
     <div class="login-link text-center mt-auto">
-        <span>アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path %>
+        <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small" %>
       </div>
   </div>
 </div>

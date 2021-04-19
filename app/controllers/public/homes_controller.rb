@@ -6,8 +6,9 @@ class Public::HomesController < ApplicationController
     @answers = Answer.all
     @members = Member.all.order(created_at: :asc)
     @tags = Tag.all.page(params[:page]).order_by_questions.per(5)
+
   end
 
-  def about
+  def abou
   end
 end

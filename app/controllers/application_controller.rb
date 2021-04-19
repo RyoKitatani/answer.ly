@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def member_header_actions
     @questions = Question.all
-    @members = Member.all
+    @members = Member.all.order(created_at: :desc)
     @tags = Tag.all
   end
 
