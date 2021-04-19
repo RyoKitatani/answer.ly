@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
-      new_admin_session_path
+      root_path
     else
-      new_member_session_path
+      root_path
     end
   end
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def admin_header_actions
     @questions = Question.all
     @members = Member.all
-    @tags = Tag.all
+    @tag_all = Tag.all.order_by_questions
   end
 
   def member_header_actions

@@ -1,56 +1,18 @@
 
 <ul class="nav nav-tabs nav-right" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link link-text active" id="all-ranking-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">総合</a>
+  <li class="nav-item w-50 text-center">
+    <a class="nav-link link-text active" id="question-tab" data-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">質問<i class="fas fa-thumbs-up"></i></a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link link-text" id="question-tab" data-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">質問いいね</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link link-text" id="answer-tab" data-toggle="tab" href="#answer" role="tab" aria-controls="answer" aria-selected="false">回答いいね</a>
+  <li class="nav-item w-50 text-center">
+    <a class="nav-link link-text" id="answer-tab" data-toggle="tab" href="#answer" role="tab" aria-controls="answer" aria-selected="false">回答<i class="fas fa-thumbs-up"></i></a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-ranking-tab">
-    <% members.each.with_index(1) do |member, i| %>
-    <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
-      <div class="col-md-1">
-        <p><%= i %></p>
-      </div>
-      <div class="col-md-2 pl-0 pr-0 mr-0">
-        <p><%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg" %></p>
-      </div>
-      <div class="col-md-5 pl-0">
-        <%= link_to member_path(member), class:"link-text small", style:"font-size:3px;" do %>
-          <%= member.name %>
-        <% end %>
-        <p>score<%= member.total_likes(member) %></p>
-      </div>
-      <div class="col-md-4 pl-0 pr-0 ml-0">
-        <% if member_signed_in? %>
-            <% if current_member.id == member.id %>
-              <%= link_to "マイページへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-            <% else %>
-              <% if current_member.following?(member) %>
-                <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-              <% else %>
-                <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-              <% end %>
-            <% end %>
-          <% end %>
-      </div>
-    </div>
-    <% end %>
-    <p class="text-right"><%= link_to "ランキング一覧へ", members_path, class:"link-text" %></p>
-  </div>
-  <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+  <div class="tab-pane fade show active" id="question" role="tabpanel" aria-labelledby="question-tab">
     <% Question.all.ranking.each.with_index(1) do |rank, i| %>
     <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
-      <div class="col-md-1">
-        <p><%= i %></p>
-      </div>
-      <div class="col-md-2 pl-0 pr-0 mr-0">
-        <p class="pl-0 pr-0"><%= attachment_image_tag rank, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
+      <div class="col-md-3">
+        <p><%= i %>位</p>
       </div>
       <div class="col-md-5 pl-0">
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
@@ -78,11 +40,8 @@
   <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
     <% Answer.all.a_ranking.each.with_index(1) do |rank, i| %>
      <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
-      <div class="col-md-1">
-        <p><%= i %></p>
-      </div>
-      <div class="col-md-2 pl-0 pr-0 mr-0">
-        <p class="pl-0 pr-0"><%= attachment_image_tag rank, :image, size:"30x30", fallback:"no_image_icon.jpg"%></p>
+      <div class="col-md-3">
+        <p><%= i %>位</p>
       </div>
       <div class="col-md-5 pl-0">
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
@@ -108,7 +67,3 @@
     <p class="text-right"><%= link_to "ランキング一覧へ", members_path, class:"link-text" %></p>
   </div>
 </div>
-
-    <!--< @t_ranking.each.with_index(1) do |rank, i| %>-->
-    <!--  順位<= i %>位,いいね数:<= rank.t_likes %>-->
-    <!--< end %>-->

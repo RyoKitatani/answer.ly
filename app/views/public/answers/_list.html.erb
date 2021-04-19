@@ -15,24 +15,22 @@
     </div>
   </div>
   <div class="mt-5 d-flex">
-    <% if current_member != answer.member || answer.question.member == current_member %>
       <div id="answer_likes", class="ml-3">
         <%= render "public/answers/like", answer: answer %>
       </div>
-        <div class="ba-child">
-          <% if @question.best_answer_id.nil? %>
-            <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form| %>
-              <%= form.hidden_field :best_answer_id, value: answer.id %>
-              <%= form.submit 'ベストアンサーにする', class:"btn btn-warning", disabled: @question.best_answer_id.present?%>
-            <% end %>
-          <% elsif @question.best_answer_id.present? && @question.best_answer_id == answer.id %>
-            <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答を解除しますか？"}) do |form| %>
-              <%= form.hidden_field :best_answer_id, value: nil %>
-              <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-danger"%>
-            <% end %>
+      <div>
+        <% if @question.best_answer_id.nil? && current_member == @question.member %>
+          <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form| %>
+            <%= form.hidden_field :best_answer_id, value: answer.id %>
+            <%= form.submit 'ベストアンサーにする', class:"btn btn-warning", disabled: @question.best_answer_id.present?%>
           <% end %>
-         </div>
-    <% else %>
+        <% elsif @question.best_answer_id.present? && @question.best_answer_id == answer.id %>
+          <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答を解除しますか？"}) do |form| %>
+            <%= form.hidden_field :best_answer_id, value: nil %>
+            <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-danger"%>
+          <% end %>
+        <% end %>
+       </div>
       <div class="d-flex ml-auto">
         <p class="mt-2"><%= answer.created_at.strftime('%Y/%m/%d %H:%M') %></p>
         <%= link_to member_path(answer.member),class:"link-text" do %>
@@ -40,8 +38,9 @@
           <span><%= answer.member.name %></span>
         <% end %>
       </div>
+      <% if current_member.id == answer.member.id %>
       <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
-    <% end %>
+      <% end %>
   </div>
   <div class="mt-2 bottom-line border border-blck mb-5"></div>
 <!--返信一覧＋フォーム-->

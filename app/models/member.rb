@@ -95,7 +95,9 @@ class Member < ApplicationRecord
     question_likes_count + answer_likes_count
   end
 
-  def t_ranking
-    joins(:question_likes, :answer_likes, :member).group("question_id").select("count(question_likes.question_id as q_likes, answer_likes.question_id as a_likes, q_likes + a_likes, as t_likes members.*)").order("t_likes desc")
+  def self.t_ranking
+    self.joins(:question_likes, :answer_likes, :member).group("members_id").select("count(question_likes.question_id) as q_likes, + count(answer_likes.answer_id) as a_likes） as t_likes, members.*").order("t_likes desc")
   end
+
+
 end

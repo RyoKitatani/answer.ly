@@ -61,7 +61,7 @@ class Public::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:name, :email, :image, :introduction, :country_code, :experienced_coutnry)
+    params.require(:member).permit(:name, :email, :image, :introduction, :country_code, :experienced_coutnry, :is_deleted)
   end
 
 end

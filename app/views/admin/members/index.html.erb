@@ -1,7 +1,8 @@
 <div class="row">
-  <div class="col-md-10 offset-md-1 mt-5 pt-5">
-    <h2>メンバー一覧</h2>
-    <table class="table text-center mt-4">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold">メンバー一覧</h2>
+    <p class="mt-5">全メンバー：<%= @members.count %> 件</p>
+    <table class="table text-center mt-4 table-bordered">
       <thead>
         <tr class="text-center">
           <th>アイコン</th>
@@ -12,6 +13,7 @@
           <th>フォロワー</th>
           <th>質問いいね</th>
           <th>回答いいね</th>
+          <th style="width:10%;">会員ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +31,11 @@
           <th><%= member.followed.count %></th>
           <th><%= member.question_likes.count %></th>
           <th><%= member.answer_likes.count %></th>
+          <% if member.is_deleted == false %>
+            <td class="text-center btn-success font-weight-bold mt-3 mr-3", style="font-size:20px">会員</td>
+          <% else %>
+            <td class="text-center btn-danger font-weight-bold mt-3 mr-3", style="font-size:20px">退会</td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
