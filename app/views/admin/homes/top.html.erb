@@ -14,7 +14,7 @@
       <tbody>
         <% @questions_all.each do |question| %>
         <tr>
-          <% if question.question_status == false %>
+          <% if question.best_answer_id.nil? %>
             <th class="btn-info font-weight-bold mx-auto small text-center pt-3">受付中</th>
           <% else %>
            <th class="btn-danger font-weight-bold mx-auto small text-center pt-3">解決済み</th>
