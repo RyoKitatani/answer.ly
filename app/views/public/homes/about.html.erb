@@ -1,18 +1,15 @@
 <div class="container mb-5">
   <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <div class="box", id="about-top">
-        <div class="top-title">
-          <h1 class="display-3 font-weight-bold mt-5">
-            <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span></h1>
-          <h2 class="font-weight-bold mt-5 pt-3">Answer.lyは、留学を応援するQ&Aサイト</h2>
-        </div>
-        <div class="mt-5 mb-5">
-          <p>Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
-          <p>留学に対する不安を無くし、留学経験者・海外在住と繋がろう</p>
-          <p class="mt-5"><%= link_to "もっと詳しく >>", about_path %></p>
-        </div>
-        <div class="mt-2 bottom-line border border-blck mb-5"></div>
+    <div class="col-md-12">
+      <div class="box mt-5">
+        <%= link_to about_path do %>
+       <h1 class=" text-center display-2 font-weight-bold">
+          WELCOME TO
+          <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
+        </h1>
+       <% end %>
+      <div class="top-title">
+        <h2>製作背景</h2></h2>
       </div>
     </div>
   </div>

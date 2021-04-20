@@ -1,4 +1,4 @@
-<div class="questions-content">
+<div class="questions-content offset-md-2">
   <h3><%== question.content %></h3>
 </div>
 <div class="mt-5 d-flex">
@@ -7,7 +7,7 @@
       <%= render "public/questions/like", question: @question %>
     </div>
   <% else %>
-    <%= link_to_unless @question.best_answer_id, "編集する", edit_question_path, class:"btn btn-success ml-auto mr-2" %>
+    <%= link_to_unless @question.best_answer_id, "編集する", edit_question_path(question), class:"btn btn-success ml-auto mr-2" %>
     <%= link_to_unless @question.best_answer_id, "削除する", question_path(question), method: :delete, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
   <% end %>
 </div>

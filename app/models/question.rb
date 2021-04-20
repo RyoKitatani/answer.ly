@@ -8,6 +8,9 @@ class Question < ApplicationRecord
   has_many   :liked_members, through: :question_likes, source: :member
   has_many   :answers, dependent: :destroy
 
+  validates :title, presence: true, length:{minimum: 5, maximum: 50}
+  validates :content, presence: true, length:{minimum: 20}
+
   def question_liked_by?(member)
     question_likes.where(member_id: member.id).exists?
   end

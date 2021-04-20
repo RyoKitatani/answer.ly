@@ -17,9 +17,11 @@ class Member < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_member, through: :follower, source: :followed
   has_many :follower_member, through: :followed, source: :follower
-
-  validates :name, presence: true
-  validates :email, presence: true
+  
+  VALID_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_REGEX }
+  validates :name, format: { with: VALID_REGEX }, presence: true, uniqueness: true, length:{ maximum: 15, minimum: 3}
+  validates :email, presence: true, uniqueness: true
 
   attachment :image
 
@@ -93,10 +95,6 @@ class Member < ApplicationRecord
       answer_likes_count += answer.answer_likes.count
     end
     question_likes_count + answer_likes_count
-  end
-
-  def self.t_ranking
-    self.joins(:question_likes, :answer_likes, :member).group("members_id").select("count(question_likes.question_id) as q_likes, + count(answer_likes.answer_id) as a_likes） as t_likes, members.*").order("t_likes desc")
   end
 
   def self.order_by_answers
