@@ -35,7 +35,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
       t.string  :name, null: false, default: ""
       t.text    :introduction, default: ""
       t.string  :image_id
-      t.string  :living_country, default: ""
+      t.string  :country_code, default:"JP"
       t.string  :experienced_country, default: ""
       t.boolean :is_deleted, null: false, default: "false"
       t.timestamps null: false

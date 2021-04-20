@@ -17,7 +17,6 @@ Member.create!(
   email: "test1@gmail.com",
   password: 123456,
   introduction: "千葉県出身の大学2年生です！留学目指してます！",
-  living_country: "日本",
   experienced_country: "US",
   is_deleted: "false"
 )
@@ -27,7 +26,6 @@ Member.create!(
   email: "test2@gmail.com",
   password: 123456,
   introduction: "北海道出身のみきたかです。留学目指して勉強中です。",
-  living_country: "日本",
   experienced_country: "China",
   is_deleted: "false"
 )
@@ -37,7 +35,6 @@ Member.create!(
   email: "test3@gmail.com",
   password: 123456,
   introduction: "こんにちは",
-  living_country: "日本",
   experienced_country: "Korea",
   is_deleted: "false"
 )
@@ -47,7 +44,6 @@ Member.create!(
   email: "test4@gmail.com",
   password: 123456,
   introduction: "",
-  living_country: "",
   experienced_country: "",
   is_deleted: "false"
 )
@@ -57,7 +53,6 @@ Member.create!(
   email: "test5@gmail.com",
   password: 123456,
   introduction: "",
-  living_country: "",
   experienced_country: "",
   is_deleted: "false"
 )

@@ -17,9 +17,11 @@ class Member < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_member, through: :follower, source: :followed
   has_many :follower_member, through: :followed, source: :follower
-
-  validates :name, presence: true
-  validates :email, presence: true
+  
+  VALID_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_REGEX }
+  validates :name, format: { with: VALID_REGEX }, presence: true, uniqueness: true, length:{ maximum: 15, minimum: 3}
+  validates :email, presence: true, uniqueness: true
 
   attachment :image
 
@@ -95,5 +97,18 @@ class Member < ApplicationRecord
     question_likes_count + answer_likes_count
   end
 
-end
+  def self.order_by_answers
+    Member.select('members.*', 'count(member_id) AS answers')
+       .left_joins(:answers)
+       .group('members.id')
+       .order('answers DESC')
+  end
 
+  def self.order_by_question
+    Member.select('members.*', 'count(member_id) AS questions')
+       .left_joins(:questions)
+       .group('members.id')
+       .order('questions DESC')
+  end
+
+end

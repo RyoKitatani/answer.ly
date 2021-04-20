@@ -1,2 +1,60 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold"><%= @member.name %> さんのプロフィール編集</h2>
+    <table class="table mt-5 table-borderless">
+      <%= form_with model: @member, url:admin_member_path, method: :put, local: true do |f| %>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :ユーザー名 %></th>
+          <td><%= f.text_field :name, class:"form-control w-50"%></td>
+        </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.text_field :email, class:"form-control w-50" %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :アイコン %></th>
+        <td><%= attachment_image_tag @member, :image, size:"30x30", fallback:"no_image_icon.jpg"%>
+        <%= f.attachment_field :image %></td>
+      </div>
+      </tr>
+      <tr>
+
+      <div class="form-group">
+        <th><%= f.label :自己紹介 %></th>
+        <td><%= f.text_area :introduction, placeholder:"自己紹介を記入してださい。", class:"form-control w-100", rows:"5" %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :居住地 %></th>
+        <td><%= f.country_select :country_code %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :経験留学先 %></th>
+        <td><%= f.text_field :experienced_country, class:"form-control w-50" %></td>
+      </div>
+      </tr>
+      <div class="form-group">
+        <th><%= f.label :会員ステータス %></th>
+        <td><%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会" %>
+        </td>
+      </div>
+      <tr>
+        <div class="form-group">
+          <td></td>
+          <td><%= f.submit "保存する", class:"btn btn-primary w-25"%></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>

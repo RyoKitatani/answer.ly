@@ -2,6 +2,10 @@ class Admin::TagsController < ApplicationController
   before_action :admin_header_actions
 
   def index
+    @tags = Tag.all
+  end
+
+  def index
     @tag = Tag.new
   end
 

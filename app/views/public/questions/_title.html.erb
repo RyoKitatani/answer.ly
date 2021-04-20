@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class= "row">
-    <div class="col-md-7 pt-5 offset-md-1">
+    <div class="col-md-9 pt-5">
       <div class="d-flex">
         <% if question.best_answer_id.nil? %>
           <p class="btn-info font-weight-bold mt-3 mr-3", style="font-size:20px">受付中</p>
@@ -13,7 +13,7 @@
         <% end %>
         <h1 class="font-weight-bold pt-2"><%= question.title %></h1>
       </div>
-      <div class="mb-3 mt-5">
+      <div class="mb-3 mt-2">
         <span>投稿日:<%= question.created_at.strftime('%Y/%m/%d %H:%M') %></span>
         <span>更新日:<%= question.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
       </div>
@@ -23,12 +23,12 @@
     </div>
     <div class="col-md-3 pt-5">
       <div class="text-center">
-        <p class="btn btn-light">回答：<%= question.answers.count %></p>
-        <p class="btn btn-light">評価：<%= question.question_likes.count %></p>
-        <p class="btn btn-light">VIEW：<%= question.impressionist_count(:filter=>:session_hash) %></p>
+        <p class="col-sm-3 btn btn-light">回答：<%= question.answers.count %></p>
+        <p class="col-sm-3 btn btn-light">評価：<%= question.question_likes.count %></p>
+        <p class="col-sm-3 btn btn-light">PV：<%= question.impressionist_count(:filter=>:session_hash) %></p>
         <%= social_share_button_tag(question.title) %>
       </div>
-      <div class="mt-5 mb-5 pl-5">
+      <div class="mt-4 mb-5 text-center">
         <p class="font-weight-bold">
           <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %></p>
       </div>
