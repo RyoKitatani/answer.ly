@@ -4,22 +4,22 @@
 
 <div class="container">
   <div class="row mx-auto px-auto">
-   <div class="col-md-8 mt-5 ml-5">
+   <div class="col-md-8 mt-5">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-      <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">フォロー</a>
+      <li class="nav-item text-center bg-light" style="width:20%;">
+      <a class="nav-link link-text" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">フォロー</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link  active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">新着</a>
+      <li class="nav-item text-center bg-light" style="width:20%;">
+        <a class="nav-link link-text active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">新着</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#noanswer" role="tab" aria-controls="noanswer" aria-selected="false">未回答</a>
+      <li class="nav-item text-center bg-light" style="width:20%;">
+        <a class="nav-link link-text" id="contact-tab" data-toggle="tab" href="#noanswer" role="tab" aria-controls="noanswer" aria-selected="false">未回答</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" id="unanswered-tab" data-toggle="tab" href="#unanswered" role="tab" aria-controls="unanswered" aria-selected="false">未解決</a>
+      <li class="nav-item text-center bg-light" style="width:20%;">
+        <a class="nav-link link-text" id="unanswered-tab" data-toggle="tab" href="#unanswered" role="tab" aria-controls="unanswered" aria-selected="false">未解決</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" id="unanswered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-selected="false">解決済み</a>
+      <li class="nav-item text-center bg-light" style="width:20%;">
+        <a class="nav-link link-text" id="unanswered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-selected="false">解決済み</a>
       </li>
     </ul>
    <div class="tab-content" id="myTabContent">
@@ -74,7 +74,6 @@
             <% end %>
             <% end %>
           <% end %>
-         <%= paginate @questions %>
        </div>
        <% end %>
      </div>
@@ -132,7 +131,6 @@
             </div>
             <% end %>
           <% end %>
-         <%= paginate @questions %>
        </div>
      </div>
      <div class="tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="unanswered-tab">
@@ -187,7 +185,7 @@
      </div>
      <div class="tab-pane fade" id="answered" role="tabpanel" aria-labelledby="answered-tab">
        <div class="questions-index">
-       <% @questions.each do |question| %>
+       <% @question_all.each do |question| %>
            <% unless question.best_answer_id.nil? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
@@ -236,13 +234,14 @@
        </div>
      </div>
    </div>
-
-
   </div>
    <div class="col-md-3 ml-5 mt-5">
-     <div class="about-box mb-3 mt-5 border border-primary rounded">
+     <div class="about-box mb-3 text-center">
        <%= link_to about_path do %>
-       <p>Answer.lyについて詳しく知りたい方はこちらへ。</p>
+       <h1 class="display-3 font-weight-bold">
+          HOW To
+          <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
+        </h1>
        <% end %>
      </div>
      <div class="tag-index mb-5 mt-5">

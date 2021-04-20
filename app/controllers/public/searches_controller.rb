@@ -29,6 +29,16 @@ class Public::SearchesController < ApplicationController
       else
         Question.where('title LIKE ?', '%'+content+'%')
       end
+    elsif model == "member"
+      if method == "perfect"
+        Member.where(name: content)
+      elsif method == "forward"
+        @member = Member.where("name LIKE?", content+'%')
+      elsif method == "backward"
+        @member = Member.where("name LIKE?", '%'+content)
+      else
+        Member.where('name LIKE ?', '%'+content+'%')
+      end
     end
   end
 end

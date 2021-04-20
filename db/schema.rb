@@ -122,12 +122,11 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.string "name", default: "", null: false
     t.text "introduction", default: ""
     t.string "image_id"
-    t.string "living_country", default: ""
+    t.string "country_code", default: "JP"
     t.string "experienced_country", default: ""
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "country_code", default: "JP"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

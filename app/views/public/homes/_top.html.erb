@@ -3,22 +3,23 @@
 <% unless member_signed_in? || admin_signed_in? %>
 <div class="top-box">
   <div class="container">
-    <div class="row pt-5 pb-5">
+    <div class="row pb-5">
       <div class="col-md-7 pt-5 mt-5">
         <div class="top-title">
           <p>留学したい人を応援するQ&Aサイト</p>
           <h1 class="display-1 font-weight-bold">
-            <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span></h1>
-          <h2 class="font-weight-bold mt-5 pt-3 typ">留学の不安を取り除こう</h2>
+            <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
+          </h1>
+          <h2 class="font-weight-bold mt-2 pt-3 typ">留学の不安を取り除こう</h2>
         </div>
-        <div class="mt-5 mb-5">
+        <div class="mt-2">
           <p class="typ">Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
           <p class="typ">留学に対する不安を無くし、留学経験者・海外在住から背中を押してもらう。</p>
           <p class="mt-5"><%= link_to "もっと詳しく >>", about_path, class:"text-white" %></p>
         </div>
         <div class="bottom-line border border-blck"></div>
       </div>
-      <div class="col-md-4 offset-md-1 mt-5 pt-5">
+      <div class="col-md-4 offset-md-1 pt-5">
         <div class="registration-box w-100 pt-4 mt-5 d-flex mx-auto text-align-center sns-btns" style="height:50px">
           <%= link_to new_member_registration_path, class:"sns-btn btn btn-flat" do %>
             <span>メールアドレスで登録する</span>
@@ -29,27 +30,22 @@
           <p class="font-weight-boldte text-center text-white">SNSアカウントで登録する</p>
         </div>
         <div class="sns-title">
-      <div class="sns-btns pt-3">
-        <%= link_to member_line_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
-        <span><i class="fab fa-line font-weight-bold"> LINE</i></span>
-        <% end %>
-      </div>
-      <div class="sns-btns mt-2 pt-2">
+      <div class="sns-btns mt-4 pt-2">
         <%= link_to "#", class:"sns-btn btn btn-flat" do %>
         <span><i class="fab fa-facebook font-weight-bold"> Facebook</i></span>
         <% end %>
       </div>
-      <div class="sns-btns mt-2 pt-2">
+      <div class="sns-btns mt-4 pt-2">
         <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
         <span><i class="fab fa-twitter font-weight-bold"> Twitter</i></span>
         <% end %>
       </div>
-      <div class="sns-btns mt-2 pt-2">
+      <div class="sns-btns mt-4 pt-2">
         <%= link_to "#", class:"sns-btn btn btn-flat" do %>
         <span><i class="fab fa-instagram font-weight-bold"> Instagram</i></span>
         <% end %>
       </div>
-      <div class="sns-btns mt-2 pt-2">
+      <div class="sns-btns mt-4 pt-2">
          <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
            <span><i class="fab fa-google font-weight-bold text-black"> Google</i></span>
          <% end %>

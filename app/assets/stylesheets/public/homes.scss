@@ -4,11 +4,32 @@
 
 
 .top-box {
-  background-color: #000022;
+  // background-color: #000022;
+  background-attachment: fixed;
+  background-image: image-url("study3.jpeg");
+  background-size: cover;
   color: #fff;
   letter-spacing: 3px;
   padding-top: 70px;
   padding-bottom: 140px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .top-box::before {
+  content: '';
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .top-title p {

@@ -1,29 +1,27 @@
-<div calss="row">
-  <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
-    <div class="pt-2 mb-3">
-      <span><%= link_to root_path do %>トップ<% end %></span>
-      >
-      <span>タグ一覧</span>
-    </div>
-    <h2>タグ一覧</h2>
+<div class="row">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold">タグ一覧</h2>
     <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
     <div class="text-left ml-3 mb-2 mt-3 pt-3">
-          <%= form_with model: @tag, url:admin_tags_path, method: :post, local: true do |f| %>
-           <%= f.label :タグ名%>
-           <%= f.text_field :name, placeholder:"ここにタグ名を入力してください。", class:"w-50"%>
-           <%= f.submit "作成する", class:"btn btn-success" %>
-          <% end %>
+      <%= form_with model: @tag, url:admin_tags_path, method: :post, local: true do |f| %>
+        <div class="row form-group">
+          <%= f.label :タグ名%>
+          <%= f.text_field :name, placeholder:"ここにタグ名を入力してください。", class:"form-control w-50 ml-3"%>
+          <%= f.submit "作成する", class:"btn btn-success" %>
         </div>
+      <% end %>
+    </div>
     <div class="tag-list d-flex flex-wrap">
-      <% @tags.each do |tag| %>
-      <div class="tag-items col-md-2 text-left border rounded mx-auto mb-2 mt-3 pt-3">
+      <% @tag_all.each do |tag| %>
+      <div class="tag-items col-md-3 text-left border rounded mx-auto mb-2 mt-3 pt-3">
         <h2 class="tag-title"><%= tag.name %></h2>
         <p><%= tag.questions.count %>投稿</p>
-        <span class="d-flex ml-3">
+        <span class="d-flex ml-3 pb-2">
           <%= link_to "編集", edit_admin_tag_path(tag), class:"btn btn-success mr-2"%>
           <%= link_to "削除", admin_tag_path(tag), method: :delete, class:"btn btn-danger", "data-confirm" => "削除してよろしいでしょうか？"%>
         </span>
       </div>
       <% end %>
     </div>
+  </div>
 </div>

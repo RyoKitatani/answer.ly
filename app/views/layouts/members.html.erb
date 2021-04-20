@@ -22,12 +22,14 @@
     </header>
     <main>
       <div class="container">
+        <div class="col-md-10 offset-md-1 mt-3">
         <% flash.each do |key, value| %>
           <p class="alert alert-<%= key %>">
             <%= sanitize value, tags: %w(br) %>
           </p>
         <% end %>
         <%= yield %>
+        </div>
       </div>
     </main>
     <footer>
