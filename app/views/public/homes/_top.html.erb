@@ -31,18 +31,13 @@
         </div>
         <div class="sns-title">
       <div class="sns-btns mt-4 pt-2">
-        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
+        <%= link_to member_facebook_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
         <span><i class="fab fa-facebook font-weight-bold"> Facebook</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2">
         <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flat" do %>
         <span><i class="fab fa-twitter font-weight-bold"> Twitter</i></span>
-        <% end %>
-      </div>
-      <div class="sns-btns mt-4 pt-2">
-        <%= link_to "#", class:"sns-btn btn btn-flat" do %>
-        <span><i class="fab fa-instagram font-weight-bold"> Instagram</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2">

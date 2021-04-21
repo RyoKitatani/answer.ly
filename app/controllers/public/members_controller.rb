@@ -22,7 +22,6 @@ class Public::MembersController < ApplicationController
     end
 
     @total_likes = @question_likes_count + @answer_likes_count
-
   end
 
   def edit
@@ -55,7 +54,7 @@ class Public::MembersController < ApplicationController
   def guest_sign_in
     member = Member.find_or_create_by!(email:"guest@gmail.com") do |member|
       member.password = SecureRandom.urlsafe_base64
-      member.name = "ゲストユーザー"
+      member.name = "guest user"
     end
     sign_in member
     redirect_to root_path, noite: "ゲストユーザーとしてログインしました。"

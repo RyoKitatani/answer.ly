@@ -13,12 +13,12 @@
     </div>
     <div class="sns-title">
       <div class="sns-btns mt-3 pt-3">
-        <%= link_to "", class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
+        <%= link_to member_facebook_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
         <span><i class="fab fa-facebook font-weight-bold">Facebookアカウントで登録</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-3">
-        <%= link_to member_twitter_omniauth_callback_path , class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
+        <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
         <span><i class="fab fa-twitter font-weight-bold">Twitterアカウントで登録</i></span>
         <% end %>
       </div>
