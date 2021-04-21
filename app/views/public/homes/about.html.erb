@@ -1,15 +1,61 @@
-<div class="container mb-5">
+<div class="about-box-1">
   <div class="row">
     <div class="col-md-12">
-      <div class="box mt-5">
+      <div class="welcome-box">
         <%= link_to about_path do %>
-       <h1 class=" text-center display-2 font-weight-bold">
+       <h1 class="text-center display-2 font-weight-bold ">
           WELCOME TO
           <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
         </h1>
        <% end %>
-      <div class="top-title">
-        <h2>製作背景</h2></h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center about-content-1 mt-5 mb-5">
+      <h1 class="font-weight-bold pt-5 mb-5">Answer.lyの特徴と使い方</h1>
+      <h3 class="mt-5 mb-3">留学したい、気になってる人のためのQ&Aサイト</h3>
+      <p>Answer.lyは、留学の「<strong>不安</strong>を取り除く」をコンセプトにした、留学専門Q&Aサイトです。<br><br>
+      　「初めての留学は、知らないことが多く不安だった。」<br>
+      　「先にその情報知っていたらより良い留学生活が過ごせたかも」<br>
+      　「留学に向けてどう勉強すればいいのか」 <br> <br>
+      　留学という挑戦をしている人がもっと安心して留学が出来るように<br>
+      　留学に役立つ情報が飛び交う情報サイトになります。
+      </p>
+    </div>
+  </div>
+</div>
+<div class="about-box-2">
+  <h1 class="font-weight-bold pt-5 mb-5 display-3">Answer.lyの特徴と使い方</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex text-center about-content-1 mt-5 mb-5">
+      <div class="col-md-7">
+        lnk
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "top-page.png",:size => "600x300", alt:"Answer.lyロゴ" %>
+      </div>
+    </div>
+    <div class="col-md-12 d-flex text-center about-content-2 mt-5 mb-5">
+      <div class="col-md-7">
+        lnk
+      </div>
+      <div class="col-md-5">
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="about-box-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="welcome-box-2 rounded text-center pt-5 pb-5">
+        <h3>留学に関する疑問を質問しよう。</h3>
+        <div class="mt-5"><%= link_to "トップページへ", root_path, class:"btn btn-lg btn-outline-primary", 'data-turbolinks': false %></div>
       </div>
     </div>
   </div>
