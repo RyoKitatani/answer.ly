@@ -1,15 +1,15 @@
-<div calss="row">
-  <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
-    <div class="pt-2 mb-3">
-      <span><%= link_to root_path do %>トップ<% end %></span>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mb-3">
+      <span class="root-link"><%= link_to root_path do %>トップ<% end %></span>
       >
-      <span><%= link_to "#" do %>タグ一覧<% end %></span>
-    </div>
-    <h2>タグ一覧</h2>
+      <span class="root-link"><%= link_to "#" do %>タグ一覧<% end %></span>
+  </div>
+</div>
+    <h2 class="mt-5 font-weight-bold">タグ一覧</h2>
     <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
     <div class="tag-list d-flex flex-wrap">
     <% @tags.each do |tag| %>
-    <div class="tag-items col-md-2 text-left border rounded ml-3 mb-2 mt-3 pt-3">
+    <div class="tag-items col-md-2 col-sm-2 text-left border rounded mr-5 mb-2 mt-3 pt-3">
       <%= link_to tag_path(tag) do %>
         <h2 class="tag-title"><%= tag.name %></h2>
       <% end %>

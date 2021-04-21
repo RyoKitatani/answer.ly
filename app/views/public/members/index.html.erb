@@ -1,21 +1,28 @@
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mb-3">
+      <span class="root-link"><%= link_to root_path do %>Answer.lyトップ<% end %></span>
+      >
+      <span class="root-link"><%= link_to "#" do %>ランキング一覧<% end %></span>
+  </div>
+</div>
 <div class="row mb-5">
   <div class="col-xl-12 col-md-12">
     <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ランキング一覧</i></h4>
     <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link active link-text" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">新着</a>
+        <a class="nav-link active link-text font-weight-bold" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">新着</a>
       </li>
       <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">質問数ランキング</a>
+        <a class="nav-link link-text font-weight-bold" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">質問数</a>
       </li>
       <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true">回答数ランキング</a>
+        <a class="nav-link link-text font-weight-bold" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true">回答数</a>
       </li>
       <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text" id="qlikes-tab" data-toggle="tab" href="#qlikes" role="tab" aria-controls="qlikes" aria-selected="false">質問いいねランキング</a>
+        <a class="nav-link link-text font-weight-bold" id="qlikes-tab" data-toggle="tab" href="#qlikes" role="tab" aria-controls="qlikes" aria-selected="false">質問いいね</a>
       </li>
       <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text" id="alikes-tab" data-toggle="tab" href="#alikes" role="tab" aria-controls="alikes" aria-selected="false">回答いいねランキング</a>
+        <a class="nav-link link-text font-weight-bold" id="alikes-tab" data-toggle="tab" href="#alikes" role="tab" aria-controls="alikes" aria-selected="false">回答いいね</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -223,28 +230,7 @@
                 <h5><%=rank.cnt%></h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
-              <div class="col-md-6 border-right">
-                <p class="small border border-primary rounded">回答数</p>
-                <h5>
-                  <%= link_to member_path(rank) do %>
-                   <%= rank.answers.count %>
-                  <% end %>
-                </h5>
-              </div>
-            </div>
-            <div class="col-md-4 pl-0 pr-0 ml-0">
-              <% if member_signed_in? %>
-                  <% unless current_member.name == rank.name %>
-                    <% if current_member.following?(rank) %>
-                      <%= link_to 'フォロー外す', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-                    <% else %>
-                      <%= link_to "フォローする", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "マイページへ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-                  <% end %>
-                <% end %>
+            <div class="col-md-3 d-flex text-center">
             </div>
           </div>
         <% end %>
@@ -267,34 +253,6 @@
                 </div>
               </div>
               <div class="col-md-3 border-right d-flex text-center">
-                <div class="col-md-6 border-right">
-                  <p class="small border border-primary rounded">フォロー</p>
-                  <h5>
-                    <%= link_to connections_member_path(rank) do %>
-                    <% end %>
-                  </h5>
-                </div>
-                <div class="col-md-6 ml-2">
-                  <p class="small border border-primary rounded">フォロワー</p>
-                  <h5>
-                    <%= link_to connections_member_path(rank) do %>
-                      <!--<= rank.followed.count %>-->
-                    <% end %>
-                  </h5>
-                </div>
-              </div>
-              <div class="col-md-4 pl-0 pr-0 ml-0">
-                <% if member_signed_in? %>
-                    <% unless current_member.name == rank.name %>
-                      <% if current_member.following?(rank) %>
-                        <%= link_to 'フォロー外す', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-                      <% else %>
-                        <%= link_to "フォローする", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to "マイページへ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-                    <% end %>
-                  <% end %>
               </div>
             </div>
           <% end %>
