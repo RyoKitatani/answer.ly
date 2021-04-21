@@ -2,17 +2,17 @@
   <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
     <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
       <% if question.best_answer_id.nil? %>
-        <p class="btn-info font-weight-bold w-75 mx-auto small">受付中</p>
+        <p class="btn-info font-weight-bold w-100 mx-auto small">受付中</p>
       <% else %>
-        <p class="btn-danger font-weight-bold w-75 mx-auto small">解決済み</p>
+        <p class="btn-danger font-weight-bold w-100 mx-auto small">解決済み</p>
       <% end %>
       <div class="border rounded pt-2">
-        <h4>回答<br /><%= question.answers.count %></h4>
+        <h5><i class="fas fa-comment-dots"> <%= question.answers.count %></i></h5>
       </div>
     </div>
     <div class="col-md-10">
       <div class="row pt-2">
-        <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text" do %>
+        <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text",'data-turbolinks': false do %>
           <h2 class="font-weight-bold"><%= question.title %></h2>
         <% end %>
       </div>
@@ -28,16 +28,12 @@
         <% end %>
       </div>
       <div class="row d-flex pt-3 small">
-        <div>
-        <p class="mt-3">評価: <%=question.question_likes.count %></p>
-        </div>
-        <div class="ml-auto pr-1">
+        <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
+        <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
         <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
-          <span class="mt-3"><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%></span>
-          <span class="mt-5 small"><%= question.member.name %></span>
+          <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
         <% end %>
-        <p class="ml-1 mr-1 small text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
-        </div>
+        <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
       </div>
     </div>
   </div>
