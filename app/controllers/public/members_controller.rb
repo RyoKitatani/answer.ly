@@ -54,7 +54,7 @@ class Public::MembersController < ApplicationController
   def guest_sign_in
     member = Member.find_or_create_by!(email:"guest@gmail.com") do |member|
       member.password = SecureRandom.urlsafe_base64
-      member.name = "guest user"
+      member.name = "guestaccount"
     end
     sign_in member
     redirect_to root_path, noite: "ゲストユーザーとしてログインしました。"
