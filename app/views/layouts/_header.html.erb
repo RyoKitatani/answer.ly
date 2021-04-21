@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="col-md-10 offset-md-1 d-flex mx-auto">
+  <div class="col-md-10 d-flex offset-md-1">
     <% if admin_signed_in? %>
     <a class="navbar-brand" href="/admin", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
     <% else %>
     <a class="navbar-brand" href="/", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
     <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto mr-4 align-items-center">
+      <ul class="navbar-nav ml-auto mr-4">
         <div class="btn text-light mr-2">
           <li class="nav-item">
             <%= render 'public/searches/form', tag: @tag, question: @question %>
@@ -84,15 +84,16 @@
                 <i class="fas fa-sign-in-alt">ログイン</i>
               <% end %>
             </li>
-          </div>
+        </div>
           <div class="header-item btn btn-lg">
             <li class="nav-item">
               <%= link_to new_member_registration_path do %>
                 <i class="fas fa-user-plus"> 新規会員登録</i>
               <% end %>
             </li>
-          </div>
+        </div>
         <% end %>
+        </div>
       </ul>
     </div>
   </div>

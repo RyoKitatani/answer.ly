@@ -18,7 +18,9 @@
         <span>更新日:<%= question.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
       </div>
       <% question.tags.each do |tag| %>
-        <p class="btn btn-outline-primary ml-1", style="font-size:2px;"><%= tag.name %></p>
+        <%= link_to tag_path(tag) do %>
+          <p class="btn btn-outline-primary ml-1", style="font-size:2px;"><%= tag.name %></p>
+        <% end %>
       <% end %>
     </div>
     <div class="col-md-3 pt-5">
