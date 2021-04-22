@@ -30,11 +30,10 @@ class Public::SessionsController < Devise::SessionsController
   def reject_deleted_member
     @member = Member.find_by(email: params[:member][:email].downcase)
     if @member
-      if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == false))
+      if (@member.valid_password?(params[:member][:password]) == (@member.is_deleted == true))
         flash[:danger] = "退会済みのためログインできません。"
         redirect_to new_member_session_path
       end
     end
   end
-
 end

@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
   has_many :question_tags, dependent: :destroy
   has_many :questions, through: :question_tags, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length:{ maximum: 15}
 
   def self.order_by_questions
     Tag.select('tags.*', 'count(question_id) AS questions')

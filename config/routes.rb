@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/connections" => "members#connection"
     resources :questions, only:[:index, :show, :edit, :update]
     resources :tags, only:[:index, :create, :edit, :update, :destroy]
+    resources :contacts, only:[:index]
   end
 
   scope module: :public do

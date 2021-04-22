@@ -10,15 +10,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto mr-4">
-        <div class="btn text-light mr-2">
+        <div class="btn text-light">
           <li class="nav-item">
             <%= render 'public/searches/form', tag: @tag, question: @question %>
           </li>
         </div>
         <% unless admin_signed_in? %>
-        <div class="header-item question-new btn btn-success mr-2">
+        <div class="header-item question-new btn btn-success">
           <%= link_to new_question_path do %>
-            <i class="fas fa-edit"> 質問する</i>
+            <i class="fas fa-edit pb-0"> 質問する</i>
           <% end %>
         </div>
         <% end %>
@@ -39,6 +39,14 @@
         </div>
         <% elsif admin_signed_in? %>
         <div class="row">
+          <div class="header-item btn btn-lg">
+            <li class="nav-item">
+              <%= link_to admin_contacts_path do %>
+                <span>問い合わせ</span>
+                <span class="text-center"><%= @contacts.count %></span>
+              <% end %>
+            </li>
+          </div>
           <div class="header-item btn btn-lg">
             <li class="nav-item">
               <%= link_to admin_members_path do %>

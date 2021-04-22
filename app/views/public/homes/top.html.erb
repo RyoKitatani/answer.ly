@@ -82,7 +82,7 @@
      <div class="tab-pane fade" id="noanswer" role="tabpanel" aria-labelledby="noanswer-tab">
        <div class="questions-index">
          <% @questions.each do |question| %>
-           <% unless question.answers.any? && question.best_answer_id.nil? %>
+           <% unless question.answers.any? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
