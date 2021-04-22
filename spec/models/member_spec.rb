@@ -7,8 +7,8 @@ RSpec.describe Member, type: :model do
       expect(FactoryBot.build(:member)).to be_valid
     end
     
-    context "空白のバリデーション" do
-      it "名前が空白" do
+    context "空白のバリデーショント" do
+      it "名前が空欄" do
         member = Member.new(name:"", email:Faker::Internet.email, password:"password", password_confirmation:"password")
         expect(member).to be_invalid
       end
@@ -31,12 +31,12 @@ RSpec.describe Member, type: :model do
     
     context "データの一致" do
       it "パスワードの一致" do
-        member = Member.new(name:Faker::Artist.name, email:Faker::Internet.email, password:"password", password_confirmation:"password")
+        member = Member.new(name:Faker::Lorem.characters(number:12), email:Faker::Internet.email, password:"password", password_confirmation:"password")
         expect(member).to be_valid
       end
       
       it "パスワードの不一致" do
-        member = Member.new(name:Faker::Artist.name, email:Faker::Internet.email, password:"password", password_confirmation:"passward")
+        member = Member.new(name:Faker::Lorem.characters(number:12), email:Faker::Internet.email, password:"password", password_confirmation:"passward")
         expect(member).to be_invalid
       end
       
@@ -90,6 +90,44 @@ RSpec.describe Member, type: :model do
         expect(member).to be_invalid
       end
     end
-    
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'questionモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:questions).macro).to eq :has_many
+      end
+    end
+    
+    context 'question_likeモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:question_likes).macro).to eq :has_many
+      end
+    end
+    
+    context 'answersモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:answers).macro).to eq :has_many
+      end
+    end
+    
+    context 'answer_likeモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:answer_likes).macro).to eq :has_many
+      end
+    end
+    
+    context 'responseモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:responses).macro).to eq :has_many
+      end
+    end
+    
+    context 'questionモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Member.reflect_on_association(:questions).macro).to eq :has_many
+      end
+    end
+  end 
+  
 end
