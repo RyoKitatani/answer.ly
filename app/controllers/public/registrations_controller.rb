@@ -12,8 +12,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    WelcomeMailer.with(member: @member).welcome_email.deliver_later
     super
+    WelcomeMailer.with(member: @member).welcome_email.deliver_later unless resource.invalid?
   end
 
   # GET /resource/edit
