@@ -33,13 +33,13 @@ RSpec.describe Member, type: :model do
     context "データの一致" do
       it "パスワードの一致" do
         member.password = "123456"
-        member.password_confirmation = "123456" 
+        member.password_confirmation = "123456"
         is_expected.to eq true
       end
 
       it "パスワードの不一致" do
         member.password = "123456"
-        member.password_confirmation = "123457" 
+        member.password_confirmation = "123457"
         is_expected.to eq false
       end
 
@@ -87,7 +87,7 @@ RSpec.describe Member, type: :model do
         member.name = "TaroYmada 1"
         is_expected.to eq  false
       end
-      
+
       it "日本語の入力不可(半角)" do
         member.name = "Taro山田1"
         is_expected.to eq  false

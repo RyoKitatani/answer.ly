@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
     @questions = Question.all
     @members = Member.all
     @tag_all = Tag.all.order_by_questions
+    @contacts = Contact.all
   end
 
   def member_header_actions

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold">お問い合わせ一覧</h2>
+    <p class="mt-5">全質問：<%= @contacts.count %> 件</p>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="text-center">
+          <th style="width:5%;">名前</th>
+          <th style="width:5%;">メールアドレス</th>
+          <th style="width:18%;">タイトル</th>
+          <th style="width:15%;">お問い合わせ詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts_all.each do |contact| %>
+        <tr>
+          <td>
+            <%= contact.name %>
+          </td>
+          <td class="text-center">
+            <%= contact.email %>
+          </td>
+          <td class="text-center">
+            <%= contact.title %>
+          </td>
+          <td>
+            <%= contact.message %>
+          </td>
+        </tr>
+        <% end %>
+        <tr>
+        <td colspan="5"><%= paginate @contacts_all %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
