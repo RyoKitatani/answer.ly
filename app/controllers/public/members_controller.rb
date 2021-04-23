@@ -26,6 +26,9 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
+    if @member != current_member
+      redirect_to request.referer
+    end
   end
 
   def update
