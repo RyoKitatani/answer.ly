@@ -23,19 +23,19 @@ RSpec.describe "AfterLogins", type: :system do
       it 'Anwer.lyロゴが表示される' do
         expect(page).to have_link "", href: root_path
       end
-      
+
       it '検索フォームが表示される' do
         expect(page).to have_field 'content'
       end
-      
+
       it '検索するボタンが表示される' do
         expect(page).to have_button '検索する'
       end
-      
+
       it 'ログアウトのリンクが表示される' do
         expect(page).to have_link "", href: destroy_member_session_path
       end
-      
+
       it '質問するのリンクが表示される' do
         expect(page).to have_link "", href: new_question_path
       end
