@@ -1,4 +1,5 @@
 class Public::ContactsController < ApplicationController
+  
   def new
     @contact = Contact.new
   end
@@ -10,8 +11,7 @@ class Public::ContactsController < ApplicationController
        flash[:success] = "お問い合わせが完了しました。"
        redirect_to request.referer
     else
-      flash[:danger] = "お問い合わせが上手くできませんでした。もう一度お試しください。"
-      render new
+      render :new
     end
   end
 

@@ -8,4 +8,4 @@ $(document).on 'turbolinks:load', ->
   $('[data-provider1="summernote"]').each ->
     $(this).summernote
       placeholder: 'あなたの回答で質問者の悩みを解決しましょう。'
-      height: 50
+      height: 100

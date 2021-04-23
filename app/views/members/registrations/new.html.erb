@@ -33,7 +33,7 @@
     <p class="font-weight-bold text-center">メールアドレスで登録する</p>
     <div class="bottom-line border border-blck"></div>
     <%= form_with model:@member, url: registration_path(resource_name), local: true do |f| %>
-    <%= render "members/shared/error_messages", resource: resource %>
+    <%= render "layouts/error_messages", resource:resource %>
     <table>
       <tobody>
         <tr>

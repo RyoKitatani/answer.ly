@@ -1,6 +1,7 @@
 class Public::AnswersController < ApplicationController
   before_action :member_header_actions
   before_action :authenticate_member!
+  layout 'homes'
 
   def create
     @question = Question.find(params[:question_id])
@@ -14,8 +15,7 @@ class Public::AnswersController < ApplicationController
       @question = Question.find(params[:question_id])
       @tags = Tag.all.order(created_at: :desc)
       @response = Response.new
-      flash[:danger] = "回答を入力してください"
-      redirect_to question_path(@question)
+      render "public/questions/show"
     end
   end
 

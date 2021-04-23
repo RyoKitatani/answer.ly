@@ -42,7 +42,7 @@ $(function () {
     if(counter == 0){
       $("#countUp").text("0");
     }
-    if(counter >= 10){
+    if(counter >= 500){
       $("#countUp").css("color","red");
     } else {
       $("#countUp").css("color","#666");

@@ -10,8 +10,6 @@
   <%= render "public/questions/title", question: @question %>
 </div>
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-9 mt-5 mb-5">
@@ -19,16 +17,17 @@
       <div>
         <%= render "public/questions/show", question: @question %>
       </div>
-      <div class="mt-2 bottom-line border border-blck"></div>
+      <div class="mt-2 bottom-line border border-dark"></div>
       <!--ここまで-->
 
    <!--回答一覧/フォーム表示 + コメント一覧/フォーム-->
-      <div class="mt-2">
-        <h3>回答: <%= @question.answers.count %>件</h3>
-        <div class="answers-box">
+      <div class="mt-5">
+        <h2 class="font-weight-bold">回答: <%= @question.answers.count %>件</h2>
         <% if @question.answers.exists? %>
           <% @question.answers.each do |answer| %>
+          <div class="answers-box mb-4">
             <%= render "public/answers/list", response: @response, answer: answer %>
+          </div>
           <% end %>
         <% else %>
           <div class="mt-5 mb-5 rounded">
@@ -41,15 +40,14 @@
             </div>
           </div>
         <% end %>
-        </div>
-        <div class="row mt-5">
-          <%= render "public/answers/new", question: @question, member: @member , answer: @answer %>
-        </div>
+      <div class="mt-2 bottom-line border border-dark mb-3"></div>
+      <div class="row mt-5">
+        <%= render "public/answers/new", question: @question, member: @member , answer: @answer %>
+      </div>
     </div>
       <!--ここまで-->
-
     </div>
-
+ 
     <!--質問ユーザープロフィール表示-->
     <% if member_signed_in?%>
     <div class="col-md-3">
@@ -111,12 +109,10 @@
       <div class="ranking-index mb-5">
        <%= render "public/members/list", members: @members %>
      </div>
-      <% end %> 
+      <% end %>
     </div>
     <!--ここまで-->
-
   </div>
-
 </div>
 
 

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root "homes#top"
     get "/about" => "homes#about"
+    get "/questions" => "questions#new"
+    get "/contacts" => "contacts#new"
+    get "questions/:id/answers" => "questions#show"
     patch "/members/withdraw" => "members#withdraw"
     patch "/questions/best_answer" => "answers#bestanswer"
     get "/questions/tag" => "members#tag"
