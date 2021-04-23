@@ -16,9 +16,9 @@
           </li>
         </div>
         <% unless admin_signed_in? %>
-        <div class="header-item question-new btn btn-success">
+        <div class="header-item question-new btn btn-success pt-2 mr-2">
           <%= link_to new_question_path, 'data-turbolinks': false do %>
-            <i class="fas fa-edit pb-0"> 質問する</i>
+            <i class="fas fa-edit"> 質問する</i>
           <% end %>
         </div>
         <% end %>
@@ -30,7 +30,7 @@
             <% end %>
           </li>
         </div>
-        <div class="header-item btn btn-lg">
+        <div class="header-item btn btn-lg mr-2">
           <li class="nav-item">
             <%= link_to destroy_member_session_path, method: :delete do %>
               <i class="fas fa-sign-out-alt"> ログアウト</i>
@@ -39,7 +39,7 @@
         </div>
         <% elsif admin_signed_in? %>
         <div class="row">
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to admin_contacts_path do %>
                 <span>問い合わせ</span>
@@ -47,7 +47,7 @@
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to admin_members_path do %>
                 <span>ユーザー数</span>
@@ -55,7 +55,7 @@
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to admin_path do %>
                 <span>質問投稿数</span>
@@ -63,7 +63,7 @@
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to admin_tags_path do %>
                 <span>タグ数</span>
@@ -71,7 +71,7 @@
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item mr-5">
               <%= link_to destroy_admin_session_path, method: :delete do %>
                 <i class="fas fa-sign-out-alt"> ログアウト</i>
@@ -79,21 +79,21 @@
             </li>
           </div>
         <% else %>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to guest_sign_in_path, method: :post do %>
                 <i class="fas fa-user-circle"> ゲストログイン</i>
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to new_member_session_path do %>
                 <i class="fas fa-sign-in-alt">ログイン</i>
               <% end %>
             </li>
         </div>
-          <div class="header-item btn btn-lg">
+          <div class="header-item btn btn-lg mr-2">
             <li class="nav-item">
               <%= link_to new_member_registration_path do %>
                 <i class="fas fa-user-plus"> 新規会員登録</i>

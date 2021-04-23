@@ -1,7 +1,7 @@
 class Public::AnswerLikesController < ApplicationController
   before_action :authenticate_member!
 
-  def create
+  def createcd answerly
     @answer = Answer.find(params[:answer_id])
     @answer_like = current_member.answer_likes.new(answer_id: @answer.id)
     @answer_like.save
