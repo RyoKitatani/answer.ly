@@ -51,39 +51,5 @@ RSpec.describe "AfterLogins", type: :system do
       end
     end
 
-    describe '質問投稿のテスト' do
-      before do
-        visit new_question_path
-      end
-
-      context '表示の確認' do
-        it 'URLが正しい' do
-          expect(current_path).to eq new_question_path
-        end
-
-        it 'タイトルフォームが表示される' do
-          expect(page).to have_field 'question[title]'
-        end
-
-        it '質問内容フォームが表示される' do
-          expect(page).to have_field 'question[content]'
-        end
-
-        it '質問するボタンが表示されている' do
-          expect(page).to have_button '質問する'
-        end
-      end
-
-      context '投稿処理のテスト' do
-        it '投稿後のリダイレクト先は正しいか' do
-          fill_in 'question[title]', with: Faker::Lorem.characters(number: 5)
-          fill_in 'question[content]', with: Faker::Lorem.characters(number: 20)
-          click_button '質問する'
-          expect(current_path).to eq question_path(id:1)
-        end
-      end
-    end
-
-
   end
 end
