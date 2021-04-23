@@ -1,4 +1,5 @@
 class Public::AnswerLikesController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     @answer = Answer.find(params[:answer_id])

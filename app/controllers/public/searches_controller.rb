@@ -1,5 +1,5 @@
 class Public::SearchesController < ApplicationController
-
+  
   def search
     @model = params["model"]
     @method = params["method"]

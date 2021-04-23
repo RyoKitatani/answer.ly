@@ -17,7 +17,7 @@
         </div>
         <% unless admin_signed_in? %>
         <div class="header-item question-new btn btn-success">
-          <%= link_to new_question_path do %>
+          <%= link_to new_question_path, 'data-turbolinks': false do %>
             <i class="fas fa-edit pb-0"> 質問する</i>
           <% end %>
         </div>

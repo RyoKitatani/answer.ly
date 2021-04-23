@@ -1,7 +1,7 @@
 class Public::QuestionsController < ApplicationController
   impressionist :actions=>[:show]
   layout "homes"
-  before_action :authenticate_member!
+  before_action :authenticate_member!, except:[:show]
 
   def show
     @members = Member.all

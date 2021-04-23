@@ -29,7 +29,8 @@
       <% end %>
      </div>
      <div id="answer_likes<%= answer.id %>", class="ml-3">
-      <%= render "public/answers/like", answer: answer %>
+      <% if member_signed_in? %>
+        <%= render "public/answers/like", answer: answer %>
     </div>
     <div class="d-flex ml-auto">
       <p class="mt-2"><%= answer.created_at.strftime('%Y/%m/%d %H:%M') %></p>
@@ -41,10 +42,12 @@
     <% if current_member.id == answer.member.id %>
     <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
     <% end %>
+    <% end %>
 </div>
 <div class="mt-2 bottom-line border border-blck mb-2"></div>
 
 <!--返信一覧＋フォーム-->
+<% if member_signed_in? %>
 <div class="col-md-9 offset-md-3">
 <%= form_with model: [answer, response], remote: true do |f| %>
     <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100", id:"response_content_#{answer.id}" %>
@@ -56,4 +59,5 @@
 <div id="response-<%= answer.id %>">
   <%= render "public/responses/list", answer: answer %>
 </div>
+<% end %>
 <!--ここまで-->

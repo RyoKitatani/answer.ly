@@ -51,6 +51,7 @@
     </div>
 
     <!--質問ユーザープロフィール表示-->
+    <% if member_signed_in?%>
     <div class="col-md-3">
       <div class="tag-index mb-5 mt-5 border border-secondary rounded pt-1 pr-1 pb-1 pl-1">
         <div>
@@ -61,7 +62,7 @@
          <p class="text-center"><%= @question.member.name %></p>
          <% end %>
           <div class="mb-3">
-            <% if current_member.id == @question.member.id %>
+            <% if current_member.id == @question.member.id  %>
                 <%= link_to "プロフィール編集", edit_member_path(@question.member), class:"btn btn-primary w-100" %>
             <% else %>
               <% if current_member.following?(@question.member) %>
@@ -107,10 +108,10 @@
           <p><%= @question.member.introduction %></p>
         </div>
       </div>
-
       <div class="ranking-index mb-5">
        <%= render "public/members/list", members: @members %>
      </div>
+      <% end %> 
     </div>
     <!--ここまで-->
 
