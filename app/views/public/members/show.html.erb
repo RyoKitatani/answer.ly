@@ -1,12 +1,12 @@
-<div class="d-flex">
+<div class="row d-flex">
   <!--プロフィール詳細画面-->
-  <div class="col-md-3 col-sm-3 mt-5 mb-5 pt-1 pb-3">
+  <div class="col-lg-3 col-md-3 col-sm-12 mt-5 mb-5 pb-3">
     <%= render "public/members/profile", member: @member, total_likes: @total_likes %>
   </div>
   <!--ここまで-->
 
   <!--メンバー投稿・回答一覧-->
-  <div class="col-md-8 col-sm-8  mt-5 mb-5 pt-1 ml-3 border rounded">
+  <div class="col-lg-8 col-md-9 col-sm-12  mt-5 mb-5 pt-1 pb-2 border rounded">
     <div class="border rounded mb-4">
       <div class="nav-item text-center bg-light" style="width:100%;">
         <div class="font-weight-bold border rounded">グラフ<br>(質問 : 回答)</div>
@@ -109,6 +109,5 @@
   </div>
   <!--ここまで-->
 </div>
-
 
 
