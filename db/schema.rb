@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
     t.integer "member_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_answers_on_member_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "title", default: "", null: false
-    t.text "message", default: "", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name", default: "", null: false
-    t.text "introduction", default: ""
+    t.text "introduction"
     t.string "image_id"
     t.string "country_code", default: "JP"
     t.string "experienced_country", default: ""
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "questions", force: :cascade do |t|
     t.integer "member_id", null: false
     t.string "title", default: "", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.integer "best_answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "responses", force: :cascade do |t|
     t.integer "answer_id", null: false
     t.integer "member_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
