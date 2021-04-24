@@ -1,0 +1,53 @@
+<div class="row mx-auto mb-5">
+  <div class="col-md-10 offset-md-1">
+    <h3 class="mt-5">プロフィール設定</h3>
+    <table class="table mt-5 table-borderless">
+      <%= form_with model: @member, url:member_path, method: :put, local: true do |f| %>
+      <tr>
+        <div class="form-group">
+          <th><%= f.label :ユーザー名 %></th>
+          <td><%= f.text_field :name, class:"form-control w-50"%></td>
+        </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.text_field :email, class:"form-control w-50" %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :アイコン %></th>
+        <td><%= attachment_image_tag @member, :image, size:"30x30", fallback:"no_image_icon.jpg"%>
+        <%= f.attachment_field :image %></td>
+      </div>
+      </tr>
+      <tr>
+
+      <div class="form-group">
+        <th><%= f.label :自己紹介 %></th>
+        <td><%= f.text_area :introduction, placeholder:"自己紹介を記入してださい。", class:"form-control w-100", rows:"5" %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :居住地 %></th>
+        <td><%= f.country_select :country_code %></td>
+      </div>
+      </tr>
+      <tr>
+      <div class="form-group">
+        <th><%= f.label :経験留学先 %></th>
+        <td><%= f.text_field :experienced_country, class:"form-control w-50" %></td>
+      </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <td></td>
+          <td><%= f.submit "保存する", class:"btn btn-primary w-25"%></td>
+          <td><%= link_to "退会する", members_withdraw_path, class:"btn btn-outline-danger", method: :patch, data: { confirm: "本当に退会しますか？" } %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>

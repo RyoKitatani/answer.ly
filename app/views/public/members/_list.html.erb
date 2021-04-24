@@ -1,0 +1,142 @@
+
+<ul class="nav nav-tabs nav-right" id="myTab" role="tablist">
+  <li class="nav-item bg-light w-25">
+    <a class="nav-link link-text active font-weight-bold" style="font-size:12px;" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">質問<i class="fas fa-question small"></i></a>
+  </li>
+  <li class="nav-item bg-light w-25">
+    <a class="nav-link link-text font-weight-bold" style="font-size:12px;" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true">回答<i class="far fa-lightbulb small"></i></a>
+  </li>
+  <li class="nav-item bg-light w-25">
+    <a class="nav-link link-text font-weight-bold" style="font-size:12px;" id="question-tab" data-toggle="tab" href="#question" role="tab" aria-controls="question" aria-selected="false">質問<i class="fas fa-thumbs-up small"></i></a>
+  </li>
+  <li class="nav-item bg-light w-25">
+    <a class="nav-link link-text font-weight-bold" style="font-size:12px;" id="answer-tab" data-toggle="tab" href="#answer" role="tab" aria-controls="answer" aria-selected="false">回答<i class="fas fa-thumbs-up small"></i></a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="member" role="tabpanel" aria-labelledby="member-tab">
+    <% @member_alls.each.with_index(1) do |member, i| %>
+      <div class="d-flex border-bottom mx-auto mt-3 pt-2 pb-2">
+        <div class="col-md-2 pl-0 pr-0">
+          <p><%= i %>位</p>
+        </div>
+        <div class="col-md-4 pr-0 ml-0 pt-2 pl-0">
+          <%= link_to member_path(member), class:"link-text align-items-cente smallr" do %>
+            <div class="pr-0 ml-0 small">
+              <%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><br />
+              <%= member.name%>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-2 pl-0 text-center">
+          <p><%= image_tag 'q_icon.png', size: "20x20" %></p>
+          <p class="pl-1"><%= member.questions.count %></p>
+        </div>
+        <div class="col-md-4 pl-0 pr-0 ml-1">
+          <% if member_signed_in? %>
+            <% unless current_member.id == member.id %>
+              <% if current_member.following?(member) %>
+                <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+              <% else %>
+                <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+              <% end %>
+            <% else %>
+              <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="members-tab">
+        <% @member_all.each.with_index(1) do |member, i| %>
+          <div class="d-flex border-bottom mx-auto mt-3 pt-2 pb-2">
+            <div class="col-md-2 pl-0 pr-0">
+              <p><%= i %>位</p>
+            </div>
+            <div class="col-md-4 pr-0 ml-0 pt-2 pl-0">
+              <%= link_to member_path(member), class:"link-text align-items-cente smallr" do %>
+                <div class="pr-0 ml-0 small">
+                  <%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><br />
+                  <%= member.name%>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-2 pl-0 text-center">
+              <p><%= image_tag 'a_icon.png', size: "20x20" %></p>
+              <p class="pl-1"><%= member.answers.count %></p>
+            </div>
+            <div class="col-md-4 pl-0 pr-0 ml-1">
+              <% if member_signed_in? %>
+                <% unless current_member.id == member.id %>
+                  <% if current_member.following?(member) %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                  <% else %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
+    <% Question.all.ranking.each.with_index(1) do |rank, i| %>
+      <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
+      <div class="col-md-3">
+        <p><%= i %>位</p>
+      </div>
+      <div class="col-md-5 pl-0">
+        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
+        <%= rank.name %>
+        <% end %>
+        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
+      </div>
+      <div class="col-md-4 pl-0 pr-0 ml-0">
+        <% if member_signed_in? %>
+            <% unless current_member.name == rank.name %>
+              <% if current_member.following?(rank) %>
+                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+              <% else %>
+                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+              <% end %>
+            <% else %>
+              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
+    <% Answer.a_ranking.each.with_index(1) do |rank, i| %>
+     <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
+      <div class="col-md-3">
+        <p><%= i %>位</p>
+      </div>
+      <div class="col-md-5 pl-0">
+        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
+        <%= rank.name %>
+        <% end %>
+        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
+      </div>
+      <div class="col-md-4 pl-0 pr-0 ml-0">
+        <% if member_signed_in? %>
+            <% unless current_member.name == rank.name %>
+              <% if current_member.following?(rank) %>
+                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+              <% else %>
+                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+              <% end %>
+            <% else %>
+              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <p class="text-right"><%= link_to "ランキング一覧へ", members_path, class:"link-text" %></p>
+</div>

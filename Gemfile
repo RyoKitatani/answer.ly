@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "rspec-rails"
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -51,12 +54,35 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem "factory_bot_rails"
+  gem 'faker'
+end
+
+group :production do
+  gem 'mysql2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "devise"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.13'
+gem "pry-rails"
+gem 'kaminari','~> 1.2.1'
+gem 'dotenv-rails'
+gem 'carmen-rails', git: 'git@github.com:Studiosity/carmen-rails.git'
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.9'
+gem 'omniauth', '1.9.1'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-line'
+gem 'omniauth-twitter'
+gem 'dotenv-rails'
+gem 'social-share-button'
+gem 'impressionist', '~>1.6.1'
+gem 'rails-i18n'

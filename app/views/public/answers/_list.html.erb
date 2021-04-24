@@ -1,0 +1,72 @@
+<div class="mt-2 bottom-line border border-dark mb-3"></div>
+<% if @question.best_answer_id.present? && @question.best_answer_id == answer.id %>
+  <h3 class="text-danger font-weight-bold ">✔️ベストアンサー</h3>
+<% end %>
+<div class="question-box mt-3 mb-3 pt-2 d-flex">
+  <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+    <% if answer.answer_likes.present? %>
+    <div class="border rounded bg-danger text-white pt-3" style="width:100%; height:50px; font-size:18px;">
+    <% else %>
+    <div class="border rounded bg-secondary text-white pt-3" style="width:100%; height:50px; font-size:18px;">
+    <% end %>
+    <%= answer.answer_likes.count %>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <h5><%== answer.content %></h5>
+    </div>
+  </div>
+</div>
+<div class="mt-5 d-flex">
+  <div class="offset-md-2">
+    <% if @question.best_answer_id.nil? && current_member == @question.member %>
+      <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答をベストアンサーにします。この修正は変更できませんが、よろしいですか？"}) do |form| %>
+        <%= form.hidden_field :best_answer_id, value: answer.id %>
+        <%= form.submit 'ベストアンサーにする', class:"btn btn-danger text-white", disabled: @question.best_answer_id.present?%>
+      <% end %>
+    <% elsif @question.best_answer_id.present? && @question.member == current_member && @question.best_answer_id == answer.id %>
+      <%= form_with(model: @question, local: true, data: {confirm: "#{answer.member.name}さんの回答を解除しますか？"}) do |form| %>
+        <%= form.hidden_field :best_answer_id, value: nil %>
+        <%= form.submit 'ベストアンサーを取り消す', class:"btn btn-danger"%>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="answer_likes<%= answer.id %>">
+  <% if member_signed_in? %>
+    <%= render "public/answers/like", answer: answer %>
+  <% end %>
+  </div>
+    <div class="d-flex ml-auto">
+      <p class="mt-2"><%= answer.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <%= link_to member_path(answer.member),class:"link-text" do %>
+        <span><%= attachment_image_tag answer.member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></span>
+        <span><%= answer.member.name %></span>
+      <% end %>
+    </div>
+  <% if member_signed_in? %>
+    <% if current_member.id == answer.member.id %>
+    <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+    <% end %>
+  <% end %>
+</div>
+<div class="col-md-10 offset-md-2 mt-2 bottom-line border mb-2"></div>
+
+<!--返信一覧＋フォーム-->
+<% if member_signed_in? %>
+  <div id="response-<%= answer.id %>">
+    <%= render "public/responses/list", answer: answer, question: @question %>
+  </div>
+  <div class="col-md-10 offset-md-2 pl-0 pr-0">
+    <div id="comments_error">
+      <%= render "layouts/error_messages", resource: @response %>
+    </div>
+    <%= form_with model: [answer, response], remote: true do |f| %>
+        <%= f.text_area :content, placeholder:"回答に対するコメントを入力してください。", class:"w-100 ml-0 mr-0", id:"response_content_#{answer.id}" %>
+      <div class="form-action offset-md-9">
+        <%= f.submit "コメントする", class:"btn btn-secondary text-items-center w-100 mt-0" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<!--ここまで-->

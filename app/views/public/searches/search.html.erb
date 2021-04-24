@@ -1,0 +1,19 @@
+<% if @model == 'tag' %>
+<div class="row mb-5">
+  <div class="col-xl-12 col-md-12">
+    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> タグ検索：<%= @content %></i></h4>
+  <%= render 'public/tags/index', tags: @records %>
+<% end %>
+
+<% if @model == 'question' %>
+<div class="row mb-5">
+  <div class="col-xl-12 col-md-12">
+    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> 質問検索：<%= @content %></i></h4>
+  <%= render 'public/questions/list', questions: @records %>
+<% end %>
+<% if @model == 'member' %>
+<div class="row mb-5">
+  <div class="col-xl-12 col-md-12">
+    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ユーザー検索：<%= @content %> さん</i></h4>
+    <%= render 'public/members/index', members: @records %>
+<% end %>

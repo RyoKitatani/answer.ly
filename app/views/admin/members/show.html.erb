@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold"><%= @member.name %>の詳細ページ<%= link_to "編集", edit_admin_member_path(@member), class:"btn btn-success ml-5 w-25", data: {"turbolinks" => false}%></h2>
+    <table class="table text-center mt-4 table-bordered">
+      <thead>
+        <tr class="text-center">
+          <th style="width:15%;">ユーザー名</th>
+          <th style="width:11%;">質問数</th>
+          <th style="width:11%;">回答数</th>
+          <th style="width:13%;">フォロー</th>
+          <th style="width:13%;">フォロワー</th>
+          <th style="width:13%;">質問いいね</th>
+          <th style="width:13%;">回答いいね</th>
+          <th style="width:14%;">会員ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= attachment_image_tag @member, :image, size:"30x30", fallback:"no_image_icon.jpg", class:"mr-1" %>
+            <%= @member.name %>
+          </td>
+          <td><%= @member.questions.count %></td>
+          <td><%= @member.answers.count %></td>
+          <td><%= @member.follower.count %></td>
+          <td><%= @member.followed.count %></td>
+          <td><%= @member.question_likes.count %></td>
+          <td><%= @member.answer_likes.count %></td>
+          <% if @member.is_deleted == false%>
+              <td class="text-center btn-success font-weight-bold mt-3 mr-3", style="font-size:20px">会員</td>
+            <% else %>
+              <td class="text-center btn-danger font-weight-bold mt-3 mr-3", style="font-size:20px">退会</td>
+            <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <nav>
+      <div class="nav nav-tabs mt-5" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active link-text w-50 text-center" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+          <span>質問</span><br>
+          <span class="large"><%= @member.questions.count %></span>
+        </a>
+        <a class="nav-item nav-link link-text w-50 text-center" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+          <span>回答</span><br>
+          <span><%= @member.answers.count %></span>
+        </a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active bg-light " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="ml-1 pt-3">質問: <%= @member.questions.count %>件</div>
+        <% @member.questions.each do |question| %>
+          <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
+            <div class="col-md-2 mt-2 text-center">
+              <% if question.best_answer_id.nil? %>
+                <p class="btn-info font-weight-bold mb-0">受付中</p>
+              <% else %>
+                <p class="btn-danger font-weight-bold mb-0">解決済み</p>
+              <% end %>
+          　　<p class="mb-0">回答<br><%= question.answers.count %></p>
+        　　　</div>
+        　　<div class="col-md-9 mt-1 text-left">
+              <p>
+                <%= link_to admin_question_path(question) , class:"link-text" do %>
+                <%= question.title %>
+                <% end %>
+              </p>
+              <p>タグ: <%= question.tags.count %></p>
+              <% question.tags.each do |tag| %>
+                <p class="btn btn-outline-primary ml-1", style="font-size:2px;"><%= tag.name %></p>
+              <% end %>
+              <div class="d-flex">
+                <p class="btn btn-outline-secondary"><%= question.question_likes.count %> 評価</p><p class="btn btn-outline-secondary ml-2"><%= question.impressionist_count(:filter=>:session_hash)%> PV </p>
+                <p class="ml-auto mb-0"><%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="tab-pane fade bg-light" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="ml-1 pt-3 pb-2">回答: <%= @member.answers.count %> 件</div>
+        <% @member.answers.each do |answer| %>
+          <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
+              <div class="col-md-2 mt-2 text-center">
+                <% if answer.question.best_answer_id.nil? %>
+                  <p class="btn-info font-weight-bold mb-0">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold mb-0">解決済み</p>
+                <% end %>
+                <p class="mb-0">回答<br><%= answer.question.answers.count %></p>
+              </div>
+              <div class="col-md-9 mt-1 text-left">
+                <p>
+                  <%= link_to question_path(answer.question) , class:"link-text" do %>
+                  <%= answer.question.title %>
+                  <% end %>
+                </p>
+                <p>タグ: <%= answer.question.tags.count %></p>
+                <div class="d-flex">
+                  <p>評価:<%= answer.answer_likes.count %> | PV: </p>
+                  <p class="ml-auto mb-0"><%= attachment_image_tag answer.question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= answer.question.member.name %></p>
+                </div>
+              </div>
+           </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>
+

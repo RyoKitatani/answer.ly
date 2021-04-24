@@ -1,0 +1,21 @@
+<div class="border-bottom">
+  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > パスワード再設定</span>
+</div>
+<div class="mt-5 mb-5">
+  <h2><i class="fas fa-user-plus"> パスワード再設定</i></h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "members/shared/error_messages", resource: resource %>
+  <table>
+    <tbody>
+      <tr>
+        <div class="form-froup">
+          <th><%= f.label :email %></th>
+          <th><%= f.email_field :email, size:"50%",placeholder:"メールアドレスを入力してください。", autofocus: true, autocomplete: "email", class:"form-control" %></th>
+          <th><%= f.submit "再設定メールを送る", class:" btn btn-success" %></th>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

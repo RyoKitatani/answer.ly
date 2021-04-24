@@ -1,0 +1,163 @@
+// Place all the styles related to the public::homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-box {
+  // background-color: #000022;
+  background-attachment: fixed;
+  background-image: image-url("study3.jpeg");
+  background-size: cover;
+  color: #fff;
+  letter-spacing: 3px;
+  padding-top: 70px;
+  padding-bottom: 140px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .top-box::before {
+  content: '';
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.top-title p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.bottom-line {
+  border-bottom: solid 2px #fff;
+}
+
+.under_line {
+  border-bottom: solid 2px gray;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.site-title-front {
+  color: #66CCFF;
+}
+
+.site-title-back {
+  color: #0066CC;
+}
+
+.sidebar-fixed {
+  position: sticky;
+  top: 40px;
+  border: solid 1px gray;
+  width: 100%;
+  height: 500px;
+}
+.box {
+  width: 100%;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #212529;
+  &:hover {
+    text-decoration: underline;
+    color: #212529;
+  }
+}
+
+// top画面の文字を1文字ずつ表示させる
+.typ {
+  opacity: 0;
+}
+
+.typ span {
+  opacity: 0;
+}
+
+// aboutページのCSS
+.about-box-1 {
+  background-image: image-url("study3.jpeg");
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  letter-spacing: 3px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-box-2 {
+  background-image: image-url("study4.jpeg");
+  background-position: bottom;
+  background-size: cover;
+  color: #fff;
+  letter-spacing: 3px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-box-3 {
+  background-image: image-url("qa.jpg");
+  background-position: bottom;
+  background-size: cover;
+  color: balck;
+  letter-spacing: 3px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.welcome-box h1{
+  text-shadow: 3px 4px 5px #808080;
+}
+
+.welcome-box-2 {
+  text-shadow: 3px 4px 5px #808080;
+  color: black;
+  width: 600px;
+  height: 200px;
+}
+.welcome-box-2 {
+   background-color:rgba(255,255,255,0.8);
+}
+
+.welcome-box-2 h3 {
+  font-size:24px;
+}
+
+.about-content-1 {
+  width: 100%;
+  height: 300px;
+}
+
+.about-content-2 {
+  width: 100%;
+  height: 300px;
+}
