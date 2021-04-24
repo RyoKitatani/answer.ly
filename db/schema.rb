@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "member_id"
+    t.integer "member_id", null: false
     t.string "title", default: "", null: false
     t.text "content", null: false
     t.integer "best_answer_id"
