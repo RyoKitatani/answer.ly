@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get "questions/:id/answers" => "questions#show"
     patch "/members/withdraw" => "members#withdraw"
     patch "/questions/best_answer" => "answers#bestanswer"
-    get "/questions/tag" => "members#tag"
+    # get "/questions/tag" => "members#tag"
     get "/search" => "searches#search"
     resources :members, only:[:index, :show, :edit, :update] do
       get :connections, on: :member

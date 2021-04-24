@@ -60,7 +60,7 @@ class Public::MembersController < ApplicationController
       member.name = "guestaccount"
     end
     sign_in member
-    redirect_to root_path, noite: "ゲストユーザーとしてログインしました。"
+    redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"
   end
 
   private
