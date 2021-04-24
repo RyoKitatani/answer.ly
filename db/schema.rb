@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   end
 
   create_table "question_likes", force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "member_id"
+    t.integer "question_id", null: false
+    t.integer "member_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_question_likes_on_member_id"
