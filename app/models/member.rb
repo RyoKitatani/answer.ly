@@ -19,7 +19,8 @@ class Member < ApplicationRecord
   has_many :follower_member, through: :followed, source: :follower
 
   VALID_REGEX = /\A[a-zA-Z0-9]+\z/
-  validates :name, format: { with: VALID_REGEX }, presence: true, uniqueness: true, length:{ maximum: 20, minimum: 3}
+  validates :name, format: { with: VALID_REGEX }, length:{ maximum: 20, minimum: 3}, allow_blank: true
+  validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
   attachment :image

@@ -1,5 +1,7 @@
-<div class="border-bottom">
-  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small", data: {"turbolinks" => false} %> > 新規会員登録</span>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mt-2mb-2">
+    <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small", data: {"turbolinks" => false} %> > 新規会員登録</span>
+  </div>
 </div>
 <div class="mt-5 mb-5">
   <h2><i class="fas fa-user-plus"> 新規会員登録</i></h2>
@@ -39,7 +41,7 @@
         <tr>
           <div class="form-group">
             <th><%= f.label :ユーザー名 %><br /><span class="small">半角英数を使い3～15文字以内</span></th>
-            <th><%= f.text_field :name, size:"50%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
+            <th><%= f.text_field :name, size:"80%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
@@ -63,14 +65,18 @@
             <th><%= f.password_field :password_confirmation, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
           </div>
         </tr>
+        <tr>
+          <div class="actions text-center mt-2 mb-2">
+            <th colspan="2"><%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %></th>
+          </div>
+        </tr>
+        <% end %>
+        <tr>
+          <div class="login-link mt-auto">
+            <th colspan="2" class="text-right"><span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small","data-turbolinks": false %></th>
+          </div>
+        </tr>
       </tobody>
     </table>
-    <div class="actions text-center mt-2 mb-2">
-      <%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %>
-    </div>
-    <% end %>
-    <div class="login-link text-center mt-auto">
-        <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small" %>
-      </div>
   </div>
 </div>
