@@ -65,12 +65,14 @@
             <th><%= f.password_field :password_confirmation, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
           </div>
         </tr>
+        <tr>
+          <div class="actions text-center mt-2 mb-2">
+            <th colspan="2"><%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %></th>
+          </div>
+        </tr>
+        <% end %>
       </tobody>
     </table>
-    <div class="actions text-center mt-2 mb-2">
-      <%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %>
-    </div>
-    <% end %>
     <div class="login-link text-center mt-auto">
         <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small","data-turbolinks": false %>
       </div>
