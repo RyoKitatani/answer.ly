@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     resources :members, only:[:index, :show, :edit, :update]
     get "/connections" => "members#connection"
-    resources :questions, only:[:index, :show, :edit, :update]
+    resources :questions, only:[:index, :show, :destroy]
     resources :tags, only:[:index, :create, :edit, :update, :destroy]
     resources :contacts, only:[:index]
   end
