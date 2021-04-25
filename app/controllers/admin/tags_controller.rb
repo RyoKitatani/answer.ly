@@ -16,7 +16,7 @@ class Admin::TagsController < ApplicationController
       redirect_to request.referer
     else
       flash[:danger] = "タグの作成に失敗しました。"
-      render :new
+      render :index
     end
   end
 
