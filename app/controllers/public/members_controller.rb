@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-   before_action :authenticate_member!, except:[:guest_sign_in, :index]
+   before_action :authenticate_member!, except:[:guest_sign_in]
 
   def index
     @member_all = Member.all.order_by_answers

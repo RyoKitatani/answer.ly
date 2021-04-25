@@ -22,10 +22,14 @@
           <td>
             <%= @question.title %>
           </td>
+            <% if @question.tags.present? %>
             <% @question.tags.each do |tag| %>
-              <td class="btn btn-sm btn-outline-primary ml-1", style="font-size:2px;">
+                <td class="btn btn-sm btn-outline-primary ml-1", style="font-size:2px;">
                   <%= tag.name %>
-              </td>
+                </td>
+              <% end %>
+            <% else %>
+              <th>なし</th>
             <% end %>
           <td class="text-center"><%= @question.answers.count %></td>
           <td class="text-center">
