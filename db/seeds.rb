@@ -16,8 +16,8 @@ Member.create!(
   name: "RyoKitatani",
   email: "test1@gmail.com",
   password: 123456,
-  introduction: "千葉県出身の大学2年生です！留学目指してます！",
-  experienced_country: "US",
+  introduction: "大学2年生です！留学目指してます！",
+  experienced_country: "アメリカ",
   is_deleted: "false"
 )
 
@@ -25,8 +25,8 @@ Member.create!(
   name: "MikitakaFukane",
   email: "test2@gmail.com",
   password: 123456,
-  introduction: "北海道出身のみきたかです。留学目指して勉強中です。",
-  experienced_country: "China",
+  introduction: "大学生ののみきたかです。留学目指して勉強中しています。",
+  experienced_country: "経験なし",
   is_deleted: "false"
 )
 
@@ -43,8 +43,8 @@ Member.create!(
   name: "KazukiNozaki",
   email: "test4@gmail.com",
   password: 123456,
-  introduction: "こんにちは",
-  experienced_country: "",
+  introduction: "野崎です。よろしくお願いします。",
+  experienced_country: "中国",
   is_deleted: "false"
 )
 
@@ -109,6 +109,21 @@ Question.create!(
   今年の7月末〜9月中旬ごろです。5月末までにはどこの大学に留学するのか正式に決めなければなりません。
 
   みなさんが学生の立場だとしたらどの国を選びますか？",
+)
+
+QuestionTag.create!(
+  question_id:1,
+  tag_id: 1
+)
+
+QuestionTag.create!(
+  question_id:1,
+  tag_id: 32
+)
+
+QuestionTag.create!(
+  question_id:1,
+  tag_id: 18
 )
 
 

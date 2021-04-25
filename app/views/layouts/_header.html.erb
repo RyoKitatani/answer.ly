@@ -21,39 +21,37 @@
         
         <% if admin_signed_in? %>
           <%= render 'layouts/admin_header', members: @members, questions: @questions, contacts: @contacts, tags: @tags%>
-
         <% elsif member_signed_in? %>
-         <%= render 'layouts/member_header'%>
-
+          <%= render 'layouts/member_header'%>
         <% else %>
-        <div class="header-item question-new btn btn-success mt-2 mr-2">
+          <div class="header-item question-new btn btn-success mt-2 mr-2">
+            <li class="nav-item">
+              <%= link_to new_question_path, 'data-turbolinks': false do %>
+                <i class="fas fa-edit"> 質問する</i>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn mt-2 mr-1">
           <li class="nav-item">
-            <%= link_to new_question_path, 'data-turbolinks': false do %>
-              <i class="fas fa-edit"> 質問する</i>
+            <%= link_to guest_sign_in_path, method: :post do %>
+              <i class="fas fa-user-circle"> ゲストログイン</i>
             <% end %>
           </li>
         </div>
-        <div class="header-item btn mt-2 mr-1">
-        <li class="nav-item">
-          <%= link_to guest_sign_in_path, method: :post do %>
-            <i class="fas fa-user-circle"> ゲストログイン</i>
-          <% end %>
-        </li>
-      </div>
-        <div class="header-item btn mt-2 mr-1">
-          <li class="nav-item">
-            <%= link_to new_member_session_path,"data-turbolinks": false do %>
-              <i class="fas fa-sign-in-alt">ログイン</i>
-            <% end %>
-          </li>
-        </div>
-        <div class="header-item btn mt-2 mr-1">
-          <li class="nav-item">
-            <%= link_to new_member_registration_path do %>
-              <i class="fas fa-user-plus"> 新規会員登録</i>
-            <% end %>
-          </li>
-        </div>
+          <div class="header-item btn mt-2 mr-1">
+            <li class="nav-item">
+              <%= link_to new_member_session_path,"data-turbolinks": false do %>
+                <i class="fas fa-sign-in-alt">ログイン</i>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn mt-2 mr-1">
+            <li class="nav-item">
+              <%= link_to new_member_registration_path do %>
+                <i class="fas fa-user-plus"> 新規会員登録</i>
+              <% end %>
+            </li>
+          </div>
         <% end%>
       </ul>
     </div>

@@ -1,6 +1,6 @@
 <div class="pl-4 pr-4 border rounded">
   <div>
-    <%= link_to member_path(member),class:"link-text" do %>
+    <%= link_to member_path(member),class:"link-text","data-turbolinks": false do %>
     <p class="text-center pt-3 pb-3"><%= attachment_image_tag member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
   </div>
   <div>
@@ -8,7 +8,7 @@
       <% end %>
       <div class="mb-3">
         <% if current_member.id == member.id %>
-            <%= link_to "プロフィール編集", edit_member_path(member), class:"btn btn-primary w-100", data: {"turbolinks" => false} %>
+            <%= link_to "プロフィール編集", edit_member_path(member), class:"btn btn-primary w-100","data-turbolinks": false %>
         <% else %>
           <% if current_member.following?(member) %>
             <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger w-100" %>
@@ -53,7 +53,7 @@
           <h5><%= member.followed.count %></h5>
         </div>
       </div>
-      <div class="header-item ml-3 mt-3 btn btn-info"><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"small" %></div>
+      <div class="header-item ml-3 mt-3 btn btn-info"><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"small","data-turbolinks": false %></div>
       <p><%= member.introduction %></p>
     </div>
 </div>

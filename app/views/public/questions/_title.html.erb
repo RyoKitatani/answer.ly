@@ -31,8 +31,11 @@
         <%= social_share_button_tag(question.title) %>
       </div>
       <div class="mt-4 mb-5 text-center">
+        <%= link_to member_path(question.member), class:"link-text", "data-turbolinks": false do%>
         <p class="font-weight-bold">
-          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %></p>
+          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %>
+        </p>
+        <% end %>
       </div>
     </div>
   </div>

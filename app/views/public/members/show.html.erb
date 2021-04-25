@@ -64,7 +64,7 @@
              </div>
             <div class="col-md-9 mt-1 text-left">
                 <p>
-                  <%= link_to question_path(question) , class:"link-text" do %>
+                  <%= link_to question_path(question) , class:"link-text","data-turbolinks": false do %>
                   <%= question.title %>
                   <% end %>
                 </p>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-9 mt-1 text-left">
                   <p>
-                    <%= link_to question_path(answer.question) , class:"link-text" do %>
+                    <%= link_to question_path(answer.question) , class:"link-text","data-turbolinks": false do %>
                     <%= answer.question.title %>
                     <% end %>
                   </p>
