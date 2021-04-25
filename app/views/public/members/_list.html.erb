@@ -55,7 +55,7 @@
               <p><%= i %>位</p>
             </div>
             <div class="col-md-4 pr-0 ml-0 pt-2 pl-0">
-              <%= link_to member_path(member), class:"link-text align-items-cente smallr" do %>
+              <%= link_to member_path(member), class:"link-text align-items-cente smallr", 'data-turbolinks': false do %>
                 <div class="pr-0 ml-0 small">
                   <%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><br />
                   <%= member.name%>
@@ -89,7 +89,7 @@
         <p><%= i %>位</p>
       </div>
       <div class="col-md-5 pl-0">
-        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
+        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
         <%= rank.name %>
         <% end %>
         <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
@@ -117,7 +117,7 @@
         <p><%= i %>位</p>
       </div>
       <div class="col-md-5 pl-0">
-        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;" do %>
+        <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
         <%= rank.name %>
         <% end %>
         <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
@@ -138,5 +138,5 @@
     </div>
     <% end %>
   </div>
-  <p class="text-right"><%= link_to "ランキング一覧へ", members_path, class:"link-text" %></p>
+  <p class="text-right"><%= link_to "ランキング一覧へ", members_path, class:"link-text", 'data-turbolinks': false %></p>
 </div>

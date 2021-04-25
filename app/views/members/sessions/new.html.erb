@@ -1,5 +1,7 @@
 <div class="row border-bottom">
-   <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > ログイン</span>
+  <div class="col-md-12 w-100 mt-2mb-2">
+    <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > ログイン</span>
+  </div>
 </div>
 <div class="mt-5 pb-5">
   <h2><i class="fas fa-sign-in-alt"> ログイン</i></h2>
@@ -15,7 +17,7 @@
     <div class="mt-5 mb-5">
       <p>Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
       <p>留学に対する不安を無くし、留学に向けて準備しよう</p>
-      <p class="mt-5"><%= link_to "もっと詳しく >>", about_path %></p>
+      <p class="mt-5"><%= link_to "もっと詳しく >>", about_path,"data-turbolinks": false %></p>
     </div>
   </div>
   <div class="col-md-3 mb-5">
