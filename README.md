@@ -1,6 +1,6 @@
 # Answer.ly(アンサリー)
 
-<img width="1425" alt="スクリーンショット 2021-04-18 13 40 15" src="https://user-images.githubusercontent.com/77328172/115134507-af5c8680-a04b-11eb-9055-772514268783.png">
+<img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
 
 ## サイト概要 
