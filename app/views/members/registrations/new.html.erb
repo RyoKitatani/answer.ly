@@ -41,7 +41,7 @@
         <tr>
           <div class="form-group">
             <th><%= f.label :ユーザー名 %><br /><span class="small">半角英数を使い3～15文字以内</span></th>
-            <th><%= f.text_field :name, size:"50%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
+            <th><%= f.text_field :name, size:"80%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
@@ -71,10 +71,12 @@
           </div>
         </tr>
         <% end %>
+        <tr>
+          <div class="login-link mt-auto">
+            <th colspan="2" class="text-right"><span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small","data-turbolinks": false %></th>
+          </div>
+        </tr>
       </tobody>
     </table>
-    <div class="login-link text-center mt-auto">
-        <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small","data-turbolinks": false %>
-      </div>
   </div>
 </div>
