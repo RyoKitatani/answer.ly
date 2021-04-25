@@ -3,6 +3,12 @@
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <div class="container">
+  <%= render 'layouts/flash' %>
+  <div class="notifications">
+  <% if question.best_answer_id.present? %>
+    <div class="alert alert-success alert-dismissible">ベストアンサーが選択されています！</div>
+  <% end %>
+  </div>
   <div class= "row">
     <div class="col-md-9 pt-5">
       <div class="d-flex">

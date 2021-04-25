@@ -39,10 +39,10 @@ class Public::QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      flash.now[:success] = "内容を変更しました。"
+      flash[:notice] = "質問内容を変更しました。"
       redirect_to question_path(@question)
     else
-      flash.now[:danger] = "更新に失敗しました。"
+      flash[:danger] = "質問内容の更新に失敗しました。"
       render :edit
     end
   end
@@ -51,7 +51,7 @@ class Public::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.member = current_member
     if @question.destroy
-      flash.now[:success] = "投稿を削除しました。"
+      flash[:notice] = "投稿を削除しました。"
       redirect_to root_path
     else
       flash.now[:danger] = "削除に失敗しました。"
