@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-lg-12 col-md-12 mt-3 pt-4">
-    <h2 class="font-weight-bold">質問詳細ページ</h2>
+    <h2 class="font-weight-bold">
+      質問詳細ページ
+      <span>
+        <%= link_to "削除する", admin_question_path(@question), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
+      </span>
+    </h2>
     <table class="table mt-5 table-bordered table-hover">
       <thead>
         <tr class="text-center">
@@ -22,10 +27,14 @@
           <td>
             <%= @question.title %>
           </td>
+            <% if @question.tags.present? %>
             <% @question.tags.each do |tag| %>
-              <td class="btn btn-sm btn-outline-primary ml-1", style="font-size:2px;">
+                <td class="btn btn-sm btn-outline-primary ml-1", style="font-size:2px;">
                   <%= tag.name %>
-              </td>
+                </td>
+              <% end %>
+            <% else %>
+              <th>なし</th>
             <% end %>
           <td class="text-center"><%= @question.answers.count %></td>
           <td class="text-center">

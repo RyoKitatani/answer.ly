@@ -9,7 +9,7 @@ class Public::AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.member_id = current_member.id
     if @answer.save
-      flash[:success] = "回答しました。"
+      flash[:success] = "#{@question.title}に回答しました。"
       redirect_to request.referer
     else
       @question = Question.find(params[:question_id])
@@ -23,17 +23,8 @@ class Public::AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.find_by(id: params[:id], question_id: params[:question_id])
     @answer.destroy
-    flash[:success] = "回答を削除しました。"
+    flash[:success] = "#{@question.title}の回答を削除しました。"
     redirect_to request.referer
-  end
-
-  def bestanswer
-    @answer = Answer.find(params[:id])
-    @answer.best_answer = true
-    if @answer.save
-      flash[:success] = "ベストアンサーを決定しました。"
-      redirect_to request.referer
-    end
   end
 
   private

@@ -3,6 +3,12 @@
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <div class="container">
+  <%= render 'layouts/flash' %>
+  <div class="notifications">
+  <% if question.best_answer_id.present? %>
+    <div class="alert alert-success alert-dismissible">ベストアンサーが選択されています！</div>
+  <% end %>
+  </div>
   <div class= "row">
     <div class="col-md-9 pt-5">
       <div class="d-flex">
@@ -31,8 +37,11 @@
         <%= social_share_button_tag(question.title) %>
       </div>
       <div class="mt-4 mb-5 text-center">
+        <%= link_to member_path(question.member), class:"link-text", "data-turbolinks": false do%>
         <p class="font-weight-bold">
-          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %></p>
+          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %>
+        </p>
+        <% end %>
       </div>
     </div>
   </div>

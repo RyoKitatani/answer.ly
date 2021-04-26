@@ -47,16 +47,12 @@
     <p class="font-weight-bold text-center">Answer.lyアカウントでログイン</p>
     <div class="bottom-line border border-blck"></div>
     <%= form_with model:@member, url: session_path(resource_name), local: true do |f| %>
-    <% if @member.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @member.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <%= render "layouts/error_messages", resource: @member %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-danger alert-dismissible">
+        <button class="close" data-dismiss="alert">&times;</button>
+          <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= f.email_field :email, autofocus: true, placeholder:" example@gmail.com",autocomplete: "email", class:"w-100 mt-4 mb-3", style:"height:40px" %>
     </div>

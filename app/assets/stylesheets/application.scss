@@ -33,6 +33,10 @@ header {
   width: 100%;
   z-index: 2;
 }
+#pageTop{
+  z-index:2;
+}
+
 
 .note-editor.note-frame.card {
   z-index: 1;
@@ -144,4 +148,8 @@ footer {
 #pageTop a:hover {
   text-decoration: none;
   opacity: 0.7;
+}
+
+.alert {
+  border: none;
 }

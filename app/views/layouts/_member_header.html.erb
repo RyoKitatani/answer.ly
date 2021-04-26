@@ -1,0 +1,21 @@
+<div class="header-item question-new btn btn-success pt-2 mb-1 mt-1 mr-2">
+  <li class="nav-item">
+    <%= link_to new_question_path, 'data-turbolinks': false do %>
+      <i class="fas fa-edit"> 質問する</i>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to member_path(current_member),"data-turbolinks": false do %>
+      <%= attachment_image_tag current_member, :image, size:"25x25", fallback:"no_image_icon.jpg", class:"mr-1" %><%= current_member.name %></i>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to destroy_member_session_path, method: :delete do %>
+      <i class="fas fa-sign-out-alt"> ログアウト</i>
+    <% end %>
+  </li>
+</div>

@@ -45,7 +45,7 @@
       <% end %>
     </div>
   <% if member_signed_in? %>
-    <% if current_member.id == answer.member.id %>
+    <% if current_member.id == answer.member.id &&  @question.best_answer_id.nil? %>
     <%= link_to "削除する", question_answer_path(answer.question, answer), method: :delete, remote: true, class:"btn btn-danger mr-2", "data-confirm" => "削除してよろしいでしょうか？" %>
     <% end %>
   <% end %>

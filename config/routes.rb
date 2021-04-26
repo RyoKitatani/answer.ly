@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     resources :members, only:[:index, :show, :edit, :update]
     get "/connections" => "members#connection"
-    resources :questions, only:[:index, :show, :edit, :update]
+    resources :questions, only:[:index, :show, :destroy]
     resources :tags, only:[:index, :create, :edit, :update, :destroy]
     resources :contacts, only:[:index]
   end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get "questions/:id/answers" => "questions#show"
     patch "/members/withdraw" => "members#withdraw"
     patch "/questions/best_answer" => "answers#bestanswer"
-    # get "/questions/tag" => "members#tag"
+    get "/questions/tag" => "members#tag"
     get "/search" => "searches#search"
     resources :members, only:[:index, :show, :edit, :update] do
       get :connections, on: :member

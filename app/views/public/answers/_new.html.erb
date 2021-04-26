@@ -1,3 +1,4 @@
+<% if question.best_answer_id.nil? %>
 <div class="col-md-1 offset-md-1">
  <%= attachment_image_tag member, :image, size:"50x50", fallback:"no_image_icon.jpg"%><br>
 </div>
@@ -10,3 +11,4 @@
    <% end %>
  </div>
 </div>
+<% end %>

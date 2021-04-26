@@ -1,0 +1,39 @@
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to admin_contacts_path do %>
+      <span>問い合わせ</span><br>
+      <span class="text-center"><%= @contacts.count %></span>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to admin_members_path do %>
+      <span>ユーザー数</span><br>
+      <span class="text-center"><%= @members.count %></span>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to admin_path do %>
+      <span>質問投稿数</span><br>
+      <span class="text-center"><%= @questions.count%></span>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-1 mr-1">
+  <li class="nav-item">
+    <%= link_to admin_tags_path do %>
+      <span>タグ数</span><br>
+      <span class="text-center"><%= @tags.count %></span>
+    <% end %>
+  </li>
+</div>
+<div class="header-item btn mt-3 mr-1">
+  <li class="nav-item">
+    <%= link_to destroy_admin_session_path, method: :delete do %>
+      <i class="fas fa-sign-out-alt"> ログアウト</i>
+    <% end %>
+  </li>
+</div>

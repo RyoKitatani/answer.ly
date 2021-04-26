@@ -1,4 +1,5 @@
 class Public::SearchesController < ApplicationController
+    before_action :member_header_actions
   
   def search
     @model = params["model"]

@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-   before_action :authenticate_member!, except:[:guest_sign_in, :index]
+   before_action :authenticate_member!, except:[:guest_sign_in]
 
   def index
     @member_all = Member.all.order_by_answers
@@ -14,7 +14,7 @@ class Public::MembersController < ApplicationController
     @member_questions.each do |question|
       @question_likes_count += question.question_likes.count
     end
-
+    
     @member_answers = @member.answers
     @answer_likes_count = 0
     @member_answers.each do |answer|
@@ -34,7 +34,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      flash[:success] = "変更内容を保存しました。"
+      flash.now[:notice] = "変更内容を保存しました。"
       redirect_to member_path(@member)
     else
       render :edit
