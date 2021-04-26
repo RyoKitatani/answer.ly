@@ -14,7 +14,7 @@ class Public::MembersController < ApplicationController
     @member_questions.each do |question|
       @question_likes_count += question.question_likes.count
     end
-    
+
     @member_answers = @member.answers
     @answer_likes_count = 0
     @member_answers.each do |answer|
@@ -58,6 +58,7 @@ class Public::MembersController < ApplicationController
     member = Member.find_or_create_by!(email:"guest@gmail.com") do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = "guestaccount"
+      member.confirmed_at = Time.now
     end
     sign_in member
     redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"

@@ -1,24 +1,16 @@
-<div calss="row">
-  <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
-    <div class="pt-2 mb-3">
-      <span><%= link_to root_path do %>トップ<% end %></span>
-      >
-      <span><%= link_to "#" do %>タグ一覧<% end %></span>
-    </div>
-    <div class="tag-list d-flex flex-wrap">
-    <% tags.each do |tag| %>
-    <div class="tag-items col-md-2 text-left border rounded ml-3 mb-2 mt-3 pt-3">
-      <%= link_to tag_path(tag) do %>
-        <h2 class="tag-title"><%= tag.name %></h2>
-      <% end %>
-       <p><%= tag.questions.count %>投稿</p>
-       <% if admin_signed_in? %>
-         <span class="d-flex ml-3">
-           <%= link_to "編集", edit_admin_tag_path(tag), class:"btn btn-success mr-2"%>
-           <%= link_to "削除", admin_tag_path(tag), method: :delete, class:"btn btn-danger", "data-confirm" => "削除してよろしいでしょうか？"%>
-         </span>
-       <% end %>
-      </div>
+<div class="tag-list d-flex flex-wrap">
+  <% tags.each do |tag| %>
+  <div class="tag-items col-md-2 col-sm-2 text-left border rounded mr-5 mb-2 mt-3 pt-3">
+    <%= link_to tag_path(tag) do %>
+      <h2 class="tag-title"><%= tag.name %></h2>
     <% end %>
-  </div>
+     <p><%= tag.questions.count %>投稿</p>
+     <% if admin_signed_in? %>
+       <span class="d-flex ml-3">
+         <%= link_to "編集", edit_admin_tag_path(tag), class:"btn btn-success mr-2"%>
+         <%= link_to "削除", admin_tag_path(tag), method: :delete, class:"btn btn-danger", "data-confirm" => "削除してよろしいでしょうか？"%>
+       </span>
+     <% end %>
+    </div>
+  <% end %>
 </div>

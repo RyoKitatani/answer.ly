@@ -1,8 +1,6 @@
 class ContactMailer < ApplicationMailer
-
   def contact_mail(contact)
     @contact = contact
-    mail to:ENV["MY_EMAIL"],subject: "confirmation"
+    mail to: ENV["MY_EMAIL"], subject: "confirmation"
   end
-
 end

@@ -10,5 +10,4 @@ class Public::RelationshipsController < ApplicationController
     current_member.unfollow(params[:id])
     redirect_to request.referer
   end
-
 end

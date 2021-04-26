@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :member do
-    name  { Faker::Lorem.characters(number:12)}
+    name  { Faker::Lorem.characters(number: 12) }
     email { Faker::Internet.email }
-    password  {"password" }
-    password_confirmation {"password" }
-    is_deleted  {"false" }
+    password { "password" }
+    password_confirmation { "password" }
+    is_deleted { "false" }
     introduction  { Faker::Lorem.characters(number: 20) }
-    country_code  {"JP"}
-    experienced_country {"日本"}
+    country_code  { "JP" }
+    experienced_country { "日本" }
   end
 end

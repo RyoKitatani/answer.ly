@@ -19,7 +19,6 @@ class Public::ResponsesController < ApplicationController
     render :destroy
   end
 
-
   def edit
   end
 
@@ -31,5 +30,4 @@ class Public::ResponsesController < ApplicationController
   def response_params
     params.require(:response).permit(:content)
   end
-
 end
