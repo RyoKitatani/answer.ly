@@ -1,6 +1,6 @@
 class Public::SearchesController < ApplicationController
-    before_action :member_header_actions
-  
+  before_action :member_header_actions
+
   def search
     @model = params["model"]
     @method = params["method"]
@@ -9,36 +9,37 @@ class Public::SearchesController < ApplicationController
   end
 
   private
+
   def search_for(model, content, method)
     if model == "tag"
       if method == "perfect"
         Tag.where(name: content)
       elsif method == "forward"
-        @tag = Tag.where("name LIKE?", content+'%')
+        @tag = Tag.where("name LIKE?", content + '%')
       elsif method == "backward"
-        @tag = Tag.where("name LIKE?", '%'+content)
+        @tag = Tag.where("name LIKE?", '%' + content)
       else
-        Tag.where('name LIKE ?', '%'+content+'%')
+        Tag.where('name LIKE ?', '%' + content + '%')
       end
     elsif model == "question"
       if method == "perfect"
         Question.where(title: content)
       elsif method == "forward"
-        @question = Question.where("title LIKE?", content+'%')
+        @question = Question.where("title LIKE?", content + '%')
       elsif method == "backward"
-        @question = Question.where("title LIKE?", '%'+content)
+        @question = Question.where("title LIKE?", '%' + content)
       else
-        Question.where('title LIKE ?', '%'+content+'%')
+        Question.where('title LIKE ?', '%' + content + '%')
       end
     elsif model == "member"
       if method == "perfect"
         Member.where(name: content)
       elsif method == "forward"
-        @member = Member.where("name LIKE?", content+'%')
+        @member = Member.where("name LIKE?", content + '%')
       elsif method == "backward"
-        @member = Member.where("name LIKE?", '%'+content)
+        @member = Member.where("name LIKE?", '%' + content)
       else
-        Member.where('name LIKE ?', '%'+content+'%')
+        Member.where('name LIKE ?', '%' + content + '%')
       end
     end
   end

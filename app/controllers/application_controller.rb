@@ -42,5 +42,4 @@ class ApplicationController < ActionController::Base
     @member_all = Member.all.order_by_answers
     @member_alls = Member.all.page(params[:page]).order_by_question.per(5)
   end
-
 end

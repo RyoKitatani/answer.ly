@@ -16,5 +16,4 @@ class Admin::QuestionsController < ApplicationController
       render :show
     end
   end
-
 end

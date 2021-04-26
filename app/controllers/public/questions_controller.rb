@@ -1,7 +1,7 @@
 class Public::QuestionsController < ApplicationController
-  impressionist :actions=>[:show]
+  impressionist :actions => [:show]
   layout "homes"
-  before_action :authenticate_member!, except:[:show]
+  before_action :authenticate_member!, except: [:show]
 
   def show
     @members = Member.all
@@ -64,7 +64,6 @@ class Public::QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, :best_answer_id, tag_ids:[])
+    params.require(:question).permit(:title, :content, :best_answer_id, tag_ids: [])
   end
-
 end

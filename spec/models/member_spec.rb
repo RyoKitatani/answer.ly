@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-
   describe "データの保存" do
     subject { member.valid? }
 
     let!(:other_member) { create(:member) }
     let(:member) { build(:member) }
 
-    it "有効なデータの保存"do
+    it "有効なデータの保存" do
       expect(FactoryBot.build(:member)).to be_valid
     end
 
@@ -27,7 +26,6 @@ RSpec.describe Member, type: :model do
         member.password = ""
         is_expected.to eq false
       end
-
     end
 
     context "データの一致" do
@@ -42,22 +40,21 @@ RSpec.describe Member, type: :model do
         member.password_confirmation = "123457"
         is_expected.to eq false
       end
-
     end
 
     context "名前の文字数のチェック" do
       it "名前の文字数が3文字未満" do
-        member.name = Faker::Lorem.characters(number:2)
+        member.name = Faker::Lorem.characters(number: 2)
         is_expected.to eq false
       end
 
       it "名前の文字数が20文字以内" do
-        member.name = Faker::Lorem.characters(number:20)
+        member.name = Faker::Lorem.characters(number: 20)
         is_expected.to eq true
       end
 
       it "名前の文字数が21文字以上" do
-        member.name = Faker::Lorem.characters(number:21)
+        member.name = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end
     end
@@ -85,12 +82,12 @@ RSpec.describe Member, type: :model do
 
       it "空欄の入力不可(半角)" do
         member.name = "TaroYmada 1"
-        is_expected.to eq  false
+        is_expected.to eq false
       end
 
       it "日本語の入力不可(半角)" do
         member.name = "Taro山田1"
-        is_expected.to eq  false
+        is_expected.to eq false
       end
     end
   end
@@ -132,5 +129,4 @@ RSpec.describe Member, type: :model do
       end
     end
   end
-
 end

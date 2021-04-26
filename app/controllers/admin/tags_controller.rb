@@ -3,9 +3,6 @@ class Admin::TagsController < ApplicationController
 
   def index
     @tags = Tag.all
-  end
-
-  def index
     @tag = Tag.new
   end
 
