@@ -21,7 +21,7 @@ class Public::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.member_id = current_member.id
     if @question.save
-      flash.now[:success] = "質問を投稿しました。"
+      flash[:notice] = "質問を投稿しました。"
       redirect_to question_path(@question)
     else
       flash.now[:danger] = "質問の投稿に失敗しました。"

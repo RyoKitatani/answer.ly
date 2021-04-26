@@ -18,11 +18,17 @@
             <div class="form-group">
               <th><%= f.label :password, "新しいパスワード" %><br />
               <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> 文字以上)</em><br />
+  
               <% end %></th>
-              <th class="w-75"><%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control" %></th>
+              <th class="w-75"><%= f.password_field :password, id:"js-password",placeholder:"半角英数記号#{ @minimum_password_length}文字以上", autofocus: true, autocomplete: "new-password", class:"form-control password" %></th>
             </div>
           </tr>
+          <tr>
+            <th></th>
+            <th colspan="2"><p class="mb-0"><label for="js-passcheck">パスワードを表示する</label>
+            <input type="checkbox" id="js-passcheck"/></p>
+          </th>
+        </tr>
           <tr>
             <div class="form-group">
               <th><%= f.label :password_confirmation, "パスワードの再確認" %><br /></th>

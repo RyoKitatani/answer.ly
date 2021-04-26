@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        
+
         <!--共通ヘッダー-->
         <div class="btn text-light">
           <li class="nav-item mt-1">
@@ -18,7 +18,7 @@
           </li>
         </div>
         <!---->
-        
+
         <% if admin_signed_in? %>
           <%= render 'layouts/admin_header', members: @members, questions: @questions, contacts: @contacts, tags: @tags%>
         <% elsif member_signed_in? %>
@@ -33,7 +33,7 @@
           </div>
           <div class="header-item btn mt-2 mr-1">
           <li class="nav-item">
-            <%= link_to guest_sign_in_path, method: :post do %>
+            <%= link_to guest_sign_in_path, method: :post,"data-turbolinks": false do %>
               <i class="fas fa-user-circle"> ゲストログイン</i>
             <% end %>
           </li>
@@ -47,7 +47,7 @@
           </div>
           <div class="header-item btn mt-2 mr-1">
             <li class="nav-item">
-              <%= link_to new_member_registration_path do %>
+              <%= link_to new_member_registration_path, "data-turbolinks": false do %>
                 <i class="fas fa-user-plus"> 新規会員登録</i>
               <% end %>
             </li>
