@@ -1,4 +1,5 @@
-<% answer.responses.each do |response| %>
+<h6 class="more offset-md-2 font-weight-bold" data-toggle="collapse" data-target="#collapseExample<%= answer.id%>" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+<% answer.responses.first(1).each do |response| %>
   <div class="col-md-10 offset-md-2 mt-2 mb-3 pl-0 pr-0 d-flex border rounded bg-light">
     <div class="col-md-1 pt-3">
         <%= attachment_image_tag response.member, :image, size:"35x35", fallback:"no_image_icon.jpg"%>
@@ -26,4 +27,34 @@
     </div>
   </div>
 <% end %>
+<div class="collapse" id="collapseExample<%= answer.id%>">
+  <% answer.responses.offset(1).each do |response| %>
+  <div class="col-md-10 offset-md-2 mt-2 mb-3 pl-0 pr-0 d-flex border rounded bg-light">
+    <div class="col-md-1 pt-3">
+        <%= attachment_image_tag response.member, :image, size:"35x35", fallback:"no_image_icon.jpg"%>
+    </div>
+    <div class="col-md-9 pl-5">
+      <div class="row">
+        <% if response.member == response.answer.question.member %>
+          <%= image_tag 'q_icon.png', size: "20x20" %>
+        <% elsif response.member == response.answer.member %>
+          <%= image_tag 'a_icon.png', size: "20x20" %>
+        <% end %>
+        <%= link_to member_path(response.member), class:"link-text" do %>
+          <%= response.member.name %>
+          <%= response.created_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </div>
+      <div class="row pt-3 pb-3">
+        <%= response.content %>
+      </div>
+    </div>
+    <div class="col-md-2 pt-4 pl-5 pr-0">
+      <% if response.member == current_member && member_signed_in? %>
+        <%= link_to "削除する", answer_response_path(response.answer, response), method: :delete, class:"btn btn-danger", "data-confirm" => "削除してよろしいでしょうか？", remote: true %>
+       <% end %>
+    </div>
+  </div>
+<% end %>
+</div>
 
