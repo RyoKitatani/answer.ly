@@ -8,23 +8,23 @@
    <% if member_signed_in? %>
    <%= render 'layouts/flash' %>
    <% end %>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item text-center bg-light ml-3 mr-1" style="width:16%;">
+    <ul class="nav nav-tabs mx-auto" id="myTab" role="tablist">
+      <li class="nav-item text-center bg-light ml-4 mr-1" style="width:15%;">
       <a class="nav-link link-text font-weight-bold" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a>
       </li>
-      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:15%;">
       <a class="nav-link link-text font-weight-bold" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="true">フォロワー</a>
       </li>
-      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:15%;">
         <a class="nav-link link-text active font-weight-bold" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">新着</a>
       </li>
-      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:15%;">
         <a class="nav-link link-text font-weight-bold" id="contact-tab" data-toggle="tab" href="#noanswer" role="tab" aria-controls="noanswer" aria-selected="false">未回答</a>
       </li>
-      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:15%;">
         <a class="nav-link link-text font-weight-bold" id="unanswered-tab" data-toggle="tab" href="#unanswered" role="tab" aria-controls="unanswered" aria-selected="false">未解決</a>
       </li>
-      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:15%;">
         <a class="nav-link link-text font-weight-bold" id="unanswered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-selected="false">解決済み</a>
       </li>
     </ul>
@@ -278,8 +278,8 @@
    <div class="col-lg-3 col-md-12 mt-5">
      <div class="about-box mb-3 text-center border border-primary rounded">
        <%= link_to about_path, "data-turbolinks": false do %>
-       <h1 class="display-3 font-weight-bold">
-          HOW To
+       <h1 class="display-4 font-weight-bold">
+         Features of
           <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
         </h1>
        <% end %>
