@@ -47,5 +47,7 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     post 'follow/:id' => 'relationships#create', as: 'follow'
     post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
+    resources :messages, only: [:create, :destroy]
+    resources :rooms, only: [:create, :index, :show]
   end
 end

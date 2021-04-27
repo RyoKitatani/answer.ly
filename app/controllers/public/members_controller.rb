@@ -22,6 +22,24 @@ class Public::MembersController < ApplicationController
     end
 
     @total_likes = @question_likes_count + @answer_likes_count
+    
+    @current_entry = Entry.where(member_id: current_member.id)
+    @another_entry = Entry.where(member_id: @member.id)
+    unless @member.id == current_member.id
+      @current_entry.each do |current|
+        @another_entry.each do |another|
+          if current.room_id == another.room_id
+            @is_room = true
+            @room_id = current.room_id
+          end
+        end
+      end
+      # ルームが存在しない場合は新規作成
+      unless @is_room
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit

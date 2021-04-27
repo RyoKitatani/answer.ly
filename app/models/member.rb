@@ -17,6 +17,8 @@ class Member < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_member, through: :follower, source: :followed
   has_many :follower_member, through: :followed, source: :follower
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   VALID_REGEX = /\A[\w@-]*[A-Za-z][\w@-]*\z/.freeze
   validates :name, format: { with: VALID_REGEX }, length: { maximum: 20, minimum: 3 }, allow_blank: true
