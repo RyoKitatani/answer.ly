@@ -9,24 +9,27 @@
    <%= render 'layouts/flash' %>
    <% end %>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item text-center bg-light" style="width:20%;">
-      <a class="nav-link link-text font-weight-bold" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">フォロー</a>
+      <li class="nav-item text-center bg-light ml-3 mr-1" style="width:16%;">
+      <a class="nav-link link-text font-weight-bold" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a>
       </li>
-      <li class="nav-item text-center bg-light" style="width:20%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
+      <a class="nav-link link-text font-weight-bold" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="true">フォロワー</a>
+      </li>
+      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
         <a class="nav-link link-text active font-weight-bold" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">新着</a>
       </li>
-      <li class="nav-item text-center bg-light" style="width:20%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
         <a class="nav-link link-text font-weight-bold" id="contact-tab" data-toggle="tab" href="#noanswer" role="tab" aria-controls="noanswer" aria-selected="false">未回答</a>
       </li>
-      <li class="nav-item text-center bg-light" style="width:20%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
         <a class="nav-link link-text font-weight-bold" id="unanswered-tab" data-toggle="tab" href="#unanswered" role="tab" aria-controls="unanswered" aria-selected="false">未解決</a>
       </li>
-      <li class="nav-item text-center bg-light" style="width:20%;">
+      <li class="nav-item text-center bg-light mr-1" style="width:16%;">
         <a class="nav-link link-text font-weight-bold" id="unanswered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-selected="false">解決済み</a>
       </li>
     </ul>
    <div class="tab-content" id="myTabContent">
-     <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
        <% if member_signed_in? %>
         <div class="questions-index">
         <% if current_member.following_member.any? %>
@@ -76,7 +79,57 @@
        </div>
        <% end %>
      </div>
-     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+       <% if member_signed_in? %>
+        <div class="questions-index">
+        <% if current_member.follower_member.any? %>
+          <% current_member.follower_member.each do |member| %>
+           <% member.questions.each do |question| %>
+            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+              <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+                <% if question.best_answer_id.nil? %>
+                  <p class="btn-info font-weight-bold w-100 mx-auto small">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold w-100 mx-auto small">解決済み</p>
+                <% end %>
+                <div class="border rounded pt-2">
+                  <h5><i class="fas fa-comment-dots"> <%= question.answers.count %></i></h5>
+                </div>
+              </div>
+              <div class="col-md-10">
+              <div class="row pt-2">
+                <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text", 'data-turbolinks': false do %>
+                  <h2 class="font-weight-bold"><%= question.title %></h2>
+                <% end %>
+              </div>
+              <div class="row">
+                <% if question.tags.any? %>
+                  <% question.tags.each do |tag| %>
+                    <%= link_to tag_path(tag), 'data-turbolinks': false do %>
+                      <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                    <% end %>
+                  <% end %>
+                  <% else %>
+                  <div class="no-tag-box"></div>
+                <% end %>
+              </div>
+              <div class="row d-flex pt-3 small">
+                <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
+                <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
+                <%= link_to member_path(question.member_id), class:"link-text ml-auto", 'data-turbolinks': false do %>
+                  <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
+                <% end %>
+                <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
+              </div>
+            </div>
+            </div>
+            <% end %>
+            <% end %>
+          <% end %>
+       </div>
+       <% end %>
+     </div>
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
        <div class="questions-index">
          <%= render "public/questions/list", questions: @questions %>
          <%= paginate @questions %>
@@ -223,7 +276,7 @@
    </div>
   </div>
    <div class="col-lg-3 col-md-12 mt-5">
-     <div class="about-box mb-3 text-center">
+     <div class="about-box mb-3 text-center border border-primary rounded">
        <%= link_to about_path, "data-turbolinks": false do %>
        <h1 class="display-3 font-weight-bold">
           HOW To
