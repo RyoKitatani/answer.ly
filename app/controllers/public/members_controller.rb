@@ -52,7 +52,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      flash.now[:notice] = "変更内容を保存しました。"
+      flash[:notice] = "変更内容を保存しました。"
       redirect_to member_path(@member)
     else
       render :edit

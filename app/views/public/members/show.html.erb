@@ -1,6 +1,7 @@
 <div class="row d-flex">
   <!--プロフィール詳細画面-->
   <div class="col-lg-3 col-md-3 col-sm-12 mt-5 mb-5 pb-3">
+  <%= render 'layouts/flash' %>
     <%= render "public/members/profile", member: @member, total_likes: @total_likes, room: @room, is_room: @is_room, entry: @entry %>
   </div>
   <!--ここまで-->

@@ -1,5 +1,6 @@
 <div class="row mx-auto mb-5">
   <div class="col-md-10 offset-md-1">
+     <%= render "layouts/error_messages", resource: @member %>
     <h3 class="mt-5">プロフィール設定</h3>
     <table class="table mt-5 table-borderless">
       <%= form_with model: @member, url:member_path, method: :put, local: true do |f| %>
