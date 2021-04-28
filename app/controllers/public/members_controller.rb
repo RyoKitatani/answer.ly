@@ -22,7 +22,7 @@ class Public::MembersController < ApplicationController
     end
 
     @total_likes = @question_likes_count + @answer_likes_count
-    
+
     @current_entry = Entry.where(member_id: current_member.id)
     @another_entry = Entry.where(member_id: @member.id)
     unless @member.id == current_member.id
@@ -84,7 +84,7 @@ class Public::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:name, :email, :image, :introduction, :country_code, :experienced_coutnry, :is_deleted)
+    params.require(:member).permit(:name, :email, :image, :introduction, :country_code, :experienced_country, :is_deleted)
   end
 
 end
