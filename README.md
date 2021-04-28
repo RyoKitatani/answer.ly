@@ -41,6 +41,16 @@
 
 そんな時に利用するサイトです。
 
+# 使用方法
+
+```
+$ git clone git@github.com:RyoKitatani/answer.ly.git
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+```
+
 ## 設計書
 
 ### ER図
