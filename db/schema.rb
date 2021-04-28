@@ -74,15 +74,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_153911) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "chats", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "partner_id", null: false
-    t.string "sentence", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_chats_on_member_id"
-  end
-
   create_table "contacts", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false

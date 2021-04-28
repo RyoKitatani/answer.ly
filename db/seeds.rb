@@ -14,7 +14,7 @@ Admin.create!(
 
 Member.create!(
   name: "RyoKitatani",
-  email: "test1@gmail.com",
+  email: "ryo.k.19950929@gmail.com",
   password: 123456,
   introduction: "大学2年生です！留学目指してます！",
   experienced_country: "アメリカ",
@@ -23,7 +23,7 @@ Member.create!(
 
 Member.create!(
   name: "MikitakaFukane",
-  email: "test2@gmail.com",
+  email: "ryo.k.19950929+a@gmail.com",
   password: 123456,
   introduction: "大学生ののみきたかです。留学目指して勉強中しています。",
   experienced_country: "経験なし",
@@ -32,7 +32,7 @@ Member.create!(
 
 Member.create!(
   name: "MizukiKamezaki",
-  email: "test3@gmail.com",
+  email: "ryo.k.19950929+b@gmail.com",
   password: 123456,
   introduction: "こんにちは",
   experienced_country: "Korea",
