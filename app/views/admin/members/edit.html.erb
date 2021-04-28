@@ -3,6 +3,7 @@
     <h2 class="font-weight-bold"><%= @member.name %> さんのプロフィール編集</h2>
     <table class="table mt-5 table-borderless">
       <%= form_with model: @member, url:admin_member_path, method: :put, local: true do |f| %>
+      <%= render "layouts/error_messages", resource: @member %>
       <tr>
         <div class="form-group">
           <th><%= f.label :ユーザー名 %></th>
