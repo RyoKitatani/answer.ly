@@ -1,11 +1,6 @@
-<div calss="row">
-  <div class="col-md-10 offset-md-1 pb-5 pl-0 pr-0">
-    <div class="pt-2 mb-3">
-      <span><%= link_to root_path do %>トップ<% end %></span>
-      >
-      <span><%= @tag.name %>タグの編集画面</span>
-    </div>
-    <h2><%= @tag.name %>タグの編集画面</h2>
+<div class="row">
+  <div class="col-md-12 mt-3 pt-4">
+    <h2 class="font-weight-bold"><%= @tag.name %>タグの編集画面</h2>
     <div class="text-left ml-3 mb-2 mt-3 pt-3">
       <%= form_with model: @tag, url:admin_tag_path, method: :put, local: true do |f| %>
        <%= f.label :タグ名%>
