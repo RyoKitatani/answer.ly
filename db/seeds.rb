@@ -12,50 +12,79 @@ Admin.create!(
   password: ENV['ADMIN_PASS']
 )
 
-Member.create!(
-  name: "RyoKitatani",
+Member.create!([
+ {name: "@Ryo_0929",
   email: "ryo.k.19950929@gmail.com",
   password: 123456,
   introduction: "大学2年生です！留学目指してます！",
-  experienced_country: "アメリカ",
+  experienced_country: "経験なし",
   is_deleted: "false"
-)
-
-Member.create!(
-  name: "MikitakaFukane",
+ },
+ {name: "Mikitaka_1222",
   email: "ryo.k.19950929+a@gmail.com",
   password: 123456,
   introduction: "大学生ののみきたかです。留学目指して勉強中しています。",
   experienced_country: "経験なし",
   is_deleted: "false"
-)
-
-Member.create!(
-  name: "MizukiKamezaki",
+ },
+ {name: "@Mizuki_42",
   email: "ryo.k.19950929+b@gmail.com",
-  password: 123456,
-  introduction: "こんにちは",
-  experienced_country: "Korea",
-  is_deleted: "false"
-)
-
-Member.create!(
-  name: "KazukiNozaki",
-  email: "test4@gmail.com",
-  password: 123456,
-  introduction: "野崎です。よろしくお願いします。",
-  experienced_country: "中国",
-  is_deleted: "false"
-)
-
-Member.create!(
-  name: "TaichirouInada",
-  email: "test5@gmail.com",
   password: 123456,
   introduction: "こんにちは",
   experienced_country: "",
   is_deleted: "false"
-)
+ },
+ {name: "Ken_2929",
+  email: "ryo.k.19950929+i@gmail.com",
+  password: 123456,
+  introduction: "こんにちは",
+  experienced_country: "経験なし",
+  is_deleted: "false"
+ },
+ {name: "KazukiNozaki",
+  email: "ryo.k.19950929+c@gmail.com",
+  password: 123456,
+  introduction: "野崎です。よろしくお願いします。",
+  experienced_country: "なし",
+  is_deleted: "false"
+ },
+ {name: "TaichirouInada",
+  email: "ryo.k.19950929+d@gmail.com",
+  password: 123456,
+  introduction: "こんにちは",
+  experienced_country: "留学経験なし",
+  is_deleted: "false"
+ },
+ {name: "@taka_111",
+  email: "ryo.k.19950929+e@gmail.com",
+  password: 123456,
+  introduction: "留学予定です。",
+  experienced_country: "アメリカ(シカゴ)",
+  is_deleted: "false"
+ },
+ {name: "Yukari_ohira",
+  email: "ryo.k.19950929+f@gmail.com",
+  password: 123456,
+  introduction: "こんにちは",
+  experienced_country: "アメリカ(ミネソタ)",
+  is_deleted: "false"
+ },
+ {name: "Sakura_0921m",
+  email: "ryo.k.19950929+g@gmail.com",
+  password: 123456,
+  introduction: "こんにちは。よろしくお願いします。",
+  experienced_country: "イギリス",
+  is_deleted: "false"
+ },
+ {name: "@Kaoru111",
+  email: "ryo.k.19950929+h@gmail.com",
+  password: 123456,
+  introduction: "こんにちは",
+  experienced_country: "アメリカ(ニューヨーク)",
+  is_deleted: "false"
+ }
+])
+
 
 Tag.create!([
   {name: "留学"},
@@ -113,7 +142,7 @@ Question.create!([
 
    みなさんが学生の立場だとしたらどの国を選びますか？"},
 
- {member_id:2,
+ {member_id:6,
   title: "短大から海外大学へ進学したい",
   content:
    "英語特化の短大から2年から海外の大学2年といったルートを進みたいのですがおすすめ大学や国などありますか？"
@@ -138,12 +167,26 @@ Question.create!([
     (私はコロナだからと夢を諦めるのは間違ってると思いますし､年齢も関係ないと思います。このご時世に留学なんて､20歳を過ぎてから大学進学なんて､などの意見は不要です。)"
   },
 
- {member_id:4,
-  title: "短大から海外大学へ進学したい",
+ {member_id:3,
+  title: "IELTSとパスポートに関する質問です！教えてください！",
   content:
-   "英語特化の短大から2年から海外の大学2年といったルートを進みたいのですがおすすめ大学や国などありますか？"
+   "学校で留学が必須なのですが、IELTSを受ける際に使ったパスポートと、留学に行くときのパスポートは同じでなければいけませんか？"
   },
-
+  
+  {member_id:4,
+   title:"海外大学へに進学。どのサポートを受けるべきか悩んでいます、、、。",
+   content:
+   "現在高校３年生です。英語を学びたく、海外への大学進学を考えています。コロナのことや費用のこともあり、選択肢が限られてきていて、マレーシアを今考えています。
+    どのサポートセンターを利用したらいいのか、詳しい人がいましたらそちらも伺いたいのですが。
+    前置きは少し長くなりましたが、本題にうつります。
+    知り合いがハワイで高校の教師をしており、海外への大学進学や留学について相談をしてみました。すると、勤め先の高校への１ヶ月ほどの短期間の留学を提案してくれました。
+    とりあえずハワイの高校へ通ってみて、そこで色んな人の話も聞けたりするし、そこからの進路の視野も広がるだろうとのことです。とても嬉しい提案で、貴重な経験の機会にありがたく思っています。
+    まだそちらの正式な決定は出てませんが、そもそも、、私は学校を１ヶ月ほど休むことは可能なのでしょうか。中間試験は追試がないので、二学期の中間試験前に行けば定期テストへの負担は無いのかなと考えています。
+    向こうの学校へも通いますし、通学証明書？留学証明書？みたいなのも発行していただけると思うのですが、留学扱いになるのでしょうか。
+    長期休みの留学の事例はよく見ますが、学校期間中の留学については聞いたことがないので、詳しい方がいましたら教えていただきたいです。
+    上手くまとまらず長くなってしまいましたが、よろしくお願いします。"
+  }
+ 
 ])
 
 QuestionTag.create!([
@@ -176,14 +219,14 @@ Answer.create!([
   アメリカは治安が悪化していますし、行くとしたらカナダではないでしょうか。
   ただしどこも大学の立地によります。",
  },
- 
+
  {question_id: 2,
   member_id: 3,
   content:
   "貴方が通っている短大に提携している海外の大学を聞いてください。
    提携していないと2年間で習得した教科・単位が認められないことがありますので。"
  },
- 
+
  {question_id: 3,
   member_id: 4,
   content:
@@ -195,8 +238,48 @@ Answer.create!([
    300万円～1,000万円くらいになります。
    但し、未就労の貴方は借りれませんので親が借りることになります。"
  },
-])
+ 
+ {question_id: 4,
+  member_id: 6,
+  content:
+  "問題ありません！IELTSのスコアにパスポートの情報は入りません。大学は受験した4科目のスコアだけしか知ることが出来ません。
+   受験後に期限が切れて更新することも十分ありうる話なので、誰も気にしないと思いますよ。"
+ },
+ 
+ {question_id: 4,
+  member_id: 8,
+  content:
+  "問題ありません。一度、IELTSに関してお調べした方がいいかもしれませんね。公式にもきっと書いてあると思います。頑張ってください。"
+ },
+ 
+ {question_id: 5,
+  member_id: 9,
+  content:
+   "マレーシアにおりますので前置きの方をメインに回答します。<br>
+    >英語を学びたく<br><br>
+   とありますが、大学は英語を学ぶためではなく、英語で何か専門的な知識を学ぶために行くのですが、現在の英語力はどのくらいでしょうか？ <br>
+   他の方のマレーシアの大学についての回答は不正確です。<br>
+   マレーシアの大学は殆どの大学と専攻は英語で授業が行われます。外国人留学生はIELTSで英語のスコアが必要です。 
+   実際何年も住んでいますが、マレー語ができなくて本当に困ったことはほぼありません。<br>
+   
+   もちろん、それぞれの発音のクセはありますが、英検なら最低準1級くらいないと授業についていけませんよ。
+   オンラインクラスだろうが、グループワークで課題を仕上げるので、コミュニケーションも取れなければ困ります。 
+   対面よりもリスニング能力が必要です。<br>
+   ネイティブカントリーじゃないと思って留学する人が多いですが、先進国ではない国で大学に行く人は、
+   経済的にも学力的にも上の人ばかりで、日本の受験から逃げたような生徒はついていけず帰国する人も多いです。<br>
 
+   ただ、アメリカ、イギリス、カナダ、オーストラリアのネイティブカントリーとは違います。<br>
+   英語を学びたいなら、語学留学をすべきで、英語ができるようになって海外進学を考えてください。
+   卒業証明書と成績表が必要なので、学校を卒業してからしか申し込みできません。<br>
+  
+   現在の学校をヶ月休めるかは、学校と相談でしょう。 
+   一ヶ月では単位も何もないでしょうし。<br>
+
+   ハワイの留学で、全く問題なく授業についていけて、課題も現地の生徒と同じようにこなせてから、海外大学は考えましょう。
+   エージェントやサポートセンターは必要なく、自分で大学側とやり取りして準備してください。それが出来ないようなら、留学してもその後が大変ですよ。"
+ }
+ 
+])
 
 
 Response.create!(

@@ -1,7 +1,10 @@
 <div class="question-title border-bottom">
   <div class="container">
-  <div class="question-root col-md-12 w-100 pt-4 pb-3 ">
-    <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > <%= @question.title %></span>
+  <div class="question-root col-md-12 w-100 pt-4 mb-2 ">
+    <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+    >
+    <%= @question.title %>
+    </span>
   </div>
   </div>
 </div>
