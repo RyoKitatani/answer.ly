@@ -44,13 +44,17 @@
 ## 設計書
 
 ### ER図
-![ER図_20210403](https://user-images.githubusercontent.com/77328172/113471611-768faf80-9498-11eb-85c7-fc56f4da0308.jpg)
+[answer.ly-ER図 .pdf](https://github.com/RyoKitatani/answer.ly/files/6391667/answer.ly-ER.pdf)
+
 ### ワイヤーフレーム & UI Flows
 https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
 
 ### テーブル定義書　
+
 https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0bH0A/edit?usp=sharing
+
 ### チャレンジ要素一覧
+
 https://docs.google.com/spreadsheets/d/1GKJ7aZMcrRR2YwcuRfL-F2DGFRE_w-ZEhYM93c7TlAY/edit#gid=0
 
 ## 開発環境
