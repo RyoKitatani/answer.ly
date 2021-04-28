@@ -66,10 +66,10 @@
         </div>
       　<% end %>
     　</div>
-      <div class="mb-5 pt-3 tab-pane fade" id="new" role="tabpanel" aria-labelledby="home-tab">
+      <div class="mt-4 mb-2 tab-pane fade" id="new" role="tabpanel" aria-labelledby="home-tab">
         <% @tag.questions.each do |question| %>
           <% if question.answers.empty? && question.best_answer_id.nil? %>
-            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+            <div class="question-box mt-1 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-100 mx-auto small">受付中</p>
@@ -110,10 +110,10 @@
           <% end %>
       　<% end %>
     　</div>
-      <div class="mb-5 pt-3 tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="mt-4 mb-2 tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="profile-tab">
         <% @tag.questions.each do |question| %>
           <% if question.answers.any? && question.best_answer_id.nil? %>
-            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+            <div class="question-box mt-1 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-100 mx-auto small">受付中</p>
@@ -141,7 +141,7 @@
                     <div class="no-tag-box"></div>
                   <% end %>
                 </div>
-                <div class="row d-flex pt-3 small">
+                <div class="row d-flex small">
                   <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
                   <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
                   <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
@@ -150,14 +150,14 @@
                   <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
                 </div>
               </div>
-            </div>v>
+            </div>
           <% end %>
       　<% end %>
       </div>
-      <div class="mb-5 tab-pane fade" id="answered" role="tabpanel" aria-labelledby="about-tab">
+      <div class="mt-4 mb-2 tab-pane fade" id="answered" role="tabpanel" aria-labelledby="about-tab">
         <% @tag.questions.each do |question| %>
           <% if question.best_answer_id.present? %>
-            <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+            <div class="question-box mt-1 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
                   <p class="btn-info font-weight-bold w-100 mx-auto small">受付中</p>
