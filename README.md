@@ -51,7 +51,17 @@ $ rails db:seed
 $ rails s
 ```
 
-## 設計書
+**管理者用**<br>
+メールアドレス:admin@admmin.com<br>
+パスワード:123456<br>
+管理者用ログインURL: /admin/sign_in
+もしくは、URLにadminと打ち込む。
+
+**顧客用**<br>
+新規会員登録、もしくはゲストログインをご利用ください。
+
+
+# 設計書
 
 ### ER図
 ![answer ly-ER図](https://user-images.githubusercontent.com/77328172/116401217-f3c6fe00-a865-11eb-8ba6-51286049d483.jpg)
