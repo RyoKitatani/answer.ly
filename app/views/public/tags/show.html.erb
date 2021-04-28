@@ -68,7 +68,7 @@
     　</div>
       <div class="mb-5 pt-3 tab-pane fade" id="new" role="tabpanel" aria-labelledby="home-tab">
         <% @tag.questions.each do |question| %>
-          <% if question.answers.any? && question.best_answer_id.nil? %>
+          <% if question.answers.empty? && question.best_answer_id.nil? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
@@ -112,7 +112,7 @@
     　</div>
       <div class="mb-5 pt-3 tab-pane fade" id="unanswered" role="tabpanel" aria-labelledby="profile-tab">
         <% @tag.questions.each do |question| %>
-          <% if question.answers.any? %>
+          <% if question.answers.any? && question.best_answer_id.nil? %>
             <div class="question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
               <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
