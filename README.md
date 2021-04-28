@@ -44,7 +44,7 @@
 ## 設計書
 
 ### ER図
-[answer.ly-ER図 .pdf](https://github.com/RyoKitatani/answer.ly/files/6391667/answer.ly-ER.pdf)
+![answer ly-ER図](https://user-images.githubusercontent.com/77328172/116401217-f3c6fe00-a865-11eb-8ba6-51286049d483.jpg)
 
 ### ワイヤーフレーム & UI Flows
 https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
