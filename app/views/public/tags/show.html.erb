@@ -46,7 +46,7 @@
             <div class="row">
               <% if question.tags.any? %>
                 <% question.tags.each do |tag| %>
-                  <%= link_to tag_path(tag) do %>
+                  <%= link_to tag_path(tag), "data-turbolinks": false do %>
                     <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
                   <% end %>
                 <% end %>
@@ -57,7 +57,7 @@
             <div class="row d-flex pt-3 small">
               <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
               <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
-              <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+              <%= link_to member_path(question.member_id), class:"link-text ml-auto ", "data-turbolinks": false do %>
                 <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
               <% end %>
               <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
@@ -89,7 +89,7 @@
                 <div class="row">
                   <% if question.tags.any? %>
                     <% question.tags.each do |tag| %>
-                      <%= link_to tag_path(tag) do %>
+                      <%= link_to tag_path(tag), "data-turbolinks": false do %>
                         <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
                       <% end %>
                     <% end %>
@@ -100,7 +100,7 @@
                 <div class="row d-flex pt-3 small">
                   <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
                   <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
-                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto", "data-turbolinks": false do %>
                     <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
                   <% end %>
                   <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
@@ -133,7 +133,7 @@
                 <div class="row">
                   <% if question.tags.any? %>
                     <% question.tags.each do |tag| %>
-                      <%= link_to tag_path(tag) do %>
+                      <%= link_to tag_path(tag), "data-turbolinks": false do %>
                         <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
                       <% end %>
                     <% end %>
@@ -144,7 +144,7 @@
                 <div class="row d-flex small">
                   <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
                   <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
-                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto", "data-turbolinks": false do %>
                     <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
                   <% end %>
                   <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
@@ -177,7 +177,7 @@
                 <div class="row">
                   <% if question.tags.any? %>
                     <% question.tags.each do |tag| %>
-                      <%= link_to tag_path(tag) do %>
+                      <%= link_to tag_path(tag), "data-turbolinks": false do %>
                         <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
                       <% end %>
                     <% end %>
@@ -188,7 +188,7 @@
                 <div class="row d-flex pt-3 small">
                   <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
                   <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
-                  <%= link_to member_path(question.member_id), class:"link-text ml-auto " do %>
+                  <%= link_to member_path(question.member_id), class:"link-text ml-auto", "data-turbolinks": false do %>
                     <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
                   <% end %>
                   <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
