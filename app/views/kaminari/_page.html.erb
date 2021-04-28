@@ -1,9 +1,9 @@
 <% if page.current? %>
-  <li class='active'>
+  <li class='active ml-2'>
     <%= content_tag :a, page, data: { remote: remote }, rel: page.rel %>
   </li>
 <% else %>
-  <li>
+  <li class="ml-2">
     <%= link_to page, url, remote: remote, rel: page.rel %>
   </li>
 <% end %>

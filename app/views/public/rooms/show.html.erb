@@ -7,14 +7,28 @@
     <%= @another_entry.member.name %>さんとのDM</span>
   </div>
 </div>
-<div class="d-lg-flex mb-5 border rounded bg-light mt-5 pt-3">
+<div class="d-lg-flex mb-5 mt-5 pt-3">
+  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 mb-5">
+    <div class="message">
+      <%= render 'public/rooms/message', room: @room %>
+    </div>
+  </div>
   <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-        <div class="pl-4 pr-4 border rounded">
-  <div>
+    <div class="row">
+    <div class="col-md-12 mb-5">
+       <%= form_for @message, remote: true do |f| %>
+         <%= f.text_field :body, class: 'form-control' %>
+         <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit 'メッセージを送信', class: 'btn btn-info btn-block' %>
+          <% end %>
+      </div>
+    </div>
+    <div class="pl-4 pr-4 border rounded">
+    <div>
      <%= link_to member_path(@another_entry.member),class:"link-text","data-turbolinks": false do %>
     <p class="text-center pt-3 pb-3"><%= attachment_image_tag @another_entry.member, :image, size:"100x100", fallback:"no_image_icon.jpg"%></p>
-  </div>
-  <div>
+    </div>
+    <div>
       <p class="text-center"><%= @another_entry.member.name %></p>
       <% end %>
         <% if current_member.id == @another_entry.member.id %>
@@ -54,19 +68,5 @@
       </div>
     </div>
 </div>
-  <div class="row">
-    <div class="col-md-12 mt-5 mb-5">
-       <%= form_for @message, remote: true do |f| %>
-         <%= f.text_field :body, class: 'form-control' %>
-         <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit '送信', class: 'btn btn-info btn-block' %>
-          <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-    <div class="message">
-      <%= render 'public/rooms/message', room: @room %>
-    </div>
   </div>
 </div>
