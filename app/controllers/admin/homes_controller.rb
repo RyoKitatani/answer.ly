@@ -4,4 +4,5 @@ class Admin::HomesController < ApplicationController
   def top
     @questions_all = Question.all.page(params[:page])
   end
+
 end
