@@ -22,8 +22,8 @@ RSpec.describe "BeforeLogins", type: :system do
           expect(page).to have_field 'content'
         end
 
-        it '検索するボタンが表示される' do
-          expect(page).to have_button '検索する'
+        it '検索ボタンが表示される' do
+          expect(page).to have_button '検索'
         end
 
         it '新規登録のリンクが表示される' do
@@ -168,8 +168,8 @@ RSpec.describe "BeforeLogins", type: :system do
           expect(page).to have_field 'member[password]'
         end
 
-        it 'Remembermeボックスが表示される' do
-          expect(page).to have_content 'Remember me'
+        it 'ログインを記憶するが表示される' do
+          expect(page).to have_content 'ログインを記憶する'
         end
 
         it 'ログインボタンが表示される' do
@@ -238,8 +238,8 @@ RSpec.describe "BeforeLogins", type: :system do
           expect(page).to have_field 'content'
         end
 
-        it '検索するボタンが表示される' do
-          expect(page).to have_button '検索する'
+        it '検索ボタンが表示される' do
+          expect(page).to have_button '検索'
         end
 
         it '新規登録のリンクが表示される' do
@@ -302,7 +302,7 @@ RSpec.describe "BeforeLogins", type: :system do
           expect(page).to have_field 'admin[password]'
         end
 
-        it 'Remembermeボックスが表示される' do
+        it 'Remember meボックスが表示される' do
           expect(page).to have_content 'Remember me'
         end
 

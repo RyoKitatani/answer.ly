@@ -8,5 +8,6 @@ FactoryBot.define do
     introduction  { Faker::Lorem.characters(number: 20) }
     country_code  { "JP" }
     experienced_country { "日本" }
+    confirmed_at {Time.now}
   end
 end

@@ -28,8 +28,8 @@ RSpec.describe "AfterLogins", type: :system do
           expect(page).to have_field 'content'
         end
 
-        it '検索するボタンが表示される' do
-          expect(page).to have_button '検索する'
+        it '検索ボタンが表示される' do
+          expect(page).to have_button '検索'
         end
 
         it 'ログアウトのリンクが表示される' do

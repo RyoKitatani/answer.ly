@@ -75,9 +75,9 @@ RSpec.describe Member, type: :model do
         is_expected.to eq true
       end
 
-      it "数字のみ入力" do
+      it "数字のみ入力不可" do
         member.name = "123446"
-        is_expected.to eq true
+        is_expected.to eq  false
       end
 
       it "空欄の入力不可(半角)" do
