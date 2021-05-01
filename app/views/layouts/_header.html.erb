@@ -18,11 +18,18 @@
           </li>
         </div>
         <!---->
-
+        
+        <!--adminログインヘッダー-->
         <% if admin_signed_in? %>
           <%= render 'layouts/admin_header', members: @members, questions: @questions, contacts: @contacts, tags: @tags%>
+        <!---->
+        
+        <!--memberログインヘッダー-->
         <% elsif member_signed_in? %>
           <%= render 'layouts/member_header'%>
+        <!---->
+        
+        <!--ログイン前ヘッダー-->
         <% else %>
           <div class="header-item question-new btn btn-success mt-2 mr-2">
             <li class="nav-item">
@@ -32,12 +39,12 @@
             </li>
           </div>
           <div class="header-item btn mt-2 mr-1">
-          <li class="nav-item">
-            <%= link_to guest_sign_in_path, method: :post,"data-turbolinks": false do %>
-              <i class="fas fa-user-circle"> ゲストログイン</i>
-            <% end %>
-          </li>
-        </div>
+            <li class="nav-item">
+              <%= link_to guest_sign_in_path, method: :post,"data-turbolinks": false do %>
+                <i class="fas fa-user-circle"> ゲストログイン</i>
+              <% end %>
+            </li>
+          </div>
           <div class="header-item btn mt-2 mr-1">
             <li class="nav-item">
               <%= link_to new_member_session_path, "data-turbolinks": false do %>
@@ -53,6 +60,8 @@
             </li>
           </div>
         <% end%>
+        <!---->
+       
       </ul>
     </div>
   </div>
