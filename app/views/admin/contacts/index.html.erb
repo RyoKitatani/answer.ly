@@ -14,18 +14,10 @@
       <tbody>
         <% @contacts_all.each do |contact| %>
         <tr>
-          <td>
-            <%= contact.name %>
-          </td>
-          <td class="text-center">
-            <%= contact.email %>
-          </td>
-          <td class="text-center">
-            <%= contact.title %>
-          </td>
-          <td>
-            <%= contact.message %>
-          </td>
+          <td><%= contact.name %></td>
+          <td class="text-center"><%= contact.email %></td>
+          <td class="text-center"><%= contact.title %></td>
+          <td><%= contact.message %></td>
         </tr>
         <% end %>
         <tr>
