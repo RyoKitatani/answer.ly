@@ -29,17 +29,17 @@
     <div class="sns-title">
       <div class="sns-btns mt-3 pt-2">
         <%= link_to member_facebook_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-facebook font-weight-bold">Facebookでログイン</i></span>
+          <span><i class="fab fa-facebook font-weight-bold">Facebookでログイン</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2">
         <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-twitter font-weight-bold">Twitterでログイン</i></span>
+          <span><i class="fab fa-twitter font-weight-bold">Twitterでログイン</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2" style="width:100%;">
         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-google font-weight-bold text-black">Googleでログイン</i></span>
+          <span><i class="fab fa-google font-weight-bold text-black">Googleでログイン</i></span>
         <% end %>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-danger alert-dismissible">
         <button class="close" data-dismiss="alert">&times;</button>
-          <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
+        <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
       </div>
     <% end %>
     <div class="form-group">
@@ -66,7 +66,6 @@
       <%= f.label :remember_me %>
     </div>
     <% end %>
-
     <div class="actions">
       <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
     </div>
