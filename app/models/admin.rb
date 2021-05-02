@@ -5,5 +5,4 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :image
-
 end

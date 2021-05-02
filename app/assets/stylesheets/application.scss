@@ -33,6 +33,10 @@ header {
   width: 100%;
   z-index: 2;
 }
+#pageTop{
+  z-index:2;
+}
+
 
 .note-editor.note-frame.card {
   z-index: 1;
@@ -69,8 +73,7 @@ header {
 
 header li, .question-box {
   margin-right: 5px;
-  font-size: 16px;
-
+  font-size: 14px;
 }
 
 .header-item:hover {
@@ -147,4 +150,6 @@ footer {
   opacity: 0.7;
 }
 
-
+.alert {
+  border: none;
+}

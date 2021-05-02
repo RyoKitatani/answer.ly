@@ -6,12 +6,11 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-       ContactMailer.contact_mail(@contact).deliver
-       flash[:success] = "お問い合わせが完了しました。"
-       redirect_to request.referer
+      ContactMailer.contact_mail(@contact).deliver
+      flash[:notice] = "お問い合わせが完了しました。"
+      redirect_to request.referer
     else
-      flash[:danger] = "お問い合わせが上手くできませんでした。もう一度お試しください。"
-      render new
+      render :new
     end
   end
 
@@ -19,7 +18,5 @@ class Public::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:name, :email, :title, :message)
-
   end
-
 end

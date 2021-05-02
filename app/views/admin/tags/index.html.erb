@@ -4,6 +4,7 @@
     <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
     <div class="text-left ml-3 mb-2 mt-3 pt-3">
       <%= form_with model: @tag, url:admin_tags_path, method: :post, local: true do |f| %>
+      <%= render "layouts/error_messages", resource: @tag %>
         <div class="row form-group">
           <%= f.label :タグ名%>
           <%= f.text_field :name, placeholder:"ここにタグ名を入力してください。", class:"form-control w-50 ml-3"%>

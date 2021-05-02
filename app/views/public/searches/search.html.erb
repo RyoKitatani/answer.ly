@@ -1,19 +1,47 @@
 <% if @model == 'tag' %>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mt-2 mb-2">
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+      >
+      <span class="root-link"><%= link_to tags_path,"data-turbolinks": false do %>タグ一覧<% end %></span>
+      >
+      <%= @content %>
+  </div>
+</div>
 <div class="row mb-5">
   <div class="col-xl-12 col-md-12">
-    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> タグ検索：<%= @content %></i></h4>
-  <%= render 'public/tags/index', tags: @records %>
+    <h2 class="mt-5 font-weight-bold"><i class="fas fa-users"> タグ検索：<%= @content %></i></h2>
+    <p>タグ一覧タグ名をクリックすると、該当タグのQ＆A一覧に移動します。</p>
+    <%= render 'public/tags/index', tags: @records %>
+  </div>
+</div>
 <% end %>
 
 <% if @model == 'question' %>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mt-2 mb-2">
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+      >
+      <%= @content %>
+  </div>
+</div>
 <div class="row mb-5">
   <div class="col-xl-12 col-md-12">
-    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> 質問検索：<%= @content %></i></h4>
-  <%= render 'public/questions/list', questions: @records %>
+    <h2 class="mt-5 font-weight-bold"><i class="fas fa-users"> 質問検索：<%= @content %></i></h2>
+    <p>タイトルをクリックすると、質問詳細ページにに移動します。</p>
+  　<%= render 'public/questions/list', questions: @records %>
 <% end %>
+
 <% if @model == 'member' %>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mt-2 mb-2">
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+      >
+      <%= @content %>
+  </div>
+</div>
 <div class="row mb-5">
   <div class="col-xl-12 col-md-12">
-    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ユーザー検索：<%= @content %> さん</i></h4>
+    <h2 class="mt-5 font-weight-bold"><i class="fas fa-users"> ユーザー検索：<%= @content %></i></h2>
     <%= render 'public/members/index', members: @records %>
 <% end %>

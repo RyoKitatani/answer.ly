@@ -11,10 +11,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    WelcomeMailer.with(member: @member).welcome_email.deliver_later unless resource.invalid?
-  end
+  # def create
+  #   super
+  #   WelcomeMailer.with(member: @member).welcome_email.deliver_later unless resource.invalid?
+  # end
 
   # GET /resource/edit
   # def edit
@@ -59,7 +59,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-     root_path
+    root_path
   end
 
   def after_sign_out_path_for(resource)

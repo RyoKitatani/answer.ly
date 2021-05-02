@@ -1,1 +1,2 @@
 $('#answer_likes<%= @answer.id %>').html("<%= j(render 'public/answers/like', answer: @answer ) %>");
+$('#answer_likes_count<%= @answer.id %>').html("<%= j(render "public/answers/like_count", answer: @answer ) %>");

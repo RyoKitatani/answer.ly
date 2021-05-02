@@ -1,12 +1,15 @@
-<div class="border-bottom">
-  <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small", data: {"turbolinks" => false} %> > 新規会員登録</span>
+<div class="row border-bottom">
+  <div class="col-md-12 w-100 mt-2 mb-2">
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+    > 新規会員登録</span>
+  </div>
 </div>
 <div class="mt-5 mb-5">
   <h2><i class="fas fa-user-plus"> 新規会員登録</i></h2>
 </div>
 
-<div class="d-flex">
-  <div class="col-md-5 mb-5 border-right">
+<div class="row d-flex">
+  <div class="col-lg-5 col-md-12 col-sm-12 mb-5 border-right">
     <div class="sns-login">
       <p class="font-weight-bold text-center">SNSアカウントで登録する</p>
       <div class="bottom-line border border-blck"></div>
@@ -14,63 +17,73 @@
     <div class="sns-title">
       <div class="sns-btns mt-3 pt-3">
         <%= link_to member_facebook_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-facebook font-weight-bold">Facebookアカウントで登録</i></span>
+          <span><i class="fab fa-facebook font-weight-bold">Facebookアカウントで登録</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-3">
         <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-twitter font-weight-bold">Twitterアカウントで登録</i></span>
+          <span><i class="fab fa-twitter font-weight-bold">Twitterアカウントで登録</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-3" style="width:100%;">
-         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
-           <span><i class="fab fa-google font-weight-bold text-black">Googleアカウントで登録</i></span>
-         <% end %>
+        <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flat pt-2", style:"height:35px" do %>
+          <span><i class="fab fa-google font-weight-bold text-black">Googleアカウントで登録</i></span>
+        <% end %>
       </div>
     </div>
   </div>
-  <div class="col-md-7 ml-3">
+  <div class="col-lg-7 col-md-12 col-sm-12">
     <p class="font-weight-bold text-center">メールアドレスで登録する</p>
     <div class="bottom-line border border-blck"></div>
     <%= form_with model:@member, url: registration_path(resource_name), local: true do |f| %>
-    <%= render "members/shared/error_messages", resource: resource %>
+    <%= render "layouts/error_messages", resource: resource %>
     <table>
       <tobody>
         <tr>
           <div class="form-group">
-            <th><%= f.label :ユーザー名 %><br /><span class="small">半角英数を使い3～15文字以内</span></th>
-            <th><%= f.text_field :name, size:"50%", autofocus: true, placeholder:"answerly_user", autocomplete: "email", class:"form-control" %></th>
+            <th class="w-25"><%= f.label :ユーザー名 %><span class="small"></span></th>
+            <th><%= f.text_field :name, size:"75%", autofocus: true, placeholder:"半角英数記号(@,_,-)を含めた3～15文字以内", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
           <div class="form-group">
-            <th><%= f.label :メールアドレス %><br /></th>
-            <th><%= f.email_field :email, size:"50%", autofocus: true,placeholder:"example@gmail.com", autocomplete: "email", class:"form-control" %></th>
+            <th><%= f.label :メールアドレス %></th>
+            <th><%= f.email_field :email, size:"60%", autofocus: true,placeholder:"例: example@gmail.com", autocomplete: "email", class:"form-control" %></th>
           </div>
         </tr>
         <tr>
           <div class="form-group">
-            <th><%= f.label :パスワード %><br />
+            <th><%= f.label :パスワード %>
             <% if @minimum_password_length %>
-            <span class="small">半角英数記号<%= @minimum_password_length %>文字以上</span>
-            <% end %><br /></th>
-            <th><%= f.password_field :password, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
+            <span class="small"></span>
+            <% end %></th>
+            <th><%= f.password_field :password, id:"js-password", size:"40%",placeholder:"半角英数記号#{ @minimum_password_length}文字以上", autocomplete: "new-password", class:"form-control password" %></th>
           </div>
+        </tr>
+        <tr>
+          <th></th>
+          <th colspan="2"><p class="mb-0"><label for="js-passcheck">パスワードを表示する</label>
+          <input type="checkbox" id="js-passcheck"/></p>
+          </th>
         </tr>
         <tr>
           <div class="form-action align-items-center">
             <th><%= f.label :パスワード確認 %><br /></th>
-            <th><%= f.password_field :password_confirmation, size:"40%", autocomplete: "new-password", class:"form-control" %></th>
+            <th><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          </div>
+        </tr>
+        <tr>
+          <div class="actions text-center mt-2 mb-2">
+            <th colspan="2"><%= f.submit "登録する", class:" btn btn-success btn-lg w-100", data: {confirm: "ご入力頂いたメールアドレスに認証メールをお送りいたします。認証後、ログインが可能になります。"} %></th>
+          </div>
+        </tr>
+        <% end %>
+        <tr>
+          <div class="login-link mt-auto">
+            <th colspan="2" class="text-right"><span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small","data-turbolinks": false %></th>
           </div>
         </tr>
       </tobody>
     </table>
-    <div class="actions text-center mt-2 mb-2">
-      <%= f.submit "登録する", class:" btn btn-success btn-lg w-100" %>
-    </div>
-    <% end %>
-    <div class="login-link text-center mt-auto">
-        <span class="small">アカウントをお持ちの方は</span><%= link_to "こちらからログイン", new_member_session_path, class:"small" %>
-      </div>
   </div>
 </div>

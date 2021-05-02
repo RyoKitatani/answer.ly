@@ -7,13 +7,7 @@ class Public::ResponsesController < ApplicationController
     @response.answer_id = @answer.id
     @response.member_id = current_member.id
     if @response.save
-      flash[:notice] = "You have commented successfully"
-      # redirect_to request.referer
       render :create
-    else
-      @question = Question.find(params[:id])
-      @tags = Tag.all.order(created_at: :desc)
-      render "questions/show"
     end
   end
 
@@ -24,7 +18,6 @@ class Public::ResponsesController < ApplicationController
     # redirect_to request.referer
     render :destroy
   end
-
 
   def edit
   end
@@ -37,5 +30,4 @@ class Public::ResponsesController < ApplicationController
   def response_params
     params.require(:response).permit(:content)
   end
-
 end

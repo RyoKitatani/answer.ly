@@ -1,10 +1,12 @@
 <div class="row border-bottom">
-   <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > ログイン</span>
+  <div class="col-md-12 w-100 mt-2 mb-2">
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+    > ログイン</span>
+  </div>
 </div>
 <div class="mt-5 pb-5">
   <h2><i class="fas fa-sign-in-alt"> ログイン</i></h2>
 </div>
-
 <div class="row d-flex">
   <div class="col-md-5 mb-5">
     <div class="top-title">
@@ -14,8 +16,8 @@
     </div>
     <div class="mt-5 mb-5">
       <p>Answer.ly(アンサリー)は、留学に関する質問と回答を通して、</p>
-      <p>留学に対する不安を無くし、留学に向けて準備しよう</p>
-      <p class="mt-5"><%= link_to "もっと詳しく >>", about_path %></p>
+      <p>留学に対する不安を無くし、有意義な留学・海外体験を支援しています。</p>
+      <p class="mt-5"><%= link_to "もっと詳しく >>", about_path,"data-turbolinks": false %></p>
     </div>
   </div>
   <div class="col-md-3 mb-5">
@@ -26,17 +28,17 @@
     <div class="sns-title">
       <div class="sns-btns mt-3 pt-2">
         <%= link_to member_facebook_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-facebook font-weight-bold">Facebookでログイン</i></span>
+          <span><i class="fab fa-facebook font-weight-bold">Facebookでログイン</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2">
         <%= link_to member_twitter_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-twitter font-weight-bold">Twitterでログイン</i></span>
+          <span><i class="fab fa-twitter font-weight-bold">Twitterでログイン</i></span>
         <% end %>
       </div>
       <div class="sns-btns mt-4 pt-2" style="width:100%;">
         <%= link_to member_google_oauth2_omniauth_authorize_path, class:"sns-btn btn btn-flats pt-2", style:"height:35px" do %>
-        <span><i class="fab fa-google font-weight-bold text-black">Googleでログイン</i></span>
+          <span><i class="fab fa-google font-weight-bold text-black">Googleでログイン</i></span>
         <% end %>
       </div>
     </div>
@@ -45,7 +47,12 @@
     <p class="font-weight-bold text-center">Answer.lyアカウントでログイン</p>
     <div class="bottom-line border border-blck"></div>
     <%= form_with model:@member, url: session_path(resource_name), local: true do |f| %>
-    <%= render "members/shared/error_messages", resource: resource %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-danger alert-dismissible">
+        <button class="close" data-dismiss="alert">&times;</button>
+        <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= f.email_field :email, autofocus: true, placeholder:" example@gmail.com",autocomplete: "email", class:"w-100 mt-4 mb-3", style:"height:40px" %>
     </div>
@@ -58,7 +65,6 @@
       <%= f.label :remember_me %>
     </div>
     <% end %>
-
     <div class="actions">
       <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
     </div>

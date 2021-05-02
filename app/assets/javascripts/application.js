@@ -42,7 +42,7 @@ $(function () {
     if(counter == 0){
       $("#countUp").text("0");
     }
-    if(counter >= 10){
+    if(counter >= 500){
       $("#countUp").css("color","red");
     } else {
       $("#countUp").css("color","#666");
@@ -73,3 +73,21 @@ topBtn.click(function(){
   return false;
   });
 });
+
+$(function() {
+    var password  = '#js-password';
+    var passcheck = '#js-passcheck';
+
+    changeInputtype(password, passcheck);
+});
+
+
+function changeInputtype(password, passcheck) {
+    $(passcheck).change(function() {
+        if ($(this).prop('checked')) {
+            $(password).attr('type','text');
+        } else {
+            $(password).attr('type','password');
+        }
+    });
+}

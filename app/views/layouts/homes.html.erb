@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Answerly</title>
+    <title>Answer.ly</title>
+    <%= favicon_link_tag ("favicon.ico")%>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
     <header>
       <%= render "layouts/header" %>
     </header>
+    <% unless member_signed_in? %>
+      <% flash.each do |key, value| %>
+        <div class="mt-3 mb-0 btn btn-lg alert alert-primary alert-dismissible">
+          <button class="close" data-dismiss="alert">&times;</button>
+            <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
+        </div>
+      <% end %>
+    <% end %>
     <main>
       <div class="container">
-        <div class="col-md-10 offset-md-1 mt-3">
-        <% flash.each do |key, value| %>
-          <p class="alert alert-<%= key %>">
-            <%= sanitize value, tags: %w(br) %>
-          </p>
-        <% end %>
         </div>
       </div>
       <%= yield %>

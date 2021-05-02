@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_080236) do
+ActiveRecord::Schema.define(version: 2021_04_27_153911) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "answers", force: :cascade do |t|
     t.integer "question_id", null: false
     t.integer "member_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_answers_on_member_id"
@@ -78,9 +78,18 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "title", default: "", null: false
-    t.text "message", default: "", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_entries_on_member_id"
+    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -120,7 +129,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name", default: "", null: false
-    t.text "introduction", default: ""
+    t.text "introduction"
     t.string "image_id"
     t.string "country_code", default: "JP"
     t.string "experienced_country", default: ""
@@ -129,6 +138,16 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "room_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_messages_on_member_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "question_likes", force: :cascade do |t|
@@ -152,7 +171,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "questions", force: :cascade do |t|
     t.integer "member_id", null: false
     t.string "title", default: "", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.integer "best_answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -172,11 +191,16 @@ ActiveRecord::Schema.define(version: 2021_04_17_080236) do
   create_table "responses", force: :cascade do |t|
     t.integer "answer_id", null: false
     t.integer "member_id", null: false
-    t.text "content", default: "", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_responses_on_answer_id"
     t.index ["member_id"], name: "index_responses_on_member_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sns_credentials", force: :cascade do |t|

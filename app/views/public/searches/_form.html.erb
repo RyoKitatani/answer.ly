@@ -4,6 +4,6 @@
         <%= f.text_field :content, class:"form-control mr-1" %>
         <%= select_tag 'model', options_for_select({ "Tag" => "tag", "Question" => "question", "Member" => "member" }) %>
         <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward","後方一致" => "backward", "部分一致" => "partial" }), class:"btn btn-secondary" %>
-        <%= f.submit :"検索する", class:"btn btn-primary ml-1" %>
+        <%= f.submit :"検索", class:"btn btn-primary ml-1" %>
     </div>
-<% end%>
+<% end %>

@@ -1,7 +1,14 @@
 ja:
   activerecord:
+    models:
+      member: ユーザー
+      admin: 管理者
+      quesiton: 質問
+      answer: 回答
+      response: 反応(コメント)
+      tag: タグ
     attributes:
-      user:
+      member:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -10,6 +17,10 @@ ja:
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
         email: Eメール
+        name: ユーザー名
+        country_code: 住居
+        experienced_country: 経験留学先
+        introduction: 自己紹介
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -25,8 +36,23 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-    models:
-      user: ユーザー
+      admin:
+        email: 管理者メールアドレス
+        password: パスワード
+      question:
+        title: 質問タイトル
+        content: 質問内容
+      tag:
+        name: タグ名
+      answer:
+        content: 回答
+      response:
+        content: コメント
+      contact:
+        name: お名前
+        email: メールアドレス
+        title: タイトル
+        message: お問い合わせ内容
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

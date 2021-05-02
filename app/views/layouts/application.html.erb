@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Answerly</title>
+    <title>Answer.ly</title>
+    <%= favicon_link_tag ("favicon.ico")%>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   </head>
 
@@ -15,14 +17,7 @@
       <%= render "layouts/header" %>
     </header>
     <main>
-      <div class="container">
-        <div class="col-md-12 mt-3">
-          <% flash.each do |key, value| %>
-            <p class="alert alert-<%= key %>">
-              <%= sanitize value, tags: %w(br) %>
-            </p>
-          <% end %>
-        </div>
+      <div class="container mt-3">
         <%= yield %>
       </div>
     </main>

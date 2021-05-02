@@ -1,0 +1,29 @@
+<div class="page-header border rounded">
+  <table class="table table-hover">
+    <thead>
+      <tr class="table-primary text-center chat-title">
+        <th colspan="4">メッセージ</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% room.messages.each do |message| %>
+      <tr>
+        <td>
+   　    <%= attachment_image_tag message.member, :image, size:"20x20", fallback:"no_image_icon.jpg", class:"rounded-circle"%>
+   　    <%= link_to member_path(message.member), class:"link-text", "data-turbolinks": false do%>
+          <%= message.member.name %>
+        <% end %>
+        </td>
+        <td><%= message.body %></td>
+        <td><%= message.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td>
+          <% if message.member == current_member %>
+          <%= link_to '×', message, method: :delete, remote: true, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

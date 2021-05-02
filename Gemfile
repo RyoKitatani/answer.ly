@@ -58,6 +58,10 @@ group :test do
   gem 'faker'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -68,7 +72,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem "pry-rails"
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'dotenv-rails'
 gem 'carmen-rails', git: 'git@github.com:Studiosity/carmen-rails.git'
 gem 'simple_form'
@@ -78,7 +82,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-line'
 gem 'omniauth-twitter'
-gem 'dotenv-rails'
 gem 'social-share-button'
 gem 'impressionist', '~>1.6.1'
 gem 'rails-i18n'
+gem 'rubocop-airbnb'

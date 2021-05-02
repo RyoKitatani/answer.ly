@@ -1,107 +1,67 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="col-md-10 d-flex offset-md-1">
+  <div class="container">
     <% if admin_signed_in? %>
-    <a class="navbar-brand" href="/admin", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
+      <a class="navbar-brand" href="/admin", data-turbolinks="false"><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
     <% else %>
-    <a class="navbar-brand" href="/", {"data-turbolinks"= "false"}><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
+      <a class="navbar-brand" href="/", data-turbolinks="false"><%= image_tag "answer.ly_logo.png", class:"mt-1 ml-4",:size => "120x30", alt:"Answer.lyロゴ" %></a>
     <% end %>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto mr-4">
+      <ul class="navbar-nav ml-auto">
+
+        <!--共通ヘッダー-->
         <div class="btn text-light">
-          <li class="nav-item">
+          <li class="nav-item mt-1">
             <%= render 'public/searches/form', tag: @tag, question: @question %>
           </li>
         </div>
-        <% unless admin_signed_in? %>
-        <div class="header-item question-new btn btn-success pt-2 mr-2">
-          <%= link_to new_question_path, 'data-turbolinks': false do %>
-            <i class="fas fa-edit"> 質問する</i>
-          <% end %>
-        </div>
-        <% end %>
-        <% if member_signed_in? %>
-        <div class="header-item btn btn-lg mr-2">
-          <li class="nav-item">
-            <%= link_to member_path(current_member) do %>
-              <%= attachment_image_tag current_member, :image, size:"25x25", fallback:"no_image_icon.jpg", class:"mr-1" %><%= current_member.name %></i>
-            <% end %>
-          </li>
-        </div>
-        <div class="header-item btn btn-lg mr-2">
-          <li class="nav-item">
-            <%= link_to destroy_member_session_path, method: :delete do %>
-              <i class="fas fa-sign-out-alt"> ログアウト</i>
-            <% end %>
-          </li>
-        </div>
-        <% elsif admin_signed_in? %>
-        <div class="row">
-          <div class="header-item btn btn-lg mr-2">
-            <li class="nav-item">
-              <%= link_to admin_contacts_path do %>
-                <span>問い合わせ</span>
-                <span class="text-center"><%= @contacts.count %></span>
-              <% end %>
-            </li>
-          </div>
-          <div class="header-item btn btn-lg mr-2">
-            <li class="nav-item">
-              <%= link_to admin_members_path do %>
-                <span>ユーザー数</span>
-                <span class="text-center"><%= @members.count %></span>
-              <% end %>
-            </li>
-          </div>
-          <div class="header-item btn btn-lg mr-2">
-            <li class="nav-item">
-              <%= link_to admin_path do %>
-                <span>質問投稿数</span>
-                <span class="text-center"><%= @questions.count%></span>
-              <% end %>
-            </li>
-          </div>
-          <div class="header-item btn btn-lg mr-2">
-            <li class="nav-item">
-              <%= link_to admin_tags_path do %>
-                <span>タグ数</span>
-                <span class="text-center"><%= @tags.count %></span>
-              <% end %>
-            </li>
-          </div>
-          <div class="header-item btn btn-lg mr-2">
-            <li class="nav-item mr-5">
-              <%= link_to destroy_admin_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"> ログアウト</i>
-              <% end %>
-            </li>
-          </div>
+        <!---->
+        
+        <!--adminログインヘッダー-->
+        <% if admin_signed_in? %>
+          <%= render 'layouts/admin_header', members: @members, questions: @questions, contacts: @contacts, tags: @tags%>
+        <!---->
+        
+        <!--memberログインヘッダー-->
+        <% elsif member_signed_in? %>
+          <%= render 'layouts/member_header'%>
+        <!---->
+        
+        <!--ログイン前ヘッダー-->
         <% else %>
-          <div class="header-item btn btn-lg mr-2">
+          <div class="header-item question-new btn btn-success mt-2 mr-2">
             <li class="nav-item">
-              <%= link_to guest_sign_in_path, method: :post do %>
+              <%= link_to new_question_path, 'data-turbolinks': false do %>
+                <i class="fas fa-edit"> 質問</i>
+              <% end %>
+            </li>
+          </div>
+          <div class="header-item btn mt-2 mr-1">
+            <li class="nav-item">
+              <%= link_to guest_sign_in_path, method: :post,"data-turbolinks": false do %>
                 <i class="fas fa-user-circle"> ゲストログイン</i>
               <% end %>
             </li>
           </div>
-          <div class="header-item btn btn-lg mr-2">
+          <div class="header-item btn mt-2 mr-1">
             <li class="nav-item">
-              <%= link_to new_member_session_path do %>
+              <%= link_to new_member_session_path, "data-turbolinks": false do %>
                 <i class="fas fa-sign-in-alt">ログイン</i>
               <% end %>
             </li>
-        </div>
-          <div class="header-item btn btn-lg mr-2">
+          </div>
+          <div class="header-item btn mt-2 mr-1">
             <li class="nav-item">
-              <%= link_to new_member_registration_path do %>
+              <%= link_to new_member_registration_path, "data-turbolinks": false do %>
                 <i class="fas fa-user-plus"> 新規会員登録</i>
               <% end %>
             </li>
-        </div>
-        <% end %>
-        </div>
+          </div>
+        <% end%>
+        <!---->
+       
       </ul>
     </div>
   </div>
