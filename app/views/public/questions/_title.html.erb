@@ -3,13 +3,19 @@
 <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
 <div class="container">
+  <%= render 'layouts/flash' %>
+  <div class="notifications">
+  <% if question.best_answer_id.present? %>
+    <div class="alert alert-primary alert-dismissible">ベストアンサーが選択されています！</div>
+  <% end %>
+  </div>
   <div class= "row">
     <div class="col-md-9 pt-5">
       <div class="d-flex">
         <% if question.best_answer_id.nil? %>
-          <p class="btn-info font-weight-bold mt-1 mr-3 pt-2 pb-2 pl-2 pr-2", style="font-size:20px">受付中</p>
+          <p class="btn-info font-weight-bold mt-1 mr-3 pt-2 pb-2 pl-4 pr-1 pt-3", style="font-size:20px; width:12%;">受付中</p>
         <% else %>
-          <p class="btn-danger font-weight-bold mt-1 mr-3 pt-2 pb-2 pl-2 pr-2", style="font-size:20px">解決済み</p>
+          <p class="btn-danger font-weight-bold mt-1 mr-3 pt-2 pb-2 pl-4 pr-1 pt-3", style="font-size:20px; width:12%;">解決済み</p>
         <% end %>
         <h1 class="font-weight-bold pt-2"><%= question.title %></h1>
       </div>
@@ -18,7 +24,7 @@
         <span>更新日:<%= question.updated_at.strftime('%Y/%m/%d %H:%M') %></span>
       </div>
       <% question.tags.each do |tag| %>
-        <%= link_to tag_path(tag) do %>
+        <%= link_to tag_path(tag), "data-turbolinks": false do %>
           <p class="btn btn-outline-primary ml-1", style="font-size:2px;"><%= tag.name %></p>
         <% end %>
       <% end %>
@@ -26,13 +32,16 @@
     <div class="col-md-3 pt-5">
       <div class="text-center">
         <p class="col-sm-3 btn btn-light"><i class="fas fa-comment-dots"> <%= question.answers.count %></i></p>
-        <p class="col-sm-3 btn btn-light"><i class="fas fa-thumbs-up"> <%= question.question_likes.count %></i></p>
+        <p id="question_likes_count" class="col-sm-3 btn btn-light"><%= render "public/questions/like_count", question: question %></p>
         <p class="col-sm-3 btn btn-light"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></p>
         <%= social_share_button_tag(question.title) %>
       </div>
       <div class="mt-4 mb-5 text-center">
+        <%= link_to member_path(question.member), class:"link-text", "data-turbolinks": false do%>
         <p class="font-weight-bold">
-          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %></p>
+          <%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %> | score: <%= question.member.total_likes(question.member) %>
+        </p>
+        <% end %>
       </div>
     </div>
   </div>

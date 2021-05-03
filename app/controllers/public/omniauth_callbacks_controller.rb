@@ -1,5 +1,4 @@
 class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def facebook
     callback_for(:facebook)
   end
@@ -17,9 +16,8 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to root_path and return
+    redirect_to(root_path) && return
   end
-
 
   private
 
@@ -38,5 +36,4 @@ class Public::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       render template: "members/registrations/new"
     end
   end
-
 end

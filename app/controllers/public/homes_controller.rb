@@ -7,11 +7,10 @@ class Public::HomesController < ApplicationController
     @answers = Answer.all
     @members = Member.all
     @tags = Tag.all.page(params[:page]).order_by_questions.per(5)
-    @member_all = Member.all.order_by_answers
+    @member_all = Member.all.page(params[:page]).order_by_answers.per(5)
     @member_alls = Member.all.page(params[:page]).order_by_question.per(5)
   end
 
   def about
   end
-
 end

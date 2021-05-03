@@ -14,5 +14,4 @@ class Public::AnswerLikesController < ApplicationController
     @answer_like.destroy
     render :destroy
   end
-
 end

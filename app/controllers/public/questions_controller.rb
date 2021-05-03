@@ -1,7 +1,7 @@
 class Public::QuestionsController < ApplicationController
-  impressionist :actions=>[:show]
+  impressionist :actions => [:show]
   layout "homes"
-  before_action :authenticate_member!, except:[:show]
+  before_action :authenticate_member!, except: [:show]
 
   def show
     @members = Member.all
@@ -21,7 +21,7 @@ class Public::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.member_id = current_member.id
     if @question.save
-      flash.now[:success] = "質問を投稿しました。"
+      flash[:notice] = "質問を投稿しました。"
       redirect_to question_path(@question)
     else
       flash.now[:danger] = "質問の投稿に失敗しました。"
@@ -32,17 +32,17 @@ class Public::QuestionsController < ApplicationController
   def edit
     @question = Question.find(params[:id])
     if @question.member != current_member
-      redirect_to request.referer
+      redirect_to root_path
     end
   end
 
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      flash.now[:success] = "内容を変更しました。"
+      flash[:notice] = "質問内容を変更しました。"
       redirect_to question_path(@question)
     else
-      flash.now[:danger] = "更新に失敗しました。"
+      flash[:danger] = "質問内容の更新に失敗しました。"
       render :edit
     end
   end
@@ -51,7 +51,7 @@ class Public::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.member = current_member
     if @question.destroy
-      flash.now[:success] = "投稿を削除しました。"
+      flash[:notice] = "投稿を削除しました。"
       redirect_to root_path
     else
       flash.now[:danger] = "削除に失敗しました。"
@@ -64,7 +64,6 @@ class Public::QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, :best_answer_id, tag_ids:[])
+    params.require(:question).permit(:title, :content, :best_answer_id, tag_ids: [])
   end
-
 end

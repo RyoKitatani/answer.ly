@@ -3,7 +3,7 @@
     <% tags.each do |tag| %>
     <tr>
       <td>
-        <%= link_to tag_path(tag), class:"text-white" do%>
+        <%= link_to tag_path(tag), class:"text-white", 'data-turbolinks': false do%>
           <span class="btn btn-outline-primary"><%= tag.name %></span>
         <% end %>
       </td>

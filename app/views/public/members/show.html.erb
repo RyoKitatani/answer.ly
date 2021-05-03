@@ -1,12 +1,13 @@
-<div class="d-flex">
+<div class="row d-flex">
   <!--プロフィール詳細画面-->
-  <div class="col-md-3 col-sm-3 mt-5 mb-5 pt-1 pb-3">
-    <%= render "public/members/profile", member: @member, total_likes: @total_likes %>
+  <div class="col-lg-3 col-md-3 col-sm-12 mt-5 mb-5 pb-3">
+  <%= render 'layouts/flash' %>
+    <%= render "public/members/profile", member: @member, total_likes: @total_likes, room: @room, is_room: @is_room, entry: @entry %>
   </div>
   <!--ここまで-->
 
   <!--メンバー投稿・回答一覧-->
-  <div class="col-md-8 col-sm-8  mt-5 mb-5 pt-1 ml-3 border rounded">
+  <div class="col-lg-9 col-md-9 col-sm-12 mt-5 mb-5 pt-1 pb-2 border rounded">
     <div class="border rounded mb-4">
       <div class="nav-item text-center bg-light" style="width:100%;">
         <div class="font-weight-bold border rounded">グラフ<br>(質問 : 回答)</div>
@@ -53,25 +54,39 @@
         <div class="tab-pane fade bg-light show active" id="nav-q" role="tabpanel" aria-labelledby="nav-q-tab">
           <div class="ml-1 pt-3 pb-2">質問数: <%= @member.questions.count %>件</div>
           <% @member.questions.each do |question| %>
-            <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
-              <div class="col-md-2 mt-2 text-center">
+            <div class="d-flex border rounded mt-1 bg-white ">
+              <div class="col-md-2 col-sm-2 text-center pt-2">
                 <% if question.best_answer_id.nil? %>
-                  <p class="btn-info font-weight-bold mb-0">受付中</p>
+                  <p class="btn-info font-weight-bold mx-auto small">受付中</p>
                 <% else %>
-                  <p class="btn-danger font-weight-bold mb-0">解決済み</p>
+                  <p class="btn-danger font-weight-bold mx-auto small">解決済み</p>
                 <% end %>
-              <p class="mb-0">回答<br><%= question.answers.count %></p>
-             </div>
-            <div class="col-md-9 mt-1 text-left">
-                <p>
-                  <%= link_to question_path(question) , class:"link-text" do %>
-                  <%= question.title %>
+                <div class="border rounded pt-2">
+                <h5><i class="fas fa-comment-dots"> <%= question.answers.count %></i></h5>
+                </div>
+            </div>
+              <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(question), style:"color:#117ec6;", class:"link-text",'data-turbolinks': false do %>
+                    <h2 class="font-weight-bold"><%= question.title %></h2>
                   <% end %>
-                </p>
-                <p>タグ: <%= question.tags.count %></p>
-                <div class="d-flex">
-                  <p><%= question.question_likes.count %> 評価 | <%= question.impressionist_count(:filter=>:session_hash) %> PV</p>
-                  <p class="ml-auto mb-0"><%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %></p>
+                </div>
+                <div class="row">
+                  <% if question.tags.any? %>
+                    <% question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <div class="no-tag-box"></div>
+                 <% end %>
+                </div>
+                <div class="row d-flex">
+                  <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
+                  <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
+                  <div class="ml-auto mb-0"><%= attachment_image_tag question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= question.member.name %></div>
+                  <p class="ml-3 mr-1 mt-2 text-right"><%= question.created_at.strftime('%Y/%m/%d') %></p>
                 </div>
               </div>
             </div>
@@ -80,25 +95,39 @@
         <div class="tab-pane fade bg-light" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab">
           <div class="ml-1 pt-3 pb-2">回答数: <%= @member.answers.count %>件</div>
           <% @member.answers.each do |answer| %>
-            <div class="d-flex border rounded mt-3 ml-3 mr-3 mb-3 pt-1 bg-white ">
-                <div class="col-md-2 mt-2 text-center">
+            <div class="d-flex border rounded mt-1 bg-white ">
+              <div class="col-md-2 col-sm-2 text-center pt-2">
                   <% if answer.question.best_answer_id.nil? %>
-                    <p class="btn-info font-weight-bold mb-0">受付中</p>
-                  <% else %>
-                    <p class="btn-danger font-weight-bold mb-0">解決済み</p>
-                  <% end %>
-                  <p class="mb-0">回答<br><%= answer.question.answers.count %></p>
+                    <p class="btn-info font-weight-bold mx-auto small">受付中</p>
+                <% else %>
+                  <p class="btn-danger font-weight-bold mx-auto small">解決済み</p>
+                <% end %>
+                  <div class="border rounded pt-2">
+                    <h5><i class="fas fa-comment-dots"> <%= answer.question.answers.count %></i></h5>
+                  </div>
                 </div>
-                <div class="col-md-9 mt-1 text-left">
-                  <p>
-                    <%= link_to question_path(answer.question) , class:"link-text" do %>
-                    <%= answer.question.title %>
+                <div class="col-md-10">
+                <div class="row pt-2">
+                  <%= link_to question_path(answer.question), style:"color:#117ec6;", class:"link-text",'data-turbolinks': false do %>
+                    <h2 class="font-weight-bold"><%= answer.question.title %></h2>
+                  <% end %>
+                </div>
+                <div class="row">
+                <% if answer.question.tags.any? %>
+                    <% answer.question.tags.each do |tag| %>
+                      <%= link_to tag_path(tag) do %>
+                        <p class="btn btn-outline-primary ml-2", style="font-size:5px;"><%= tag.name %></p>
+                      <% end %>
                     <% end %>
-                  </p>
-                  <p>タグ: <%= answer.question.tags.count %></p>
-                  <div class="d-flex">
-                    <p>評価:<%= answer.answer_likes.count %> | <%= answer.question.impressionist_count(:filter=>:session_hash) %> PV</p>
+                  <% else %>
+                    <div class="no-tag-box"></div>
+                 <% end %>
+                </div>
+                  <div class="row d-flex">
+                    <div><i class="fas fa-thumbs-up"> <%=answer.question.question_likes.count %></i></div>
+                    <div class="ml-3"><i class="fas fa-eye"> <%= answer.question.impressionist_count(:filter=>:session_hash) %></i></div>
                     <p class="ml-auto mb-0"><%= attachment_image_tag answer.question.member, :image, size:"30x30", class:"rounded", fallback:"no_image_icon.jpg"%> <%= answer.question.member.name %></p>
+                    <p class="ml-3 mt-2 text-right"><%= answer.question.created_at.strftime('%Y/%m/%d') %></p>
                   </div>
                 </div>
              </div>
@@ -109,6 +138,5 @@
   </div>
   <!--ここまで-->
 </div>
-
 
 

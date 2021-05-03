@@ -1,60 +1,47 @@
-<div class="about-box-1">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="welcome-box">
-        <%= link_to about_path do %>
-       <h1 class="text-center display-2 font-weight-bold ">
-          WELCOME TO
-          <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
-        </h1>
-       <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text-center about-content-1 mt-5 mb-5">
-      <h1 class="font-weight-bold pt-5 mb-5">Answer.lyの特徴と使い方</h1>
-      <h3 class="mt-5 mb-3">留学したい、気になってる人のためのQ&Aサイト</h3>
-      <p>Answer.lyは、留学の「<strong>不安</strong>を取り除く」をコンセプトにした、留学専門Q&Aサイトです。<br><br>
+    <div class="col-md-12 text-center mt-5">
+      <h1 class="font-weight-bold mb-5 border border-primary rounded">Answer.ly(アンサリー)とは</h1>
+        <h1 class="display-1 font-weight-bold mb-5">
+          <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
+        </h1>
+      <p style="font-size:15px;">
       　「初めての留学は、知らないことが多く不安だった。」<br>
       　「先にその情報知っていたらより良い留学生活が過ごせたかも」<br>
       　「留学に向けてどう勉強すればいいのか」 <br> <br>
       　留学という挑戦をしている人がもっと安心して留学が出来るように<br>
-      　留学に役立つ情報が飛び交う情報サイトになります。
+      　留学に助かる情報が飛び交い、いつでも質問できるQ&Aサイト、それがAnswer.ly。
       </p>
     </div>
   </div>
 </div>
-<div class="about-box-2">
-  <h1 class="font-weight-bold pt-5 mb-5 display-3">Answer.lyの特徴と使い方</h1>
-</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12 d-flex text-center about-content-1 mt-5 mb-5">
-      <div class="col-md-7">
-        lnk
-      </div>
-      <div class="col-md-5">
+    <div class="col-md-12 text-center mt-5 mb-5">
+    <h1 class="font-weight-bold mt-5 mb-5 border border-primary rounded">Answer.lyの特徴</h1>
+      <div class="d-lg-flex pt-5">
+        <div class="col-lg-4 col-md-8 col-sm-12 mx-auto">
+          <%= image_tag "question.jpg",:size => "300x230"%>
+          <h3 class="font-weight-bold mb-3">あなたが求める答えが見つかる。</h3>
+          <p class="text-justify">
+            あなたが持つ不安や課題は、他の人でも抱えている可能性が高いです。本サイトではそのような問題等を質問する場所を提供しています。それぞれのユーザーの質問・回答によって生まれたコンテンツを、同じ問題を持った人に最適な形で届けます。また、検索機能(タグ・質問)もある為、求めている答えを最短で見つけることができます。
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-12 mx-auto">
+          <%= image_tag "typing.jpg",:size => "300x230"%>
+          <h3 class="font-weight-bold mb-3">あなたの知識や成果の可視化</h3>
+          <p>
+            Answer.lyではユーザーの回答数・質問数・得られた高評価数で<strong>ランキング</strong>を設けております。多くの質問は、同じ問題を持った人に対しての大きな助けになります。また、多くの回答は、その数だけ多くの問題を解決したことになります。さらに、参考になった質問や回答には高評価されます。これらをランキング化することで、あなたの頑張りや知識が可視化されます。
 
-      </div>
-    </div>
-    <div class="col-md-12 d-flex text-center about-content-2 mt-5 mb-5">
-      <div class="col-md-7">
-        lnk
-      </div>
-      <div class="col-md-5">
-      </div>
-    </div>
-  </div>
-</div>
-<div class="about-box-3">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="welcome-box-2 rounded text-center pt-5 pb-5">
-        <h3>留学に関する疑問を質問しよう。</h3>
-        <div class="mt-5"><%= link_to "トップページへ", root_path, class:"btn btn-lg btn-outline-primary", 'data-turbolinks': false %></div>
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-12 mx-auto">
+          <%= image_tag "conversation.jpg",:size => "300x230", alt:"Answer.lyロゴ" %>
+          <h3 class="font-weight-bold mb-3">簡単操作かつSNS機能の充実</h3>
+          <p class="text-justify">
+            難しい操作はありません。誰でも簡単に操作ができる仕様になっています。また、「いいね(高評価)、コメント、フォロー、DM、シェア」など基本的なSNS機能が備わっています。フォローする/されることによって、トップページにはそのユーザーらの質問が表示されるように設定している為、より見つけやすく回答が得られるようになっています。
+          </p>
+        </div>
       </div>
     </div>
   </div>

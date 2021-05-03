@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "AfterLogins", type: :system do
-
   describe 'ログイン後のテスト' do
-    let(:member) { create(:member)}
+    let(:member) { create(:member) }
     # let!(:question) { FactoryBot.create(:question, member_id: member.id) }
 
     before do
@@ -14,6 +13,10 @@ RSpec.describe "AfterLogins", type: :system do
     end
 
     context '表示内容の確認' do
+      it 'ログインしました。が表示される' do
+        expect(page).to have_content 'ログインしました。'
+      end
+
       it 'URLが正しい' do
         expect(current_path).to eq root_path
       end
@@ -29,8 +32,8 @@ RSpec.describe "AfterLogins", type: :system do
           expect(page).to have_field 'content'
         end
 
-        it '検索するボタンが表示される' do
-          expect(page).to have_button '検索する'
+        it '検索ボタンが表示される' do
+          expect(page).to have_button '検索'
         end
 
         it 'ログアウトのリンクが表示される' do
@@ -46,7 +49,7 @@ RSpec.describe "AfterLogins", type: :system do
         end
 
         it 'メンバーのプロフィール画像が表示される' do
-          expect(page).to have_selector ("img[src$='no_image_icon-f921c6af5ead36718bbc0580582c4af5dede50b5fb0ef0ead93c6da2feb978d8.jpg']")
+          expect(page).to have_selector "img[src$='no_image_icon-f921c6af5ead36718bbc0580582c4af5dede50b5fb0ef0ead93c6da2feb978d8.jpg']"
         end
       end
     end
@@ -79,11 +82,9 @@ RSpec.describe "AfterLogins", type: :system do
           fill_in 'question[title]', with: Faker::Lorem.characters(number: 5)
           fill_in 'question[content]', with: Faker::Lorem.characters(number: 20)
           click_button '質問する'
-          expect(current_path).to eq question_path(id:1)
+          expect(current_path).to eq question_path(id: 1)
         end
       end
     end
-
-
   end
 end
