@@ -32,7 +32,7 @@ class Public::QuestionsController < ApplicationController
   def edit
     @question = Question.find(params[:id])
     if @question.member != current_member
-      redirect_to request.referer
+      redirect_to root_path
     end
   end
 
