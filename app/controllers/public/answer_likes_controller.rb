@@ -5,7 +5,11 @@ class Public::AnswerLikesController < ApplicationController
     @answer = Answer.find(params[:answer_id])
     @answer_like = current_member.answer_likes.new(answer_id: @answer.id)
     @answer_like.save
+    @question = Question.find(params[:question_id])
+    #通知の作成
+    @question.create_notification_by(current_member)
     render :create
+    
   end
 
   def destroy
@@ -14,4 +18,6 @@ class Public::AnswerLikesController < ApplicationController
     @answer_like.destroy
     render :destroy
   end
+  
+  
 end

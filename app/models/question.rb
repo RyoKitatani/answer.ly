@@ -21,4 +21,43 @@ class Question < ApplicationRecord
   def self.ranking
     joins(:question_likes, :member,).group("members.id").select("count(question_likes.question_id) as cnt, members.*").order("cnt desc").limit(10)
   end
+
+  # notifications
+  
+  def create_notification_like!(current_member)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and question_id = ? and action = ? ", current_member.id, member_id, id, 'like'])
+    if temp.blank?
+      notification = current_member.active_notifications.new(
+        question_id: id,
+        visited_id: member_id,
+        action: 'question_likes'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+  
+  def create_notification_comment!(current_member, comment_id)
+    temp_ids = Comment.select(:member_id).where(question_id: id).where.not(member_id: current_member.id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_comment!(current_member, answer_id, temp_id['member_id'])
+    end
+    save_notification_comment!(current_member, answer_id, member_id) if temp_ids.blank?
+  end
+
+  def save_notification_comment!(current_member, answer_id, visited_id)
+    notification = current_member.active_notifications.new(
+      question_id: id,
+      answer_id: answer_id,
+      visited_id: visited_id,
+      action: 'answer'
+    )
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
 end

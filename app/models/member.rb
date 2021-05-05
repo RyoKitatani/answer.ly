@@ -19,8 +19,8 @@ class Member < ApplicationRecord
   has_many :follower_member, through: :followed, source: :follower
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   VALID_REGEX = /\A[\w@-]*[A-Za-z][\w@-]*\z/.freeze
   validates :name, format: { with: VALID_REGEX }, length: { maximum: 20, minimum: 3 }, allow_blank: true
@@ -113,5 +113,17 @@ class Member < ApplicationRecord
       left_joins(:questions).
       group('members.id').
       order('questions DESC')
+  end
+
+  # notification
+  def create_notification_follow!(current_member)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_member.id, id, 'follow'])
+    if temp.blank?
+      notification = current_member.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end
