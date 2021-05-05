@@ -7,6 +7,7 @@ class Question < ApplicationRecord
   has_many   :question_likes, dependent: :destroy
   has_many   :liked_members, through: :question_likes, source: :member
   has_many   :answers, dependent: :destroy
+  has_many   :notifications, dependent: :destroy
 
   validates :title, presence: true
   validates :title, length: { minimum: 5, maximum: 50 }, allow_blank: true
