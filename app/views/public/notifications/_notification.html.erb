@@ -1,8 +1,8 @@
 <% visitor = notification.visitor %>
 <% question = notification.question %>
 
-<div class="member-view clearfix ">
-  <%= attachment_image_tag visitor, :image, :fill,100,100, format: "jpeg", size: "50x50", class:"profile-img-circle" %>
+<div class="member-view clearfix border rounded mb-2">
+  <%= attachment_image_tag visitor, :image, size:"25x25", fallback:"no_image_icon.jpg", class:"mr-1 profile-img-circle" %>
   <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
   <br>
   <% if !@answer.nil? %>

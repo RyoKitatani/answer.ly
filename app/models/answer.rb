@@ -15,25 +15,5 @@ class Answer < ApplicationRecord
     joins(:answer_likes, :member).group("members.id").select("count(answer_likes.answer_id) as cnt, members.*").order("cnt desc").limit(10)
   end
 
-  def create_notification_by(current_member)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and question_id = ? and action = ? ", current_member.id, member_id, id, 'like'])
-    if temp.blank?
-      notification = current_member.active_notifications.new(
-        question_id: id,
-        visited_id: member_id,
-        action: 'question_like'
-        
-      )
-      # 自分の投稿に対するいいねの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end
-    
-    
-    
-    
-  end
 
 end
