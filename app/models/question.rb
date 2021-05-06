@@ -23,14 +23,14 @@ class Question < ApplicationRecord
   end
 
   # notifications
-  
-  def create_notification_like!(current_member)
+
+  def create_notification_by(current_member)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and question_id = ? and action = ? ", current_member.id, member_id, id, 'like'])
     if temp.blank?
       notification = current_member.active_notifications.new(
         question_id: id,
         visited_id: member_id,
-        action: 'question_likes'
+        action: 'question_like'
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
       if notification.visitor_id == notification.visited_id
@@ -39,9 +39,9 @@ class Question < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
-  def create_notification_comment!(current_member, comment_id)
-    temp_ids = Comment.select(:member_id).where(question_id: id).where.not(member_id: current_member.id).distinct
+
+  def create_notification_comment!(current_member, answer_id)
+    temp_ids = Answer.select(:member_id).where(question_id: id).where.not(member_id: current_member.id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_member, answer_id, temp_id['member_id'])
     end
