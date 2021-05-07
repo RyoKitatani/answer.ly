@@ -7,6 +7,7 @@ class Public::ResponsesController < ApplicationController
     @response.answer_id = @answer.id
     @response.member_id = current_member.id
     if @response.save
+      @answer.create_notification_response!(current_member, @response.id)
       render :create
     end
   end
