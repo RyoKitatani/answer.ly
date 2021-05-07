@@ -17,7 +17,7 @@
     </header>
     <% unless member_signed_in? %>
       <% flash.each do |key, value| %>
-        <div class="mt-3 mb-0 btn btn-lg alert alert-primary alert-dismissible">
+        <div class="mb-0 btn btn-lg alert alert-primary alert-dismissible">
           <button class="close" data-dismiss="alert">&times;</button>
             <span class="alert alert-<%= key %>",style="border: none;"><%= value %></span>
         </div>
