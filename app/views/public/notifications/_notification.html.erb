@@ -2,7 +2,7 @@
 <% question = notification.question %>
 <% answer = notification.answer %>
 
-<div class="member-view clearfix mb-2 mt-2">
+<div class="member-view clearfix mb-2 mt-3">
   <div class="pl-0 pr-0 d-flex bg-light border rounded pt-2 pb-2">
     <div class="col-lg-1 col-md-2 col-sm-2">
       <%= attachment_image_tag visitor, :image, size:"60x60", fallback:"no_image_icon.jpg", class:"rounded-circle" %>
@@ -13,9 +13,9 @@
       </div>
       <div class="row pt-3">
         <% if !@answer.nil? %>
-          <p class="moderate-font text-center" style="color: #C0C0C0;"><%== @answer %></p>
+          <p class="moderate-font text-center"><%== @answer %></p>
         <% elsif !@response.nil? %>
-          <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @response %></p>
+          <p class="moderate-font text-center"><%= @response %></p>
         <% end %>
       </div>
   </div>
