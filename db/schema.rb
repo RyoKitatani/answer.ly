@@ -155,12 +155,14 @@ ActiveRecord::Schema.define(version: 2021_05_05_122222) do
     t.integer "visited_id", null: false
     t.integer "question_id"
     t.integer "answer_id"
+    t.integer "response_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_notifications_on_answer_id"
     t.index ["question_id"], name: "index_notifications_on_question_id"
+    t.index ["response_id"], name: "index_notifications_on_response_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
