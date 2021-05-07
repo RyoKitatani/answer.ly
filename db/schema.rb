@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_153911) do
+ActiveRecord::Schema.define(version: 2021_05_05_122222) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -72,15 +72,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_153911) do
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_answers_on_member_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
-  end
-
-  create_table "chats", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "partner_id", null: false
-    t.string "sentence", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_chats_on_member_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -157,6 +148,23 @@ ActiveRecord::Schema.define(version: 2021_04_27_153911) do
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_messages_on_member_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "question_id"
+    t.integer "answer_id"
+    t.integer "response_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_notifications_on_answer_id"
+    t.index ["question_id"], name: "index_notifications_on_question_id"
+    t.index ["response_id"], name: "index_notifications_on_response_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "question_likes", force: :cascade do |t|

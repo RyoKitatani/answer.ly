@@ -9,6 +9,7 @@ class Public::AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.member_id = current_member.id
     if @answer.save
+      @question.create_notification_comment!(current_member, @answer.id)
       flash[:notice] = "#{@question.title}に回答しました。"
       redirect_to request.referer
     else

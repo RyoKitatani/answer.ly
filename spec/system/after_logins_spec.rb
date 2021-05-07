@@ -13,6 +13,10 @@ RSpec.describe "AfterLogins", type: :system do
     end
 
     context '表示内容の確認' do
+      it 'ログインしました。が表示される' do
+        expect(page).to have_content 'ログインしました。'
+      end
+
       it 'URLが正しい' do
         expect(current_path).to eq root_path
       end
@@ -28,8 +32,8 @@ RSpec.describe "AfterLogins", type: :system do
           expect(page).to have_field 'content'
         end
 
-        it '検索するボタンが表示される' do
-          expect(page).to have_button '検索する'
+        it '検索ボタンが表示される' do
+          expect(page).to have_button '検索'
         end
 
         it 'ログアウトのリンクが表示される' do

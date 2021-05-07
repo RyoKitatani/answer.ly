@@ -16,7 +16,7 @@ class Public::RoomsController < ApplicationController
       my_room_ids << entry.room.id
     end
     # さらにmember_idがログインユーザーでは無いレコードを抽出
-    @another_entries = Entry.where(room_id: my_room_ids).where.not(member_id: current_member.id).order(updated_at: :desc)
+    @another_entries = Entry.where(room_id: my_room_ids).where.not(member_id: current_member.id).page(params[:page]).order(updated_at: :desc).per(5)
   end
 
 

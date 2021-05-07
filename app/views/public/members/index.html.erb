@@ -1,6 +1,6 @@
 <div class="row border-bottom">
   <div class="col-md-12 w-100 mt-2 mb-2">
-      <span class="root-link"><%= link_to root_path do %>Answer.lyトップ<% end %></span>
+      <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
       >
       ランキング一覧
   </div>
@@ -251,8 +251,6 @@
                   <p class="small border border-primary rounded w-100">高評価</p>
                   <h5><%=rank.cnt%></h5>
                 </div>
-              </div>
-              <div class="col-md-3 border-right d-flex text-center">
               </div>
             </div>
           <% end %>

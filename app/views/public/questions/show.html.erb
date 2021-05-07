@@ -1,7 +1,10 @@
 <div class="question-title border-bottom">
   <div class="container">
-  <div class="question-root col-md-12 w-100 pt-4 pb-3 ">
-    <span class="root-link"><%= link_to "Answer.lyトップ", root_path, class:"small" %> > <%= @question.title %></span>
+  <div class="question-root col-md-12 w-100 pt-4 mb-2 ">
+    <span class="root-link"><%= link_to root_path,"data-turbolinks": false do %>Answer.lyトップ<% end %></span>
+    >
+    <%= @question.title %>
+    </span>
   </div>
   </div>
 </div>
@@ -48,7 +51,7 @@
       <!--ここまで-->
     </div>
     <!--質問ユーザープロフィール表示-->
-    <% if member_signed_in?%>
+    <% if member_signed_in? %>
     <div class="col-lg-3 col-md-12 col-sm-12">
       <div class="tag-index mb-5 mt-5 border border-secondary rounded pt-1 pr-1 pb-1 pl-1">
         <div>

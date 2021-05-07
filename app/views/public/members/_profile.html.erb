@@ -16,7 +16,7 @@
               <%= form_with model: room, url: rooms_path, local: true do |f| %>
                 <%= fields_for entry do |e| %>
                   <%= e.hidden_field :member_id, value: member.id %>
-                  <%= f.button :type => "submit", class:"btn btn-primary btn-block w-100" do%>
+                  <%= f.button :type => "submit", class:"btn btn-primary w-100" do%>
                   <i class="fas fa-comments">チャットする</i>
                   <% end %>
                 <% end %>

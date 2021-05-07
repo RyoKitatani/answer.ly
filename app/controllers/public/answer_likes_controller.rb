@@ -5,6 +5,7 @@ class Public::AnswerLikesController < ApplicationController
     @answer = Answer.find(params[:answer_id])
     @answer_like = current_member.answer_likes.new(answer_id: @answer.id)
     @answer_like.save
+    @answer.create_notification_like(current_member)
     render :create
   end
 
@@ -14,4 +15,6 @@ class Public::AnswerLikesController < ApplicationController
     @answer_like.destroy
     render :destroy
   end
+
+
 end

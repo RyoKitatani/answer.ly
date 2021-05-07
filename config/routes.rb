@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/" => "homes#top"
+    get "tags/:id" => "tags#index"
     resources :members, only: [:index, :show, :edit, :update]
-    get "/connections" => "members#connection"
     resources :questions, only: [:index, :show, :destroy]
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
     resources :contacts, only: [:index]
@@ -49,5 +49,6 @@ Rails.application.routes.draw do
     post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
     resources :messages, only: [:create, :destroy]
     resources :rooms, only: [:create, :index, :show]
+    resources :notifications, only: [:index]
   end
 end

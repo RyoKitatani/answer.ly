@@ -7,6 +7,7 @@
 </div>
 <div class="mt-5">
   <h2><i class="fas fa-comments"> DM一覧</i></h2>
+  <p>各ユーザーページから「チャットする」をクリックすることでDMを始めることが出来ます。</p>
 </div>
 
 <div class="row">
@@ -16,6 +17,8 @@
         <thead>
           <tr class="text-center text-white bg-secondary">
             <th colspan="2">ユーザー</th>
+            <th>質問数</th>
+            <th>回答数</th>
             <th>フォロー数</th>
             <th>フォロワー数</th>
             <th>直近のメッセージ</th>
@@ -28,6 +31,8 @@
             <td class="text-center"><%= attachment_image_tag entry.member, :image, size:"30x30", fallback:"no_image_icon.jpg", class:"rounded-circle"%></td>
        　    <td><%= link_to entry.member.name, member_path(entry.member), class:"link-text", "data-turbolinks": false %>
        　    </td>
+       　    <td><%= entry.member.questions.count %></td>
+       　   <td><%= entry.member.answers.count %></td>
             <td><%= entry.member.follower.count %></td>
             <td><%= entry.member.followed.count %></td>
             <td>
@@ -42,6 +47,9 @@
             </tr>
             <% end %>
           <% end %>
+          <tr class="text-center">
+          <td colspan="8"><%= paginate @another_entries %></td>
+          </tr>
         </tbody>
       </table>
     </div>

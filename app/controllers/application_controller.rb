@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
   def admin_header_actions
     @questions = Question.all
     @members = Member.all
+    @tag_total = Tag.all
     @tag_all = Tag.all.order_by_questions
     @contacts = Contact.all
   end
@@ -41,5 +42,7 @@ class ApplicationController < ActionController::Base
     @tags = Tag.all
     @member_all = Member.all.order_by_answers
     @member_alls = Member.all.page(params[:page]).order_by_question.per(5)
+    @contacts = Contact.all
+    @tag_total = Tag.all
   end
 end
