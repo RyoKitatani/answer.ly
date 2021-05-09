@@ -1,0 +1,9 @@
+<% if current_member.following?(member) %>
+  <%= link_to unfollow_path(member), method: :post, class:"btn btn-danger btn-block mt-0 mb-2 ml-1 w-100" do %>
+  <i class="fas fa-user-times">フォロー外す</i>
+  <% end %>
+<% else %>
+  <%= link_to follow_path(member), method: :post, class:"btn btn-primary btn-block mt-0 mb-2 ml-1 w-100" do %>
+    <i class="fas fa-user-plus">フォローする</i>
+  <% end %>
+<% end %>

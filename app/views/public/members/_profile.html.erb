@@ -28,15 +28,9 @@
               <i class="fas fa-user-edit">プロフィール編集</i>
             <% end %>
         <% else %>
-          <% if current_member.following?(member) %>
-            <%= link_to unfollow_path(member), method: :post, class:"btn btn-danger btn-block mt-0 mb-2 ml-1 w-50" do %>
-            <i class="fas fa-user-times">フォロー外す</i>
-            <% end %>
-          <% else %>
-            <%= link_to follow_path(member), method: :post, class:"btn btn-primary btn-block mt-0 mb-2 ml-1 w-50" do %>
-              <i class="fas fa-user-plus">フォローする</i>
-            <% end %>
-          <% end %>
+          <span id="followe-button_<%= member.id %>">
+            <%= render "public/members/follow_button", member: member %>
+          </span>
         <% end %>
       </div>
       <div class="mt-3">
@@ -74,11 +68,11 @@
       <div class="d-flex mt-3">
         <div class="text-center w-100">
           <p class="small border border-primary rounded">フォロー</p></p>
-          <h5><%= member.follower.count %></h5>
+          <h5 id="follower-count_<%= member.id %>"><%= member.follower.count %></h5>
         </div>
         <div class="text-center w-100 ml-2">
           <p class="small border border-primary rounded">フォロワー</p>
-          <h5><%= member.followed.count %></h5>
+          <h5 id="followed-count_<%= member.id %>"><%= member.followed.count %></h5>
         </div>
       </div>
       <div class="header-item mb-3 mt-3 w-100 btn btn-info"><%= link_to "フォロー・フォロワー一覧へ", connections_member_path, class:"small","data-turbolinks": false %></div>
