@@ -32,13 +32,13 @@
           <p><%= image_tag 'q_icon.png', size: "20x20" %></p>
           <p class="pl-1"><%= member.questions.count %></p>
         </div>
-        <div class="col-md-4 pl-0 pr-0 ml-1">
+        <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_<%= member.id %>">
           <% if member_signed_in? %>
             <% unless current_member.id == member.id %>
               <% if current_member.following?(member) %>
-                <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
               <% end %>
             <% else %>
               <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -66,13 +66,13 @@
               <p><%= image_tag 'a_icon.png', size: "20x20" %></p>
               <p class="pl-1"><%= member.answers.count %></p>
             </div>
-            <div class="col-md-4 pl-0 pr-0 ml-1">
+            <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
                 <% unless current_member.id == member.id %>
                   <% if current_member.following?(member) %>
-                    <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
                   <% else %>
-                    <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
                   <% end %>
                 <% else %>
                   <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -98,9 +98,9 @@
         <% if member_signed_in? %>
             <% unless current_member.name == rank.name %>
               <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                <%= link_to '解除', unfollow_path(rank), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                <%= link_to "フォロー", follow_path(rank), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
               <% end %>
             <% else %>
               <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -126,9 +126,9 @@
         <% if member_signed_in? %>
             <% unless current_member.name == rank.name %>
               <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                <%= link_to '解除', unfollow_path(rank), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                <%= link_to "フォロー", follow_path(rank), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
               <% end %>
             <% else %>
               <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
