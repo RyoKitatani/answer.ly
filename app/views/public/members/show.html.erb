@@ -13,14 +13,14 @@
       <div class=" d-flex mb-3">
         <% unless @member.id == current_member.id %>
             <% if @is_room == true %>
-              <%= link_to room_path(@room_id), class:"btn btn-primary btn-block mb-2 mt-3 w-50",style:"width:100%; font-size:4px;", "data-turbolinks": false do %>
+              <%= link_to room_path(@room_id), class:"btn btn-primary btn-block mb-2 mr-1 mt-3 w-50",style:"font-size:4px;", "data-turbolinks": false do %>
                <i class="fas fa-comments">チャットする</i>
               <% end %>
             <% else %>
               <%= form_with model: @room, url: rooms_path, local: true do |f| %>
                 <%= fields_for @entry do |e| %>
                   <%= e.hidden_field :member_id, value: @member.id %>
-                  <%= f.button :type => "submit", class:"btn btn-primary mt-3 w-100", style:"width:100%; font-size:4px;" do%>
+                  <%= f.button :type => "submit", class:"btn btn-primary mt-3 pb-1 w-100", style:"font-size:4px;" do%>
                   <i class="fas fa-comments">チャットする</i>
                   <% end %>
                 <% end %>
@@ -32,7 +32,7 @@
               <i class="fas fa-user-edit">プロフィール編集</i>
             <% end %>
         <% else %>
-          <div id="follow-button_<%= @member.id %>">
+          <div id="follow-button_<%= @member.id %>" class="ml-1 w-50">
             <%= render "public/members/follow_button", member: @member %>
           </div>
         <% end %>

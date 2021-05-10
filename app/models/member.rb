@@ -101,6 +101,7 @@ class Member < ApplicationRecord
     question_likes_count + answer_likes_count
   end
 
+  # 回答数が多いユーザー順に並べる
   def self.order_by_answers
     Member.select('members.*', 'count(member_id) AS answers').
       left_joins(:answers).
@@ -108,6 +109,7 @@ class Member < ApplicationRecord
       order('answers DESC')
   end
 
+  # 質問数が多いユーザー順に並べる
   def self.order_by_question
     Member.select('members.*', 'count(member_id) AS questions').
       left_joins(:questions).

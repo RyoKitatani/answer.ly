@@ -92,21 +92,8 @@
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
         <%= rank.name %>
         <% end %>
-        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
       </div>
-      <div class="col-md-4 pl-0 pr-0 ml-0">
-        <% if member_signed_in? %>
-            <% unless current_member.name == rank.name %>
-              <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-              <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-              <% end %>
-            <% else %>
-              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-            <% end %>
-          <% end %>
-      </div>
+      <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
     </div>
     <% end %>
   </div>
@@ -120,21 +107,8 @@
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
         <%= rank.name %>
         <% end %>
-        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
       </div>
-      <div class="col-md-4 pl-0 pr-0 ml-0">
-        <% if member_signed_in? %>
-            <% unless current_member.name == rank.name %>
-              <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-              <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-              <% end %>
-            <% else %>
-              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-            <% end %>
-          <% end %>
-      </div>
+      <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
     </div>
     <% end %>
   </div>

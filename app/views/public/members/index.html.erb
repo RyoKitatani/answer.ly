@@ -48,7 +48,7 @@
             <div class="col-md-3 border-right d-flex text-center">
               <div class="col-md-6 border-right">
                 <p class="small border border-primary rounded">フォロー</p>
-                <h5>
+                <h5 id="follower-count_<%= member.id %>">
                   <%= link_to connections_member_path(member) do %>
                     <%= member.follower.count %>
                   <% end %>
@@ -73,15 +73,15 @@
                 <h5 class="mt-2"><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center">
+            <div class="col-md-2 d-flex text-center", id="follow-button_<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
                   <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -135,15 +135,15 @@
                 <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center">
+            <div class="col-md-2 d-flex text-center", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
                   <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -197,15 +197,15 @@
                 <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center">
+            <div class="col-md-2 d-flex text-center", id="follow-button_3<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
                   <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
                   <% end %>
                 <% end %>
               <% end %>
