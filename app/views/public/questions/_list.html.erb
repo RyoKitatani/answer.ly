@@ -31,7 +31,7 @@
         <div><i class="fas fa-thumbs-up"> <%=question.question_likes.count %></i></div>
         <div class="ml-3"><i class="fas fa-eye"> <%= question.impressionist_count(:filter=>:session_hash) %></i></div>
         <%= link_to member_path(question.member_id), class:"link-text ml-auto", 'data-turbolinks': false do %>
-          <div><%= attachment_image_tag question.member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
+          <div><%= attachment_image_tag question.member, :image, class:"rounded-circle", size:"25x25", fallback:"no_image_icon.jpg"%><%= question.member.name %></div>
         <% end %>
         <div class="ml-3 mr-1 text-right", style="font-size:14px;"><%= question.created_at.strftime('%Y/%m/%d') %></div>
       </div>
