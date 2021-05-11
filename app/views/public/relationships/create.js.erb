@@ -1,0 +1,6 @@
+$("#follow-button_<%= @member.id %>").html("<%= j(render 'public/members/follow_button', member: @member) %>");
+$("#follow-button_2<%= @member.id %>").html("<%= j(render 'public/members/follow_button', member: @member) %>");
+$("#follow-button_3<%= @member.id %>").html("<%= j(render 'public/members/follow_button', member: @member) %>");
+$("#followed-count_<%= @member.id %>").html("<%= j(render 'public/members/followed_count', member: @member) %>");
+$("#followed-count_2<%= @member.id %>").html("<%= j(render 'public/members/followed_count', member: @member) %>");
+$("#followed-count_3<%= @member.id %>").html("<%= j(render 'public/members/followed_count', member: @member) %>");
