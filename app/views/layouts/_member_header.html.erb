@@ -23,9 +23,9 @@
   </div>
 <% end %>
 <%= link_to member_path(current_member),"data-turbolinks": false do %>
-  <div class="text-white header-item btn mt-1 mr-2">
+  <div class="text-white header-item border-white btn mt-1 mr-2">
     <li class="nav-item">
-      <%= attachment_image_tag current_member, :image, size:"22x22", fallback:"no_image_icon.jpg", class:"mr-1 rounded-circle" %><%= current_member.name %></i>
+      <%= attachment_image_tag current_member, :image, size:"20x20", fallback:"no_image_icon.jpg", class:"mr-1 rounded-circle" %><%= current_member.name %></i>
     </li>
 </div>
 <% end %>
