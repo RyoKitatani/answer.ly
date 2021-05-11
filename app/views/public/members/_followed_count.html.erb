@@ -1,1 +1,3 @@
-<h5><%= member.followed.count %></h5>
+<%= link_to connections_member_path(member), "data-turbolinks": false do %>
+  <%= member.followed.count %>
+<% end %>

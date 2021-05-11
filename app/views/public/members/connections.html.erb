@@ -38,10 +38,8 @@
               </div>
               <div class="col-md-6 ml-2">
                 <div class="small border border-primary rounded mb-1">フォロワー</div>
-                <h5>
-                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
-                    <%= member.followed.count %>
-                  <% end %>
+                <h5 id="followed-count_<%= member.id %>">
+                  <%= render "public/members/followed_count", member: member %>
                 </h5>
               </div>
             </div>
@@ -104,10 +102,8 @@
               </div>
               <div class="col-md-6 ml-2">
                 <div class="small border border-primary rounded mb-1">フォロワー</div>
-                <h5>
-                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
-                    <%= member.followed.count %>
-                  <% end %>
+                <h5 id="followed-count_2<%= member.id %>">
+                  <%= render "public/members/followed_count", member: member %>
                 </h5>
               </div>
             </div>

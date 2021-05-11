@@ -72,8 +72,10 @@
       <div class="d-flex mt-3">
         <div class="text-center w-100">
           <p class="small border border-primary rounded">フォロー</p></p>
-          <div id="follower-count_<%= @member.id %>">
-            <%= render "public/members/follower_count", member: @member %>
+          <div>
+            <%= link_to connections_member_path(@member), "data-turbolinks": false do %>
+              <%= @member.follower.count %>
+            <% end %>
           </div>
         </div>
         <div class="text-center w-100 ml-2">
