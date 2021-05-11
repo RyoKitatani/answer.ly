@@ -23,7 +23,7 @@
         <div class="col-md-4 pr-0 ml-0 pt-2 pl-0">
           <%= link_to member_path(member), class:"link-text align-items-cente smallr","data-turbolinks": false do %>
             <div class="pr-0 ml-0 small">
-              <%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><br />
+              <%= attachment_image_tag member, :image, class:"rounded-circle", size:"25x25", fallback:"no_image_icon.jpg"%><br />
               <%= member.name%>
             </div>
           <% end %>
@@ -36,9 +36,9 @@
           <% if member_signed_in? %>
             <% unless current_member.id == member.id %>
               <% if current_member.following?(member) %>
-                <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-3 pb-2 pt-2 fas fa-user-times", style:"width:100%; font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-3 pb-2 pt-2 fas fa-user-times", style:"width:100%; font-size:4px;" %>
               <% end %>
             <% else %>
               <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -57,7 +57,7 @@
             <div class="col-md-4 pr-0 ml-0 pt-2 pl-0">
               <%= link_to member_path(member), class:"link-text align-items-cente smallr", 'data-turbolinks': false do %>
                 <div class="pr-0 ml-0 small">
-                  <%= attachment_image_tag member, :image, size:"25x25", fallback:"no_image_icon.jpg"%><br />
+                  <%= attachment_image_tag member, :image, class:"rounded-circle", size:"25x25", fallback:"no_image_icon.jpg"%><br />
                   <%= member.name%>
                 </div>
               <% end %>
@@ -68,16 +68,16 @@
             </div>
             <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
-                <% unless current_member.id == member.id %>
-                  <% if current_member.following?(member) %>
-                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-                  <% else %>
-                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-                <% end %>
+            <% unless current_member.id == member.id %>
+              <% if current_member.following?(member) %>
+                <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-3 pb-2 pt-2 fas fa-user-times", style:"width:100%; font-size:4px;" %>
+              <% else %>
+                <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-3 pb-2 pt-2 fas fa-user-times", style:"width:100%; font-size:4px;" %>
               <% end %>
+            <% else %>
+              <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
+            <% end %>
+          <% end %>
             </div>
           </div>
         <% end %>
