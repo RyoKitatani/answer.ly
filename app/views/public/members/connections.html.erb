@@ -47,9 +47,9 @@
                     <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
                   <% else %>
                     <% if current_member.following?(member) %>
-                      <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                      <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
                     <% else %>
-                      <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                      <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
                     <% end %>
                   <% end %>
                 <% end %>

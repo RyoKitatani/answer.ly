@@ -9,79 +9,76 @@
   <div class="col-lg-12 col-md-12 col-sm-12">
     <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ランキング一覧</i></h4>
     <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item bg-light", style="width:20%;">
+      <li class="nav-item bg-light ml-3 mr-2", style="width:24%;">
         <a class="nav-link active link-text font-weight-bold" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">新着</a>
       </li>
-      <li class="nav-item bg-light", style="width:20%;">
+      <li class="nav-item bg-light mr-2", style="width:24%;">
         <a class="nav-link link-text font-weight-bold" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">質問数</a>
       </li>
-      <li class="nav-item bg-light", style="width:20%;">
+      <li class="nav-item bg-light mr-2", style="width:24%;">
         <a class="nav-link link-text font-weight-bold" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true">回答数</a>
       </li>
-      <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text font-weight-bold" id="qlikes-tab" data-toggle="tab" href="#qlikes" role="tab" aria-controls="qlikes" aria-selected="false">質問いいね</a>
-      </li>
-      <li class="nav-item bg-light", style="width:20%;">
-        <a class="nav-link link-text font-weight-bold" id="alikes-tab" data-toggle="tab" href="#alikes" role="tab" aria-controls="alikes" aria-selected="false">回答いいね</a>
+      <li class="nav-item bg-light", style="width:24%;">
+        <a class="nav-link link-text font-weight-bold" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">質問&回答の高評価</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <p class="mt-4 mb-4">全ユーザー数：<%= @members.count %>人</p>
       <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
         <% @members.each do |member| %>
-          <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
+          <div class="d-flex border rounded mt-3 pt-1 pb-1">
             <div class="col-md-1 text-center pt-3 bg-warning ml-2">
-              <div><%=member.created_at.strftime('%Y/%m/%d %H:%M') %><br>start</div>
+              <div><%=member.created_at.strftime('%Y/%m/%d %H:%M') %> start</div>
             </div>
             <div class="col-md-2 border-right pr-0 ml-0 pt-3">
-              <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
-                <div class="pr-0"><%= attachment_image_tag member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></div>
+              <%= link_to member_path(member), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                <div class="pr-0"><%= attachment_image_tag member, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                 <div class="ml-3"><%= member.name%></div>
               <% end %>
             </div>
-            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0">
+            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0 mt-2">
               <div class="col-md-12">
-                <p class="small border border-primary rounded w-100">高評価</p>
+                <div class="small border border-primary rounded w-100 mb-1"> 総高評価</div>
                 <h5><%= member.total_likes(member) %></h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
-              <div class="col-md-6 border-right">
-                <p class="small border border-primary rounded">フォロー</p>
+            <div class="col-md-3 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right mr-1 pl-2">
+                <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.follower.count %>
                   <% end %>
                 </h5>
               </div>
               <div class="col-md-6 ml-2">
-                <p class="small border border-primary rounded">フォロワー</p>
+                <div class="small border border-primary rounded mb-1">フォロワー</div>
                 <h5 id="follower-count_<%= member.id %>">
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.followed.count %>
                   <% end %>
                 </h5>
               </div>
             </div>
-            <div class="col-md-2 border-right d-flex text-center">
-              <div class="col-md-6 border-right">
-                <p class="mb-0"><%= image_tag 'q_icon.png', size: "27x30" %></p>
-                <h5 class="mt-2"><%= member.questions.count %></h5>
+            <div class="col-md-2 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right pl-2">
+                <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
+                <h5><%= member.questions.count %></h5>
               </div>
               <div class="col-md-6">
-                <p class="mb-0"><%= image_tag 'a_icon.png', size: "27x30" %></p>
-                <h5 class="mt-2"><%= member.answers.count %></h5>
+                <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
+                <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center", id="follow-button_<%= member.id %>">
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
-                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
+                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"font-size:4px; width:100%;", "data-turbolinks": false%>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -91,59 +88,59 @@
       </div>
       <div class="mb-5 tab-pane fade " id="member" role="tabpanel" aria-labelledby="member-tab">
         <% @member_alls.each.with_index(1) do |member, i| %>
-          <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-            <div class="col-md-1 border-right text-center pt-4 pr-0">
+          <div class="d-flex border rounded mx-auto mt-3 pt-1 pb-2">
+            <div class="col-md-1 border-right font-weight-bold text-center pt-4 pr-0">
               <div><%= i %>位</div>
             </div>
             <div class="col-md-2 border-right pr-0 ml-0 pt-3">
-              <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
-                <div class="pr-0"><%= attachment_image_tag member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></div>
+              <%= link_to member_path(member), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                <div class="pr-0"><%= attachment_image_tag member, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                 <div class="ml-3"><%= member.name%></div>
               <% end %>
             </div>
-            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0">
+            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0 mt-2">
               <div class="col-md-12">
-                <p class="small border border-primary rounded w-100">高評価</p>
+                <div class="small border border-primary rounded w-100 mb-1">総高評価</div>
                 <h5><%= member.total_likes(member) %></h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
+            <div class="col-md-3 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right">
-                <p class="small border border-primary rounded">フォロー</p>
+                <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.follower.count %>
                   <% end %>
                 </h5>
               </div>
               <div class="col-md-6 ml-2">
-                <p class="small border border-primary rounded">フォロワー</p>
+                <div class="small border border-primary rounded mb-1">フォロワー</div>
                 <h5>
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.followed.count %>
                   <% end %>
                 </h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
+            <div class="col-md-2 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right bg-warning">
-                <p class="mb-0"><%= image_tag 'q_icon.png', size: "27x30" %></p>
+                <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
                 <h5><%= member.questions.count %></h5>
               </div>
               <div class="col-md-6">
-                <p class="mb-0"><%= image_tag 'a_icon.png', size: "27x30" %></p>
+                <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
                 <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center", id="follow-button_2<%= member.id %>">
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
-                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
+                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -151,61 +148,61 @@
           </div>
         <% end %>
       </div>
-      <div class="mb-5 tab-pane fade " id="members" role="tabpanel" aria-labelledby="members-tab">
+      <div class="mb-5 tab-pane fade " id="members" role="tabpanel" aria-labelledby="member-tab">
         <% @member_all.each.with_index(1) do |member, i| %>
-          <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-            <div class="col-md-1 border-right text-center pt-4 pr-0">
+          <div class="d-flex border rounded mx-auto mt-3 pt-1 pb-2">
+            <div class="col-md-1 border-right font-weight-bold text-center pt-4 pr-0">
               <div><%= i %>位</div>
             </div>
             <div class="col-md-2 border-right pr-0 ml-0 pt-3">
-              <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
-                <div class="pr-0"><%= attachment_image_tag member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></div>
+              <%= link_to member_path(member), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                <div class="pr-0"><%= attachment_image_tag member, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                 <div class="ml-3"><%= member.name%></div>
               <% end %>
             </div>
-            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0">
+            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0 mt-2">
               <div class="col-md-12">
-                <p class="small border border-primary rounded w-100">高評価</p>
+                <div class="small border border-primary rounded w-100 mb-1">総高評価</div>
                 <h5><%= member.total_likes(member) %></h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
+            <div class="col-md-3 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right">
-                <p class="small border border-primary rounded">フォロー</p>
+                <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.follower.count %>
                   <% end %>
                 </h5>
               </div>
               <div class="col-md-6 ml-2">
-                <p class="small border border-primary rounded">フォロワー</p>
+                <div class="small border border-primary rounded mb-1">フォロワー</div>
                 <h5>
-                  <%= link_to connections_member_path(member) do %>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
                     <%= member.followed.count %>
                   <% end %>
                 </h5>
               </div>
             </div>
-            <div class="col-md-3 border-right d-flex text-center">
-              <div class="col-md-6 border-right">
-                <p class="mb-0"><%= image_tag 'q_icon.png', size: "27x30" %></p>
+            <div class="col-md-2 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right ">
+                <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
                 <h5><%= member.questions.count %></h5>
               </div>
               <div class="col-md-6 bg-warning">
-                <p class="mb-0"><%= image_tag 'a_icon.png', size: "27x30" %></p>
+                <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
                 <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center", id="follow-button_3<%= member.id %>">
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
-                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
+                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -213,47 +210,51 @@
           </div>
         <% end %>
       </div>
-      <div class="mb-5 tab-pane fade" id="qlikes" role="tabpanel" aria-labelledby="qlikes-tab">
-        <% Question.all.ranking.each.with_index(1) do |rank, i| %>
-          <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-            <div class="col-md-1 border-right text-center pt-4 pr-0">
-              <div><%= i %>位</div>
-            </div>
-            <div class="col-md-2 border-right pr-0 pt-3">
-              <%= link_to member_path(rank), class:"link-text d-flex align-items-center" do %>
-                <div class="ml-3"><%= rank.name %></div>
-              <% end %>
-            </div>
-            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0">
-              <div class="col-md-12">
-                <p class="small border border-primary rounded w-100">高評価</p>
-                <h5><%=rank.cnt%></h5>
-              </div>
-            </div>
-            <div class="col-md-3 d-flex text-center">
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="mb-5 tab-pane fade" id="alikes" role="tabpanel" aria-labelledby="alikes-tab">
-          <% Answer.all.a_ranking.each.with_index(1) do |rank, i| %>
+      <div class="mb-5 tab-pane fade d-flex" id="likes" role="tabpanel" aria-labelledby="likes-tab">
+        <div class="col-md-6">
+          <h4 class="text-center font-weight-bold">質問への高評価</h4>
+          <% Question.all.ranking.each.with_index(1) do |rank, i| %>
             <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-              <div class="col-md-1 border-right text-center pt-4 pr-0">
-              <div><%= i %>位</div>
-            </div>
-              <div class="col-md-2 border-right pr-0 pt-3">
-                <%= link_to member_path(rank), class:"link-text d-flex align-items-center" do %>
+              <div class="col-md-2 border-right text-center pt-4 pr-0">
+                <div><%= i %>位</div>
+              </div>
+              <div class="col-md-4 border-right pr-0 pt-3">
+                <%= link_to member_path(rank), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                  <div class="pr-0"><%= attachment_image_tag rank, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                   <div class="ml-3"><%= rank.name %></div>
                 <% end %>
               </div>
-              <div class="col-md-1 border-right d-flex text-center pl-0 pr-0">
+              <div class="col-md-6 d-flex text-center pl-0 pr-0 pt-2">
                 <div class="col-md-12">
-                  <p class="small border border-primary rounded w-100">高評価</p>
+                  <div class="small border border-primary rounded w-100 mb-1">高評価</div>
                   <h5><%=rank.cnt%></h5>
                 </div>
               </div>
             </div>
           <% end %>
+        </div>
+        <div class="col-md-6">
+          <h4 class="text-center font-weight-bold">回答への高評価</h4>
+          <% Answer.all.a_ranking.each.with_index(1) do |rank, i| %>
+            <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
+              <div class="col-md-2 border-right text-center pt-4 pr-0">
+                <div><%= i %>位</div>
+              </div>
+              <div class="col-md-4 border-right pr-0 pt-3">
+                <%= link_to member_path(rank), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                  <div class="pr-0"><%= attachment_image_tag rank, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
+                  <div class="ml-3"><%= rank.name %></div>
+                <% end %>
+              </div>
+              <div class="col-md-6 d-flex text-center pl-0 pr-0 pt-2">
+                <div class="col-md-12">
+                  <div class="small border border-primary rounded w-100 mb-1">高評価</div>
+                  <h5><%=rank.cnt%></h5>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
