@@ -32,13 +32,13 @@
           <p><%= image_tag 'q_icon.png', size: "20x20" %></p>
           <p class="pl-1"><%= member.questions.count %></p>
         </div>
-        <div class="col-md-4 pl-0 pr-0 ml-1">
+        <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_<%= member.id %>">
           <% if member_signed_in? %>
             <% unless current_member.id == member.id %>
               <% if current_member.following?(member) %>
-                <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
               <% end %>
             <% else %>
               <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -66,13 +66,13 @@
               <p><%= image_tag 'a_icon.png', size: "20x20" %></p>
               <p class="pl-1"><%= member.answers.count %></p>
             </div>
-            <div class="col-md-4 pl-0 pr-0 ml-1">
+            <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
                 <% unless current_member.id == member.id %>
                   <% if current_member.following?(member) %>
-                    <%= link_to '解除', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
                   <% else %>
-                    <%= link_to "フォロー", follow_path(member), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
                   <% end %>
                 <% else %>
                   <%= link_to "マイページ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
@@ -85,56 +85,32 @@
   <div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">
     <% Question.all.ranking.each.with_index(1) do |rank, i| %>
       <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
-      <div class="col-md-3">
+      <div class="col-md-2 pr-0 pl-0">
         <p><%= i %>位</p>
       </div>
-      <div class="col-md-5 pl-0">
+      <div class="col-md-7 pl-0">
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
-        <%= rank.name %>
+          <%= attachment_image_tag rank, :image, class:"rounded-circle", size:"25x25", fallback:"no_image_icon.jpg"%>
+          <%= rank.name %>
         <% end %>
-        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
       </div>
-      <div class="col-md-4 pl-0 pr-0 ml-0">
-        <% if member_signed_in? %>
-            <% unless current_member.name == rank.name %>
-              <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-              <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-              <% end %>
-            <% else %>
-              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-            <% end %>
-          <% end %>
-      </div>
+      <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
     </div>
     <% end %>
   </div>
   <div class="tab-pane fade" id="answer" role="tabpanel" aria-labelledby="answer-tab">
     <% Answer.a_ranking.each.with_index(1) do |rank, i| %>
      <div class="all-ranking d-flex border-bottom mt-2 pt-3 ">
-      <div class="col-md-3">
+      <div class="col-md-2 pr-0 pl-0">
         <p><%= i %>位</p>
       </div>
-      <div class="col-md-5 pl-0">
+      <div class="col-md-7 pl-0">
         <%= link_to member_path(rank), class:"link-text small", style:"font-size:3px;", 'data-turbolinks': false do %>
-        <%= rank.name %>
+          <%= attachment_image_tag rank, :image, class:"rounded-circle", size:"25x25", fallback:"no_image_icon.jpg"%>
+          <%= rank.name %>
         <% end %>
-        <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
       </div>
-      <div class="col-md-4 pl-0 pr-0 ml-0">
-        <% if member_signed_in? %>
-            <% unless current_member.name == rank.name %>
-              <% if current_member.following?(rank) %>
-                <%= link_to '解除', unfollow_path(rank), method: :post, class:"btn btn-danger mt-3", style:"width:100%; font-size:4px;" %>
-              <% else %>
-                <%= link_to "フォロー", follow_path(rank), method: :post, class:"btn btn-primary mt-3 ", style:"width:100%; font-size:4px;" %>
-              <% end %>
-            <% else %>
-              <%= link_to "マイページ", member_path(rank), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; font-size:4px;" %>
-            <% end %>
-          <% end %>
-      </div>
+      <p><i class="fas fa-thumbs-up"></i> <%=rank.cnt%></p>
     </div>
     <% end %>
   </div>

@@ -5,6 +5,8 @@ class Answer < ApplicationRecord
   has_many   :responses, dependent: :destroy
   has_many   :notifications, dependent: :destroy
 
+   attachment :image
+
   validates :content, presence: true
 
   def answer_liked_by?(member)

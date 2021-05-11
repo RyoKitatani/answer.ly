@@ -14,47 +14,59 @@
         <div class="ml-1 mt-3 mb-2">全フォロー数: <%= @member.follower.count %>人</div>
         <% if @member.following_member.any? %>
           <% @member.following_member.each do |member| %>
-            <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-              <div class="col-md-2 border-right pr-0">
-              <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
-                <div class="mt-3 mb-3"><%= attachment_image_tag member, :image, size:"30x30", fallback:"no_image_icon.jpg"%></div>
+            <div class="d-flex border rounded mx-auto mt-3 pt-1 pb-2 bg-light">
+            <div class="col-md-2 border-right pr-0 ml-0 pt-3">
+              <%= link_to member_path(member), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                <div class="pr-0"><%= attachment_image_tag member, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                 <div class="ml-3"><%= member.name%></div>
-               <% end %>
-              </div>
-              <div class="col-md-3 border-right d-flex text-center">
-                <div class="col-md-6 mt-3 mb-3 border-right">
-                  <p class="small border border-primary rounded">フォロー</p></p>
-                  <h5><%= member.follower.count %></h5>
-                </div>
-                <div class="col-md-6 ml-2 mt-3 mb-3">
-                  <p class="small border border-primary rounded">フォロワー</p>
-                  <h5><%= member.followed.count %></h5>
-                </div>
-              </div>
-              <div class="col-md-3 border-right d-flex text-center">
-                <div class="col-md-6 mt-3 mb-3 border-right">
-                  <p><%= image_tag 'q_icon.png', size: "25x30" %></p>
-                  <h5><%= member.questions.count %></h5>
-                </div>
-                <div class="col-md-6 mt-3 mb-3">
-                  <p><%= image_tag 'a_icon.png', size: "25x30" %></p>
-                  <h5><%= member.answers.count %></h5>
-                </div>
-              </div>
-              <div class="col-md-2 border-right d-flex">
-                <% if member_signed_in? %>
-                  <% if current_member.id == member.id %>
-                    <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
-                  <% else %>
-                    <% if current_member.following?(member) %>
-                      <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
-                    <% else %>
-                      <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
-                    <% end %>
-                  <% end %>
-                <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0 mt-2">
+              <div class="col-md-12">
+                <div class="small border border-primary rounded w-100 mb-1">総高評価</div>
+                <h5><%= member.total_likes(member) %></h5>
               </div>
             </div>
+            <div class="col-md-3 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right">
+                <div class="small border border-primary rounded mb-1">フォロー</div>
+                <h5>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
+                    <%= member.follower.count %>
+                  <% end %>
+                </h5>
+              </div>
+              <div class="col-md-6 ml-2">
+                <div class="small border border-primary rounded mb-1">フォロワー</div>
+                <h5 id="followed-count_<%= member.id %>">
+                  <%= render "public/members/followed_count", member: member %>
+                </h5>
+              </div>
+            </div>
+            <div class="col-md-2 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right">
+                <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
+                <h5><%= member.questions.count %></h5>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
+                <h5><%= member.answers.count %></h5>
+              </div>
+            </div>
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_<%= member.id %>">
+              <% if member_signed_in? %>
+                <% if current_member.id == member.id %>
+                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
+                <% else %>
+                  <% if current_member.following?(member) %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"fas fa-user-times btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
+                  <% else %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"fas fa-user-times btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
           <% end %>
         <% else %>
           <div>
@@ -66,47 +78,59 @@
         <div class="ml-1 mt-5 mb-2">全フォロワー数: <%= @member.followed.count %>人</div>
         <% if @member.follower_member.any? %>
           <% @member.follower_member.each do |member| %>
-            <div class="d-flex border rounded mx-auto mt-3 pt-2 pb-2">
-              <div class="col-md-3 border-right">
-              <%= link_to member_path(member), class:"link-text d-flex align-items-center" do %>
-                <div class="mt-3 mb-3"><%= attachment_image_tag member, :image, size:"60x60", fallback:"no_image_icon.jpg"%></div>
+            <div class="d-flex border rounded mx-auto mt-3 pt-1 pb-2 bg-light">
+            <div class="col-md-2 border-right pr-0 ml-0 pt-3">
+              <%= link_to member_path(member), class:"link-text d-flex align-items-center", "data-turbolinks": false do %>
+                <div class="pr-0"><%= attachment_image_tag member, :image, class:"rounded-circle", size:"30x30", fallback:"no_image_icon.jpg"%></div>
                 <div class="ml-3"><%= member.name%></div>
-               <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-1 border-right d-flex text-center pl-0 pr-0 mt-2">
+              <div class="col-md-12">
+                <div class="small border border-primary rounded w-100 mb-1">総高評価</div>
+                <h5><%= member.total_likes(member) %></h5>
               </div>
-              <div class="col-md-3 border-right d-flex text-center">
-                <div class="col-md-6 mt-3 mb-3 border-right">
-                  <p class="small border border-primary rounded">フォロー</p></p>
-                  <h5><%= member.follower.count %></h5>
-                </div>
-                <div class="col-md-6 ml-2 mt-3 mb-3">
-                  <p class="small border border-primary rounded">フォロワー</p>
-                  <h5><%= member.followed.count %></h5>
-                </div>
+            </div>
+            <div class="col-md-3 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right">
+                <div class="small border border-primary rounded mb-1">フォロー</div>
+                <h5>
+                  <%= link_to connections_member_path(member), "data-turbolinks": false do %>
+                    <%= member.follower.count %>
+                  <% end %>
+                </h5>
               </div>
-              <div class="col-md-3 border-right d-flex text-center">
-                <div class="col-md-6 mt-3 mb-3 border-right">
-                  <p><%= image_tag 'q_icon.png', size: "25x30" %></p>
-                  <h5><%= member.questions.count %></h5>
-                </div>
-                <div class="col-md-6 mt-3 mb-3">
-                  <p><%= image_tag 'a_icon.png', size: "25x30" %></p>
-                  <h5><%= member.answers.count %></h5>
-                </div>
+              <div class="col-md-6 ml-2">
+                <div class="small border border-primary rounded mb-1">フォロワー</div>
+                <h5 id="followed-count_2<%= member.id %>">
+                  <%= render "public/members/followed_count", member: member %>
+                </h5>
               </div>
-              <div class="col-md-2 border-right d-flex">
-                <% if member_signed_in? %>
+            </div>
+            <div class="col-md-2 border-right d-flex text-center mt-2">
+              <div class="col-md-6 border-right">
+                <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
+                <h5><%= member.questions.count %></h5>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
+                <h5><%= member.answers.count %></h5>
+              </div>
+            </div>
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_2<%= member.id %>">
+              <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
-                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3", style:"width:100%; height:50%;" %>
+                  <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, class:"btn btn-danger mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"fas fa-user-times btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, class:"btn btn-primary mt-3", style:"width:100%; height:50%;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"fas fa-user-times btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
-              </div>
             </div>
+          </div>
           <% end %>
         <% else %>
           <div class="col-md-12 oddset-md-1 mt-5 text-center">
