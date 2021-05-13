@@ -247,7 +247,8 @@
           </div>
         <% end %>
       </div>
-      <div class="mb-5 tab-pane fade d-flex" id="likes" role="tabpanel" aria-labelledby="likes-tab">
+      <div class="mb-5 tab-pane fade" id="likes" role="tabpanel" aria-labelledby="likes-tab">
+        <div class="d-flex">
         <div class="col-md-6">
           <h4 class="text-center font-weight-bold">質問への高評価</h4>
           <% Question.all.ranking.each.with_index(1) do |rank, i| %>
@@ -292,6 +293,7 @@
             </div>
           <% end %>
         </div>
+      </div>
       </div>
     </div>
   </div>
