@@ -7,19 +7,62 @@
 </div>
 <div class="row mb-5">
   <div class="col-lg-12 col-md-12 col-sm-12">
-    <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ランキング一覧</i></h4>
+    <div class="col-lg-12 col-md-12 col-sm-12 d-md-flex">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <h4 class="mt-5 mb-5 font-weight-bold"><i class="fas fa-users"> ランキング一覧</i></h4>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12 mt-3 mb-5">
+        <div>
+        <h4 class="font-weight-bold text-center border border-secondary rounded bg-warning"><%= current_member.name %>さんのランキング順位一覧</h4>
+        </div>
+        <div class="row mx-auto">
+        <div class="col-3 border border-secondary rounded text-center">
+          <div>質問数</div>
+          <% @member_alls.all.each.with_index(1) do |member, i| %>
+            <% if current_member.id == member.id %>
+            <h2><%= i %>位</h2>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-3 border border-secondary rounded text-center">
+          <div>回答数</div>
+          <% @member_all.all.each.with_index(1) do |member, i| %>
+            <% if current_member.id == member.id %>
+             <h2><%= i %>位</h2>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-3 border border-secondary rounded text-center">
+          <div>質問高評価数</div>
+          <% Question.all.ranking.each.with_index(1) do |rank, i| %>
+            <% if current_member.id == rank.id %>
+             <h2><%= i %>位</h2>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-3 border border-secondary rounded text-center">
+          <div>回答高評価数</div>
+          <% Answer.all.a_ranking.each.with_index(1) do |rank, i| %>
+            <% if current_member.id == rank.id %>
+             <h2><%= i %>位</h2>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
     <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item bg-light ml-3 mr-2", style="width:24%;">
+      <li class="nav-item bg-light ml-3 mr-2", style="width:23%;">
         <a class="nav-link active link-text font-weight-bold" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="false">新着</a>
       </li>
-      <li class="nav-item bg-light mr-2", style="width:24%;">
+      <li class="nav-item bg-light mr-2", style="width:23%;">
         <a class="nav-link link-text font-weight-bold" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">質問数</a>
       </li>
-      <li class="nav-item bg-light mr-2", style="width:24%;">
+      <li class="nav-item bg-light mr-2", style="width:23%;">
         <a class="nav-link link-text font-weight-bold" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="true">回答数</a>
       </li>
-      <li class="nav-item bg-light", style="width:24%;">
-        <a class="nav-link link-text font-weight-bold" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">質問&回答の高評価</a>
+      <li class="nav-item bg-light", style="width:23%;">
+        <a class="nav-link link-text font-weight-bold" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">高評価数</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -134,9 +177,9 @@
                   <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
@@ -188,15 +231,15 @@
                 <h5><%= member.answers.count %></h5>
               </div>
             </div>
-            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_2<%= member.id %>">
+            <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_3<%= member.id %>">
               <% if member_signed_in? %>
                 <% if current_member.id == member.id %>
                   <%= link_to "プロフィールへ", member_path(member), method: :get, class:"btn btn-outline-secondary mt-3 mb-2 pt-2", style:"width:100%;", "data-turbolinks": false %>
                 <% else %>
                   <% if current_member.following?(member) %>
-                    <%= link_to 'フォロー外す', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
+                    <%= link_to '解除', unfollow_path(member), method: :post, remote: true, class:"btn btn-danger mt-3 mb-2 pt-2 fas fa-user-times", style:"font-size:4px; width:100%;" %>
                   <% else %>
-                    <%= link_to "フォローする", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
+                    <%= link_to "フォロー", follow_path(member), method: :post, remote: true, class:"btn btn-primary mt-3 mb-2 pt-2 fas fa-user-plus", style:"font-size:4px; width:100%;" %>
                   <% end %>
                 <% end %>
               <% end %>
