@@ -1,5 +1,5 @@
-<%= link_to notifications_path, 'data-turbolinks': false do %>
-  <div class="header-item btn btn-secondary pt-2 mb-1 mt-1 mr-2">
+<%= link_to notifications_path, class:"mr-2", 'data-turbolinks': false do %>
+  <div class="header-item btn btn-secondary pt-2 mb-1 mt-1 mr-2 w-100">
     <li class="nav-item pl-2">
         <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
@@ -8,29 +8,29 @@
     </li>
   </div>
 <% end %>
-<%= link_to new_question_path, 'data-turbolinks': false do %>
-  <div class="header-item question-new btn btn-success pt-2 mb-1 mt-1 mr-2">
+<%= link_to new_question_path, class:"mr-2", 'data-turbolinks': false do %>
+  <div class="header-item question-new btn btn-success pt-2 mb-1 mt-1 mr-2 w-100">
     <li class="nav-item">
       <i class="fas fa-edit"> 質問</i>
     </li>
   </div>
 <% end %>
-<%= link_to rooms_path,"data-turbolinks": false do %>
-  <div class="header-item message-btn btn-primary btn pt-2 mt-1 mb-1 mr-2">
+<%= link_to rooms_path, class:"mr-2", "data-turbolinks": false do %>
+  <div class="header-item message-btn btn-primary btn pt-2 mt-1 mb-1 mr-2 w-100">
     <li class="nav-item pl-1">
       <i class="fas fa-comments"></i>
     </li>
   </div>
 <% end %>
-<%= link_to member_path(current_member),"data-turbolinks": false do %>
-  <div class="text-white header-item border-white btn mt-1 mr-2">
+<%= link_to member_path(current_member), class:"mr-2", "data-turbolinks": false do %>
+  <div class="text-white header-item border-white btn mt-1 mr-2 w-100">
     <li class="nav-item">
       <%= attachment_image_tag current_member, :image, size:"20x20", fallback:"no_image_icon.jpg", class:"mr-1 rounded-circle" %><%= current_member.name %></i>
     </li>
 </div>
 <% end %>
 <%= link_to destroy_member_session_path, method: :delete do %>
-  <div class="text-white header-item border-white btn pl-3 pt-2 mt-1 mb-1 mr-2">
+  <div class="text-white header-item border-white btn pl-3 pt-2 mt-1 mb-1 mr-2 w-100">
     <li class="nav-item">
         <i class="fas fa-sign-out-alt"></i>
     </li>

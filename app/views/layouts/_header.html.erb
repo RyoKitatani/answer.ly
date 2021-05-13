@@ -31,29 +31,29 @@
 
         <!--ログイン前ヘッダー-->
         <% else %>
-          <%= link_to new_question_path, 'data-turbolinks': false do %>
-            <div class="header-item question-new btn btn-success pt-2 mb-1 mt-1 mr-2">
+          <%= link_to new_question_path, class:"mr-2", 'data-turbolinks': false do %>
+            <div class="header-item question-new btn btn-success pt-2 mb-1 mt-1 mr-2 w-100">
               <li class="nav-item text-white">
                 <i class="fas fa-edit"> 質問</i>
               </li>
             </div>
           <% end %>
-          <%= link_to guest_sign_in_path, method: :post,"data-turbolinks": false do %>
-            <div class="header-item btn pt-2 mb-1 mt-1 mr-2">
+          <%= link_to guest_sign_in_path, class:"mr-2", method: :post,"data-turbolinks": false do %>
+            <div class="header-item btn pt-2 mb-1 mt-1 mr-2 w-100">
               <li class="nav-item text-white">
                 <i class="fas fa-user-circle"> ゲストログイン</i>
               </li>
             </div>
           <% end %>
-          <%= link_to new_member_session_path, "data-turbolinks": false do %>
-            <div class="header-item btn pt-2 mb-1 mt-1 mr-2">
+          <%= link_to new_member_session_path, class:"mr-2", "data-turbolinks": false do %>
+            <div class="header-item btn pt-2 mb-1 mt-1 mr-2 w-100">
               <li class="nav-item text-white">
                 <i class="fas fa-sign-in-alt">ログイン</i>
               </li>
             </div>
           <% end %>
-          <%= link_to new_member_registration_path, "data-turbolinks": false do %>
-            <div class="header-item btn pt-2 mb-1 mt-1 mr-2">
+          <%= link_to new_member_registration_path, class:"mr-2", "data-turbolinks": false do %>
+            <div class="header-item btn pt-2 mb-1 mt-1 mr-2 w-100">
               <li class="nav-item text-white">
                 <i class="fas fa-user-plus"> 新規会員登録</i>
               </li>
