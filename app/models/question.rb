@@ -9,7 +9,7 @@ class Question < ApplicationRecord
   has_many   :answers, dependent: :destroy
   has_many   :notifications, dependent: :destroy
 
-  attachment :image
+  # attachment :image
 
   validates :title, presence: true
   validates :title, length: { minimum: 5, maximum: 50 }, allow_blank: true

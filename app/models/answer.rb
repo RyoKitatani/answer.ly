@@ -5,7 +5,7 @@ class Answer < ApplicationRecord
   has_many   :responses, dependent: :destroy
   has_many   :notifications, dependent: :destroy
 
-   attachment :image
+  # attachment :image
 
   validates :content, presence: true
 
