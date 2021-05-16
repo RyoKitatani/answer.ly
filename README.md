@@ -3,7 +3,7 @@
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
 PF発表会で使用したスライドです。<br>
-("https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000")
+<a src="https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000">
 
 ## サイト概要 
 留学したい人や気になっている人など、留学に関連する方が気軽に質問・回答が得られるQ&Aです。
