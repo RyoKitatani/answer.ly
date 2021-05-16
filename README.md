@@ -2,7 +2,7 @@
 
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
-[Answer.ly_北谷凌.pdf](https://github.com/RyoKitatani/answer.ly/files/6488831/Answer.ly_.pdf)
+embed_slide("https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000")
 
 
 ## サイト概要 
