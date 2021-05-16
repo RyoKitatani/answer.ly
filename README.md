@@ -1,6 +1,6 @@
 # Answer.ly(アンサリー)　
-### PFサイト： https://answer-ly.com
-### PF説明スライドは、[こちら](https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000)
+### PFサイト　https://answer-ly.com
+### PF説明スライドは、[こちらです。](https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000)
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
 ## サイト概要 
