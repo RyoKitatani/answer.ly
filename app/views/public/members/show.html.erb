@@ -73,8 +73,8 @@
         <div class="text-center w-100">
           <p class="small border border-primary rounded">フォロー</p></p>
           <div>
-            <%= link_to connections_member_path(@member), "data-turbolinks": false do %>
-              <%= @member.follower.count %>
+            <%= link_to connections_member_path(@member),class:"link-text", "data-turbolinks": false do %>
+              <h5><%= @member.follower.count %></h5>
             <% end %>
           </div>
         </div>
