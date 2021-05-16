@@ -2,18 +2,15 @@
 
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
-PF資料
+PF発表会で使用したスライドです。<br>
 ("https://docs.google.com/presentation/d/e/2PACX-1vQhkmR9JhIHXfzovSD-BTwM223TTEY0wRprbAgW7G2TCSfaflzHulEM3YFgiWI5qSf8nKwk8orSoz-f/pub?start=false&loop=false&delayms=3000")
 
-
 ## サイト概要 
-留学したい人や気になっている人など、
-留学に関連する方が気軽に質問・回答が得られるQ&Aです。
+留学したい人や気になっている人など、留学に関連する方が気軽に質問・回答が得られるQ&Aです。
 
 ### サイトテーマ
 
-留学に関する不安を質問したら、<br>
-求めている回答が、気軽に得られるサイト。<br>
+留学に関する不安を質問したら、求めている回答が、いつもで気軽に得られるサイト。<br>
 英語にしてつなぎ合わせたのが、Answer.ly(answer × freely)
 
 ### テーマを選んだ理由
@@ -24,43 +21,26 @@ PF資料
 * 初めての海外生活であったため、知らないことばかりでとても不安だった。
 * 留学に関する不安を質問したくでも、大学の学生課と過去に留学した先輩学生のみ。(繋がりがあれば)
 * 留学中の英語の勉強方法(スピーキングなど)など、本当にこれでいいのか？と不安があった。
-* もっと情報収集が出来れば、充実した留学ライフを過ごせるのではと思った。
 
 **``同じような不安を持つ人達を支援したい、不安を取り除きより良い留学生活にしてほしいと思い、今回のテーマを選定しました。``**
 
 ### ターゲットユーザー
 
-* これから留学したい方(大学から20代社会人まで)
+* これから留学したい方(大学から社会人まで)
 * 留学することが不安、留学しようか迷っている方
 * 留学経験のある方
 
 ### 主な利用シーン
 
 * 留学の為に勉強方法がわからない時。
-* 留学するまでの準備期間で気になることがある時。
-* 留学経験者と繋がりたい時に。
+* 留学するまでの準備期間で気になることがある時。　などなど
 
-そのような時に利用するサイトです。
+# 使用技術
 
-# 使用方法
-
-```
-$ git clone git@github.com:RyoKitatani/answer.ly.git
-$ bundle install
-$ rails db:migrate
-$ rails db:seed
-$ rails s
-```
-
-**管理者用**<br>
-メールアドレス:admin@admmin.com<br>
-パスワード:123456<br>
-管理者用ログインURL: /admin/sign_in
-もしくは、URLにadminと打ち込む。
-
-**一般ユーザー**<br>
-新規会員登録、もしくはゲストログインをご利用ください。
-
+|  TH  |  TH  |
+| ---- | ---- |
+|  TD  |  TD  |
+|  TD  |  TD  |
 
 # 設計書
 
@@ -81,5 +61,24 @@ https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0b
 * フレームワーク：Ruby on Rails
 * JSライブラリ：jQuery
 * IDE：Cloud9
+
+# 使用方法
+
+```
+$ git clone git@github.com:RyoKitatani/answer.ly.git
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+```
+
+**管理者用**<br>
+メールアドレス:admin@admmin.com<br>
+パスワード:123456<br>
+管理者用ログインURL: /admin/sign_in
+もしくは、URLにadminと打ち込む。
+
+**一般ユーザー**<br>
+新規会員登録、もしくはゲストログインをご利用ください。
 
 
