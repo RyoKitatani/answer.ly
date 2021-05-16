@@ -2,6 +2,8 @@
 
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
+[Answer.ly_北谷凌.pdf](https://github.com/RyoKitatani/answer.ly/files/6488831/Answer.ly_.pdf)
+
 
 ## サイト概要 
 留学したい人や気になっている人など、
@@ -32,14 +34,15 @@
 
 ### 主な利用シーン
 
-留学に関して疑問・不安がある時に利用します。
-
-具体例として、
 * 留学の為に勉強方法がわからない時。
 * 留学するまでの準備期間で気になることがある時。
 * 留学経験者と繋がりたい時に。
 
-そんな時に利用するサイトです。
+そのような時に利用するサイトです。
+
+# アプリ制作をする上で意識した事
+
+* 
 
 # 使用方法
 
@@ -72,10 +75,6 @@ https://app.diagrams.net/#G1O3LIzvRVAKC4oh24vnrjDWSEBYX4IxbE
 ### テーブル定義書　
 
 https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0bH0A/edit?usp=sharing
-
-### チャレンジ要素一覧
-
-https://docs.google.com/spreadsheets/d/1GKJ7aZMcrRR2YwcuRfL-F2DGFRE_w-ZEhYM93c7TlAY/edit#gid=0
 
 ## 開発環境
 
