@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-2 pl-0 text-center">
           <p><%= image_tag 'q_icon.png', size: "20x20" %></p>
-          <p class="pl-1"><%= member.questions.count %></p>
+          <p class="pl-1"><%= member.questions.size %></p>
         </div>
         <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_<%= member.id %>">
           <% if member_signed_in? %>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-md-2 pl-0 text-center">
               <p><%= image_tag 'a_icon.png', size: "20x20" %></p>
-              <p class="pl-1"><%= member.answers.count %></p>
+              <p class="pl-1"><%= member.answers.size %></p>
             </div>
             <div class="col-md-4 pl-0 pr-0 ml-1", id="follow-button_2<%= member.id %>">
               <% if member_signed_in? %>
