@@ -91,12 +91,12 @@ class Member < ApplicationRecord
   def total_likes(member)
     question_likes_count = 0
     member.questions.each do |question|
-      question_likes_count += question.question_likes.count
+      question_likes_count += question.question_likes.size
     end
 
     answer_likes_count = 0
     member.answers.each do |answer|
-      answer_likes_count += answer.answer_likes.count
+      answer_likes_count += answer.answer_likes.size
     end
     question_likes_count + answer_likes_count
   end
