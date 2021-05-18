@@ -66,7 +66,7 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <p class="mt-4 mb-4">全ユーザー数：<%= @members.count %>人</p>
+      <p class="mt-4 mb-4">全ユーザー数：<%= @members.size %>人</p>
       <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
         <% @members.each do |member| %>
           <div class="d-flex border rounded mt-3 pt-1 pb-1 bg-light">
@@ -90,7 +90,7 @@
                 <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
                   <%= link_to connections_member_path(member), "data-turbolinks": false do %>
-                    <%= member.follower.count %>
+                    <%= member.follower.size %>
                   <% end %>
                 </h5>
               </div>
@@ -104,11 +104,11 @@
             <div class="col-md-2 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right pl-2">
                 <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
-                <h5><%= member.questions.count %></h5>
+                <h5><%= member.questions.size %></h5>
               </div>
               <div class="col-md-6">
                 <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
-                <h5><%= member.answers.count %></h5>
+                <h5><%= member.answers.size %></h5>
               </div>
             </div>
             <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_<%= member.id %>">
@@ -150,7 +150,7 @@
                 <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
                   <%= link_to connections_member_path(member), "data-turbolinks": false do %>
-                    <%= member.follower.count %>
+                    <%= member.follower.size %>
                   <% end %>
                 </h5>
               </div>
@@ -164,11 +164,11 @@
             <div class="col-md-2 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right bg-warning">
                 <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
-                <h5><%= member.questions.count %></h5>
+                <h5><%= member.questions.size %></h5>
               </div>
               <div class="col-md-6">
                 <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
-                <h5><%= member.answers.count %></h5>
+                <h5><%= member.answers.size %></h5>
               </div>
             </div>
             <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_2<%= member.id %>">
@@ -210,7 +210,7 @@
                 <div class="small border border-primary rounded mb-1">フォロー</div>
                 <h5>
                   <%= link_to connections_member_path(member), "data-turbolinks": false do %>
-                    <%= member.follower.count %>
+                    <%= member.follower.size %>
                   <% end %>
                 </h5>
               </div>
@@ -224,11 +224,11 @@
             <div class="col-md-2 border-right d-flex text-center mt-2">
               <div class="col-md-6 border-right ">
                 <p class="mb-0"><%= image_tag 'q_icon.png', size: "20x20" %></p>
-                <h5><%= member.questions.count %></h5>
+                <h5><%= member.questions.size %></h5>
               </div>
               <div class="col-md-6 bg-warning">
                 <p class="mb-0"><%= image_tag 'a_icon.png', size: "20x20" %></p>
-                <h5><%= member.answers.count %></h5>
+                <h5><%= member.answers.size %></h5>
               </div>
             </div>
             <div class="col-md-2 d-flex text-center pb-2 ml-5", id="follow-button_3<%= member.id %>">
