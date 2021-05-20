@@ -38,10 +38,10 @@ class ApplicationController < ActionController::Base
 
   def member_header_actions
     @questions = Question.all
-    @members = Member.all.order(created_at: :desc)
+    @members = Member.includes(:questions, :answers, :question_likes, :answer_likes).order(created_at: :desc)
     @tags = Tag.all
-    @member_all = Member.all.order_by_answers
-    @member_alls = Member.all.page(params[:page]).order_by_question.per(5)
+    @member_all = Member.includes(:answers).order_by_answers
+    @member_alls = Member.includes(:questions).page(params[:page]).order_by_question.per(5)
     @contacts = Contact.all
     @tag_total = Tag.all
   end

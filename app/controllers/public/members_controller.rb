@@ -2,8 +2,8 @@ class Public::MembersController < ApplicationController
    before_action :authenticate_member!, except:[:guest_sign_in]
 
   def index
-    @member_all = Member.all.order_by_answers
-    @member_alls = Member.all.order_by_question
+    @member_all = Member.includes(:questions, :answers, :question_likes, :answer_likes).order_by_answers
+    @member_alls = Member.includes(:questions, :answers, :question_likes, :answer_likes).order_by_question
   end
 
   def show
@@ -12,13 +12,13 @@ class Public::MembersController < ApplicationController
     @member_questions = @member.questions
     @question_likes_count = 0
     @member_questions.each do |question|
-      @question_likes_count += question.question_likes.count
+      @question_likes_count += question.question_likes.size
     end
 
     @member_answers = @member.answers
     @answer_likes_count = 0
     @member_answers.each do |answer|
-      @answer_likes_count += answer.answer_likes.count
+      @answer_likes_count += answer.answer_likes.size
     end
 
     @total_likes = @question_likes_count + @answer_likes_count
