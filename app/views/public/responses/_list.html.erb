@@ -1,4 +1,8 @@
-<h6 class="more offset-md-2 font-weight-bold" data-toggle="collapse" data-target="#collapseExample<%= answer.id%>" aria-expanded="false" aria-controls="collapseExample">コメント数：<%= answer.responses.count %>件 もっと見る....</h6>
+<h6 class="more offset-md-2 font-weight-bold" data-toggle="collapse" data-target="#collapseExample<%= answer.id%>" aria-expanded="false" aria-controls="collapseExample">コメント数：<%= answer.responses.count %>件
+<% if answer.responses.size >= 2 %>
+もっと見る....
+<% end %>
+</h6>
 <% answer.responses.first(1).each do |response| %>
   <div class="col-md-10 offset-md-2 mt-2 mb-3 pl-0 pr-0 d-flex border rounded bg-light">
     <div class="col-md-1 pt-3">
