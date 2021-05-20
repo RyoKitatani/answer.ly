@@ -4,5 +4,6 @@ class Response < ApplicationRecord
   has_many   :notifications, dependent: :destroy
 
   validates :content, presence: true
+  
 
 end
