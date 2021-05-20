@@ -66,9 +66,9 @@
                 <%= link_to "プロフィール編集", edit_member_path(@question.member), class:"btn btn-primary w-100", "data-turbolinks": false %>
             <% else %>
               <% if current_member.following?(@question.member) %>
-                <%= link_to 'フォロー外す', unfollow_path(@question.member), method: :post, class:"btn btn-danger w-100" %>
+                <%= link_to '解除', unfollow_path(@question.member), remote: true, method: :post, class:"fas fa-user-times btn btn-danger w-100" %>
               <% else %>
-                <%= link_to "フォローする", follow_path(@question.member), method: :post, class:"btn btn-primary w-100" %>
+                <%= link_to "フォロー", follow_path(@question.member), remote: true, method: :post, class:"fas fa-user-plus btn btn-primary w-100" %>
               <% end %>
             <% end %>
           </div>
