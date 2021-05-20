@@ -8,7 +8,6 @@ class Public::ResponsesController < ApplicationController
     @response.member_id = current_member.id
     if @response.save
       @answer.create_notification_response!(current_member, @response.id)
-      render :create
     end
   end
 
@@ -17,7 +16,6 @@ class Public::ResponsesController < ApplicationController
     @response = Response.find_by(id: params[:id], answer_id: params[:answer_id])
     @response.destroy
     # redirect_to request.referer
-    render :destroy
   end
 
   def edit

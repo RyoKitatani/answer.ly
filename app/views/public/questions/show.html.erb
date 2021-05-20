@@ -65,11 +65,13 @@
             <% if current_member.id == @question.member.id  %>
                 <%= link_to "プロフィール編集", edit_member_path(@question.member), class:"btn btn-primary w-100", "data-turbolinks": false %>
             <% else %>
+              <div id="follow-button_<%= @question.member.id %>" class="ml-1">
               <% if current_member.following?(@question.member) %>
-                <%= link_to '解除', unfollow_path(@question.member), remote: true, method: :post, class:"fas fa-user-times btn btn-danger w-100" %>
+                <%= link_to '解除', unfollow_path(@question.member), remote: true, method: :post, class:"fas fa-user-times btn btn-danger w-100 pt-2 pb-2", style:"font-size:4px;" %>
               <% else %>
-                <%= link_to "フォロー", follow_path(@question.member), remote: true, method: :post, class:"fas fa-user-plus btn btn-primary w-100" %>
+                <%= link_to "フォロー", follow_path(@question.member), remote: true, method: :post, class:"fas fa-user-plus btn btn-primary w-100 pt-2 pb-2", style:"font-size:4px;" %>
               <% end %>
+              </div>
             <% end %>
           </div>
           <div class="mt-3">
@@ -101,7 +103,9 @@
             </div>
             <div class="text-center w-100 ml-2">
               <p class="small border border-primary rounded">フォロワー</p>
-              <h5><%= @question.member.followed.count %></h5>
+              <h5 id="followed-count_<%= @question.member.id %>">
+                <%= @question.member.followed.count %>
+              </h5>
             </div>
           </div>
           <p class="text-right"><%= link_to "フォロー・フォロワー一覧へ", connections_member_path(@question.member), class:"link-text small", "data-turbolinks": false %></p>
