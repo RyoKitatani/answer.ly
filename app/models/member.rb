@@ -41,6 +41,7 @@ class Member < ApplicationRecord
     following_member.include?(member)
   end
 
+  #carmen-rails用 国コードを正式名称に変換
   def country
     Carmen::Country.coded(country_code)
   end

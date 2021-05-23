@@ -9,7 +9,7 @@
    <%= render 'layouts/flash' %>
    <% end %>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item text-center bg-light ml-3 mr-1" style="width:15%;">
+      <li class="nav-item text-center bg-light ml- mr-1" style="width:15%;">
       <a class="nav-link link-text font-weight-bold" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a>
       </li>
       <li class="nav-item text-center bg-light mr-1" style="width:15%;">
@@ -278,8 +278,10 @@
    <div class="col-lg-3 col-md-12 mt-5">
      <div class="about-box mb-3 text-center border border-primary rounded">
        <%= link_to about_path, "data-turbolinks": false do %>
-       <h1 class="display-4 font-weight-bold">
+       <h1 class="font-weight-bold">
          Features of
+        </h1>
+        <h1 class="font-weight-bold">
           <span class="site-title-front">Answer</span><span class="site-title-back">.ly</span>
         </h1>
        <% end %>
