@@ -40,31 +40,30 @@ PF説明スライドは、[こちらです。](https://docs.google.com/presentat
 |:---:|:---|:---|
 | 1 |ユーザー/管理者(ログイン機能) |devise |
 | 2 |ゲストログイン機能| × |
-| 2 |SNSログイン機能| devise/omniauth(google/facebook/twitter)|
-| 3 |マイページ機能 | refile/ refile-mini_magick |
-| 4 |質問投稿 | summernote-rails(テキストエディター)|
-| 5 |回答機能| summernote-rails(テキストエディター)|
-| 6 |コメント機能|Ajax(非同期)|
-| 7 |検索機能 | × / 部分一致(質問/タグ/ユーザーが検索可能)|
-| 8 |通知機能 | × |
-| 9 |フォロー機能 | Ajax(非同期)|
-| 10 |いいね機能 | Ajax(非同期)|
-| 11 |ベストアンサー機能|×|
-| 12 |DM機能 | Ajax(非同期)|
-| 13 |タグ機能| × |
-| 14 |ランキング機能|×|
-| 15 |PV機能 | impressionist|
-| 16 |SNSシェア機能 | social-share-button|
-| 17 |お問い合わせ機能| Action Mailer|
-| 18 |ページネーション機能|kaminari|
-| 19 |rails/devise日本語化|rails-i18n||
-| 20 |レスポンシブ対応| Bootstrap |
-| 21 |コード解析 | RuboCop|
-| 22 |単体・結合テスト(一部) |RSpec|
-| 23 |自動デプロイ | AWS, Github Actions(CI/CDツール)
-| 24 |https設定 |Certbot|
-| 25 |ドメイン指定 |お名前.com / AWSRoute 53|
-
+| 3 |SNSログイン機能| devise/omniauth(google/facebook/twitter)|
+| 4 |マイページ機能 | refile/ refile-mini_magick |
+| 5 |質問投稿 | summernote-rails(テキストエディター)|
+| 6 |回答機能| summernote-rails(テキストエディター)|
+| 7 |コメント機能|Ajax(非同期)|
+| 8 |検索機能 | × / 部分一致(質問/タグ/ユーザーが検索可能)|
+| 9 |通知機能 | × |
+| 10 |フォロー機能 | Ajax(非同期)|
+| 11 |いいね機能 | Ajax(非同期)|
+| 12 |ベストアンサー機能|×|
+| 13 |DM機能 | Ajax(非同期)|
+| 14 |タグ機能| × |
+| 15 |ランキング機能|×|
+| 16 |PV機能 | impressionist|
+| 17 |SNSシェア機能 | social-share-button|
+| 18 |お問い合わせ機能| Action Mailer|
+| 19 |ページネーション機能|kaminari|
+| 20 |rails/devise日本語化|rails-i18n||
+| 21 |レスポンシブ対応| Bootstrap |
+| 22 |コード解析 | RuboCop|
+| 23 |単体・結合テスト(一部) |RSpec|
+| 24 |自動デプロイ | AWS, Github Actions(CI/CDツール)
+| 25 |https設定 |Certbot |
+| 26 |ドメイン指定 |お名前.com / AWSRoute 53|
 
 # 設計書
 
