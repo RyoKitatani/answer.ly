@@ -62,7 +62,7 @@ PF説明スライドは、[こちらです。](https://docs.google.com/presentat
 | 21 |コード解析 | RuboCop|
 | 22 |単体・結合テスト(一部) |RSpec|
 | 23 |自動デプロイ | AWS, Github Actions(CI/CDツール)
-| 24 |https設定 | |
+| 24 |https設定 |Certbot|
 | 25 |ドメイン指定 |お名前.com / AWSRoute 53|
 
 
