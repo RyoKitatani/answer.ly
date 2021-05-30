@@ -7,5 +7,5 @@ $(document).on 'turbolinks:load', ->
 $(document).on 'turbolinks:load', ->
   $('[data-provider1="summernote"]').each ->
     $(this).summernote
-      placeholder: 'あなたの回答で質問者の悩みを解決しましょう。'
+      placeholder: 'あなたの回答で質問者の悩みを解決しましょう。300文字以内。'
       height: 100

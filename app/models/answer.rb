@@ -8,6 +8,7 @@ class Answer < ApplicationRecord
   # attachment :image
 
   validates :content, presence: true
+  validates :content, length:{ maximum: 300}
 
   def answer_liked_by?(member)
     answer_likes.where(member_id: member.id).exists?

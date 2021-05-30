@@ -6,7 +6,7 @@
  <div class="answer-box summernote">
    <%= form_with model: [question, answer], local: true do |f| %>
    <%= render "layouts/error_messages", resource: answer %>
-    <%= f.text_area :content, placeholder:"あなたの回答で質問者の悩みを解決しましょう。", class:"w-100", rows:"5", 'data-provider1': :summernote %>
+    <%= f.text_area :content, class:"w-100", rows:"5", 'data-provider1': :summernote %>
     <%= f.submit "回答する", class:"btn btn-primary text-items-center w-100 mt-3" %>
    <% end %>
  </div>
