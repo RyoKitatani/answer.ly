@@ -54,7 +54,7 @@
     <%= render "public/responses/list", answer: answer, question: @question %>
   </div>
   <div class="col-md-10 offset-md-2 pl-0 pr-0">
-    <div id="comments_error">
+    <div id="response-error<%= answer.id %>">
       <%= render "layouts/error_messages", resource: @response %>
     </div>
     <%= form_with model: [answer, response], remote: true do |f| %>

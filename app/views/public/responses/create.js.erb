@@ -1,2 +1,3 @@
 $('#response-<%= @answer.id %>').html("<%= j(render 'public/responses/list', answer: @answer, response: @response, question: @question ) %>");
 $('#response_content_<%= @answer.id %>').val("");
+$('#response-error<%= @answer.id %>').html("<%= j(render "layouts/error_messages", resource: @response ) %>");
