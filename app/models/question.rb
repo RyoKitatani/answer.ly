@@ -21,7 +21,7 @@ class Question < ApplicationRecord
   end
 
   def self.ranking
-    joins(:question_likes, :member,).group("membe").select("count(question_likes.question_id) as cnt, members.*, image_id").order("cnt desc").limit(10)
+    joins(:question_likes, :member,).group("members.id").select("count(question_likes.question_id) as cnt, members.*, image_id").order("cnt desc").limit(10)
   end
   # notifications
 
