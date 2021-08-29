@@ -89,7 +89,7 @@ https://docs.google.com/spreadsheets/d/1SRMZV79FV04XzANJEO0nNvsQlUh2f4tNyPNthv0b
 
 ```
 $ git clone git@github.com:RyoKitatani/answer.ly.git
-$ bundle install
+$ bundle install --without production
 $ rails db:migrate
 $ rails db:seed
 $ rails s
