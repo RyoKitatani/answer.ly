@@ -1,6 +1,6 @@
 # Answer.ly(アンサリー)　
 
-### [トップ画面]
+### トップ画面
 <img width="1425" alt="スクリーンショット 2021-04-25 18 08 42" src="https://user-images.githubusercontent.com/77328172/115987746-4a77d200-a5f1-11eb-925b-edfbd96b8d00.png">
 
 ## サイト概要 
